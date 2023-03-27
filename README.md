@@ -1,2 +1,3 @@
-# personal-site
- 
+# Personal Site
+
+For fun + portfolio
