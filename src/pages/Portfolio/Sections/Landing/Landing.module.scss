@@ -1,0 +1,53 @@
+@import '../../../../styles/styles.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  height: 100%;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 12%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 5%;
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+
+      display: flex;
+
+      margin: 0 3rem;
+
+      &:nth-child(1) {
+        background-color: var(--purple);
+      }
+
+      &:nth-child(2) {
+        background-color: var(--blue);
+      }
+
+      &:nth-child(3) {
+        background-color: var(--purple-10);
+      }
+
+      img {
+        margin: auto;
+        width: 50px;
+      }
+    }
+  }
+}

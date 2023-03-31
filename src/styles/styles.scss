@@ -1,0 +1,35 @@
+@use '__mixins.scss';
+@use 'fonts.scss';
+
+// common components
+.section {
+  min-width: 100vw;
+  height: 100vh;
+}
+
+.sub-section {
+  min-width: 100vw;
+  max-height: 1980px;
+  height: 100%;
+}
+
+// elements
+
+// position
+.position {
+  &--absolute {
+    position: absolute;
+  }
+
+  &--relative {
+    position: relative;
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+
+  &--sticky {
+    position: sticky;
+  }
+}

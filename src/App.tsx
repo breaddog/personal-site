@@ -1,9 +1,9 @@
-import React from 'react';
+import { Portfolio } from "./pages"
 
 function App() {
   return (
     <div className="App">
-      Test
+      <Portfolio />
     </div>
   );
 }
