@@ -232,6 +232,9 @@ export const Window: React.FC<WindowProps> = ({
         type: 'x,y',
         edgeResistance: 1,
         bounds: boundaryContainer,
+        onClick: function () {
+          handleFocus()
+        }
       })
       // for reference
       draggableRef.current = mainWindow
