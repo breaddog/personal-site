@@ -51,6 +51,23 @@ export const Window: React.FC<WindowProps> = ({
   // container
   const containerRef = React.useRef<any | null>(null)
 
+  // constraints
+  const MIN_HEIGHT = 400
+  const MIN_WIDTH = 240
+
+  // check for min, for max the behaviour is similar and instilled
+  const checkWindowConstraints = (
+    isHeight: boolean = false,
+    diffValue: number = 0,
+    add: boolean = true,
+  ) => {
+    const modifier = (diffValue * (add ? 1 : -1))
+    if (isHeight) {
+      return containerRef.current.clientHeight + modifier < MIN_HEIGHT
+    } else {
+      return containerRef.current.clientWidth + modifier < MIN_WIDTH
+    }
+  }
 
   // draggable
   React.useLayoutEffect(() => {
@@ -73,10 +90,14 @@ export const Window: React.FC<WindowProps> = ({
       cursor: 'e-resize',
       onDrag: function (this) {
         const diffX = this.x - rightPrevX.current
-        gsap.set(containerRef.current, {
-          width: `+=${diffX}`
-        })
-        rightPrevX.current = this.x
+        if (checkWindowConstraints(false, diffX, true)) {
+          draggableRef.current.disable()
+        } else {
+          gsap.set(containerRef.current, {
+            width: `+=${diffX}`
+          })
+          rightPrevX.current = this.x
+        }
       },
       onPress: function (this) {
         rightPrevX.current = this.x
@@ -97,11 +118,15 @@ export const Window: React.FC<WindowProps> = ({
       cursor: 'w-resize',
       onDrag: function (this) {
         const diffX = this.x - leftPrevX.current
-        gsap.set(containerRef.current, {
-          width: `-=${diffX}`,
-          x: `+=${diffX}`
-        })
-        leftPrevX.current = this.x
+        if (checkWindowConstraints(false, diffX, false)) {
+          draggableRef.current.disable()
+        } else {
+          gsap.set(containerRef.current, {
+            width: `-=${diffX}`,
+            x: `+=${diffX}`
+          })
+          leftPrevX.current = this.x
+        }
       },
       onPress: function (this) {
         leftPrevX.current = this.x
@@ -122,11 +147,15 @@ export const Window: React.FC<WindowProps> = ({
       cursor: 'n-resize',
       onDrag: function (this) {
         const diffY = this.y - topPrevY.current
-        gsap.set(containerRef.current, {
-          height: `-=${diffY}`,
-          y: `+=${diffY}`
-        })
-        topPrevY.current = this.y
+        if (checkWindowConstraints(true, diffY, false)) {
+          draggableRef.current.disable()
+        } else {
+          gsap.set(containerRef.current, {
+            height: `-=${diffY}`,
+            y: `+=${diffY}`
+          })
+          topPrevY.current = this.y
+        }
       },
       onPress: function (this) {
         topPrevY.current = this.y
@@ -146,10 +175,14 @@ export const Window: React.FC<WindowProps> = ({
       cursor: 's-resize',
       onDrag: function (this) {
         const diffY = this.y - bottomPrevY.current
-        gsap.set(containerRef.current, {
-          height: `+=${diffY}`,
-        })
-        bottomPrevY.current = this.y
+        if (checkWindowConstraints(true, diffY, true)) {
+          draggableRef.current.disable()
+        } else {
+          gsap.set(containerRef.current, {
+            height: `+=${diffY}`,
+          })
+          bottomPrevY.current = this.y
+        }
       },
       onPress: function (this) {
         bottomPrevY.current = this.y
