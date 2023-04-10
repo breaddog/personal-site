@@ -1,18 +1,38 @@
+// headings
 h1 {
   font-size: 50px;
   font-weight: 500;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 500;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 500;
 }
 
+.title {
+  &__sub-section {
+    font-size: 40px;
+    font-weight: 500;
+  }
+}
+
+// transforms
 .uppercase {
   text-transform: uppercase;
+}
+
+// stylings
+.text {
+  &__bold {
+    font-weight: bold;
+  }
+}
+
+p {
+  font-size: 22px;
 }

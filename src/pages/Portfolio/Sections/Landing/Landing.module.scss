@@ -1,53 +1,80 @@
 @import '../../../../styles/styles.scss';
 
+.landing {
+  // background-color: var(--blue);
+}
+
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: flex-start;
 
+  width: 90%;
   height: 100%;
 
-  .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  margin: 0 auto;
+  margin-top: -2%;
 
-    min-height: 12%;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    margin-top: 5%;
-
-    .icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-
+  .left {
+    width: 50%;
+    margin: auto 0;
+    .header {
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      margin: 0 3rem;
+      min-height: 12%;
+    }
 
-      &:nth-child(1) {
-        background-color: var(--purple);
-      }
+    .subtitle {
+      margin-top: 2vmin;
+    }
 
-      &:nth-child(2) {
-        background-color: var(--blue);
-      }
+    .content {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
 
-      &:nth-child(3) {
-        background-color: var(--purple-10);
-      }
+      margin-top: 4vmin;
 
-      img {
-        margin: auto;
-        width: 50px;
+      .icon {
+        &:nth-child(1) {
+          background-color: var(--purple);
+          margin-left: 0;
+        }
+
+        &:nth-child(2) {
+          background-color: var(--blue);
+        }
+
+        &:nth-child(3) {
+          background-color: var(--purple-10);
+          margin-right: 0;
+        }
       }
     }
+  }
+
+  .right {
+    margin: auto;
+    img {
+      width: 250px;
+      height: auto;
+    }
+  }
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  align-self: flex-end;
+
+  position: absolute;
+  bottom: 2%;
+
+  img {
+    margin: 0 auto;
+    width: 2.25rem;
   }
 }

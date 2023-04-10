@@ -8,6 +8,7 @@
   // grey
   --grey: #e3e3e3;
   --grey-10: #b8b8b8;
+  --grey-30: #959595;
 
   // blue
   --blue: #bed5ff;
@@ -20,8 +21,23 @@
   // purple
   --purple: #ccc2ff;
   --purple-10: #baaef7;
+  --purple-20: #a2a8e8;
+  --purple-30: #868cc2;
+  --purple-40: #6a6f9c;
 
   // dark purple
   --dark-purple: #a2a8e8;
   --dark-purple-10: #868cc2;
+
+  // red
+  --red: #ff4b4b;
+
+  // yellow
+  --yellow: #f8ce3a;
+
+  // green
+  --green: #96f569;
+
+  // commons
+  --background-colour: var(--grey);
 }

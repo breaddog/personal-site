@@ -1,0 +1,44 @@
+@import '../../../../styles/styles.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 90%;
+  margin: 6vmin auto;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+
+    .title {
+      margin: auto 0;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      background-color: var(--purple-10);
+    }
+  }
+
+  .body {
+    margin-top: 5vmin;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .left {
+      width: 45%;
+      text-align: start;
+    }
+
+    .right {
+      width: 50%;
+    }
+
+    .text {
+      margin-bottom: 2rem;
+    }
+  }
+}

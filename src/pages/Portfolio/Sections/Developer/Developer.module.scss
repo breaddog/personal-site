@@ -1,0 +1,111 @@
+@import '../../../../styles/styles.scss';
+
+.dev {
+  // background-color: var(--purple);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 90%;
+  height: 100%;
+
+  margin: 6vmin auto;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+
+    .title {
+      margin: auto 0;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      background-color: var(--purple);
+    }
+  }
+
+  .body {
+    margin-top: 5vmin;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 100%;
+
+    .left {
+      width: 40%;
+      height: 65%;
+      text-align: start;
+    }
+
+    .right {
+      width: 40%;
+      height: 65%;
+    }
+
+    .text {
+      margin-bottom: 2rem;
+    }
+
+    // component
+    .orbitContainer {
+      width: 100%;
+      display: flex;
+      position: relative;
+      height: 400px;
+      width: auto;
+
+      margin: auto 0;
+      margin: 3rem;
+
+      .orbitItemsContainer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .orbitCircle {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+
+      .item {
+        position: absolute;
+        width: fit-content;
+        height: fit-content;
+
+        border-radius: 50%;
+        background-color: var(--grey);
+
+        img {
+          width: 4rem;
+          height: 4rem;
+        }
+
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .item__center {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 3rem;
+        img {
+          width: 3rem;
+        }
+      }
+    }
+  }
+}
