@@ -1,9 +1,11 @@
 import styles from './Window.module.scss'
 import React from 'react'
 import classNames from 'classnames'
+import { max } from 'lodash'
 
 import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
+import { PortfolioDevContext } from '../../../pages/Portfolio/Sections'
 
 interface WindowProps {
   className?: string,
@@ -22,7 +24,13 @@ export const Window: React.FC<WindowProps> = ({
   boundaryContainer,
   children,
 }) => {
-  const classes = classNames(styles.window, styles[windowStyle], className)
+  const classes = classNames(styles.window, styles[windowStyle], 'portfolio__window__dev', className)
+
+  // context
+  const {
+    highestZIndex,
+    setHighestZIndex
+  } = React.useContext(PortfolioDevContext)
 
   // proxy created
   const [proxyCreated, setProxyCreated] = React.useState<boolean>(false)
@@ -55,6 +63,26 @@ export const Window: React.FC<WindowProps> = ({
   const MIN_HEIGHT = 400
   const MIN_WIDTH = 240
 
+  // z-index override for click on any part of container
+  const handleFocus = () => {
+    let _foundHighestZIndex
+    // first one will always be a search, the rest will be O(1)
+    if (highestZIndex === 0) {
+      const _windows = gsap.utils.toArray('.portfolio__window__dev') as any[]
+      const _zIndexes = _windows.map((window: any) => Number(window.style['z-index']))
+      _foundHighestZIndex = max(_zIndexes) as number
+    } else {
+      _foundHighestZIndex = highestZIndex
+    }
+
+    // set based on + 1
+    const newZIndex = _foundHighestZIndex + 1
+    setHighestZIndex(newZIndex)
+    gsap.set(containerRef.current, {
+      zIndex: newZIndex
+    })
+  }
+
   // check for min, for max the behaviour is similar and instilled
   const checkWindowConstraints = (
     isHeight: boolean = false,
@@ -63,13 +91,13 @@ export const Window: React.FC<WindowProps> = ({
   ) => {
     const modifier = (diffValue * (add ? 1 : -1))
     if (isHeight) {
-      return containerRef.current.clientHeight + modifier < MIN_HEIGHT
+      return containerRef.current.clientHeight + modifier > MIN_HEIGHT
     } else {
-      return containerRef.current.clientWidth + modifier < MIN_WIDTH
+      return containerRef.current.clientWidth + modifier > MIN_WIDTH
     }
   }
 
-  // draggable
+  // draggable resize
   React.useLayoutEffect(() => {
     gsap.registerPlugin(Draggable)
     if (!containerRef.current) return
@@ -91,8 +119,6 @@ export const Window: React.FC<WindowProps> = ({
       onDrag: function (this) {
         const diffX = this.x - rightPrevX.current
         if (checkWindowConstraints(false, diffX, true)) {
-          draggableRef.current.disable()
-        } else {
           gsap.set(containerRef.current, {
             width: `+=${diffX}`
           })
@@ -101,14 +127,10 @@ export const Window: React.FC<WindowProps> = ({
       },
       onPress: function (this) {
         rightPrevX.current = this.x
-        if (draggableRef.current) {
-          draggableRef.current.disable()
-        }
+        draggableRef.current.disable()
       },
       onRelease: function () {
-        if (draggableRef.current) {
-          draggableRef.current.enable()
-        }
+        draggableRef.current.enable()
       }
     })
 
@@ -119,8 +141,6 @@ export const Window: React.FC<WindowProps> = ({
       onDrag: function (this) {
         const diffX = this.x - leftPrevX.current
         if (checkWindowConstraints(false, diffX, false)) {
-          draggableRef.current.disable()
-        } else {
           gsap.set(containerRef.current, {
             width: `-=${diffX}`,
             x: `+=${diffX}`
@@ -130,14 +150,10 @@ export const Window: React.FC<WindowProps> = ({
       },
       onPress: function (this) {
         leftPrevX.current = this.x
-        if (draggableRef.current) {
-          draggableRef.current.disable()
-        }
+        draggableRef.current.disable()
       },
       onRelease: function (this) {
-        if (draggableRef.current) {
-          draggableRef.current.enable()
-        }
+        draggableRef.current.enable()
       }
     })
 
@@ -148,8 +164,6 @@ export const Window: React.FC<WindowProps> = ({
       onDrag: function (this) {
         const diffY = this.y - topPrevY.current
         if (checkWindowConstraints(true, diffY, false)) {
-          draggableRef.current.disable()
-        } else {
           gsap.set(containerRef.current, {
             height: `-=${diffY}`,
             y: `+=${diffY}`
@@ -159,14 +173,10 @@ export const Window: React.FC<WindowProps> = ({
       },
       onPress: function (this) {
         topPrevY.current = this.y
-        if (draggableRef.current) {
-          draggableRef.current.disable()
-        }
+        draggableRef.current.disable()
       },
       onRelease: function (this) {
-        if (draggableRef.current) {
-          draggableRef.current.enable()
-        }
+        draggableRef.current.enable()
       }
     })
 
@@ -176,8 +186,6 @@ export const Window: React.FC<WindowProps> = ({
       onDrag: function (this) {
         const diffY = this.y - bottomPrevY.current
         if (checkWindowConstraints(true, diffY, true)) {
-          draggableRef.current.disable()
-        } else {
           gsap.set(containerRef.current, {
             height: `+=${diffY}`,
           })
@@ -186,26 +194,12 @@ export const Window: React.FC<WindowProps> = ({
       },
       onPress: function (this) {
         bottomPrevY.current = this.y
-        if (draggableRef.current) {
-          draggableRef.current.disable()
-        }
+        draggableRef.current.disable()
       },
       onRelease: function (this) {
-        if (draggableRef.current) {
-          draggableRef.current.enable()
-        }
+        draggableRef.current.enable()
       }
     })
-
-    return () => {
-      topDraggable.kill()
-      bottomDraggable.kill()
-      leftDraggable.kill()
-      rightDraggable.kill()
-      if (draggableRef.current) {
-        draggableRef.current.kill()
-      }
-    }
   }, [
     // refs
     containerRef,
@@ -225,10 +219,12 @@ export const Window: React.FC<WindowProps> = ({
     referenceKey
   ])
 
+  // TO ADD: on click change z index
+  // other: not being able to move before resizing bug
 
   // registration to drag
   React.useLayoutEffect(() => {
-
+    gsap.registerPlugin(Draggable)
     // main dragger
     if (containerRef.current && !draggableRef.current) {
       const mainWindow = new Draggable(containerRef.current, {
@@ -239,10 +235,12 @@ export const Window: React.FC<WindowProps> = ({
       })
       // for reference
       draggableRef.current = mainWindow
+      draggableRef.current.enable()
     }
-  }, [containerRef, draggableRef, referenceKey])
+  }, [containerRef, draggableRef, referenceKey, boundaryContainer])
 
-  return <div id={`window-main-${referenceKey}`} className={classes} ref={containerRef}>
+
+  return <div id={`window-main-${referenceKey}`} className={classes} ref={containerRef} onClick={() => handleFocus()}>
     <div id={`window-header-${referenceKey}`} className={styles.header}>
       <div className={styles.title}>
         {windowTitle}

@@ -2,6 +2,8 @@ import styles from './Developer.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
+import { max } from 'lodash'
+
 import gsap from 'gsap'
 import { Draggable, MotionPathPlugin, ScrollTrigger } from 'gsap/all'
 
@@ -93,6 +95,8 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
 
   const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
 
+  const [highestZIndex, setHighestZIndex] = React.useState<number>(0)
+
   // start orbit
   const initiateItemOrbit = () => {
     // convert to path or breaks
@@ -147,95 +151,157 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       .to('#orbit-items-container', {
         scale: 1,
         autoAlpha: 1,
-        duration: 2,
+        duration: 3,
         ease: 'expo.inOut',
-      })
+      }, '-=1')
   }
-
-
-  // draggable registration
-  const registerDraggableWindows = () => {
-    const draggableWindows = gsap.utils.toArray('.window__dev')
-
-    draggableWindows.forEach((window: any, index: any) => {
-      const mainWindow = new Draggable(window, {
-        trigger: `#window-header-${index}`,
-        type: 'x,y',
-        edgeResistance: 1,
-        bounds: '.sub-section__dev',
-      })
-    })
-
-  }
-
 
   // orbit mechanics
   React.useLayoutEffect(() => {
     // register
     gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
     // orbit timeline
-    // orbitTimeline()
-    // windows
-    // registerDraggableWindows()
+    orbitTimeline()
   }, [])
 
 
   return <>
     <section className={classes} ref={devSectionRef}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={classNames(styles.title, 'title__sub-section', 'text__bold')}>
-            Web Developer
-          </h2>
-          <CircleIcon
-            className={styles.icon}
-            src={laptopSVG}
-            alt='laptop'
-          />
-        </div>
-        <div className={styles.body}>
-          <div className={styles.left}>
-            <Window
-              className={classNames(styles.window, 'window__dev')}
-              windowTitle='Tien Powershell'
-              windowStyle='dark'
-              referenceKey='0'
-              boundaryContainer='.sub-section__dev'
-            >
-
-            </Window>
-
-
+      <PortfolioDevContext.Provider
+        value={{
+          highestZIndex,
+          setHighestZIndex,
+        }}
+      >
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <h2 className={classNames(styles.title, 'title__sub-section', 'text__bold')}>
+              Web Developer
+            </h2>
+            <CircleIcon
+              className={styles.icon}
+              src={laptopSVG}
+              alt='laptop'
+            />
           </div>
-          <div className={styles.right}>
-            {/* <Window
-              className={classNames(styles.window, 'window__dev')}
-              windowTitle='Tien Powershell'
-              windowStyle='light'
-              referenceKey='1'
-            >
-              <div id='orbit-container' className={styles.orbitContainer}>
-                <div id='orbit-items-container' className={styles.orbitItemsContainer}>
-                  <DottedCircle
-                    className={styles.orbitCircle}
-                    id='developer-circle'
-                    pathId={DOTTED_CIRCLE_PATH.slice(1)}
-                  />
+          <div className={styles.body}>
+            <div className={styles.left}>
+              <Window
+                className={classNames(styles.window, styles.window__dev)}
+                windowTitle='Tien Powershell'
+                windowStyle='dark'
+                referenceKey='0'
+                boundaryContainer='.sub-section__dev'
+              >
+                <h3 className={classNames(styles.windowHeader, 'text__bold')}>
+                  About Me
+                </h3>
+                <div className={styles.windowBody}>
+                  <p className={styles.text}>
+                    The name is <b>Tien.</b> I'm a Web Developer that specialises in the {' '}
+                    <b>"end-to-end"</b> integration and
+                    development lifecycle.
+                  </p>
 
-                  {ORBIT_ITEMS.map((item: { src: string, alt: string }, idx: number | string) => {
-                    return <div className={classNames(styles.item, 'orbit-item')} key={idx}>
-                      <img src={item.src} alt={item.alt} />
-                    </div>
-                  })}
+                  <p className={styles.text}>
+                    I seek to have an <b>intimate</b> and <b>personal</b> {' '}
+                    understanding of the overall <b>vision</b> of any project, bringing the concepts and wishes of it's original design into reality.
+                  </p>
+
+                  <p className={styles.text}>
+                    <b>End-To-End Package</b>
+                  </p>
+
+                  <p className={styles.listHeading}>Design</p>
+                  <p className={styles.text}>
+                    <ul className={styles.list}>
+                      <li>
+                        Conceptualisation
+                      </li>
+                      <li>
+                        UI/UX Specifications
+                      </li>
+                      <li>
+                        Technical Specifications
+                      </li>
+                    </ul>
+                  </p>
+
+                  <p className={styles.listHeading}>Development</p>
+                  <p className={styles.text}>
+                    <ul className={styles.list}>
+                      <li>
+                        Mockup to Web Translations
+                      </li>
+                      <li>
+                        Bespoke Component Integration
+                      </li>
+                      <li>
+                        Stylings + Animations
+                      </li>
+
+                      <li>
+                        Asset Optimisation + Hosting
+                      </li>
+                    </ul>
+                  </p>
+
+                  <p className={styles.listHeading}>Deployment</p>
+                  <p className={styles.text}>
+                    <ul className={styles.list}>
+                      <li>
+                        Prod/Dev Environments
+                      </li>
+                      <li>
+                        CI/CD
+                      </li>
+                    </ul>
+                  </p>
                 </div>
+              </Window>
 
-                <img className={classNames(styles.item__center, 'orbit-center')} src={userSVG} alt='user' />
-              </div>
-            </Window> */}
 
+            </div>
+            <div className={styles.right}>
+              <Window
+                className={classNames(styles.window, 'window__dev')}
+                windowTitle='My Development Stack'
+                windowStyle='light'
+                referenceKey='1'
+              >
+                <div id='orbit-container' className={styles.orbitContainer}>
+                  <div id='orbit-items-container' className={styles.orbitItemsContainer}>
+                    <DottedCircle
+                      className={styles.orbitCircle}
+                      id='developer-circle'
+                      pathId={DOTTED_CIRCLE_PATH.slice(1)}
+                    />
+
+                    {ORBIT_ITEMS.map((item: { src: string, alt: string }, idx: number | string) => {
+                      return <div className={classNames(styles.item, 'orbit-item')} key={idx}>
+                        <img src={item.src} alt={item.alt} />
+                      </div>
+                    })}
+                  </div>
+
+                  <img className={classNames(styles.item__center, 'orbit-center')} src={userSVG} alt='user' />
+                </div>
+              </Window>
+
+            </div>
           </div>
         </div>
-      </div>
+      </PortfolioDevContext.Provider>
     </section >
   </>
 }
+
+interface PortfolioDevContextProps {
+  highestZIndex: number
+  setHighestZIndex: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const PortfolioDevContext = React.createContext<PortfolioDevContextProps>({
+  highestZIndex: 0,
+  setHighestZIndex: () => { },
+})

@@ -16,3 +16,19 @@ a {
 body {
   overflow-x: hidden;
 }
+
+ul {
+  position: relative;
+  margin-left: 0;
+  list-style: none;
+  padding-left: 1.2rem;
+
+  li {
+    &:before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      text-indent: 0.25rem;
+    }
+  }
+}

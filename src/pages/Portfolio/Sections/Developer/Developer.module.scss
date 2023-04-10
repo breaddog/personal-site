@@ -51,6 +51,20 @@
       margin-bottom: 2rem;
     }
 
+    .listHeading {
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+
+    // window
+    .window {
+      &__dev {
+        h3 {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
     // component
     .orbitContainer {
       width: 100%;

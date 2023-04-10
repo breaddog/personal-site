@@ -1,5 +1,5 @@
 .window {
-  --edge-size: 3px;
+  --edge-size: 4px;
   --box-size: 10px;
 
   display: flex;
@@ -31,6 +31,8 @@
     .title {
       margin: auto 0;
       margin-left: 0;
+      font-weight: bold;
+      letter-spacing: 0.5px;
     }
 
     .buttons {
@@ -63,6 +65,8 @@
   .body {
     width: 100%;
     height: 100%;
+    padding: 1.5rem;
+    overflow-y: scroll;
   }
 
   .nav {
@@ -89,7 +93,7 @@
     width: 10px;
     height: 10px;
     position: absolute;
-    background-color: var(--blue);
+    // background-color: var(--blue);
     z-index: 2;
 
     // corners
@@ -121,7 +125,7 @@
   // edges
   .edge {
     position: absolute;
-    background-color: var(--blue);
+    // background-color: var(--blue);
 
     &.top {
       top: 0;
