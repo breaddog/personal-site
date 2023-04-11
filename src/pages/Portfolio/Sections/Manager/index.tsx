@@ -38,7 +38,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   // clouds infinite right to left and increase in speed
   // box icosn should appear as hovering like clouds (foreground)
   // CLOUDS
-  const cloudEffect = (reference: number) => {
+  const cloudEffect = (reference: number, duration: number) => {
     const looper = document.querySelectorAll(`.portfolio__cloud-${reference}`) as any
     // first one is image (add extra offset to create spaced)
     const imageWidth = looper[0].offsetWidth + 200
@@ -51,7 +51,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
     const randomValue = (min: number, max: number, decimal: boolean = false) => {
       min = Math.ceil(min)
       max = Math.floor(max)
-      const _value = Math.random() * (max - min + 1) + min
+      const _value = (Math.random() * (max - min) + min)
       return decimal
         ? Number(_value.toFixed(4))
         : Math.floor(_value)
@@ -63,17 +63,18 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       x: function (i: number) {
         const randX = randomValue(-100, 100, false)
         return (i * imageWidth) + randX
-      }
+      },
     })
 
     // extra effect
     looper.forEach((el: any) => {
-      let randScale = randomValue(0.05, 1.5, true)
-      randScale = randScale < 0.5 ? randomValue(0.05, 1, true) : randScale
-      const randomY = randomValue(-40, 40, false)
+      let randScale = randomValue(0.25, 1, true)
+      randScale = randScale < 0.4 ? randomValue(0.05, 1, true) : randScale
+      const randomY = randomValue(-30, 20, false)
       gsap.set(el, {
         y: `${randomY}%`,
-        scale: randScale
+        scale: randScale,
+        // opacity: randomValue(0.1, 1, true) - 1
       })
     })
 
@@ -84,15 +85,15 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
         modifiers: {
           x: (x) => `${mod(parseFloat(x))}px`,
         },
-        duration: 60,
+        duration,
         ease: 'none',
         repeat: -1,
       })
   }
 
   React.useEffect(() => {
-    cloudEffect(0)
-    cloudEffect(1)
+    cloudEffect(0, 50)
+    cloudEffect(1, 65)
   }, [])
 
   // BRIDGE
