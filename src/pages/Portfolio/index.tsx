@@ -11,7 +11,7 @@ interface PortfolioProps {
 export const Portfolio: React.FC<PortfolioProps> = ({
   className
 }) => {
-  const classes = classNames('section section__portfolio position__relative', className)
+  const classes = classNames('section section__portfolio position--relative', className)
   return <>
     <div className={classes}>
       <PortfolioLanding />

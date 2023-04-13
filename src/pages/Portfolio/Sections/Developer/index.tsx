@@ -158,10 +158,13 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
 
   // orbit mechanics
   React.useLayoutEffect(() => {
-    // register
-    gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
-    // orbit timeline
-    orbitTimeline()
+    let ctx = gsap.context(() => {
+      // register
+      gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
+      // orbit timeline
+      orbitTimeline()
+    })
+    return () => ctx.revert()
   }, [])
 
 

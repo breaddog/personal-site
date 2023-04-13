@@ -5,15 +5,16 @@ import classNames from 'classnames'
 import { gsap } from 'gsap'
 import { ScrollTrigger, Draggable } from 'gsap/all'
 
-import { map } from 'lodash'
+import { delay, map } from 'lodash'
 
-import { CircleIcon } from '../../../../shared/components'
+import { CircleIcon, ModalBox } from '../../../../shared/components'
 import { BridgeSection, Cloud } from './Components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
 
 // bridge
 import cloudSVG from '../../../../assets/misc/cloud.svg'
+import redCarSVG from '../../../../assets/misc/red-car.svg'
 
 
 interface PortfolioManagerProps {
@@ -23,20 +24,16 @@ interface PortfolioManagerProps {
 export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   className
 }) => {
-  const classes = classNames('sub-section portfolio__manager', className)
+  const classes = classNames('sub-section portfolio__manager', styles.manager, className)
 
   // maybe change this to work style?
   const sectionRef = React.useRef<HTMLDivElement | null>(null)
   const bridgeRef = React.useRef<HTMLDivElement | null>(null)
+  const carRef = React.useRef<HTMLImageElement | null>(null)
   const [bridgeSections, setBridgeSections] = React.useState<number>(0)
 
   // for each layer
   const N_CLOUDS = 6
-
-  // follow figma
-  // car should scrub with thing as timeline
-  // clouds infinite right to left and increase in speed
-  // box icosn should appear as hovering like clouds (foreground)
   // CLOUDS
   const cloudEffect = (reference: number, duration: number) => {
     const looper = document.querySelectorAll(`.portfolio__cloud-${reference}`) as any
@@ -51,11 +48,13 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
     const randomValue = (min: number, max: number, decimal: boolean = false) => {
       min = Math.ceil(min)
       max = Math.floor(max)
-      const _value = (Math.random() * (max - min) + min)
+      const _value = Math.random() * (max - min) + min
       return decimal
         ? Number(_value.toFixed(4))
         : Math.floor(_value)
     }
+
+    const _opacity = randomValue(0.25, 1, false)
 
     // loop loop
     gsap.set(looper, {
@@ -70,13 +69,34 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
     looper.forEach((el: any) => {
       let randScale = randomValue(0.25, 1, true)
       randScale = randScale < 0.4 ? randomValue(0.05, 1, true) : randScale
-      const randomY = randomValue(-30, 20, false)
+      const randomY = randomValue(-50, 20, false)
       gsap.set(el, {
         y: `${randomY}%`,
         scale: randScale,
         // opacity: randomValue(0.1, 1, true) - 1
       })
     })
+
+
+    const cloudTimeline = gsap.utils.toArray(looper)
+      .forEach((el: any, idx: number) => {
+        gsap.timeline({
+        })
+          .to(el, {
+            opacity: _opacity % 1,
+            delay: randomValue(1, 10, false),
+            repeat: -1
+          })
+        // .to(el, {
+        //   opacity: (1 - opacityStart % 1),
+        //   delay: randomValue(1, 10, false),
+        // })
+        // .to(el, {
+        //   opacity: opacityStart % 1,
+        //   delay: randomValue(1, 10, false),
+        // })
+
+      }, `-=${duration / 2}`)
 
     // main timeline
     const timeline = gsap.timeline()
@@ -85,12 +105,17 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
         modifiers: {
           x: (x) => `${mod(parseFloat(x))}px`,
         },
+        opacity: .25,
         duration,
         ease: 'none',
         repeat: -1,
       })
+
+
+
   }
 
+  // clouds
   React.useEffect(() => {
     cloudEffect(0, 50)
     cloudEffect(1, 65)
@@ -124,12 +149,46 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
 
   // update 
   React.useEffect(() => {
-    updateBridgeSections()
-    window.addEventListener('resize', updateBridgeSections)
+    let ctx = gsap.context(() => {
+      updateBridgeSections()
+      window.addEventListener('resize', updateBridgeSections)
+    })
     return () => {
+      ctx.revert()
       window.removeEventListener('resize', updateBridgeSections)
     }
   }, [sectionRef, bridgeSections])
+
+  // CAR
+  const carTimeline = () => {
+    if (!carRef.current || !sectionRef.current) return
+    // go based on section
+    const scrollTrigger = {
+      trigger: sectionRef.current,
+      start: 'top top',
+      end: '+=1000px',
+      scrub: 1,
+      markers: true,
+      pin: true,
+    }
+
+    const _timeline = gsap.timeline({
+      scrollTrigger,
+    })
+      .to(carRef.current, {
+        left: '95vw',
+        immediateRender: false,
+      })
+  }
+
+  React.useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger)
+      carTimeline()
+    })
+
+    return () => ctx.revert()
+  }, [carRef, sectionRef])
 
   return <>
     <section className={classes} ref={sectionRef}>
@@ -162,15 +221,30 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
             </div>
           </div>
           <div className={styles.ground}>
+            <img className={styles.car} ref={carRef} src={redCarSVG} alt='car' />
             <div className={styles.bridge} ref={bridgeRef}>
               <BridgeSection className={classNames('portfolio__bridge-section', styles.bridgeSection)} />
               {renderBridgeSections()}
             </div>
-            <div className={styles.car}>
-
-            </div>
           </div>
-
+          <div className={styles.overlay}>
+            <ModalBox
+              className={styles.box__main}
+              id='manager-box'
+            >
+              <div className={classNames('modal__header', styles.box__header)}>
+                Philosophy
+              </div>
+              <div className={classNames('modal__body', styles.box__body)}>
+                Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+                <br />
+                Nunc est augue, tincidunt quis
+                metus non, accumsan gravida
+                risus.
+              </div>
+            </ModalBox>
+          </div>
         </div>
       </div>
     </section >

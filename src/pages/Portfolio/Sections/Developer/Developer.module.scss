@@ -10,12 +10,12 @@
 
   width: 90%;
   height: 100%;
-
-  margin: 6vmin auto;
+  margin: 0 auto;
 
   .header {
     display: flex;
     flex-direction: row;
+    margin-top: var(--header-margin);
 
     .title {
       margin: auto 0;

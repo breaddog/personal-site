@@ -76,7 +76,7 @@ export const Window: React.FC<WindowProps> = ({
     }
 
     // set based on + 1
-    const newZIndex = _foundHighestZIndex + 1
+    const newZIndex = _foundHighestZIndex + 2
     setHighestZIndex(newZIndex)
     gsap.set(containerRef.current, {
       zIndex: newZIndex
@@ -216,7 +216,8 @@ export const Window: React.FC<WindowProps> = ({
     topPrevY,
     bottomPrevY,
     // main
-    referenceKey
+    referenceKey,
+    highestZIndex
   ])
 
   // TO ADD: on click change z index

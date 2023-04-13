@@ -14,6 +14,10 @@ h3 {
   font-weight: 500;
 }
 
+p {
+  font-size: 22px;
+}
+
 .title {
   &__sub-section {
     font-size: 40px;
@@ -31,8 +35,4 @@ h3 {
   &__bold {
     font-weight: bold;
   }
-}
-
-p {
-  font-size: 22px;
 }

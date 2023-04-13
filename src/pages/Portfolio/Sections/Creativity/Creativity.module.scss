@@ -5,11 +5,12 @@
   flex-direction: column;
 
   width: 90%;
-  margin: 6vmin auto;
+  margin: 0 auto;
 
   .header {
     display: flex;
     flex-direction: row;
+    margin-top: var(--header-margin);
 
     .title {
       margin: auto 0;

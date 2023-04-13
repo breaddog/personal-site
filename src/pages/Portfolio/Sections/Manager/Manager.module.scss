@@ -1,12 +1,17 @@
 @import '../../../../styles/styles.scss';
 
+.manager {
+  // height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
 .container {
   display: flex;
   flex-direction: column;
 
   width: 100%;
   height: 100%;
-  margin: 6vmin auto;
 
   .header {
     display: flex;
@@ -14,6 +19,7 @@
     justify-content: flex-end;
     width: 90%;
     margin: 0 auto;
+    margin-top: var(--header-margin);
 
     .title {
       margin: auto 0;
@@ -32,7 +38,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 50%;
+    height: 75%;
 
     position: relative;
 
@@ -48,7 +54,8 @@
         display: flex;
         flex-direction: row;
 
-        overflow: hidden;
+        overflow-y: visible;
+        overflow-x: hi;
 
         margin-left: -20%;
 
@@ -74,20 +81,53 @@
       }
     }
 
-    .bridge {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: hidden;
+    .ground {
+      height: fit-content;
+      width: 100%;
+      .car {
+        display: flex;
+        position: absolute;
+        bottom: -2.75vh;
 
-      position: relative;
-      bottom: 0;
-      .bridgeSection {
-        margin-left: -1.5rem;
+        max-width: 240px;
         min-width: 240px;
+        left: 0;
+      }
 
-        &:nth-child(1) {
-          margin-left: -0.5rem;
+      .bridge {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+
+        position: relative;
+        bottom: 0;
+        .bridgeSection {
+          margin-left: -1.5rem;
+          min-width: 240px;
+
+          &:nth-child(1) {
+            margin-left: -0.5rem;
+          }
+        }
+      }
+    }
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 2;
+
+      .box {
+        &__main {
+        }
+        &__header {
+        }
+
+        &__body {
+          width: 85%;
+          margin: 0 auto;
         }
       }
     }

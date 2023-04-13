@@ -19,7 +19,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
   className
 }) => {
 
-  const classes = classNames('sub-section', styles.landing, className)
+  const classes = classNames('sub-section position--relative', styles.landing, className)
   return <>
     <section className={classes}>
       <div className={styles.container}>

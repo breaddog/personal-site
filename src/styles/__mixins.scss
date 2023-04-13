@@ -8,6 +8,7 @@
   // grey
   --grey: #e3e3e3;
   --grey-10: #b8b8b8;
+  --grey-20: #b6b5b5;
   --grey-30: #959595;
 
   // blue
@@ -40,4 +41,15 @@
 
   // commons
   --background-colour: var(--grey);
+
+  // vars
+  --header-margin: 6vmin;
+  --box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+
+  // font size
+  --font-h1: 50px;
+  --font-h2: 35px;
+  --font-h3: 26px;
+  --font-h4: 20px;
+  --font-p: 22px;
 }
