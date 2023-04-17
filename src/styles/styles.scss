@@ -1,5 +1,6 @@
 @use '__mixins.scss';
 @use 'fonts.scss';
+@use 'animations.scss';
 
 // common components
 .section {
@@ -35,24 +36,5 @@
 
   &--sticky {
     position: sticky;
-  }
-}
-
-// animations
-.animation {
-  &--bounce {
-    animation: bounce 2s infinite;
-  }
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-0.35rem);
-  }
-  100% {
-    transform: translateY(0);
   }
 }

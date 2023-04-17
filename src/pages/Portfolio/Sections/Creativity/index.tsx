@@ -18,7 +18,7 @@ export const PortfolioCreativity: React.FC<PortfolioCreativityProps> = ({
     <section className={classes}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={classNames(styles.title, 'title__sub-section', 'text__bold')}>
+          <h2 className={classNames(styles.title, styles.bold, 'title__sub-section')}>
             Creativity with Minimalism
           </h2>
           <CircleIcon

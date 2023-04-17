@@ -50,7 +50,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
           <img src={onigiriSVG} alt='onigiri' />
         </div>
       </div>
-      <div className={styles.bottom}>
+      <div className={classNames(styles.bottom, styles.animation__bounce)}>
         <img src={doubleArrowDownSVG} alt='arrow-down' />
       </div>
     </section>

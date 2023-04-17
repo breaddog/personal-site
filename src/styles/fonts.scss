@@ -15,7 +15,7 @@ h3 {
 }
 
 p {
-  font-size: 22px;
+  font-size: var(--font-p);
 }
 
 .title {
@@ -30,9 +30,8 @@ p {
   text-transform: uppercase;
 }
 
-// stylings
-.text {
-  &__bold {
-    font-weight: bold;
-  }
+.bold {
+  font-weight: bold;
 }
+
+// animations

@@ -2,8 +2,6 @@ import styles from './Developer.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { max } from 'lodash'
-
 import gsap from 'gsap'
 import { Draggable, MotionPathPlugin, ScrollTrigger } from 'gsap/all'
 
@@ -178,7 +176,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       >
         <div className={styles.container}>
           <div className={styles.header}>
-            <h2 className={classNames(styles.title, 'title__sub-section', 'text__bold')}>
+            <h2 className={classNames(styles.title, styles.bold, 'title__sub-section',)}>
               Web Developer
             </h2>
             <CircleIcon
@@ -196,7 +194,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                 referenceKey='0'
                 boundaryContainer='.sub-section__dev'
               >
-                <h3 className={classNames(styles.windowHeader, 'text__bold')}>
+                <h3 className={classNames(styles.windowHeader, styles.bold)}>
                   About Me
                 </h3>
                 <div className={styles.windowBody}>
@@ -207,12 +205,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                   </p>
 
                   <p className={styles.text}>
-                    I seek to have an <b>intimate</b> and <b>personal</b> {' '}
+                    I seek to achieve an <b>intimate</b> and <b>personal</b> {' '}
                     understanding of the overall <b>vision</b> of any project, bringing the concepts and wishes of it's original design into reality.
                   </p>
 
                   <p className={styles.text}>
-                    <b>End-To-End Package</b>
+                    <b>What I Bring to the Table</b>
                   </p>
 
                   <p className={styles.listHeading}>Design</p>

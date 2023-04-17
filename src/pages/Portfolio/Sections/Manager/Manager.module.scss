@@ -121,6 +121,9 @@
 
       .box {
         &__main {
+          width: 600px;
+          height: fit-content;
+          padding: 2rem;
         }
         &__header {
         }
@@ -130,6 +133,10 @@
           margin: 0 auto;
         }
       }
+    }
+
+    .text {
+      margin-bottom: 1rem;
     }
   }
 }

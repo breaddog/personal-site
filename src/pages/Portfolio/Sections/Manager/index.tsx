@@ -1,11 +1,11 @@
 import styles from './Manager.module.scss'
-import React, { useRef } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import { gsap } from 'gsap'
-import { ScrollTrigger, Draggable } from 'gsap/all'
+import { ScrollTrigger } from 'gsap/all'
 
-import { delay, map } from 'lodash'
+import { map } from 'lodash'
 
 import { CircleIcon, ModalBox } from '../../../../shared/components'
 import { BridgeSection, Cloud } from './Components'
@@ -13,7 +13,6 @@ import { BridgeSection, Cloud } from './Components'
 import boxSVG from '../../../../assets/icons/box.svg'
 
 // bridge
-import cloudSVG from '../../../../assets/misc/cloud.svg'
 import redCarSVG from '../../../../assets/misc/red-car.svg'
 
 
@@ -77,8 +76,8 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       })
     })
 
-
-    const cloudTimeline = gsap.utils.toArray(looper)
+    // cloud timeline
+    gsap.utils.toArray(looper)
       .forEach((el: any, idx: number) => {
         gsap.timeline({
         })
@@ -99,7 +98,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       }, `-=${duration / 2}`)
 
     // main timeline
-    const timeline = gsap.timeline()
+    gsap.timeline()
       .to(looper, {
         x: dirFromLeft,
         modifiers: {
@@ -110,9 +109,6 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
         ease: 'none',
         repeat: -1,
       })
-
-
-
   }
 
   // clouds
@@ -147,55 +143,80 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
     })
   }
 
-  // update 
+  // BRIDGE REACT SECTIONS
   React.useEffect(() => {
-    let ctx = gsap.context(() => {
-      updateBridgeSections()
-      window.addEventListener('resize', updateBridgeSections)
-    })
+    updateBridgeSections()
+    window.addEventListener('resize', updateBridgeSections)
     return () => {
-      ctx.revert()
       window.removeEventListener('resize', updateBridgeSections)
     }
   }, [sectionRef, bridgeSections])
 
+
   // CAR
-  const carTimeline = () => {
+  const _carTimeline = () => {
+    return gsap.timeline()
+      .to(carRef.current, {
+        left: '-10vw',
+      })
+      .to(carRef.current, {
+        left: '95vw',
+        duration: 2,
+        immediateRender: false,
+      })
+  }
+
+  const _modalTimeline = () => {
+    return gsap.timeline()
+      .from('#manager-box', {
+        y: '-=200%',
+        ease: 'sine.inOut',
+        duration: 2,
+      })
+      .from({}, {
+        duration: .75,
+      })
+  }
+
+  const managerSectionTimeline = () => {
     if (!carRef.current || !sectionRef.current) return
     // go based on section
     const scrollTrigger = {
       trigger: sectionRef.current,
       start: 'top top',
-      end: '+=1000px',
-      scrub: 1,
-      markers: true,
+      end: '+=3000px',
+      scrub: .5,
+      // markers: true,
       pin: true,
     }
 
-    const _timeline = gsap.timeline({
+    gsap.timeline({
       scrollTrigger,
     })
-      .to(carRef.current, {
-        left: '95vw',
-        immediateRender: false,
-      })
+      .add(_modalTimeline())
+      .add(_carTimeline())
+
   }
 
+
+  // scroll trigger related stuff
   React.useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger)
-      carTimeline()
+      managerSectionTimeline()
     })
 
     return () => ctx.revert()
   }, [carRef, sectionRef])
 
+
+
   return <>
     <section className={classes} ref={sectionRef}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={classNames(styles.title, 'title__sub-section', 'text__bold')}>
-            Project Manager
+          <h2 className={classNames(styles.title, styles.bold, 'title__sub-section')}>
+            Project Management
           </h2>
           <CircleIcon
             className={styles.icon}
@@ -232,16 +253,33 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
               className={styles.box__main}
               id='manager-box'
             >
-              <div className={classNames('modal__header', styles.box__header)}>
-                Philosophy
-              </div>
+              <h3 className={classNames('modal__header', styles.uppercase, styles.bold, styles.box__header)}>
+                Eliminating the Information Gap
+              </h3>
               <div className={classNames('modal__body', styles.box__body)}>
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                <br />
-                Nunc est augue, tincidunt quis
-                metus non, accumsan gravida
-                risus.
+                <p className={styles.text}>
+                  With my experience of project maangement, I strive to establish an
+                  equal level of understanding between the <b>client</b> and <b>developers</b>.
+                </p>
+
+                <p className={styles.text}>
+                  Increasing visibility for the client on technical progress and feasibilities, whilst providing developers
+                  a platform to engage and suggest.
+                </p>
+
+                <p className={styles.text}>
+                  <b>Transparency, Honesty, Communication</b>
+                </p>
+
+                <p className={styles.text}>
+                  Through this, many innovative ideas have been birthed through co-operation
+                  expressed by products that matches the client's vision.
+                </p>
+
+                <p className={styles.text}>
+                  I am in the end a developer by heart and seek to take inspiration
+                  from all to contribute towards a cohesive team after all.
+                </p>
               </div>
             </ModalBox>
           </div>
