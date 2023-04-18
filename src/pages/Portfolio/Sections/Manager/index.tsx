@@ -129,19 +129,20 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
     // calculate how many can fit, always get ceil
     const nSections = Math.ceil(windowWidth / bridgeSection.clientWidth)
 
+
     // if there was a change detected update
     setBridgeSections(nSections)
-
   }
 
-  const renderBridgeSections = () => {
+  // ISSUE: bridge sections wont update properly
+  const renderBridgeSections = React.useMemo(() => {
     return map([...Array(bridgeSections).keys()], (el: any, idx: number) => {
       return <BridgeSection
         componentKey={idx}
         className={classNames('portfolio__bridge-section', styles.bridgeSection)}
       />
     })
-  }
+  }, [bridgeSections])
 
   // BRIDGE REACT SECTIONS
   React.useEffect(() => {
@@ -161,7 +162,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       })
       .to(carRef.current, {
         left: '95vw',
-        duration: 2,
+        duration: 5,
         immediateRender: false,
       })
   }
@@ -245,7 +246,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
             <img className={styles.car} ref={carRef} src={redCarSVG} alt='car' />
             <div className={styles.bridge} ref={bridgeRef}>
               <BridgeSection className={classNames('portfolio__bridge-section', styles.bridgeSection)} />
-              {renderBridgeSections()}
+              {renderBridgeSections}
             </div>
           </div>
           <div className={styles.overlay}>
@@ -258,7 +259,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
               </h3>
               <div className={classNames('modal__body', styles.box__body)}>
                 <p className={styles.text}>
-                  With my experience of project maangement, I strive to establish an
+                  With my experience of project mangement, I strive to establish an
                   equal level of understanding between the <b>client</b> and <b>developers</b>.
                 </p>
 
@@ -272,13 +273,12 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
                 </p>
 
                 <p className={styles.text}>
-                  Through this, many innovative ideas have been birthed through co-operation
-                  expressed by products that matches the client's vision.
+                  I am in the end a developer by heart and seek to take inspiration
+                  from all to contribute towards a cohesive team in the end.
                 </p>
 
                 <p className={styles.text}>
-                  I am in the end a developer by heart and seek to take inspiration
-                  from all to contribute towards a cohesive team after all.
+                  That's why I seek to get everyone involved and informed to ensure standards and expectations are met.
                 </p>
               </div>
             </ModalBox>

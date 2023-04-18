@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import boxSVG from '../../../../assets/icons/box.svg'
 import laptopSVG from '../../../../assets/icons/laptop.svg'
 import reactSVG from '../../../../assets/icons/react.svg'
+import bulbSVG from '../../../../assets/icons/bulb.svg'
 
 import { CircleIcon } from '../../../../shared/components'
 
@@ -42,6 +43,11 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
             <CircleIcon
               className={styles.icon}
               src={reactSVG}
+              alt='react'
+            />
+            <CircleIcon
+              className={styles.icon}
+              src={bulbSVG}
               alt='react'
             />
           </div>

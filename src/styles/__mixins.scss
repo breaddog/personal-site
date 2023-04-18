@@ -11,6 +11,9 @@
   --grey-20: #b6b5b5;
   --grey-30: #959595;
 
+  // dark grey
+  --dark-grey: #9c9c9c;
+
   // blue
   --blue: #bed5ff;
   --blue-10: #abc8fc;
@@ -20,11 +23,14 @@
   --aqua-10: #96dbdc;
 
   // purple
-  --purple: #ccc2ff;
+  --purple: #d2cbf8;
   --purple-10: #baaef7;
   --purple-20: #a2a8e8;
   --purple-30: #868cc2;
   --purple-40: #6a6f9c;
+
+  // oshi
+  --purple-special: #b190fc;
 
   // dark purple
   --dark-purple: #a2a8e8;
@@ -34,10 +40,12 @@
   --red: #ff4b4b;
 
   // yellow
-  --yellow: #f8ce3a;
+  --yellow: #f5ed8e;
+  --yellow-10: #d1ca7c;
 
   // green
-  --green: #96f569;
+  --green: #b2f5a0;
+  --green-10: #9edb8d;
 
   // commons
   --background-colour: var(--grey);
@@ -50,6 +58,6 @@
   --font-h1: 50px;
   --font-h2: 35px;
   --font-h3: 26px;
-  --font-h4: 20px;
+  --font-h4: 22px;
   --font-p: 20px;
 }

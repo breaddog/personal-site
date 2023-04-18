@@ -2,7 +2,7 @@ import './index.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { PortfolioCreativity, PortfolioDeveloper, PortfolioLanding, PortfolioManager } from './Sections/index'
+import { PortfolioCreativity, PortfolioDeveloper, PortfolioHighlights, PortfolioLanding, PortfolioManager } from './Sections/index'
 
 interface PortfolioProps {
   className?: string
@@ -18,7 +18,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({
       <PortfolioDeveloper />
 
       <PortfolioManager />
-      <PortfolioCreativity />
+      {/* <PortfolioCreativity /> */}
+      <PortfolioHighlights />
     </div>
   </>
 }

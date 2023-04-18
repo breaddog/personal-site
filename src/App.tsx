@@ -1,7 +1,11 @@
 import React from 'react';
-import { Portfolio } from "./pages"
+import { Portfolio } from './pages'
 
-import "aos/dist/aos.css";
+import 'aos/dist/aos.css'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/keyboard'
 
 import AOS from 'aos'
 
@@ -15,7 +19,7 @@ function App() {
     })
   }, [])
   return (
-    <div className="App">
+    <div className='App'>
       <Portfolio />
     </div>
   );

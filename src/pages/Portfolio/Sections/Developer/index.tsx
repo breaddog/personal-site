@@ -154,6 +154,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       }, '-=1')
   }
 
+
   // orbit mechanics
   React.useLayoutEffect(() => {
     let ctx = gsap.context(() => {
