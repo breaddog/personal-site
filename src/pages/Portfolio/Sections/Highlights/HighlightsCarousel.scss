@@ -1,24 +1,17 @@
 #highlights-carousel {
   .swiper-slide {
-    width: 800px;
-    height: 500px;
-
-    div {
-      &:nth-child(1) {
-        opacity: 0.5;
-      }
-    }
+    width: fit-content;
+    height: fit-content;
+    opacity: 0.5;
   }
   .swiper-slide-active {
     // opacity: 0.5;
-    div {
-      &:nth-child(1) {
-        opacity: 1;
+    opacity: 1;
 
-        &:hover {
-          width: 940px;
-          height: 560px;
-        }
+    .highlight-frame {
+      &:hover {
+        width: 900px;
+        height: 550px;
       }
     }
   }

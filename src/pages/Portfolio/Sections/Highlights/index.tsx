@@ -69,7 +69,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
           className={styles.carousel}
           modules={[Pagination, EffectCoverflow, Keyboard]}
           centeredSlides={true}
-          slidesPerView={2}
+          slidesPerView={1.75}
           loop={true}
           pagination
           keyboard={{
@@ -81,7 +81,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
             {
               rotate: 10,
               // slideShadows: true,
-              depth: 150,
+              depth: 200,
               modifier: 0.5,
               stretch: 200,
               scale: .725
@@ -89,7 +89,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
           }
         >
           <SwiperSlide>
-            <div className={classNames(styles.frame__body)} style={{
+            <div className={classNames(styles.frame__body, 'highlight-frame')} style={{
               backgroundImage: 'url("./images/projects/suisei-placeholder.png")',
               backgroundSize: 'cover',
               backgroundPosition: 'center'

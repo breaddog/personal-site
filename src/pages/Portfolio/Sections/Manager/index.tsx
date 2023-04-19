@@ -121,15 +121,12 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   // given width, dynamically add/remove sections of bridge 
   const updateBridgeSections = () => {
     // edge case
-    if (!sectionRef.current) return
-    const windowWidth = sectionRef.current.clientWidth
+    const windowWidth = window.innerWidth
     const bridgeSection = document.getElementsByClassName('portfolio__bridge-section')[0]
     // edge case
     if (!bridgeSection) return
     // calculate how many can fit, always get ceil
-    const nSections = Math.ceil(windowWidth / bridgeSection.clientWidth)
-
-
+    const nSections = Math.ceil(windowWidth / bridgeSection.clientWidth) + 2
     // if there was a change detected update
     setBridgeSections(nSections)
   }
