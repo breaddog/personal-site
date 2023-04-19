@@ -1,16 +1,8 @@
 import React from 'react';
-import { Portfolio } from './pages'
-
-import 'aos/dist/aos.css'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
-import 'swiper/css/keyboard'
-
+import { CSSHeader, Portfolio } from './pages'
 import AOS from 'aos'
 
 function App() {
-
   React.useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -20,6 +12,8 @@ function App() {
   }, [])
   return (
     <div className='App'>
+      {/* all the import components will go here */}
+      <CSSHeader />
       <Portfolio />
     </div>
   );

@@ -3,13 +3,15 @@ import styles from './Highlights.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { Pagination, EffectCoverflow, Keyboard } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Navigation, EffectCoverflow, Keyboard } from 'swiper'
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
 import { detectScrollBoundary } from '../../../../shared/functions/functions'
 import { CircleIcon } from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
+
+import { PROJECTS, ProjectProps } from '../../../../data/projects'
 
 
 interface PortfolioHighlightsProps {
@@ -24,6 +26,31 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
   const [iconBulbActive, setIconBulbActive] = React.useState<boolean>(false)
+
+  const swiperParams: SwiperProps = {
+    id: 'highlights-carousel',
+    className: styles.carousel,
+    modules: [Pagination, Navigation, EffectCoverflow, Keyboard],
+    centeredSlides: true,
+    slidesPerView: 1.75,
+    loop: true,
+    pagination: true,
+    navigation: true,
+    grabCursor: true,
+    keyboard: {
+      onlyInViewport: true,
+      enabled: true
+    },
+    effect: 'coverflow',
+    coverflowEffect: {
+      rotate: 10,
+      slideShadows: false,
+      depth: 200,
+      modifier: 0.5,
+      stretch: 200,
+      scale: .725
+    },
+  }
 
   // light bulb
   const lightBulbScrollDetection = async () => {
@@ -65,85 +92,31 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
           Here's a list of projects that I have worked on, feel free to have a look!
         </div>
         <Swiper
-          id='highlights-carousel'
-          className={styles.carousel}
-          modules={[Pagination, EffectCoverflow, Keyboard]}
-          centeredSlides={true}
-          slidesPerView={1.75}
-          loop={true}
-          pagination
-          keyboard={{
-            onlyInViewport: true,
-            enabled: true
-          }}
-          effect='coverflow'
-          coverflowEffect={
-            {
-              rotate: 10,
-              // slideShadows: true,
-              depth: 200,
-              modifier: 0.5,
-              stretch: 200,
-              scale: .725
-            }
-          }
+          {...swiperParams}
         >
-          <SwiperSlide>
-            <div className={classNames(styles.frame__body, 'highlight-frame')} style={{
-              backgroundImage: 'url("./images/projects/suisei-placeholder.png")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-              <div className={classNames(styles.frame__header, styles.uppercase, styles.bold)}>
-                Title Of Project
-              </div>
-              <div className={classNames(styles.frame__footer, styles.uppercase, styles.bold)}>
-                Scope - Project
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={classNames(styles.frame__body)} style={{
-              backgroundImage: 'url("./images/projects/suisei-placeholder.png")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-              <div className={classNames(styles.frame__header, styles.uppercase, styles.bold)}>
-                Title Of Project
-              </div>
-              <div className={classNames(styles.frame__footer, styles.uppercase, styles.bold)}>
-                Scope - Project
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={classNames(styles.frame__body)} style={{
-              backgroundImage: 'url("./images/projects/suisei-placeholder.png")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-              <div className={classNames(styles.frame__header, styles.uppercase, styles.bold)}>
-                Title Of Project
-              </div>
-              <div className={classNames(styles.frame__footer, styles.uppercase, styles.bold)}>
-                Scope - Project
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={classNames(styles.frame__body)} style={{
-              backgroundImage: 'url("./images/projects/suisei-placeholder.png")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-              <div className={classNames(styles.frame__header, styles.uppercase, styles.bold)}>
-                Title Of Project
-              </div>
-              <div className={classNames(styles.frame__footer, styles.uppercase, styles.bold)}>
-                Scope - Project
-              </div>
-            </div>
-          </SwiperSlide>
+          {
+            PROJECTS.map((project: ProjectProps, idx: number | string) => {
+              return (
+                <SwiperSlide>
+                  <div className={classNames(styles.frame__body, 'highlight-frame')} style={{
+                    backgroundImage: `url("${project.asset}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}>
+                    <div className={classNames(styles.frame__header, styles.uppercase, styles.bold)}>
+                      {project.title}
+                    </div>
+                    <div className={classNames(styles.frame__footer, styles.uppercase, styles.bold)}>
+                      {project.scope}
+                      <br />
+                      {project.organisation}
+                    </div>
+                  </div>
+                </SwiperSlide>
+              )
+            })
+          }
+
         </Swiper>
       </div>
     </div>

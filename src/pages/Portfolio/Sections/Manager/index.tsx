@@ -32,7 +32,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   const [bridgeSections, setBridgeSections] = React.useState<number>(0)
 
   // for each layer
-  const N_CLOUDS = 6
+  const N_CLOUDS = 8
   // CLOUDS
   const cloudEffect = (reference: number, duration: number) => {
     const looper = document.querySelectorAll(`.portfolio__cloud-${reference}`) as any
@@ -76,15 +76,21 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       })
     })
 
+    const _inverse = Math.random() > 0.5
+
     // cloud timeline
     gsap.utils.toArray(looper)
       .forEach((el: any, idx: number) => {
         gsap.timeline({
+          repeat: -1
         })
           .to(el, {
-            opacity: _opacity % 1,
+            opacity: _inverse ? 0.1 : 1,
             delay: randomValue(1, 10, false),
-            repeat: -1
+          })
+          .to(el, {
+            opacity: _inverse ? 1 : 0.1,
+            delay: randomValue(1, 10, false),
           })
         // .to(el, {
         //   opacity: (1 - opacityStart % 1),
@@ -115,6 +121,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   React.useEffect(() => {
     cloudEffect(0, 50)
     cloudEffect(1, 65)
+    cloudEffect(2, 35)
   }, [])
 
   // BRIDGE
@@ -235,6 +242,13 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
               {
                 map([...Array(N_CLOUDS).keys()], (el: any, idx: number) => {
                   return <Cloud className={classNames('portfolio__cloud-1', styles.cloud)} key={idx} />
+                })
+              }
+            </div>
+            <div id='cloud-container-2' className={styles.clouds}>
+              {
+                map([...Array(N_CLOUDS).keys()], (el: any, idx: number) => {
+                  return <Cloud className={classNames('portfolio__cloud-2', styles.cloud)} key={idx} />
                 })
               }
             </div>

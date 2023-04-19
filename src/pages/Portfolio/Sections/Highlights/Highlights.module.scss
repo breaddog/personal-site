@@ -46,7 +46,6 @@
     .carousel {
       height: 100%;
       width: 100%;
-      margin-top: 4vmin;
 
       .frame {
         &__body {
@@ -59,8 +58,6 @@
           justify-content: space-between;
 
           box-shadow: var(--box-shadow);
-
-          transition: 0.5s ease-in-out;
 
           margin: 0 auto;
 
