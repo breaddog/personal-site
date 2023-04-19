@@ -76,6 +76,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   const classes = classNames('sub-section portfolio__highlights', styles.highlights)
 
   return <section className={classes} ref={highlightsRef}>
+    {/* idea: on scroll have the direction of gradient change */}
     <div className={classNames(styles.containerBg, iconBulbActive && styles.active)}>
     </div>
     <div className={styles.container}>
