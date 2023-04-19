@@ -19,7 +19,7 @@ export const PortfolioCreativity: React.FC<PortfolioCreativityProps> = ({
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={classNames(styles.title, styles.bold, 'title__sub-section')}>
-            Creativity with Minimalism
+            Design and Engagement
           </h2>
           <CircleIcon
             className={styles.icon}

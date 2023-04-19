@@ -21,7 +21,6 @@ interface PortfolioHighlightsProps {
 export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   className,
 }) => {
-  const classes = classNames('sub-section portfolio__highlights', styles.highlights, className)
 
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
@@ -74,7 +73,11 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     }
   }, [highlightsRef, iconBulbActive])
 
-  return <div className={classes} ref={highlightsRef}>
+  const classes = classNames('sub-section portfolio__highlights', styles.highlights)
+
+  return <section className={classes} ref={highlightsRef}>
+    <div className={classNames(styles.containerBg, iconBulbActive && styles.active)}>
+    </div>
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={classNames(styles.title, styles.bold, 'title__sub-section')}>
@@ -120,6 +123,6 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
         </Swiper>
       </div>
     </div>
-  </div>
+  </section>
 }
 

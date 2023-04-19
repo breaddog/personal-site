@@ -67,6 +67,42 @@
       }
     }
 
+    .orbitItemHighlight {
+      &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 340px;
+        height: 50px;
+        padding: 0.5rem 1.25rem;
+        margin: 0 auto;
+
+        border: 2px solid black;
+        border-radius: 1rem;
+        text-transform: uppercase;
+      }
+
+      &__left,
+      &__right {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+      }
+
+      &__text {
+        font-weight: var(--font-h3);
+        margin: auto 0;
+        font-weight: bold;
+      }
+
+      &__img {
+        width: 2rem;
+        height: 2rem;
+        margin-left: 0.5rem;
+      }
+    }
+
     // component
     .orbitContainer {
       width: 100%;

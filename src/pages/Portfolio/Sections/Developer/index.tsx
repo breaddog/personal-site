@@ -4,19 +4,21 @@ import classNames from 'classnames'
 
 import gsap from 'gsap'
 import { Draggable, MotionPathPlugin, ScrollTrigger } from 'gsap/all'
-
 import { CircleIcon, Window } from '../../../../shared/components'
 
-// header
-import laptopSVG from '../../../../assets/icons/laptop.svg'
+import { detectScrollBoundary } from '../../../../shared/functions/functions'
+
+
 
 
 // orbit
 import { DottedCircle } from '../../../../assets/svgs/index'
 
+
 // others
 import userSVG from '../../../../assets/icons/user.svg'
-
+// header
+import laptopSVG from '../../../../assets/icons/laptop.svg'
 // logos
 import htmlSVG from '../../../../assets/logos/html.svg'
 import cssSVG from '../../../../assets/logos/css.svg'
@@ -29,54 +31,77 @@ import s3SVG from '../../../../assets/logos/s3.svg'
 import codebuildSVG from '../../../../assets/logos/codebuild.svg'
 import codepipelineSVG from '../../../../assets/logos/codepipeline.svg'
 import ethSVG from '../../../../assets/logos/eth.svg'
+import githubSVG from '../../../../assets/logos/github.svg'
 
 const ORBIT_ITEMS: {
   src: string,
   alt: string,
+  type: string,
 }[] = [
     {
       src: htmlSVG,
       alt: 'html',
+      type: 'language'
     },
     {
       src: cssSVG,
       alt: 'css',
+      type: 'language'
     },
     {
       src: jsSVG,
-      alt: 'js',
+      alt: 'javascript',
+      type: 'language'
     },
     {
       src: tsSVG,
-      alt: 'ts',
+      alt: 'typescript',
+      type: 'language'
     },
     {
       src: reactSVG,
       alt: 'react',
+      type: 'web dev'
     },
     {
       src: nodejsSVG,
       alt: 'nodejs',
+      type: 'web dev'
     },
     {
       src: npmSVG,
       alt: 'npm',
+      type: 'web dev'
     },
     {
       src: s3SVG,
-      alt: 's3',
+      alt: 'aws s3',
+      type: 'storage'
     },
     {
       src: codebuildSVG,
       alt: 'codebuild',
+      type: 'ci/cd'
     },
     {
       src: codepipelineSVG,
       alt: 'codepipeline',
+      type: 'ci/cd'
     },
     {
       src: ethSVG,
-      alt: 'eth',
+      alt: 'solidity (eth)',
+      type: 'web3'
+    },
+    {
+      src: githubSVG,
+      alt: 'git/github',
+      type: 'repository'
+    },
+    {
+      src: userSVG,
+      alt: 'tien',
+      type: 'developer'
     }
   ]
 
@@ -92,8 +117,13 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   const devSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
-
+  // if animation init
+  const [animationInit, setAnimationInit] = React.useState<boolean>(false)
+  // z-index tracker
   const [highestZIndex, setHighestZIndex] = React.useState<number>(0)
+
+  // current highlighted stack component
+  const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(-1)
 
   // start orbit
   const initiateItemOrbit = () => {
@@ -111,6 +141,8 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     orbitItems.forEach((item: any, idx) => {
       const _start = Number((idx / nItems).toFixed(2))
       const _end = Number(((idx / nItems) + 1).toFixed(2))
+
+      console.log(idx, _start, _end)
 
       gsap.timeline()
         .fromTo(item, {
@@ -142,6 +174,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       .from('#orbit-items-container', {
         scale: 0,
         autoAlpha: 0,
+        opacity: 0,
         onComplete: () => {
           initiateItemOrbit()
         }
@@ -150,10 +183,10 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
         scale: 1,
         autoAlpha: 1,
         duration: 3,
+        opacity: 1,
         ease: 'expo.inOut',
       }, '-=1')
   }
-
 
   // orbit mechanics
   React.useLayoutEffect(() => {
@@ -161,10 +194,33 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       // register
       gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
       // orbit timeline
-      orbitTimeline()
+      if (animationInit) {
+        orbitTimeline()
+      }
     })
     return () => ctx.revert()
-  }, [])
+  }, [animationInit])
+
+
+  // detect when animation should start 
+  const sectionTriggerDetection = async () => {
+    if (animationInit) return
+    const _offsetTop = devSectionRef.current?.offsetTop
+    if (!_offsetTop) return
+    const _targetBoundary = _offsetTop - (_offsetTop * 0.85)
+    const _boundaryHit = await detectScrollBoundary(_targetBoundary)
+    if (!animationInit && _boundaryHit) {
+      setAnimationInit(true)
+    }
+  }
+
+  // detect if triggered
+  React.useEffect(() => {
+    window.addEventListener('scroll', sectionTriggerDetection)
+    return () => {
+      window.removeEventListener('scroll', sectionTriggerDetection)
+    }
+  }, [devSectionRef, animationInit])
 
 
   return <>
@@ -271,6 +327,31 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                 windowStyle='light'
                 referenceKey='1'
               >
+                <div className={styles.orbitItemHighlight__container}>
+
+                  <div className={styles.orbitItemHighlight__left}>
+                    {
+                      selectedItemIndex < 0
+                        ? (
+                          <div className={classNames(styles.orbitItemHighlight__text)}>
+                            CLICK LOGO TO VIEW STACK INFO
+                          </div>
+                        )
+                        : (
+                          <div className={classNames(styles.orbitItemHighlight__text)}>
+                            {ORBIT_ITEMS[selectedItemIndex].type || null}
+                          </div>
+                        )
+                    }
+                  </div>
+                  {selectedItemIndex >= 0 && <div className={styles.orbitItemHighlight__right}>
+                    <div className={classNames(styles.orbitItemHighlight__text, styles.uppercase, styles.bold)}>
+                      {ORBIT_ITEMS[selectedItemIndex].alt || null}
+                    </div>
+                    <img className={styles.orbitItemHighlight__img} src={ORBIT_ITEMS[selectedItemIndex].src} alt={ORBIT_ITEMS[selectedItemIndex].alt || ''} />
+                  </div>}
+                </div>
+
                 <div id='orbit-container' className={styles.orbitContainer}>
                   <div id='orbit-items-container' className={styles.orbitItemsContainer}>
                     <DottedCircle
@@ -279,14 +360,19 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                       pathId={DOTTED_CIRCLE_PATH.slice(1)}
                     />
 
-                    {ORBIT_ITEMS.map((item: { src: string, alt: string }, idx: number | string) => {
-                      return <div className={classNames(styles.item, 'orbit-item')} key={idx}>
+                    {ORBIT_ITEMS.slice(0, -1).map((item: { src: string, alt: string }, idx: number | string) => {
+                      return <div className={classNames(styles.item, 'orbit-item')} key={idx} onClick={() => setSelectedItemIndex(Number(idx))}>
                         <img src={item.src} alt={item.alt} />
                       </div>
                     })}
                   </div>
 
-                  <img className={classNames(styles.item__center, 'orbit-center')} src={userSVG} alt='user' />
+                  <img
+                    className={classNames(styles.item__center, 'orbit-center')}
+                    src={userSVG}
+                    alt='user'
+                    onClick={() => setSelectedItemIndex(ORBIT_ITEMS.length - 1)}
+                  />
                 </div>
               </Window>
 

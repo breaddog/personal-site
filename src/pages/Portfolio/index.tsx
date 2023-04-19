@@ -18,7 +18,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
       <PortfolioDeveloper />
 
       <PortfolioManager />
-      {/* <PortfolioCreativity /> */}
+      <PortfolioCreativity />
       <PortfolioHighlights />
     </div>
   </>
