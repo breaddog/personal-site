@@ -1,4 +1,5 @@
 import styles from './Manager.module.scss'
+import sectionStyles from '../../../../styles/section.module.scss';
 import React from 'react'
 import classNames from 'classnames'
 
@@ -23,7 +24,7 @@ interface PortfolioManagerProps {
 export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   className
 }) => {
-  const classes = classNames('sub-section portfolio__manager', styles.manager, className)
+  const classes = classNames('portfolio__manager', sectionStyles['sub-section'], styles.manager, className)
 
   // maybe change this to work style?
   const sectionRef = React.useRef<HTMLDivElement | null>(null)

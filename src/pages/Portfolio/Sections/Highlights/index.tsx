@@ -1,5 +1,6 @@
 import './HighlightsCarousel.scss'
 import styles from './Highlights.module.scss'
+import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
@@ -30,8 +31,10 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     id: 'highlights-carousel',
     className: styles.carousel,
     modules: [Pagination, Navigation, EffectCoverflow, Keyboard],
+    initialSlide: 0,
     centeredSlides: true,
-    slidesPerView: 1.75,
+    slidesPerView: 2.5,
+    autoplay: true,
     loop: true,
     pagination: true,
     navigation: true,
@@ -73,7 +76,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     }
   }, [highlightsRef, iconBulbActive])
 
-  const classes = classNames('sub-section portfolio__highlights', styles.highlights)
+  const classes = classNames('portfolio__highlights', sectionStyles['sub-section'], styles.highlights)
 
   return <section className={classes} ref={highlightsRef}>
     {/* idea: on scroll have the direction of gradient change */}
@@ -120,7 +123,6 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
               )
             })
           }
-
         </Swiper>
       </div>
     </div>

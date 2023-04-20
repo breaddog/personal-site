@@ -39,4 +39,22 @@ export const PROJECTS: ProjectProps[] = [
     description: 'NFT ArtBall Description',
     asset: './images/projects/suisei-placeholder.png'
   },
+  {
+    title: 'Test 4',
+    year: '2022 - 2023',
+    scope: 'NFT ArtWork',
+    organisation: 'Tennis Australia / RIW',
+    url: 'https://ao.artball.io/',
+    description: 'NFT ArtBall Description',
+    asset: './images/projects/suisei-placeholder.png'
+  },
+  {
+    title: 'Test 3',
+    year: '2022 - 2023',
+    scope: 'NFT ArtWork',
+    organisation: 'Tennis Australia / RIW',
+    url: 'https://ao.artball.io/',
+    description: 'NFT ArtBall Description',
+    asset: './images/projects/suisei-placeholder.png'
+  },
 ]

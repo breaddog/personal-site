@@ -99,114 +99,107 @@ export const Window: React.FC<WindowProps> = ({
 
   // draggable resize
   React.useLayoutEffect(() => {
-    let _ctx = gsap.context(() => {
-      gsap.registerPlugin(Draggable)
-      if (!containerRef.current) return
+    gsap.registerPlugin(Draggable)
+    if (!containerRef.current) return
 
-      // proxy draggers
-      if (!proxyCreated) {
-        topRef.current = document.createElement('div')
-        bottomRef.current = document.createElement('div')
-        leftRef.current = document.createElement('div')
-        rightRef.current = document.createElement('div')
+    // proxy draggers
+    if (!proxyCreated) {
+      topRef.current = document.createElement('div')
+      bottomRef.current = document.createElement('div')
+      leftRef.current = document.createElement('div')
+      rightRef.current = document.createElement('div')
 
-        setProxyCreated(true)
-      }
-
-      // right side
-      const rightDraggable = new Draggable(rightRef.current, {
-        trigger: `#right-${referenceKey}, #topRight-${referenceKey}, #bottomRight-${referenceKey}`,
-        cursor: 'e-resize',
-        onDrag: function (this) {
-          const diffX = this.x - rightPrevX.current
-          if (checkWindowConstraints(false, diffX, true)) {
-            gsap.set(containerRef.current, {
-              width: `+=${diffX}`
-            })
-            rightPrevX.current = this.x
-          }
-        },
-        onPress: function (this) {
-          rightPrevX.current = this.x
-          draggableRef.current.disable()
-        },
-        onRelease: function () {
-          draggableRef.current.enable()
-        }
-      })
-
-      // left side
-      const leftDraggable = new Draggable(leftRef.current, {
-        trigger: `#left-${referenceKey}, #topLeft-${referenceKey}, #bottomLeft-${referenceKey}`,
-        cursor: 'w-resize',
-        onDrag: function (this) {
-          const diffX = this.x - leftPrevX.current
-          if (checkWindowConstraints(false, diffX, false)) {
-            gsap.set(containerRef.current, {
-              width: `-=${diffX}`,
-              x: `+=${diffX}`
-            })
-            leftPrevX.current = this.x
-          }
-        },
-        onPress: function (this) {
-          leftPrevX.current = this.x
-          draggableRef.current.disable()
-        },
-        onRelease: function (this) {
-          draggableRef.current.enable()
-        }
-      })
-
-      // top side
-      const topDraggable = new Draggable(topRef.current, {
-        trigger: `#top-${referenceKey}, #topRight-${referenceKey}, #topLeft-${referenceKey}`,
-        cursor: 'n-resize',
-        onDrag: function (this) {
-          const diffY = this.y - topPrevY.current
-          if (checkWindowConstraints(true, diffY, false)) {
-            gsap.set(containerRef.current, {
-              height: `-=${diffY}`,
-              y: `+=${diffY}`
-            })
-            topPrevY.current = this.y
-          }
-        },
-        onPress: function (this) {
-          topPrevY.current = this.y
-          draggableRef.current.disable()
-        },
-        onRelease: function (this) {
-          draggableRef.current.enable()
-        }
-      })
-
-      const bottomDraggable = new Draggable(bottomRef.current, {
-        trigger: `#bottom-${referenceKey}, #bottomRight-${referenceKey}, #bottomLeft-${referenceKey}`,
-        cursor: 's-resize',
-        onDrag: function (this) {
-          const diffY = this.y - bottomPrevY.current
-          if (checkWindowConstraints(true, diffY, true)) {
-            gsap.set(containerRef.current, {
-              height: `+=${diffY}`,
-            })
-            bottomPrevY.current = this.y
-          }
-        },
-        onPress: function (this) {
-          bottomPrevY.current = this.y
-          draggableRef.current.disable()
-        },
-        onRelease: function (this) {
-          draggableRef.current.enable()
-        }
-      })
-    })
-
-    return () => {
-      _ctx.kill()
+      setProxyCreated(true)
     }
 
+    // right side
+    const rightDraggable = new Draggable(rightRef.current, {
+      trigger: `#right-${referenceKey}, #topRight-${referenceKey}, #bottomRight-${referenceKey}`,
+      cursor: 'e-resize',
+      onDrag: function (this) {
+        const diffX = this.x - rightPrevX.current
+        if (checkWindowConstraints(false, diffX, true)) {
+          gsap.set(containerRef.current, {
+            width: `+=${diffX}`
+          })
+          rightPrevX.current = this.x
+        }
+      },
+      onPress: function (this) {
+        rightPrevX.current = this.x
+        draggableRef.current.disable()
+      },
+      onRelease: function () {
+        draggableRef.current.enable()
+      }
+    })
+
+    // left side
+    const leftDraggable = new Draggable(leftRef.current, {
+      trigger: `#left-${referenceKey}, #topLeft-${referenceKey}, #bottomLeft-${referenceKey}`,
+      cursor: 'w-resize',
+      onDrag: function (this) {
+        const diffX = this.x - leftPrevX.current
+        if (checkWindowConstraints(false, diffX, false)) {
+          gsap.set(containerRef.current, {
+            width: `-=${diffX}`,
+            x: `+=${diffX}`
+          })
+          leftPrevX.current = this.x
+        }
+      },
+      onPress: function (this) {
+        leftPrevX.current = this.x
+        draggableRef.current.disable()
+      },
+      onRelease: function (this) {
+        draggableRef.current.enable()
+      }
+    })
+
+    // top side
+    const topDraggable = new Draggable(topRef.current, {
+      trigger: `#top-${referenceKey}, #topRight-${referenceKey}, #topLeft-${referenceKey}`,
+      cursor: 'n-resize',
+      onDrag: function (this) {
+        const diffY = this.y - topPrevY.current
+        if (checkWindowConstraints(true, diffY, false)) {
+          gsap.set(containerRef.current, {
+            height: `-=${diffY}`,
+            y: `+=${diffY}`
+          })
+          topPrevY.current = this.y
+        }
+      },
+      onPress: function (this) {
+        topPrevY.current = this.y
+        draggableRef.current.disable()
+      },
+      onRelease: function (this) {
+        draggableRef.current.enable()
+      }
+    })
+
+    const bottomDraggable = new Draggable(bottomRef.current, {
+      trigger: `#bottom-${referenceKey}, #bottomRight-${referenceKey}, #bottomLeft-${referenceKey}`,
+      cursor: 's-resize',
+      onDrag: function (this) {
+        const diffY = this.y - bottomPrevY.current
+        if (checkWindowConstraints(true, diffY, true)) {
+          gsap.set(containerRef.current, {
+            height: `+=${diffY}`,
+          })
+          bottomPrevY.current = this.y
+        }
+      },
+      onPress: function (this) {
+        bottomPrevY.current = this.y
+        draggableRef.current.disable()
+      },
+      onRelease: function (this) {
+        draggableRef.current.enable()
+      }
+    })
   }, [
     // refs
     containerRef,
@@ -232,29 +225,22 @@ export const Window: React.FC<WindowProps> = ({
 
   // registration to drag
   React.useLayoutEffect(() => {
-
-    let __ctx = gsap.context(() => {
-      gsap.registerPlugin(Draggable)
-      // main dragger
-      if (containerRef.current && !draggableRef.current) {
-        const mainWindow = new Draggable(containerRef.current, {
-          trigger: `#window-header-${referenceKey}`,
-          type: 'x,y',
-          edgeResistance: 1,
-          bounds: boundaryContainer,
-          onClick: function () {
-            handleFocus()
-          }
-        })
-        // for reference
-        draggableRef.current = mainWindow
-        draggableRef.current.enable()
-      }
-    })
-    return () => {
-      __ctx.kill()
+    gsap.registerPlugin(Draggable)
+    // main dragger
+    if (containerRef.current && !draggableRef.current) {
+      const mainWindow = new Draggable(containerRef.current, {
+        trigger: `#window-header-${referenceKey}`,
+        type: 'x,y',
+        edgeResistance: 1,
+        bounds: boundaryContainer,
+        onClick: function () {
+          handleFocus()
+        }
+      })
+      // for reference
+      draggableRef.current = mainWindow
+      draggableRef.current.enable()
     }
-
   }, [containerRef, draggableRef, referenceKey, boundaryContainer])
 
 

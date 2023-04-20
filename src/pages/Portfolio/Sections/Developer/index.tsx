@@ -1,4 +1,5 @@
 import styles from './Developer.module.scss'
+import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
@@ -113,7 +114,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   className
 }) => {
   // class
-  const classes = classNames('sub-section sub-section__dev', styles.dev, className)
+  const classes = classNames('sub-section__dev', sectionStyles['sub-section'], styles.dev, className)
   const devSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
@@ -129,14 +130,11 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   const initiateItemOrbit = () => {
     // convert to path or breaks
     MotionPathPlugin.convertToPath(DOTTED_CIRCLE_PATH)
-
     // vars
     const dur = 25
     const orbitItems = gsap.utils.toArray('.orbit-item')
     const nItems = orbitItems.length
-    /*
-      later: have some nice effect for the on hover of orbit items, interactive hopefully
-    */
+
     // set orbit 
     orbitItems.forEach((item: any, idx) => {
       const _start = Number((idx / nItems).toFixed(2))
@@ -160,7 +158,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
             start: _start,
             end: _end,
           },
-          immediateRender: true,
           ease: 'none',
           duration: dur,
           repeat: -1,
@@ -185,6 +182,9 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
         duration: 3,
         opacity: 1,
         ease: 'expo.inOut',
+        // onComplete: () => {
+        //   initiateItemOrbit()
+        // }
       }, '-=1')
   }
 
@@ -242,8 +242,68 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
               alt='laptop'
             />
           </div>
+          <div className={styles.subHeading}>
+            <b>Hint:</b> Try dragging and re-sizing the windows...
+          </div>
           <div className={styles.body}>
             <div className={styles.left}>
+
+              <Window
+                className={classNames(styles.window, styles.window__dev)}
+                windowTitle='My Development Stack'
+                windowStyle='dark'
+                referenceKey='1'
+              >
+                <div className={styles.orbitItemHighlight__container}>
+
+                  <div className={classNames(styles.orbitItemHighlight__left, selectedItemIndex < 0 && styles.inactive)}>
+                    {
+                      selectedItemIndex < 0
+                        ? (
+                          <div className={classNames(styles.orbitItemHighlight__text)}>
+                            SELECT LOGO TO VIEW STACK INFO
+                          </div>
+                        )
+                        : (
+                          <div className={classNames(styles.orbitItemHighlight__text)}>
+                            {ORBIT_ITEMS[selectedItemIndex].type || null}
+                          </div>
+                        )
+                    }
+                  </div>
+                  {selectedItemIndex >= 0 && <div className={styles.orbitItemHighlight__right}>
+                    <div className={classNames(styles.orbitItemHighlight__text, styles.uppercase, styles.bold)}>
+                      {ORBIT_ITEMS[selectedItemIndex].alt || null}
+                    </div>
+                    <img className={styles.orbitItemHighlight__img} src={ORBIT_ITEMS[selectedItemIndex].src} alt={ORBIT_ITEMS[selectedItemIndex].alt || ''} />
+                  </div>}
+                </div>
+
+                <div id='orbit-container' className={styles.orbitContainer}>
+                  <div id='orbit-items-container' className={styles.orbitItemsContainer}>
+                    <DottedCircle
+                      className={styles.orbitCircle}
+                      id='developer-circle'
+                      pathId={DOTTED_CIRCLE_PATH.slice(1)}
+                    />
+
+                    {ORBIT_ITEMS.slice(0, -1).map((item: { src: string, alt: string }, idx: number | string) => {
+                      return <div className={classNames(styles.item, 'orbit-item')} key={idx} onClick={() => setSelectedItemIndex(Number(idx))}>
+                        <img src={item.src} alt={item.alt} />
+                      </div>
+                    })}
+                  </div>
+
+                  <img
+                    className={classNames(styles.item__center, 'orbit-center')}
+                    src={userSVG}
+                    alt='user'
+                    onClick={() => setSelectedItemIndex(ORBIT_ITEMS.length - 1)}
+                  />
+                </div>
+              </Window>
+            </div>
+            <div className={styles.right}>
               <Window
                 className={classNames(styles.window, styles.window__dev)}
                 windowTitle='Tien Powershell'
@@ -317,65 +377,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                   </p>
                 </div>
               </Window>
-
-
-            </div>
-            <div className={styles.right}>
-              <Window
-                className={classNames(styles.window, 'window__dev')}
-                windowTitle='My Development Stack'
-                windowStyle='light'
-                referenceKey='1'
-              >
-                <div className={styles.orbitItemHighlight__container}>
-
-                  <div className={styles.orbitItemHighlight__left}>
-                    {
-                      selectedItemIndex < 0
-                        ? (
-                          <div className={classNames(styles.orbitItemHighlight__text)}>
-                            CLICK LOGO TO VIEW STACK INFO
-                          </div>
-                        )
-                        : (
-                          <div className={classNames(styles.orbitItemHighlight__text)}>
-                            {ORBIT_ITEMS[selectedItemIndex].type || null}
-                          </div>
-                        )
-                    }
-                  </div>
-                  {selectedItemIndex >= 0 && <div className={styles.orbitItemHighlight__right}>
-                    <div className={classNames(styles.orbitItemHighlight__text, styles.uppercase, styles.bold)}>
-                      {ORBIT_ITEMS[selectedItemIndex].alt || null}
-                    </div>
-                    <img className={styles.orbitItemHighlight__img} src={ORBIT_ITEMS[selectedItemIndex].src} alt={ORBIT_ITEMS[selectedItemIndex].alt || ''} />
-                  </div>}
-                </div>
-
-                <div id='orbit-container' className={styles.orbitContainer}>
-                  <div id='orbit-items-container' className={styles.orbitItemsContainer}>
-                    <DottedCircle
-                      className={styles.orbitCircle}
-                      id='developer-circle'
-                      pathId={DOTTED_CIRCLE_PATH.slice(1)}
-                    />
-
-                    {ORBIT_ITEMS.slice(0, -1).map((item: { src: string, alt: string }, idx: number | string) => {
-                      return <div className={classNames(styles.item, 'orbit-item')} key={idx} onClick={() => setSelectedItemIndex(Number(idx))}>
-                        <img src={item.src} alt={item.alt} />
-                      </div>
-                    })}
-                  </div>
-
-                  <img
-                    className={classNames(styles.item__center, 'orbit-center')}
-                    src={userSVG}
-                    alt='user'
-                    onClick={() => setSelectedItemIndex(ORBIT_ITEMS.length - 1)}
-                  />
-                </div>
-              </Window>
-
             </div>
           </div>
         </div>

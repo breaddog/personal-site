@@ -1,4 +1,5 @@
 import styles from './Landing.module.scss'
+import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
@@ -20,7 +21,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
   className
 }) => {
 
-  const classes = classNames('sub-section position--relative', styles.landing, className)
+  const classes = classNames('position--relative', sectionStyles['sub-section'], styles.landing, className)
   return <>
     <section className={classes}>
       <div className={styles.container}>

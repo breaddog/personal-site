@@ -1,4 +1,5 @@
 import styles from './Creativity.module.scss'
+import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
@@ -13,7 +14,7 @@ interface PortfolioCreativityProps {
 export const PortfolioCreativity: React.FC<PortfolioCreativityProps> = ({
   className
 }) => {
-  const classes = classNames('sub-section portfolio__creativity', className)
+  const classes = classNames('portfolio__creativity', sectionStyles['sub-section'], className)
   return <>
     <section className={classes}>
       <div className={styles.container}>
