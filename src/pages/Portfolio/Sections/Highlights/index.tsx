@@ -120,7 +120,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
           <Swiper {...swiperParams}>
             {PROJECTS.map((project: ProjectProps, idx: number | string) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={idx}>
                   <div
                     className={classNames(
                       styles.frame__body,

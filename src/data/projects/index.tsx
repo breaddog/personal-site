@@ -1,15 +1,14 @@
 import React from 'react'
 
 export interface ProjectProps {
-  title?: string,
-  year?: string | number,
-  scope?: string,
-  organisation?: string,
-  url?: string,
+  title?: string
+  year?: string | number
+  scope?: string
+  organisation?: string
+  url?: string
   description?: React.ReactFragment | string
-  asset?: string,
+  asset?: string
 }
-
 
 export const PROJECTS: ProjectProps[] = [
   {
@@ -19,7 +18,7 @@ export const PROJECTS: ProjectProps[] = [
     organisation: 'Tennis Australia / RIW',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
-    asset: './images/projects/suisei-placeholder.png'
+    asset: './images/projects/suisei-placeholder.png',
   },
   {
     title: 'Test 2',
@@ -28,7 +27,7 @@ export const PROJECTS: ProjectProps[] = [
     organisation: 'Tennis Australia / RIW',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
-    asset: './images/projects/suisei-placeholder.png'
+    asset: './images/projects/suisei-placeholder.png',
   },
   {
     title: 'Test 3',
@@ -37,7 +36,7 @@ export const PROJECTS: ProjectProps[] = [
     organisation: 'Tennis Australia / RIW',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
-    asset: './images/projects/suisei-placeholder.png'
+    asset: './images/projects/suisei-placeholder.png',
   },
   {
     title: 'Test 4',
@@ -46,7 +45,7 @@ export const PROJECTS: ProjectProps[] = [
     organisation: 'Tennis Australia / RIW',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
-    asset: './images/projects/suisei-placeholder.png'
+    asset: './images/projects/suisei-placeholder.png',
   },
   {
     title: 'Test 3',
@@ -55,6 +54,6 @@ export const PROJECTS: ProjectProps[] = [
     organisation: 'Tennis Australia / RIW',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
-    asset: './images/projects/suisei-placeholder.png'
+    asset: './images/projects/suisei-placeholder.png',
   },
 ]

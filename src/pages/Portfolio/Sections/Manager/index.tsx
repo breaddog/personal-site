@@ -61,7 +61,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       return decimal ? Number(_value.toFixed(4)) : Math.floor(_value)
     }
 
-    const _opacity = randomValue(0.25, 1, false)
+    // const _opacity = randomValue(0.25, 1, false)
 
     // loop loop
     gsap.set(looper, {
@@ -87,7 +87,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
     const _inverse = 0.5 < Math.random()
 
     // cloud timeline
-    gsap.utils.toArray(looper).forEach((el: any, idx: number) => {
+    gsap.utils.toArray(looper).forEach((el: any) => {
       gsap
         .timeline({
           repeat: -1,
