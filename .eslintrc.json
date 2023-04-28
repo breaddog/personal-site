@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "no-const-assign": "error",
+    "no-dupe-else-if": "warn",
+    "no-duplicate-imports": "error",
+    "no-dupe-keys": "error",
+    "no-irregular-whitespace": "warn",
+    "no-unreachable": "error",
+    "no-unused-vars": "error",
+    "use-isnan": "error",
+    "max-depth": ["warn", 3],
+    "jdx-quotes": ["error", "prefer-single"],
+    "no-multi-spaces": "error",
+    "no-trailing-spaces": [
+      "error",
+      {
+        "ignoreComments": true
+      }
+    ],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "eol-last": ["error", "always"],
+    "no-var": "error",
+    "prefer-arrow-callback": "warn",
+    "spaced-comment": ["warn", "always"],
+    "yoda": ["warn", "always"],
+    "prefer-spread": "warn",
+    "array-bracket-spacing": "warn",
+    "comma-dangle": "warn",
+    "eqeqeq": "error"
+  },
+  "extends": "eslint:recommended"
+}
