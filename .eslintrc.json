@@ -55,13 +55,14 @@
     "comma-dangle": [
       "warn",
       {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
         "imports": "never",
         "exports": "never",
         "functions": "never"
       }
     ],
-    "eqeqeq": "error"
+    "eqeqeq": "error",
+    "linebreak-style": ["error", "windows"]
   }
 }

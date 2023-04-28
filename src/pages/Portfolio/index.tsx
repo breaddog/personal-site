@@ -8,7 +8,7 @@ import {
   PortfolioDeveloper,
   PortfolioHighlights,
   PortfolioLanding,
-  PortfolioManager,
+  PortfolioManager
 } from './Sections/index'
 
 interface PortfolioProps {
