@@ -5,20 +5,19 @@ import classNames from 'classnames'
 import cloudSVG from '../../../../../../assets/misc/cloud.svg'
 
 interface CloudProps {
-  className?: string,
+  className?: string
   key?: string | number
 }
 
-export const Cloud: React.FC<CloudProps> = ({
-  className,
-  key
-}) => {
+export const Cloud: React.FC<CloudProps> = ({ className, key }) => {
   const classes = classNames(styles.cloud, className)
 
-  return <img
-    className={classes}
-    src={cloudSVG}
-    alt='cloud'
-    key={key}
-  />
+  return (
+    <img
+      className={classes}
+      src={cloudSVG}
+      alt='cloud'
+      key={key}
+    />
+  )
 }

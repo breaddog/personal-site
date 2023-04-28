@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { CSSHeader, Portfolio } from './pages'
 import AOS from 'aos'
 
@@ -7,7 +7,7 @@ function App() {
     AOS.init({
       duration: 1000,
       startEvent: 'DOMContentLoaded',
-      once: true
+      once: true,
     })
   }, [])
   return (
@@ -16,7 +16,7 @@ function App() {
       <CSSHeader />
       <Portfolio />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -8,11 +8,11 @@ import { Draggable } from 'gsap/all'
 import { PortfolioDevContext } from '../../../pages/Portfolio/Sections'
 
 interface WindowProps {
-  className?: string,
-  windowTitle?: string,
+  className?: string
+  windowTitle?: string
   windowStyle?: 'light' | 'dark'
-  referenceKey: string,
-  boundaryContainer?: string,
+  referenceKey: string
+  boundaryContainer?: string
   children?: React.ReactNode
 }
 
@@ -24,13 +24,16 @@ export const Window: React.FC<WindowProps> = ({
   boundaryContainer,
   children,
 }) => {
-  const classes = classNames(styles.window, styles[windowStyle], 'portfolio__window__dev', className)
+  const classes = classNames(
+    styles.window,
+    styles[windowStyle],
+    'portfolio__window__dev',
+    className
+  )
 
   // context
-  const {
-    highestZIndex,
-    setHighestZIndex
-  } = React.useContext(PortfolioDevContext)
+  const { highestZIndex, setHighestZIndex } =
+    React.useContext(PortfolioDevContext)
 
   // proxy created
   const [proxyCreated, setProxyCreated] = React.useState<boolean>(false)
@@ -67,9 +70,11 @@ export const Window: React.FC<WindowProps> = ({
   const handleFocus = () => {
     let _foundHighestZIndex
     // first one will always be a search, the rest will be O(1)
-    if (highestZIndex === 0) {
+    if (0 === highestZIndex) {
       const _windows = gsap.utils.toArray('.portfolio__window__dev') as any[]
-      const _zIndexes = _windows.map((window: any) => Number(window.style['z-index']))
+      const _zIndexes = _windows.map((window: any) =>
+        Number(window.style['z-index'])
+      )
       _foundHighestZIndex = max(_zIndexes) as number
     } else {
       _foundHighestZIndex = highestZIndex
@@ -79,7 +84,7 @@ export const Window: React.FC<WindowProps> = ({
     const newZIndex = _foundHighestZIndex + 2
     setHighestZIndex(newZIndex)
     gsap.set(containerRef.current, {
-      zIndex: newZIndex
+      zIndex: newZIndex,
     })
   }
 
@@ -87,9 +92,9 @@ export const Window: React.FC<WindowProps> = ({
   const checkWindowConstraints = (
     isHeight: boolean = false,
     diffValue: number = 0,
-    add: boolean = true,
+    add: boolean = true
   ) => {
-    const modifier = (diffValue * (add ? 1 : -1))
+    const modifier = diffValue * (add ? 1 : -1)
     if (isHeight) {
       return containerRef.current.clientHeight + modifier > MIN_HEIGHT
     } else {
@@ -113,77 +118,77 @@ export const Window: React.FC<WindowProps> = ({
     }
 
     // right side
-    const rightDraggable = new Draggable(rightRef.current, {
+    new Draggable(rightRef.current, {
       trigger: `#right-${referenceKey}, #topRight-${referenceKey}, #bottomRight-${referenceKey}`,
       cursor: 'e-resize',
-      onDrag: function (this) {
+      onDrag: function () {
         const diffX = this.x - rightPrevX.current
         if (checkWindowConstraints(false, diffX, true)) {
           gsap.set(containerRef.current, {
-            width: `+=${diffX}`
+            width: `+=${diffX}`,
           })
           rightPrevX.current = this.x
         }
       },
-      onPress: function (this) {
+      onPress: function () {
         rightPrevX.current = this.x
         draggableRef.current.disable()
       },
       onRelease: function () {
         draggableRef.current.enable()
-      }
+      },
     })
 
     // left side
-    const leftDraggable = new Draggable(leftRef.current, {
+    new Draggable(leftRef.current, {
       trigger: `#left-${referenceKey}, #topLeft-${referenceKey}, #bottomLeft-${referenceKey}`,
       cursor: 'w-resize',
-      onDrag: function (this) {
+      onDrag: function () {
         const diffX = this.x - leftPrevX.current
         if (checkWindowConstraints(false, diffX, false)) {
           gsap.set(containerRef.current, {
             width: `-=${diffX}`,
-            x: `+=${diffX}`
+            x: `+=${diffX}`,
           })
           leftPrevX.current = this.x
         }
       },
-      onPress: function (this) {
+      onPress: function () {
         leftPrevX.current = this.x
         draggableRef.current.disable()
       },
-      onRelease: function (this) {
+      onRelease: function () {
         draggableRef.current.enable()
-      }
+      },
     })
 
     // top side
-    const topDraggable = new Draggable(topRef.current, {
+    new Draggable(topRef.current, {
       trigger: `#top-${referenceKey}, #topRight-${referenceKey}, #topLeft-${referenceKey}`,
       cursor: 'n-resize',
-      onDrag: function (this) {
+      onDrag: function () {
         const diffY = this.y - topPrevY.current
         if (checkWindowConstraints(true, diffY, false)) {
           gsap.set(containerRef.current, {
             height: `-=${diffY}`,
-            y: `+=${diffY}`
+            y: `+=${diffY}`,
           })
           topPrevY.current = this.y
         }
       },
-      onPress: function (this) {
+      onPress: function () {
         topPrevY.current = this.y
         draggableRef.current.disable()
       },
-      onRelease: function (this) {
+      onRelease: function () {
         draggableRef.current.enable()
-      }
+      },
     })
 
-    const bottomDraggable = new Draggable(bottomRef.current, {
+    new Draggable(bottomRef.current, {
       trigger: `#bottom-${referenceKey}, #bottomRight-${referenceKey}, #bottomLeft-${referenceKey}`,
       cursor: 's-resize',
-      onDrag: function (this) {
+      onDrag: function () {
         const diffY = this.y - bottomPrevY.current
         if (checkWindowConstraints(true, diffY, true)) {
           gsap.set(containerRef.current, {
@@ -192,13 +197,13 @@ export const Window: React.FC<WindowProps> = ({
           bottomPrevY.current = this.y
         }
       },
-      onPress: function (this) {
+      onPress: function () {
         bottomPrevY.current = this.y
         draggableRef.current.disable()
       },
-      onRelease: function (this) {
+      onRelease: function () {
         draggableRef.current.enable()
-      }
+      },
     })
   }, [
     // refs
@@ -217,7 +222,7 @@ export const Window: React.FC<WindowProps> = ({
     bottomPrevY,
     // main
     referenceKey,
-    highestZIndex
+    highestZIndex,
   ])
 
   // TO ADD: on click change z index
@@ -235,7 +240,7 @@ export const Window: React.FC<WindowProps> = ({
         bounds: boundaryContainer,
         onClick: function () {
           handleFocus()
-        }
+        },
       })
       // for reference
       draggableRef.current = mainWindow
@@ -243,49 +248,62 @@ export const Window: React.FC<WindowProps> = ({
     }
   }, [containerRef, draggableRef, referenceKey, boundaryContainer])
 
-
-  return <div id={`window-main-${referenceKey}`} className={classes} ref={containerRef} onClick={() => handleFocus()}>
-    <div id={`window-header-${referenceKey}`} className={styles.header}>
-      <div className={styles.title}>
-        {windowTitle}
+  return (
+    <div
+      id={`window-main-${referenceKey}`}
+      className={classes}
+      ref={containerRef}
+      onClick={() => handleFocus()}
+    >
+      <div
+        id={`window-header-${referenceKey}`}
+        className={styles.header}
+      >
+        <div className={styles.title}>{windowTitle}</div>
+        <div className={styles.buttons}>
+          <div className={styles.button} />
+          <div className={styles.button} />
+          <div className={styles.button} />
+        </div>
       </div>
-      <div className={styles.buttons}>
-        <div className={styles.button} />
-        <div className={styles.button} />
-        <div className={styles.button} />
-      </div>
+      <div className={styles.body}>{children}</div>
+      <div className={styles.nav}></div>
+
+      {/* resiable hidden sides */}
+      <div
+        id={`top-${referenceKey}`}
+        className={classNames(styles.edge, styles.top)}
+      />
+      <div
+        id={`bottom-${referenceKey}`}
+        className={classNames(styles.edge, styles.bottom)}
+      />
+      <div
+        id={`left-${referenceKey}`}
+        className={classNames(styles.edge, styles.left)}
+      />
+      <div
+        id={`right-${referenceKey}`}
+        className={classNames(styles.edge, styles.right)}
+      />
+
+      {/* resizable hidden ones */}
+      <div
+        id={`topLeft-${referenceKey}`}
+        className={classNames(styles.box, styles.topLeft)}
+      />
+      <div
+        id={`topRight-${referenceKey}`}
+        className={classNames(styles.box, styles.topRight)}
+      />
+      <div
+        id={`bottomLeft-${referenceKey}`}
+        className={classNames(styles.box, styles.bottomLeft)}
+      />
+      <div
+        id={`bottomRight-${referenceKey}`}
+        className={classNames(styles.box, styles.bottomRight)}
+      />
     </div>
-    <div className={styles.body}>
-      {children}
-    </div>
-    <div className={styles.nav}>
-    </div>
-
-    {/* resiable hidden sides */}
-    <div id={`top-${referenceKey}`} className={classNames(styles.edge, styles.top)} />
-    <div id={`bottom-${referenceKey}`} className={classNames(styles.edge, styles.bottom)} />
-    <div id={`left-${referenceKey}`} className={classNames(styles.edge, styles.left)} />
-    <div id={`right-${referenceKey}`} className={classNames(styles.edge, styles.right)} />
-
-
-    {/* resizable hidden ones */}
-    <div
-      id={`topLeft-${referenceKey}`}
-      className={classNames(styles.box, styles.topLeft)}
-    />
-    <div
-      id={`topRight-${referenceKey}`}
-      className={classNames(styles.box, styles.topRight)}
-    />
-    <div
-      id={`bottomLeft-${referenceKey}`}
-      className={classNames(styles.box, styles.bottomLeft)}
-    />
-    <div
-      id={`bottomRight-${referenceKey}`}
-      className={classNames(styles.box, styles.bottomRight)}
-    />
-
-  </div>
-
+  )
 }

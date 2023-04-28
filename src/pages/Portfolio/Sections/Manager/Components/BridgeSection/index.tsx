@@ -11,15 +11,16 @@ interface BridgeSectionProps {
 
 export const BridgeSection: React.FC<BridgeSectionProps> = ({
   className,
-  componentKey
+  componentKey,
 }) => {
   const classes = classNames('bridge-section', styles.bridgeSection, className)
 
-  return <img
-    className={classes}
-    src={bridgeSectionSVG}
-    alt='bridgeSection'
-    key={componentKey}
-  />
-
+  return (
+    <img
+      className={classes}
+      src={bridgeSectionSVG}
+      alt='bridgeSection'
+      key={componentKey}
+    />
+  )
 }

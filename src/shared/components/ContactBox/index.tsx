@@ -9,12 +9,12 @@ interface ContactBoxProps {
 
 export const ContactBox: React.FC<ContactBoxProps> = ({
   className,
-  children
+  children,
 }) => {
   const classes = classNames('contact-box', styles.box, className)
-  return <div className={classes}>
-    <div className={styles.body}>
-      {children}
+  return (
+    <div className={classes}>
+      <div className={styles.body}>{children}</div>
     </div>
-  </div>
+  )
 }
