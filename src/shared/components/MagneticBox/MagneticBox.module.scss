@@ -1,0 +1,37 @@
+.box {
+  --min-size: 140px;
+  --size-desktop: 350px;
+  --size-mobile: 100%;
+
+  min-width: var(--min-size);
+  min-height: var(--min-size);
+  width: var(--size-desktop);
+  height: var(--size-desktop);
+  border-radius: 50%;
+
+  // background-color: var(--blue-10);
+
+  border: 2px dashed var(--grey-10);
+
+  .area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .body {
+    margin: auto 0;
+    width: var(--min-size);
+    height: var(--min-size);
+
+    background-color: var(--blue-10);
+    border-radius: 1rem;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+}

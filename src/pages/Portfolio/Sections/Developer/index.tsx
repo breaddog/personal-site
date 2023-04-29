@@ -132,14 +132,15 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     // convert to path or breaks
     MotionPathPlugin.convertToPath(DOTTED_CIRCLE_PATH)
     // vars
-    const dur = 25
+    const dur = 45
     const orbitItems = gsap.utils.toArray('.orbit-item')
     const nItems = orbitItems.length
 
-    // set orbit
-    orbitItems.forEach((item: any, idx) => {
+    // move along said orbit
+    orbitItems.forEach((item: any, idx: number) => {
       const _start = Number((idx / nItems).toFixed(2))
-      const _end = Number((idx / nItems + 1).toFixed(2))
+      // somehow the +1 makes it more stable? better to put more rotation ig
+      const _end = Number((idx / nItems + 1).toFixed(2)) + 1
 
       console.log(idx, _start, _end)
 
@@ -272,6 +273,69 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
               <div className={styles.left}>
                 <Window
                   className={classNames(styles.window, styles.window__dev)}
+                  windowTitle='Tien Powershell'
+                  windowStyle='dark'
+                  referenceKey='0'
+                  boundaryContainer='.sub-section__dev'
+                >
+                  <h3 className={classNames(styles.windowHeader, styles.bold)}>
+                    About Me
+                  </h3>
+                  <div className={styles.windowBody}>
+                    <p className={styles.text}>
+                      The name is <b className={styles.textHighlight}>Tien.</b>{' '}
+                      I'm a Web Developer that specialises in the{' '}
+                      <b className={styles.textHighlight}>"end-to-end"</b>{' '}
+                      integration and development lifecycle.
+                    </p>
+
+                    <p className={styles.text}>
+                      I seek to achieve an{' '}
+                      <b className={styles.textHighlight}>intimate</b> and{' '}
+                      <b className={styles.textHighlight}>personal</b>{' '}
+                      understanding of the overall{' '}
+                      <b className={styles.textHighlight}>vision</b> of any
+                      project, bringing the concepts and wishes of it's original
+                      design into reality.
+                    </p>
+
+                    <h3 className={styles.text}>
+                      <b>What I Bring to the Table</b>
+                    </h3>
+
+                    <p className={styles.listHeading}>Design</p>
+                    <p className={styles.text}>
+                      <ul className={styles.list}>
+                        <li>Conceptualisation</li>
+                        <li>UI/UX Specifications</li>
+                        <li>Technical Specifications</li>
+                      </ul>
+                    </p>
+
+                    <p className={styles.listHeading}>Development</p>
+                    <p className={styles.text}>
+                      <ul className={styles.list}>
+                        <li>Mockup to Web Translations</li>
+                        <li>Bespoke Component Integration</li>
+                        <li>Stylings + Animations</li>
+
+                        <li>Asset Optimisation + Hosting</li>
+                      </ul>
+                    </p>
+
+                    <p className={styles.listHeading}>Deployment</p>
+                    <p className={styles.text}>
+                      <ul className={styles.list}>
+                        <li>Prod/Dev Environments</li>
+                        <li>CI/CD</li>
+                      </ul>
+                    </p>
+                  </div>
+                </Window>
+              </div>
+              <div className={styles.right}>
+                <Window
+                  className={classNames(styles.window, styles.window__dev)}
                   windowTitle='My Development Stack'
                   windowStyle='dark'
                   referenceKey='1'
@@ -355,7 +419,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                         }
                       )}
                     </div>
-
                     <img
                       className={classNames(
                         styles.item__center,
@@ -367,65 +430,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                         setSelectedItemIndex(ORBIT_ITEMS.length - 1)
                       }
                     />
-                  </div>
-                </Window>
-              </div>
-              <div className={styles.right}>
-                <Window
-                  className={classNames(styles.window, styles.window__dev)}
-                  windowTitle='Tien Powershell'
-                  windowStyle='dark'
-                  referenceKey='0'
-                  boundaryContainer='.sub-section__dev'
-                >
-                  <h3 className={classNames(styles.windowHeader, styles.bold)}>
-                    About Me
-                  </h3>
-                  <div className={styles.windowBody}>
-                    <p className={styles.text}>
-                      The name is <b>Tien.</b> I'm a Web Developer that
-                      specialises in the <b>"end-to-end"</b> integration and
-                      development lifecycle.
-                    </p>
-
-                    <p className={styles.text}>
-                      I seek to achieve an <b>intimate</b> and <b>personal</b>{' '}
-                      understanding of the overall <b>vision</b> of any project,
-                      bringing the concepts and wishes of it's original design
-                      into reality.
-                    </p>
-
-                    <p className={styles.text}>
-                      <b>What I Bring to the Table</b>
-                    </p>
-
-                    <p className={styles.listHeading}>Design</p>
-                    <p className={styles.text}>
-                      <ul className={styles.list}>
-                        <li>Conceptualisation</li>
-                        <li>UI/UX Specifications</li>
-                        <li>Technical Specifications</li>
-                      </ul>
-                    </p>
-
-                    <p className={styles.listHeading}>Development</p>
-                    <p className={styles.text}>
-                      <ul className={styles.list}>
-                        <li>Mockup to Web Translations</li>
-                        <li>Bespoke Component Integration</li>
-                        <li>Stylings + Animations</li>
-
-                        <li>Asset Optimisation + Hosting</li>
-                      </ul>
-                    </p>
-
-                    <p className={styles.listHeading}>Deployment</p>
-                    <p className={styles.text}>
-                      <ul className={styles.list}>
-                        <li>Prod/Dev Environments</li>
-                        <li>CI/CD</li>
-                      </ul>
-                    </p>
                   </div>
                 </Window>
               </div>

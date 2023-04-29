@@ -10,9 +10,9 @@
   height: 100%;
   background: linear-gradient(
     to right bottom,
-    var(--yellow) 5%,
-    var(--yellow-light) 30%,
-    var(--grey)
+    var(--yellow) 1%,
+    var(--yellow-light) 5%,
+    var(--background-colour)
   );
   z-index: 0;
 
@@ -37,6 +37,13 @@
   position: relative;
   z-index: 1;
 
+  transition: color 0.75s ease-in-out;
+  transition-delay: 0.1s;
+
+  &.active {
+    color: var(--black);
+  }
+
   .header {
     display: flex;
     flex-direction: row;
@@ -52,6 +59,15 @@
 
     .icon {
       transition: background-color 0.5s ease-in-out;
+    }
+
+    .bulb {
+      cursor: pointer;
+      transition: scale 0.3s ease-in-out;
+
+      &:active {
+        scale: 0.85;
+      }
     }
   }
 

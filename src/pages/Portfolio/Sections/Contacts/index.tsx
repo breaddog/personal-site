@@ -3,7 +3,7 @@ import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { CircleIcon, ContactBox } from '../../../../shared/components'
+import { CircleIcon, MagneticBox } from '../../../../shared/components'
 
 import mailSVG from '../../../../assets/icons/mail.svg'
 
@@ -40,11 +40,9 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
             />
           </div>
           <div className={styles.body}>
-            <ContactBox>Test</ContactBox>
-            <ContactBox>Test</ContactBox>
-            <ContactBox>Test</ContactBox>
-            <ContactBox>Test</ContactBox>
-            <ContactBox>Test</ContactBox>
+            <MagneticBox className={styles.contactBox}>
+              <span>Test</span>
+            </MagneticBox>
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@
   --white: #ffffff;
 
   // black
-  --black: #000000;
+  --black: #282b2d;
 
   // grey
   --grey: #e3e3e3;
@@ -12,8 +12,12 @@
   --grey-30: #9b9b9e;
   --grey-40: #959595;
 
+  // light grey
+  --light-grey: #9c9c9c;
+
   // dark grey
-  --dark-grey: #9c9c9c;
+  --dark-grey: #404548;
+  --dark-grey-10: #50565a;
 
   // blue
   --blue: #bed5ff;
@@ -53,7 +57,8 @@
   --green-10: #9edb8d;
 
   // commons
-  --background-colour: var(--grey);
+  --background-colour: var(--black);
+  --border-colour: var(--grey-10);
 
   // vars
   --header-margin: 6vmin;

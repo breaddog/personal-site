@@ -4,4 +4,4 @@ export * from './ScrollIndicator/index'
 export * from './Window'
 export * from './ModalBox'
 
-export * from './ContactBox'
+export * from './MagneticBox'

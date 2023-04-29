@@ -7,6 +7,7 @@ interface CircleIconProps {
   src: string
   alt?: string
   backgroundColor?: string
+  onClick?: Function
 }
 
 export const CircleIcon: React.FC<CircleIconProps> = ({
@@ -14,6 +15,7 @@ export const CircleIcon: React.FC<CircleIconProps> = ({
   src,
   alt = '',
   backgroundColor,
+  onClick = () => {},
 }) => {
   const classes = classNames(styles.circleIcon, className)
   return (
@@ -22,6 +24,7 @@ export const CircleIcon: React.FC<CircleIconProps> = ({
       style={{
         backgroundColor: backgroundColor,
       }}
+      onClick={() => onClick()}
     >
       <img
         src={src}

@@ -24,6 +24,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
   const [iconBulbActive, setIconBulbActive] = React.useState<boolean>(false)
+  const [manualBulbActive, setManualBulbActive] = React.useState<boolean>(true)
 
   const swiperParams: SwiperProps = {
     id: 'highlights-carousel',
@@ -68,6 +69,12 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     }
   }
 
+  // respect if manual override, else follow std logic by page
+  const determineIfEffectActive = () => {
+    if (!manualBulbActive) return false
+    return iconBulbActive
+  }
+
   React.useEffect(() => {
     window.addEventListener('scroll', lightBulbScrollDetection)
     return () => {
@@ -91,10 +98,15 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
       <div
         className={classNames(
           styles.containerBg,
-          iconBulbActive && styles.active
+          determineIfEffectActive() && styles.active
         )}
       ></div>
-      <div className={styles.container}>
+      <div
+        className={classNames(
+          styles.container,
+          determineIfEffectActive() && styles.active
+        )}
+      >
         <div className={styles.header}>
           <h2
             className={classNames(
@@ -106,10 +118,15 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
             Highlights
           </h2>
           <CircleIcon
-            className={styles.icon}
+            className={classNames(styles.icon, styles.bulb)}
             src={bulbSVG}
             alt='box'
-            backgroundColor={iconBulbActive ? 'var(--yellow)' : 'var(--blue)'}
+            backgroundColor={
+              determineIfEffectActive() ? 'var(--yellow)' : 'var(--blue)'
+            }
+            onClick={() => {
+              setManualBulbActive(!manualBulbActive)
+            }}
           />
         </div>
         <div className={styles.body}>
