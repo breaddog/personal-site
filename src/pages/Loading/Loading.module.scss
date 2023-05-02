@@ -1,0 +1,153 @@
+.loading {
+  width: 100%;
+  height: 0vh !important;
+
+  transition: height 0.8s ease-in-out;
+
+  &.active {
+    height: 100vh !important;
+    display: flex;
+  }
+}
+
+.body {
+  --carousel-slide-desktop: 15vw;
+  --carousel-image-desktop: 12vw;
+  --slide-amount: 14;
+  --carousel-duration: 18s;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  .carousel {
+    margin-bottom: 4vh;
+    width: 100%;
+
+    .carouselTrack {
+      display: flex;
+      flex-direction: row;
+
+      width: calc(var(--carousel-slide-desktop) * var(--slide-amount));
+
+      animation-name: carouselDesktop;
+      animation-duration: var(--carousel-duration);
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+
+      .carouselSlide {
+        width: var(--carousel-slide-desktop);
+
+        .onigiri {
+          width: var(--carousel-image-desktop);
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    width: 35vw;
+    margin: 0 auto;
+
+    .loadingBar {
+      height: 2.25vh;
+      width: 100%;
+      position: relative;
+      margin: 1.25vh auto;
+      background-color: var(--grey);
+
+      .loader {
+        position: absolute;
+        height: 100%;
+        background-color: var(--purple);
+      }
+    }
+
+    .text {
+      font-family: 'Silkscreen';
+      font-size: 1.5vw;
+    }
+
+    .loadingDots {
+      white-space: pre-line;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .body {
+    --carousel-slide-mobile: 160px;
+    --carousel-image-mobile: 140px;
+
+    .carousel {
+      width: 100%;
+
+      .carouselTrack {
+        display: flex;
+        flex-direction: row;
+
+        width: calc(var(--carousel-slide-mobile) * var(--slide-amount));
+
+        animation-name: carouselMobile;
+
+        .carouselSlide {
+          width: var(--carousel-slide-mobile);
+
+          .onigiri {
+            width: var(--carousel-image-mobile);
+          }
+        }
+      }
+    }
+
+    .bottom {
+      width: 90%;
+
+      .loadingBar {
+        height: 2.25vh;
+        margin: 1.25vh auto;
+      }
+
+      .text {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// there are 10 onigiris
+@keyframes carouselDesktop {
+  from {
+    transform: translate3d(
+      calc(var(--carousel-slide-desktop) * calc(var(--slide-amount) / -2)),
+      0,
+      0
+    );
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes carouselMobile {
+  from {
+    transform: translate3d(
+      calc(var(--carousel-slide-mobile) * calc(var(--slide-amount) / -2)),
+      0,
+      0
+    );
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}

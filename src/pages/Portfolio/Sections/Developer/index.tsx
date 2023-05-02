@@ -142,8 +142,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       // somehow the +1 makes it more stable? better to put more rotation ig
       const _end = Number((idx / nItems + 1).toFixed(2)) + 1
 
-      console.log(idx, _start, _end)
-
       gsap
         .timeline()
         .fromTo(

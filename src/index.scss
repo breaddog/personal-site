@@ -1,5 +1,18 @@
 @use './styles/styles.scss';
 
+@font-face {
+  font-family: 'Silkscreen';
+  font-weight: normal;
+  src: url('./assets/fonts/Silkscreen/Silkscreen-Regular.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Silkscreen Bold';
+  font-weight: normal;
+  src: url('./assets/fonts/Silkscreen/Silkscreen-Bold.ttf') format('truetype');
+}
+
 * {
   padding: 0;
   margin: 0;

@@ -1,12 +1,10 @@
 {
   "*.ts": [
     "prettier --write",
-    "eslint",
     "eslint --fix"
   ],
   "*.tsx": [
     "prettier --write",
-    "eslint",
     "eslint --fix"
   ],
   "*.html": [

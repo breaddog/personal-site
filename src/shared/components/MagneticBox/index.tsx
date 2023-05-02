@@ -7,11 +7,13 @@ import gsap from 'gsap'
 interface MagneticBoxProps {
   className?: string
   children?: React.ReactNode
+  duration?: number
 }
 
 export const MagneticBox: React.FC<MagneticBoxProps> = ({
   className,
   children,
+  duration = 0.8,
 }) => {
   const classes = classNames('magnetic-box', styles.box, className)
 
@@ -30,8 +32,8 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
     gsap.to(magneticBodyRef.current, {
       x: (relX - boundingRect.width / 2) * movement,
       y: (relY - boundingRect.height / 2 - scrollTop) * movement,
-      ease: 'sine.inOut',
-      duration: 0.8,
+      ease: 'power1',
+      duration,
     })
   }
 
@@ -42,8 +44,8 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
       scale: 1,
       x: 0,
       y: 0,
-      ease: 'sine.inOut',
-      duration: 0.8,
+      ease: 'power3',
+      duration,
     })
   }
 
