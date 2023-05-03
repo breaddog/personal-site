@@ -25,3 +25,8 @@ export const disableScroll = () => {
   const _body = document.getElementsByTagName('BODY')[0] as HTMLElement
   _body.style.overflowY = 'hidden'
 }
+
+// delay always in ms
+export const delay = async (duration: number = 1000) => {
+  return await new Promise((resolve) => setTimeout(resolve, duration))
+}

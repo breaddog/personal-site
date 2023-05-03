@@ -1,6 +1,8 @@
 @import '../../../../styles/styles.scss';
 
 .container {
+  --hover-transition-time: 0.625s;
+
   display: flex;
   flex-direction: column;
 
@@ -33,21 +35,109 @@
 
     vertical-align: middle;
 
-    .left {
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       width: 45%;
-      text-align: start;
+      height: 100%;
     }
 
-    .right {
-      width: 50%;
-    }
-
-    .text {
-      margin-bottom: 2rem;
-    }
-
+    // main parent
     .contactBox {
       margin: auto 0;
+
+      // container
+      .container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        margin: auto;
+
+        .circularText {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 0%;
+          height: 0%;
+
+          margin: auto;
+          z-index: 1;
+
+          transition: width var(--hover-transition-time) ease-in-out,
+            width var(--hover-transition-time) ease-in-out;
+
+          textPath {
+            stroke: white;
+            fill: white;
+            text-transform: uppercase;
+            font-size: 1rem;
+          }
+        }
+
+        .iconBg {
+          position: relative;
+          display: flex;
+          margin: auto;
+
+          width: 60%;
+          height: 60%;
+
+          background-color: var(--blue-10);
+          border-radius: 50%;
+
+          z-index: 2;
+
+          transition: width 0.3s ease-in-out, width 0.3s ease-in-out;
+          transition-timing-function: linear;
+          transition-delay: 0.1s;
+
+          .icon {
+            width: 80%;
+            object-fit: contain;
+            margin: auto;
+          }
+        }
+      }
+
+      // for specific icons
+      &.linkedin {
+        .icon {
+          transform: scale(0.7);
+        }
+      }
+
+      &.github {
+        .icon {
+          transform: scale(0.95);
+        }
+      }
+
+      &.resume {
+        .icon {
+          transform: scale(0.95);
+        }
+      }
+
+      &:hover {
+        .circularText {
+          width: 100%;
+          height: 100%;
+        }
+
+        .iconBg {
+          width: 65%;
+          height: 65%;
+
+          .icon {
+            width: 82%;
+          }
+        }
+      }
     }
   }
 }

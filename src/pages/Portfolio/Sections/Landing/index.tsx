@@ -36,7 +36,8 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
                 <b>Tien</b> Foong
               </h1>
               <h2 className={styles.subtitle}>
-                Developing Websites for Innovative Individuals
+                {/* Developing Websites with Personality */}
+                Website Development with Individuality
               </h2>
             </div>
             <div className={styles.content}>

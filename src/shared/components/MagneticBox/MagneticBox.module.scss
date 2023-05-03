@@ -1,6 +1,6 @@
 .box {
-  --min-size: 140px;
-  --size-desktop: 350px;
+  --min-size: 220px;
+  --size-desktop: 300px;
   --size-mobile: 100%;
 
   min-width: var(--min-size);
@@ -9,9 +9,8 @@
   height: var(--size-desktop);
   border-radius: 50%;
 
-  // background-color: var(--blue-10);
-
-  border: 2px dashed var(--grey-10);
+  // debug
+  // border: 2px dashed var(--grey-10);
 
   .area {
     width: 100%;
@@ -26,7 +25,9 @@
     width: var(--min-size);
     height: var(--min-size);
 
-    background-color: var(--blue-10);
+    // debug
+    // border: 2px dashed var(--grey-10);
+
     border-radius: 1rem;
     margin: auto;
 

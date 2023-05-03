@@ -2,12 +2,14 @@ import styles from './Loading.module.scss'
 import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
+import { ScrollTrigger } from 'gsap/all'
 
 import { LOADING_TEXT } from './LoadingText'
 
 import { map } from 'lodash'
 import onigiriSVG from '../../assets/icons/onigiri.svg'
 import {
+  delay,
   disableScroll,
   enableScroll,
   getRandomInt
@@ -47,11 +49,9 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
     if (_activeState) {
       setScrollEnabled(false)
       disableScroll()
-      console.log(scrollEnabled)
     } else {
       setScrollEnabled(true)
       enableScroll()
-      console.log(scrollEnabled)
     }
   }
 
@@ -63,8 +63,11 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
   }
 
   // compelted sequence
-  const loadingCompletedSequence = () => {
+  const loadingCompletedSequence = async () => {
     setLoadingActive(false)
+    await delay(1000)
+    // very important to call this
+    ScrollTrigger.refresh()
   }
 
   // initial load
