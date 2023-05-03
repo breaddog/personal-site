@@ -6,12 +6,14 @@ import gsap from 'gsap'
 
 interface MagneticBoxProps {
   className?: string
+  innerBoxClassName?: string
   children?: React.ReactNode
   duration?: number
 }
 
 export const MagneticBox: React.FC<MagneticBoxProps> = ({
   className,
+  innerBoxClassName,
   children,
   duration = 0.8,
 }) => {
@@ -80,7 +82,11 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
         ref={magneticAreaRef}
       >
         <div
-          className={classNames('magnetic-body', styles.body)}
+          className={classNames(
+            'magnetic-body',
+            styles.body,
+            innerBoxClassName
+          )}
           ref={magneticBodyRef}
         >
           {children}
