@@ -100,14 +100,10 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
           opacity: _inverse ? 1 : 0.1,
           delay: randomValue(1, 10, false),
         })
-      // .to(el, {
-      //   opacity: (1 - opacityStart % 1),
-      //   delay: randomValue(1, 10, false),
-      // })
-      // .to(el, {
-      //   opacity: opacityStart % 1,
-      //   delay: randomValue(1, 10, false),
-      // })
+        .to(el, {
+          opacity: _inverse ? 0.1 : 1,
+          delay: randomValue(1, 10, false),
+        })
     }, `-=${duration / 2}`)
 
     // main timeline

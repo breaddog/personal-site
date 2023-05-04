@@ -1,4 +1,4 @@
-import styles from './Creativity.module.scss'
+import styles from './Journey.module.scss'
 import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
@@ -6,16 +6,17 @@ import classNames from 'classnames'
 import { CircleIcon } from '../../../../shared/components'
 
 import reactSVG from '../../../../assets/icons/react.svg'
+import { JobInfo } from './Components'
 
-interface PortfolioCreativityProps {
+interface PortfolioJourneyProps {
   className?: string
 }
 
-export const PortfolioCreativity: React.FC<PortfolioCreativityProps> = ({
+export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
   className,
 }) => {
   const classes = classNames(
-    'portfolio__creativity',
+    'portfolio__journey',
     sectionStyles['sub-section'],
     className
   )
@@ -31,7 +32,7 @@ export const PortfolioCreativity: React.FC<PortfolioCreativityProps> = ({
                 'title__sub-section'
               )}
             >
-              Design and Engagement
+              Journey So Far
             </h2>
             <CircleIcon
               className={styles.icon}
@@ -40,14 +41,15 @@ export const PortfolioCreativity: React.FC<PortfolioCreativityProps> = ({
             />
           </div>
           <div className={styles.body}>
-            <div className={styles.left}>
+            <JobInfo className={styles.jobBox} />
+            {/* <div className={styles.left}>
               <p className={styles.text}>Test</p>
               <p className={styles.text}>Test</p>
               <p className={styles.text}>Test</p>
             </div>
             <div className={styles.right}>
               <p className={styles.text}>Right</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

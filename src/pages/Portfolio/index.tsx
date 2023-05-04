@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import {
   PortfolioContacts,
-  PortfolioCreativity,
+  PortfolioJourney,
   PortfolioDeveloper,
   PortfolioHighlights,
   PortfolioLanding,
@@ -26,7 +26,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
         <PortfolioLanding />
         <PortfolioDeveloper />
         <PortfolioManager />
-        <PortfolioCreativity />
+        <PortfolioJourney />
         <PortfolioHighlights />
         <PortfolioContacts />
       </div>

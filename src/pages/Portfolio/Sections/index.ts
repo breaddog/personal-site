@@ -1,6 +1,6 @@
 export * from './Landing/index'
 export * from './Developer/index'
 export * from './Manager/index'
-export * from './Creativity/index'
+export * from './Journey/index'
 export * from './Highlights/index'
 export * from './Contacts/index'

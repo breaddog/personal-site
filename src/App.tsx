@@ -32,7 +32,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       <div className={classes}>
         {/* all the import components will go here */}
         <CSSHeader />
-        {/* <LoadingSection /> */}
+        <LoadingSection />
         <Portfolio />
       </div>
     </AppContext.Provider>

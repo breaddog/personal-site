@@ -29,6 +29,12 @@
     flex-direction: row;
     justify-content: space-between;
 
+    .subheading {
+      width: 90%;
+
+      font-size: var(--font-h3);
+    }
+
     .left {
       width: 45%;
       text-align: start;

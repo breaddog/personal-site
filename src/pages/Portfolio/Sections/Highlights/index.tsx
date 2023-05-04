@@ -53,21 +53,21 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     },
   }
 
-  // light bulb
-  const lightBulbScrollDetection = async () => {
-    if (!highlightsRef.current?.offsetTop) return
-    const _targetBoundary =
-      highlightsRef.current?.offsetTop - highlightsRef.current?.offsetTop * 0.05
-    const _boundaryHit = await detectScrollBoundary(_targetBoundary)
+  // // light bulb
+  // const lightBulbScrollDetection = async () => {
+  //   if (!highlightsRef.current?.offsetTop) return
+  //   const _targetBoundary =
+  //     highlightsRef.current?.offsetTop - highlightsRef.current?.offsetTop * 0.05
+  //   const _boundaryHit = await detectScrollBoundary(_targetBoundary)
 
-    if (_boundaryHit && !iconBulbActive) {
-      setIconBulbActive(true)
-    }
+  //   if (_boundaryHit && !iconBulbActive) {
+  //     setIconBulbActive(true)
+  //   }
 
-    if (!_boundaryHit && iconBulbActive) {
-      setIconBulbActive(false)
-    }
-  }
+  //   if (!_boundaryHit && iconBulbActive) {
+  //     setIconBulbActive(false)
+  //   }
+  // }
 
   // respect if manual override, else follow std logic by page
   const determineIfEffectActive = () => {
@@ -75,12 +75,12 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     return iconBulbActive
   }
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', lightBulbScrollDetection)
-    return () => {
-      window.removeEventListener('scroll', lightBulbScrollDetection)
-    }
-  }, [highlightsRef, iconBulbActive])
+  // React.useEffect(() => {
+  //   window.addEventListener('scroll', lightBulbScrollDetection)
+  //   return () => {
+  //     window.removeEventListener('scroll', lightBulbScrollDetection)
+  //   }
+  // }, [highlightsRef, iconBulbActive])
 
   const classes = classNames(
     'portfolio__highlights',
