@@ -5,6 +5,8 @@ import classNames from 'classnames'
 
 import { EXTERNAL_LINKS } from '../../../../shared/links'
 
+import { ScrollTrigger } from 'gsap/all'
+
 import {
   CircleIcon,
   CircularText,

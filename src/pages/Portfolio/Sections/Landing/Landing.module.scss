@@ -56,6 +56,10 @@
           background-color: var(--blue-10);
         }
 
+        &:nth-child(5) {
+          background-color: var(--purple-20);
+        }
+
         &:nth-last-child(1) {
           margin-right: 0;
         }

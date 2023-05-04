@@ -57,84 +57,86 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-      }
 
-      // container
-      .container {
-        display: flex;
         position: relative;
-        width: 100%;
-        height: 100%;
 
-        margin: auto;
-
-        .circularText {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          width: 0%;
-          height: 0%;
-
-          margin: auto;
-          z-index: 1;
-
-          transition: width var(--hover-transition-time) ease-in-out,
-            width var(--hover-transition-time) ease-in-out;
-
-          textPath {
-            stroke: white;
-            fill: white;
-            text-transform: uppercase;
-            font-size: 1rem;
-          }
-        }
-
-        .iconBg {
-          position: relative;
+        // container
+        .container {
           display: flex;
+          position: relative;
+          width: 100%;
+          height: 100%;
+
           margin: auto;
 
-          width: 60%;
-          height: 60%;
+          .circularText {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 0%;
+            height: 0%;
 
-          background-color: var(--blue-10);
-          border-radius: 50%;
-
-          z-index: 2;
-
-          transition: width 0.3s ease-in-out, width 0.3s ease-in-out;
-          transition-timing-function: linear;
-          transition-delay: 0.1s;
-
-          .icon {
-            width: 80%;
-            object-fit: contain;
             margin: auto;
+            z-index: 1;
+
+            transition: width var(--hover-transition-time) ease-in-out,
+              width var(--hover-transition-time) ease-in-out;
+
+            textPath {
+              stroke: white;
+              fill: white;
+              text-transform: uppercase;
+              font-size: 1rem;
+            }
+          }
+
+          .iconBg {
+            position: relative;
+            display: flex;
+            margin: auto;
+
+            width: 60%;
+            height: 60%;
+
+            background-color: var(--blue-10);
+            border-radius: 50%;
+
+            z-index: 2;
+
+            transition: width 0.3s ease-in-out, width 0.3s ease-in-out;
+            transition-timing-function: linear;
+            transition-delay: 0.1s;
+
+            .icon {
+              width: 80%;
+              object-fit: contain;
+              margin: auto;
+            }
           }
         }
-      }
 
-      // text information
-      .info {
-        position: absolute;
-        bottom: -50%;
-        font-size: var(--font-h4);
-        text-transform: uppercase;
-        font-weight: bold;
-        text-align: center;
-
-        // initial hidden
-        opacity: 0;
-
-        transition: opacity var(--hover-transition-time) ease-in-out;
-
-        span {
-          text-transform: lowercase;
-          // font-family: 'Silkscreen';
+        // text information
+        .info {
+          position: absolute;
+          bottom: -50%;
+          font-size: var(--font-h4);
+          text-transform: uppercase;
           font-weight: bold;
-          font-size: var(--font-p);
+          text-align: center;
+
+          // initial hidden
+          opacity: 0;
+
+          transition: opacity var(--hover-transition-time) ease-in-out;
+
+          span {
+            text-transform: lowercase;
+            // font-family: 'Silkscreen';
+            font-weight: bold;
+            font-size: var(--font-p);
+          }
         }
       }
 

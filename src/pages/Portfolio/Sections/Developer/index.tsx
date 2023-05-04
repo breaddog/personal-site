@@ -93,7 +93,7 @@ const ORBIT_ITEMS: {
   {
     src: githubSVG,
     alt: 'git/github',
-    type: 'repository',
+    type: 'source ctrl',
   },
   {
     src: userSVG,
@@ -378,6 +378,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                           className={styles.orbitItemHighlight__img}
                           src={ORBIT_ITEMS[selectedItemIndex].src}
                           alt={ORBIT_ITEMS[selectedItemIndex].alt || ''}
+                          style={{
+                            filter:
+                              'tien' === ORBIT_ITEMS[selectedItemIndex].alt
+                                ? 'brightness(0.2)'
+                                : 'initial',
+                          }}
                         />
                       </div>
                     )}
@@ -418,10 +424,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                       )}
                     </div>
                     <img
-                      className={classNames(
-                        styles.item__center,
-                        'orbit-center'
-                      )}
+                      className={classNames(styles.itemCenter, 'orbit-center')}
                       src={userSVG}
                       alt='user'
                       onClick={() =>

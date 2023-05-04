@@ -7,6 +7,7 @@ import boxSVG from '../../../../assets/icons/box.svg'
 import laptopSVG from '../../../../assets/icons/laptop.svg'
 import reactSVG from '../../../../assets/icons/react.svg'
 import bulbSVG from '../../../../assets/icons/bulb.svg'
+import mailSVG from '../../../../assets/icons/mail.svg'
 
 import { CircleIcon } from '../../../../shared/components'
 
@@ -37,7 +38,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
               </h1>
               <h2 className={styles.subtitle}>
                 {/* Developing Websites with Personality */}
-                Website Development with Individuality
+                Web Development with Individuality in Mind
               </h2>
             </div>
             <div className={styles.content}>
@@ -59,7 +60,12 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
               <CircleIcon
                 className={styles.icon}
                 src={bulbSVG}
-                alt='react'
+                alt='bulb'
+              />
+              <CircleIcon
+                className={styles.icon}
+                src={mailSVG}
+                alt='mail'
               />
             </div>
           </div>
