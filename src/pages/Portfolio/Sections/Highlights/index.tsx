@@ -30,7 +30,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     id: 'highlights-carousel',
     className: styles.carousel,
     modules: [Pagination, Navigation, EffectCoverflow, Keyboard],
-    initialSlide: 0,
+    initialSlide: 2,
     centeredSlides: true,
     slidesPerView: 2.5,
     autoplay: true,

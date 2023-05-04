@@ -160,22 +160,24 @@
       }
 
       &:hover {
-        .circularText {
-          width: 100%;
-          height: 100%;
-        }
-
-        .iconBg {
-          width: 65%;
-          height: 65%;
-
-          .icon {
-            width: 82%;
+        .contactBoxBody {
+          .circularText {
+            width: 100%;
+            height: 100%;
           }
-        }
 
-        .info {
-          opacity: 1;
+          .iconBg {
+            width: 65%;
+            height: 65%;
+
+            .icon {
+              width: 82%;
+            }
+          }
+
+          .info {
+            opacity: 1;
+          }
         }
       }
     }
