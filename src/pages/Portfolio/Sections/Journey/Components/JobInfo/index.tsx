@@ -2,100 +2,87 @@ import styles from './JobInfo.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import jsSVG from '../../../../../../assets/logos/js.svg'
+import { map } from 'lodash'
+
+import {
+  JobPosition,
+  JobPositionData
+} from '../../../../../../shared/interfaces'
 
 interface JobInfoProps {
   className?: string
+  key?: string | number
+  jobData?: JobPosition
 }
 
 export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
   className,
+  key,
+  jobData,
 }) => {
   const classes = classNames(styles.box, className)
 
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      key={key}
+    >
       <div className={styles.left}>
-        <div className={styles.name}>Company Enterprises Pty Ltd</div>
+        <div className={styles.nameContainer}>
+          <h4 className={styles.name}>{jobData?.title}</h4>
+          <h4 className={styles.date}>
+            {jobData?.start} - {jobData?.end}
+          </h4>
+        </div>
 
         <div className={styles.logo}>
           <img
-            src={jsSVG}
-            alt='company logo'
+            src={jobData?.logo}
+            alt={jobData?.logoAlt}
           />
         </div>
       </div>
       <div className={styles.right}>
-        <div
-          className={classNames(
-            styles.section,
-            styles.duration,
-            styles.opacityCustom
-          )}
-        >
-          <div className={styles.title}>Duration</div>
-          <div className={styles.content}>
-            <span className={styles.info}>10th May 2023</span>
-            <span className={styles.info}>-</span>
-            <span className={styles.info}>10th May 2023</span>
-          </div>
-        </div>
-        <div
-          className={classNames(
-            styles.section,
-            styles.roles,
-            styles.opacityCustom
-          )}
-        >
-          <div className={styles.title}>Roles</div>
-          <div className={styles.content}>
-            <span className={styles.info}>Role 1</span>
-            <span className={styles.info}>Role 1</span>
-            <span className={styles.info}>Role 1</span>
-          </div>
-        </div>
-        <div
-          className={classNames(
-            styles.section,
-            styles.responsibilities,
-            styles.opacityCustom
-          )}
-        >
-          <div className={styles.title}>Responsibilities</div>
-          <div className={styles.content}>
-            <span className={styles.info}>Did Part X</span>
-            <span className={styles.info}>Helped Part Y</span>
-            <span className={styles.info}>Something Simple</span>
-          </div>
-        </div>
-        <div
-          className={classNames(
-            styles.section,
-            styles.moreInfo,
-            styles.opacityCustom
-          )}
-        >
-          <div className={styles.title}>More Info</div>
-          <div className={styles.content}>
-            <span className={styles.info}>
-              Lorem ipsum dolor sit amet,
-              <br />
-              consectetur adipiscing elit,
-              <br />
-              sed do eiusmod tempor incididunt
-              <br />
-              ut labore et dolore magna
-              <br />
-              aliqua. Ut enim ad minim veniam,
-              <br />
-              quis nostrud exercitation
-              <br />
-              ullamco laboris nisi ut aliquip
-              <br />
-              ex ea commodo consequat.
-            </span>
-          </div>
-        </div>
+        {map(
+          jobData?.sections,
+          (data: JobPositionData, idx: number | string) => (
+            <div
+              className={classNames(
+                styles.section,
+                styles.duration,
+                styles.opacityCustom
+              )}
+              key={idx}
+            >
+              <div className={styles.title}>{data.title}</div>
+              <div className={classNames(styles.content, jobData?.className)}>
+                {map(
+                  data?.info,
+                  (
+                    line: string | React.ReactFragment,
+                    _idx: number | string
+                  ) => {
+                    return (
+                      <>
+                        <span
+                          className={classNames(
+                            styles.info,
+                            data?.isText && styles.infoText,
+                            data?.className && styles[data?.className]
+                          )}
+                          key={_idx}
+                        >
+                          {line}
+                          {Number(_idx) < data?.info.length - 1 && <br />}
+                        </span>
+                      </>
+                    )
+                  }
+                )}
+              </div>
+            </div>
+          )
+        )}
       </div>
     </div>
   )

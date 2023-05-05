@@ -44,7 +44,7 @@ export const CircularText: React.FunctionComponent<CircularTextProps> = ({
         </defs>
         <text
           className={styles.text}
-          font-size={fontSize}
+          fontSize={fontSize}
         >
           <textPath xlinkHref='#circularTextCircle'>{text}</textPath>
         </text>

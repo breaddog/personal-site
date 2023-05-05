@@ -3,10 +3,12 @@ import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
+import { JobInfo } from './Components'
 import { CircleIcon } from '../../../../shared/components'
 
 import reactSVG from '../../../../assets/icons/react.svg'
-import { JobInfo } from './Components'
+
+import { JOB_POSITIONS } from '../../../../data/jobs'
 
 interface PortfolioJourneyProps {
   className?: string
@@ -41,15 +43,10 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
             />
           </div>
           <div className={styles.body}>
-            <JobInfo className={styles.jobBox} />
-            {/* <div className={styles.left}>
-              <p className={styles.text}>Test</p>
-              <p className={styles.text}>Test</p>
-              <p className={styles.text}>Test</p>
-            </div>
-            <div className={styles.right}>
-              <p className={styles.text}>Right</p>
-            </div> */}
+            <JobInfo
+              className={styles.jobBox}
+              jobData={JOB_POSITIONS[0]}
+            />
           </div>
         </div>
       </section>

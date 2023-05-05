@@ -14,7 +14,7 @@ import { BridgeSection, Cloud } from './Components'
 import boxSVG from '../../../../assets/icons/box.svg'
 
 // bridge
-import redCarSVG from '../../../../assets/misc/red-car.svg'
+import carSVG from '../../../../assets/misc/car.svg'
 
 interface PortfolioManagerProps {
   className?: string
@@ -297,7 +297,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
               <img
                 className={styles.car}
                 ref={carRef}
-                src={redCarSVG}
+                src={carSVG}
                 alt='car'
               />
               <div

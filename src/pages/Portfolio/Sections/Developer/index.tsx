@@ -117,15 +117,18 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     className
   )
   const devSectionRef = React.useRef<HTMLDivElement | null>(null)
+  const orbitContainerRef = React.useRef<HTMLDivElement | null>(null)
+  const orbitTimelinesRef = React.useRef<gsap.core.Timeline[] | null>(null)
 
   const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
   // if animation init
   const [animationInit, setAnimationInit] = React.useState<boolean>(false)
   // z-index tracker
   const [highestZIndex, setHighestZIndex] = React.useState<number>(0)
-
   // current highlighted stack component
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(-1)
+  // orbit
+  const [orbitPaused, setOrbitPaused] = React.useState<boolean>(false)
 
   // start orbit
   const initiateItemOrbit = () => {
@@ -137,13 +140,17 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     const nItems = orbitItems.length
 
     // move along said orbit
+    const _orbitTimelines: gsap.core.Timeline[] = []
+
     orbitItems.forEach((item: any, idx: number) => {
       const _start = Number((idx / nItems).toFixed(2))
       // somehow the +1 makes it more stable? better to put more rotation ig
       const _end = Number((idx / nItems + 1).toFixed(2)) + 1
 
-      gsap
-        .timeline()
+      let _timeline = gsap
+        .timeline({
+          paused: orbitPaused,
+        })
         .fromTo(
           item,
           {
@@ -171,7 +178,10 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
           },
           '-=0.5'
         )
+      _orbitTimelines.push(_timeline)
     })
+
+    orbitTimelinesRef.current = _orbitTimelines
   }
 
   // orbit timeline
@@ -194,12 +204,26 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
           duration: 3,
           opacity: 1,
           ease: 'expo.inOut',
-          // onComplete: () => {
-          //   initiateItemOrbit()
-          // }
         },
         '-=1'
       )
+  }
+
+  // pause and play timelines
+  const pauseOrbit = () => {
+    if (orbitTimelinesRef.current) {
+      for (const _timeline of orbitTimelinesRef.current) {
+        _timeline.pause()
+      }
+    }
+  }
+
+  const playOrbit = () => {
+    if (orbitTimelinesRef.current) {
+      for (const _timeline of orbitTimelinesRef.current) {
+        _timeline.play()
+      }
+    }
   }
 
   // orbit mechanics
@@ -207,13 +231,21 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     let ctx = gsap.context(() => {
       // register
       gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
-      // orbit timeline
-      if (animationInit) {
+      // orbit timeline activate only if first scroll has been detected
+      if (animationInit && orbitContainerRef.current) {
         orbitTimeline()
+        orbitContainerRef.current.addEventListener('mouseenter', pauseOrbit)
+        orbitContainerRef.current.addEventListener('mouseleave', playOrbit)
       }
     })
-    return () => ctx.revert()
-  }, [animationInit])
+    return () => {
+      ctx.revert()
+      if (orbitContainerRef.current) {
+        orbitContainerRef.current.removeEventListener('mouseenter', pauseOrbit)
+        orbitContainerRef.current.removeEventListener('mouseleave', playOrbit)
+      }
+    }
+  }, [animationInit, orbitPaused, orbitContainerRef, orbitTimelinesRef])
 
   // detect when animation should start
   const sectionTriggerDetection = async () => {
@@ -392,6 +424,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                   <div
                     id='orbit-container'
                     className={styles.orbitContainer}
+                    ref={orbitContainerRef}
                   >
                     <div
                       id='orbit-items-container'
