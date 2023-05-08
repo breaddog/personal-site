@@ -3,12 +3,15 @@ import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
+import { map } from 'lodash'
+
 import { JobInfo } from './Components'
 import { CircleIcon } from '../../../../shared/components'
 
 import reactSVG from '../../../../assets/icons/react.svg'
 
 import { JOB_POSITIONS } from '../../../../data/jobs'
+import { JobPosition } from '../../../../shared/interfaces'
 
 interface PortfolioJourneyProps {
   className?: string
@@ -43,10 +46,15 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
             />
           </div>
           <div className={styles.body}>
-            <JobInfo
-              className={styles.jobBox}
-              jobData={JOB_POSITIONS[0]}
-            />
+            {map(JOB_POSITIONS, (job: JobPosition, idx: number) => {
+              return (
+                <JobInfo
+                  className={styles.jobBox}
+                  jobData={job}
+                  key={idx}
+                />
+              )
+            })}
           </div>
         </div>
       </section>

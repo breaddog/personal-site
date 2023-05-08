@@ -1,6 +1,7 @@
 import styles from './JobInfo.module.scss'
 import React from 'react'
 import classNames from 'classnames'
+import gsap from 'gsap'
 
 import { map } from 'lodash'
 
@@ -22,14 +23,84 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
 }) => {
   const classes = classNames(styles.box, className)
 
+  const [gradientActive, setGradientActive] = React.useState<boolean>(false)
+  // default is 300
+  const [gradientDiameter, setGradientDiameter] = React.useState<number>(300)
+  const boxRef = React.useRef<HTMLDivElement | null>(null)
+  const gradientRef = React.useRef<HTMLDivElement | null>(null)
+
+  // GRADIENT FOLLOW
+  // TO DO: change gradient as cursor moves through
+  // OR: gradient changes as you scroll through
+  // const gradient active
+  const gradientFollowCursor = (e: MouseEvent) => {
+    if (!boxRef.current || !gradientRef.current) return
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const boundingRect = boxRef.current.getBoundingClientRect()
+    const halfDiff = Math.abs(boundingRect.width - boundingRect.height) / 2
+    const relX = e.pageX - boundingRect.left + halfDiff
+    const relY = e.pageY - boundingRect.top
+    setGradientActive(true)
+
+    gsap.to(gradientRef.current, {
+      x: relX - boundingRect.width / 2,
+      y: relY - boundingRect.height / 2 - scrollTop,
+      ease: 'power1',
+      duration: 0.8,
+    })
+  }
+
+  // const gradient inactive
+  const gradientReset = () => {
+    setGradientActive(false)
+  }
+
+  // set gradient diameter
+  const setGradientDiameterOnResize = () => {
+    if (boxRef.current) {
+      setGradientDiameter(boxRef.current.getBoundingClientRect().height)
+    }
+  }
+
+  React.useEffect(() => {
+    if (boxRef.current) {
+      boxRef.current.addEventListener('mousemove', gradientFollowCursor)
+      boxRef.current.addEventListener('mouseleave', gradientReset)
+      // always follow height for accuracy
+    }
+
+    window.addEventListener('resize', setGradientDiameterOnResize)
+
+    return () => {
+      if (boxRef.current) {
+        boxRef.current.removeEventListener('mousemove', gradientFollowCursor)
+        boxRef.current.removeEventListener('mouseleave', gradientReset)
+      }
+      window.removeEventListener('resize', setGradientDiameterOnResize)
+    }
+  }, [gradientActive, gradientRef, boxRef])
+
   return (
     <div
       className={classes}
       key={key}
+      ref={boxRef}
     >
+      <div
+        className={classNames(
+          styles.gradientHover,
+          gradientActive && styles.active
+        )}
+        ref={gradientRef}
+        style={{
+          width: `${gradientDiameter}px`,
+          height: `${gradientDiameter}px`,
+        }}
+      ></div>
       <div className={styles.left}>
         <div className={styles.nameContainer}>
-          <h4 className={styles.name}>{jobData?.title}</h4>
+          <h4 className={styles.name}>{jobData?.company}</h4>
+          <h4 className={styles.title}>{jobData?.title}</h4>
           <h4 className={styles.date}>
             {jobData?.start} - {jobData?.end}
           </h4>
@@ -67,7 +138,7 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
                         <span
                           className={classNames(
                             styles.info,
-                            data?.isText && styles.infoText,
+                            data?.isText ? styles.infoText : 'bullet-point',
                             data?.className && styles[data?.className]
                           )}
                           key={_idx}

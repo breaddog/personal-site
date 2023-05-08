@@ -56,3 +56,12 @@ p {
     cursor: pointer;
   }
 }
+
+.bullet-point {
+  position: relative;
+  // margin-right: 0.3rem;
+  &:before {
+    content: '>';
+    margin-right: 0.3rem;
+  }
+}

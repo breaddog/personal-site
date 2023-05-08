@@ -9,6 +9,7 @@ export interface JobPositionData {
 }
 
 export interface JobPosition {
+  company: string
   title: string
   logo: string
   logoAlt: string

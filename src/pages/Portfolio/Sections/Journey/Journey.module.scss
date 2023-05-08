@@ -26,8 +26,7 @@
     margin-top: 5vmin;
 
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 
     .subheading {
       width: 90%;
@@ -35,16 +34,11 @@
       font-size: var(--font-h3);
     }
 
-    .left {
-      width: 45%;
-      text-align: start;
-    }
-
-    .right {
-      width: 50%;
-    }
-
     .text {
+      margin-bottom: 2rem;
+    }
+
+    .jobBox {
       margin-bottom: 2rem;
     }
   }

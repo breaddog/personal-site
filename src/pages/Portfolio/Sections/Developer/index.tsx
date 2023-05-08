@@ -127,15 +127,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   const [highestZIndex, setHighestZIndex] = React.useState<number>(0)
   // current highlighted stack component
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(-1)
-  // orbit
-  const [orbitPaused, setOrbitPaused] = React.useState<boolean>(false)
 
   // start orbit
   const initiateItemOrbit = () => {
     // convert to path or breaks
     MotionPathPlugin.convertToPath(DOTTED_CIRCLE_PATH)
     // vars
-    const dur = 45
     const orbitItems = gsap.utils.toArray('.orbit-item')
     const nItems = orbitItems.length
 
@@ -148,9 +145,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       const _end = Number((idx / nItems + 1).toFixed(2)) + 1
 
       let _timeline = gsap
-        .timeline({
-          paused: orbitPaused,
-        })
+        .timeline()
         .fromTo(
           item,
           {
@@ -173,7 +168,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
               end: _end,
             },
             ease: 'none',
-            duration: dur,
+            duration: 45,
             repeat: -1,
           },
           '-=0.5'
@@ -209,19 +204,19 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       )
   }
 
-  // pause and play timelines
-  const pauseOrbit = () => {
+  // alternative slow orbit
+  const slowOrbit = () => {
     if (orbitTimelinesRef.current) {
       for (const _timeline of orbitTimelinesRef.current) {
-        _timeline.pause()
+        _timeline.timeScale(0.4)
       }
     }
   }
 
-  const playOrbit = () => {
+  const resumeOrbit = () => {
     if (orbitTimelinesRef.current) {
       for (const _timeline of orbitTimelinesRef.current) {
-        _timeline.play()
+        _timeline.timeScale(1)
       }
     }
   }
@@ -231,21 +226,22 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     let ctx = gsap.context(() => {
       // register
       gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
-      // orbit timeline activate only if first scroll has been detected
+      // orbit timeline initaite
       if (animationInit && orbitContainerRef.current) {
         orbitTimeline()
-        orbitContainerRef.current.addEventListener('mouseenter', pauseOrbit)
-        orbitContainerRef.current.addEventListener('mouseleave', playOrbit)
+        // on hover need to slow to allow user to interact
+        orbitContainerRef.current.addEventListener('mouseenter', slowOrbit)
+        orbitContainerRef.current.addEventListener('mouseleave', resumeOrbit)
       }
     })
     return () => {
       ctx.revert()
       if (orbitContainerRef.current) {
-        orbitContainerRef.current.removeEventListener('mouseenter', pauseOrbit)
-        orbitContainerRef.current.removeEventListener('mouseleave', playOrbit)
+        orbitContainerRef.current.removeEventListener('mouseenter', slowOrbit)
+        orbitContainerRef.current.removeEventListener('mouseleave', resumeOrbit)
       }
     }
-  }, [animationInit, orbitPaused, orbitContainerRef, orbitTimelinesRef])
+  }, [animationInit, orbitContainerRef, orbitTimelinesRef])
 
   // detect when animation should start
   const sectionTriggerDetection = async () => {
