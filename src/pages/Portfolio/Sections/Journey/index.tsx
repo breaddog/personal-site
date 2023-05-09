@@ -23,6 +23,7 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
   const classes = classNames(
     'portfolio__journey',
     sectionStyles['sub-section'],
+    styles.journey,
     className
   )
   return (

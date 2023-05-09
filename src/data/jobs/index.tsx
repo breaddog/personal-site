@@ -1,6 +1,7 @@
 import { JobPosition } from '../../shared/interfaces'
 
 import unimelbSVG from '../../assets/logos/unimelb.svg'
+import onigiriSVG from '../../assets/icons/onigiri.svg'
 
 export const JOB_POSITIONS: JobPosition[] = [
   {
@@ -24,6 +25,8 @@ export const JOB_POSITIONS: JobPosition[] = [
           'Algorithms and Data Structures',
           'Object Oriented Programming',
           'Source Control (Git/Github)',
+          'JavaScript, HTML, CSS',
+          'Python, C, Haskell',
           'Japanese Language Studies',
         ],
       },
@@ -39,6 +42,10 @@ export const JOB_POSITIONS: JobPosition[] = [
             Sparked my interest in UI/ UX and aiming to be engagive in designing
             and developing bespoke websites tailored towards a given client's
             needs.
+            <br />
+            <br />
+            Also took 5 semesters of Japanese Language Studies based on my
+            interest in Japanese culture and anime.
           </>,
         ],
         isText: true,
@@ -90,9 +97,9 @@ export const JOB_POSITIONS: JobPosition[] = [
             development progress with an international based team.
             <br />
             <br />
-            Engaged with clients to help understand and plan development
-            specifications for web, server, blockchain and deployment
-            requirements based on their schedule.
+            Engaged with clients all over the world to help understand and plan
+            development specifications for web, server, blockchain and
+            deployment requirements based on their schedule.
             <br />
             <br />
             Flexibly switched between a project management, planning and
@@ -107,6 +114,57 @@ export const JOB_POSITIONS: JobPosition[] = [
             <br />
             Developed custom scripts to automate various processes from
             deployment, asset generating and blockchain querying.
+          </>,
+        ],
+        isText: true,
+      },
+    ],
+  },
+  {
+    company: 'Freelance Tutoring',
+    title: 'Programming & Coding Tutor',
+    logo: onigiriSVG,
+    logoAlt: 'onigiri',
+    start: 'February 2023',
+    end: 'Present',
+    sections: [
+      {
+        title: 'Teaching Scope',
+        info: [
+          'Basic Coding Principles',
+          'Simple Web Development',
+          'Programming Logic',
+          'Programmatic Thinking',
+          'Language and Syntax',
+          'Translating Logic to Code',
+          'HTML, CSS, JavaScript, Python',
+        ],
+      },
+      {
+        title: 'Objectives',
+        info: [
+          'Aim to teach beginners basic coding principles (e.g. Loops, Site Building...)',
+          'Strive for students to learn to think programatically',
+          'Teach students how to use basic HTML and CSS to build and style a simple website',
+          'Provide unique and personalised examples to assist and further a students understanding',
+        ],
+      },
+      {
+        title: 'More Info',
+        info: [
+          <>
+            Took up opportunity to assist people in their efforts to make a
+            start/learn how to code.
+            <br />
+            <br />
+            Mostly word of mouth and between friends and relatives, empowered
+            students to perform active thinking and assisted them towards
+            understanding solutions and principles.
+            <br />
+            <br />
+            All sessions are workshop styled, with custom tailored examples
+            provided to further understanding in a correct and unique way suited
+            to the students learning style.
           </>,
         ],
         isText: true,

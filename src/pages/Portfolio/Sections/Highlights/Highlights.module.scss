@@ -26,6 +26,8 @@
 }
 
 .container {
+  --border-raidus: 1rem;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -101,9 +103,16 @@
           flex-direction: column;
           justify-content: space-between;
 
+          margin: 0 auto;
+
+          border-radius: var(--border-raidus);
           box-shadow: var(--box-shadow);
 
-          margin: 0 auto;
+          background: linear-gradient(
+            to bottom,
+            var(--dark-grey-10) 40%,
+            var(--background-colour)
+          );
 
           // &:hover {
           //   width: 900px;
@@ -116,15 +125,19 @@
           width: 40%;
           min-width: 240px;
           padding: 1rem;
-          background-color: var(--grey-30);
+
+          color: var(--black);
+          background-color: var(--purple-10);
+
           margin-left: 0;
           margin-right: auto;
 
           font-size: var(--font-h4);
-
           text-align: left;
-
           box-shadow: var(--box-shadow);
+
+          border-top-left-radius: var(--border-raidus);
+          border-bottom-right-radius: var(--border-raidus);
         }
 
         &__footer {
@@ -132,11 +145,16 @@
           width: 40%;
           min-width: 240px;
           padding: 1rem;
-          background-color: var(--grey-30);
+          color: var(--black);
+          background-color: var(--purple-10);
+
           margin-left: auto;
           margin-right: 0;
 
-          box-shadow: -3px -3px 10px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+
+          border-bottom-right-radius: var(--border-raidus);
+          border-top-left-radius: var(--border-raidus);
         }
 
         &__active {

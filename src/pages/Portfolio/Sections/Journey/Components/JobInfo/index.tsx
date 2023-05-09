@@ -64,6 +64,8 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
 
   React.useEffect(() => {
     if (boxRef.current) {
+      // initialise
+      setGradientDiameterOnResize()
       boxRef.current.addEventListener('mousemove', gradientFollowCursor)
       boxRef.current.addEventListener('mouseleave', gradientReset)
       // always follow height for accuracy

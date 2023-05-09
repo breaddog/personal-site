@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { Pagination, Navigation, EffectCoverflow, Keyboard } from 'swiper'
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
-import { detectScrollBoundary } from '../../../../shared/functions/functions'
+import { ScrollTrigger } from 'gsap/all'
 import { CircleIcon } from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
@@ -82,6 +82,13 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   //   }
   // }, [highlightsRef, iconBulbActive])
 
+  React.useEffect(() => {
+    window.addEventListener('load', () => ScrollTrigger.refresh())
+    return () => {
+      window.removeEventListener('load', () => ScrollTrigger.refresh())
+    }
+  }, [])
+
   const classes = classNames(
     'portfolio__highlights',
     sectionStyles['sub-section'],
@@ -146,7 +153,8 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
                     style={{
                       backgroundImage: `url("${project.asset}")`,
                       backgroundSize: 'cover',
-                      backgroundPosition: 'center',
+                      backgroundPosition: 'center center',
+                      backgroundRepeat: 'no-repeat',
                     }}
                   >
                     <div
