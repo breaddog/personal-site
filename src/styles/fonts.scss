@@ -26,6 +26,7 @@ h3 {
 
 p {
   font-size: var(--font-p);
+  line-height: calc(var(--font-p) * 1.5);
 }
 
 .title {

@@ -7,12 +7,17 @@ import classNames from 'classnames'
 import { Pagination, Navigation, EffectCoverflow, Keyboard } from 'swiper'
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
+import { map } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
 import { CircleIcon } from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
-import { PROJECTS, ProjectProps } from '../../../../data/projects'
+import {
+  PROJECTS,
+  ProjectObject,
+  ProjectProps
+} from '../../../../data/projects'
 
 interface PortfolioHighlightsProps {
   className?: string
@@ -142,45 +147,49 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
             look!
           </div>
           <Swiper {...swiperParams}>
-            {PROJECTS.map((project: ProjectProps, idx: number | string) => {
-              return (
-                <SwiperSlide key={idx}>
-                  <div
-                    className={classNames(
-                      styles.frame__body,
-                      'highlight-frame'
-                    )}
-                    style={{
-                      backgroundImage: `url("${project.asset}")`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center center',
-                      backgroundRepeat: 'no-repeat',
-                    }}
-                  >
+            {map(
+              PROJECTS,
+              (projectParent: ProjectObject, idx: number | string) => {
+                const project = projectParent.project as any
+                return (
+                  <SwiperSlide key={idx}>
                     <div
                       className={classNames(
-                        styles.frame__header,
-                        styles.uppercase,
-                        styles.bold
+                        styles.frame__body,
+                        'highlight-frame'
                       )}
+                      style={{
+                        backgroundImage: `url("${project.asset}")`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center center',
+                        backgroundRepeat: 'no-repeat',
+                      }}
                     >
-                      {project.title}
+                      <div
+                        className={classNames(
+                          styles.frame__header,
+                          styles.uppercase,
+                          styles.bold
+                        )}
+                      >
+                        {project.title}
+                      </div>
+                      <div
+                        className={classNames(
+                          styles.frame__footer,
+                          styles.uppercase,
+                          styles.bold
+                        )}
+                      >
+                        {project.scope}
+                        <br />
+                        {project.organisation}
+                      </div>
                     </div>
-                    <div
-                      className={classNames(
-                        styles.frame__footer,
-                        styles.uppercase,
-                        styles.bold
-                      )}
-                    >
-                      {project.scope}
-                      <br />
-                      {project.organisation}
-                    </div>
-                  </div>
-                </SwiperSlide>
-              )
-            })}
+                  </SwiperSlide>
+                )
+              }
+            )}
           </Swiper>
         </div>
       </div>

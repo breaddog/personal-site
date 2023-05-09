@@ -3,7 +3,18 @@ import React from 'react'
 import AOS from 'aos'
 import classNames from 'classnames'
 
+import { PROJECTS } from './data/projects'
+import { ROUTES } from './routes'
+
 import { CSSHeader, LoadingContext, LoadingSection, Portfolio } from './pages'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom'
+import { ProjectPage } from './pages/Portfolio/Shared/Project'
+
 interface AppProps {
   className?: string
 }
@@ -23,19 +34,52 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   }, [])
 
   return (
-    <AppContext.Provider
-      value={{
-        scrollEnabled,
-        setScrollEnabled,
-      }}
-    >
-      <div className={classes}>
-        {/* all the import components will go here */}
-        <CSSHeader />
-        <LoadingSection />
-        <Portfolio />
-      </div>
-    </AppContext.Provider>
+    <Router>
+      <AppContext.Provider
+        value={{
+          scrollEnabled,
+          setScrollEnabled,
+        }}
+      >
+        <div className={classes}>
+          <CSSHeader />
+          <LoadingSection />
+          <Routes>
+            {/* all the import components will go here */}
+            <Route
+              path={ROUTES.home.pathname}
+              Component={Portfolio}
+            />
+            <Route
+              path={ROUTES.portfolio.pathname}
+              element={
+                <Navigate
+                  replace
+                  to={ROUTES.home.pathname}
+                />
+              }
+            />
+
+            {/* routes for sub-pages here */}
+            <Route
+              path={ROUTES.artball.pathname}
+              element={<ProjectPage project={PROJECTS.artball} />}
+            />
+
+            {/* error */}
+            <Route
+              path='*'
+              element={
+                <Navigate
+                  replace
+                  to={ROUTES.home.pathname}
+                />
+              }
+            ></Route>
+          </Routes>
+        </div>
+      </AppContext.Provider>
+    </Router>
   )
 }
 
