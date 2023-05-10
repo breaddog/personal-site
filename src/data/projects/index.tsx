@@ -57,7 +57,7 @@ export const PROJECTS: {
       scope: 'NFT Art Project',
       organisation: 'Shintaro Kago / DRP / Pellar',
       url: 'https://drp.io/artists/shintaro_kago',
-      description: 'NFt Art Project with Ero-guro legend Shintaro Kago',
+      description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
       asset: './images/projects/shintarokago.jpg',
       alt: 'shintaro',
     },
