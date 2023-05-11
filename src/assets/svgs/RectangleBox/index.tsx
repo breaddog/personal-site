@@ -8,7 +8,7 @@ interface RectangleBoxProps extends SVGCustomInterface {
   height?: string | number
 }
 
-export const RectangleBox: React.FC<RectangleBoxProps> = ({
+export const RectangleBox: React.FunctionComponent<RectangleBoxProps> = ({
   id,
   className,
   fill = '#000000',

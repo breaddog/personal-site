@@ -6,11 +6,13 @@
   transition-property: height, opacity;
   transition-duration: 0.8s;
   transition-timing-function: ease-in-out;
+  background-color: var(--background-colour);
 
   &.active {
     height: 100vh !important;
     display: flex;
     opacity: 1;
+    position: fixed;
   }
 }
 

@@ -1,0 +1,45 @@
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  .container {
+    width: 600px;
+    height: 50%;
+
+    margin: auto;
+
+    .logo {
+      position: relative;
+      width: fit-content;
+
+      margin: 0 auto;
+
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    .text {
+      width: fit-content;
+      margin: 0 auto;
+
+      font-size: var(--font-h3);
+
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .link {
+      display: flex;
+      width: fit-content;
+
+      margin: 0 auto;
+      text-align: center;
+      font-size: var(--font-p);
+    }
+  }
+}

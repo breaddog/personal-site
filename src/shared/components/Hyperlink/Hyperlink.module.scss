@@ -1,0 +1,41 @@
+.hyperlink {
+  cursor: pointer;
+
+  a,
+  span,
+  div {
+    color: inherit;
+  }
+
+  &.default {
+    transition: opacity 0.175s ease-in-out;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &.underline {
+    padding-bottom: 2px;
+    // position
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    transition: background-size 0.25s, background-position 0s 0.25s;
+
+    &.thickness-1px {
+      background-size: 100% 1px;
+    }
+    &.thickness-2px {
+      background-size: 100% 2px;
+    }
+    &.thickness-3px {
+      background-size: 100% 3px;
+    }
+  }
+
+  // main mechanic
+  &:hover {
+    &.underline {
+      background-position: left bottom;
+    }
+  }
+}

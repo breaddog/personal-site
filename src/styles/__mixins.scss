@@ -20,6 +20,7 @@
   // dark grey
   --dark-grey: #404548;
   --dark-grey-10: #50565a;
+  --dark-grey-20: #394240;
 
   // blue
   --blue: #bed5ff;
@@ -65,6 +66,11 @@
   // vars
   --header-margin: 6vmin;
   --box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+  --linear-gradient: linear-gradient(
+    to right,
+    var(--dark-grey) 40%,
+    var(--background-colour)
+  );
   --border-radius-default: 1rem;
 
   // font size

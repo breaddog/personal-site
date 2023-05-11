@@ -13,7 +13,7 @@ import {
   Routes,
   Navigate
 } from 'react-router-dom'
-import { ProjectPage } from './pages/Portfolio/Shared/Project'
+import { ProjectPage } from './pages/Portfolio/Projects'
 
 interface AppProps {
   className?: string
@@ -62,8 +62,8 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
             {/* routes for sub-pages here */}
             <Route
-              path={ROUTES.artball.pathname}
-              element={<ProjectPage project={PROJECTS.artball} />}
+              path={ROUTES.projects.pathname}
+              element={<ProjectPage />}
             />
 
             {/* error */}

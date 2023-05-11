@@ -1,0 +1,16 @@
+.leftRight {
+  display: flex;
+  justify-content: space-between;
+
+  &.left {
+    flex-direction: row;
+  }
+
+  &.right {
+    flex-direction: row-reverse;
+  }
+
+  .text {
+    width: 40%;
+  }
+}

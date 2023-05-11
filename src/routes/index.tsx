@@ -5,10 +5,21 @@ export interface Path {
   }
 }
 
+export const PATHS: Path = {
+  projects: {
+    key: 'projects',
+    pathname: '/project',
+  },
+}
+
 export const ROUTES: Path = {
   portfolio: {
     key: 'portfolio',
     pathname: '/',
+  },
+  projects: {
+    key: 'projects',
+    pathname: '/project/:projectKey',
   },
   home: {
     key: 'home',

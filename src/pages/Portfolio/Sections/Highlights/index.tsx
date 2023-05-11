@@ -13,11 +13,7 @@ import { CircleIcon } from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
-import {
-  PROJECTS,
-  ProjectObject,
-  ProjectProps
-} from '../../../../data/projects'
+import { PROJECTS, ProjectObject } from '../../../../data/projects'
 
 interface PortfolioHighlightsProps {
   className?: string
@@ -147,77 +143,73 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
             look!
           </div>
           <Swiper {...swiperParams}>
-            {map(
-              PROJECTS,
-              (projectParent: ProjectObject, idx: number | string) => {
-                const project = projectParent.project as ProjectProps
-                return (
-                  <SwiperSlide
-                    className={styles.slide}
-                    key={idx}
-                  >
-                    {({ isActive }) => (
-                      <>
-                        <div className={styles.frame__head}></div>
+            {map(PROJECTS, (project: ProjectObject, idx: number | string) => {
+              return (
+                <SwiperSlide
+                  className={styles.slide}
+                  key={idx}
+                >
+                  {({ isActive }) => (
+                    <>
+                      <div className={styles.frame__head}></div>
+                      <div
+                        className={classNames(
+                          styles.frame__body,
+                          'highlight-frame'
+                        )}
+                        style={{
+                          backgroundImage: `url("${project.asset}")`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center center',
+                          backgroundRepeat: 'no-repeat',
+                        }}
+                      >
                         <div
                           className={classNames(
-                            styles.frame__body,
-                            'highlight-frame'
+                            styles.frame__overlay__body,
+                            isActive && styles.active
                           )}
-                          style={{
-                            backgroundImage: `url("${project.asset}")`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center center',
-                            backgroundRepeat: 'no-repeat',
-                          }}
                         >
-                          <div
-                            className={classNames(
-                              styles.frame__overlay__body,
-                              isActive && styles.active
-                            )}
-                          >
-                            <div className={styles.frame__overlay__container}>
-                              <p className={styles.frame__overlay__description}>
-                                {project.description}
-                              </p>
-                              <div
-                                className={classNames(
-                                  styles.frame__overlay__link,
-                                  isActive && styles.active
-                                )}
-                              >
-                                Read More
-                              </div>
+                          <div className={styles.frame__overlay__container}>
+                            <p className={styles.frame__overlay__description}>
+                              {project.description}
+                            </p>
+                            <div
+                              className={classNames(
+                                styles.frame__overlay__link,
+                                isActive && styles.active
+                              )}
+                            >
+                              Read More
                             </div>
                           </div>
-                          <div
-                            className={classNames(
-                              styles.frame__header,
-                              styles.uppercase,
-                              styles.bold
-                            )}
-                          >
-                            {project.title}
-                          </div>
-                          <div
-                            className={classNames(
-                              styles.frame__footer,
-                              styles.uppercase,
-                              styles.bold
-                            )}
-                          >
-                            {project.scope}
-                            <br />
-                            {project.organisation}
-                          </div>
                         </div>
-                      </>
-                    )}
-                  </SwiperSlide>
-                )
-              }
-            )}
+                        <div
+                          className={classNames(
+                            styles.frame__header,
+                            styles.uppercase,
+                            styles.bold
+                          )}
+                        >
+                          {project.title}
+                        </div>
+                        <div
+                          className={classNames(
+                            styles.frame__footer,
+                            styles.uppercase,
+                            styles.bold
+                          )}
+                        >
+                          {project.scope}
+                          <br />
+                          {project.organisation}
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </SwiperSlide>
+              )
+            })}
           </Swiper>
         </div>
       </div>

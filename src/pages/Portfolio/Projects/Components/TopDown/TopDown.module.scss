@@ -1,0 +1,9 @@
+.topDown {
+  &.top {
+    flex-direction: column;
+  }
+
+  &.bottom {
+    flex-direction: column-reverse;
+  }
+}
