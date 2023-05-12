@@ -168,18 +168,11 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
 
   // CAR
   const _carTimeline = () => {
-    return (
-      gsap
-        .timeline()
-        // .from(carRef.current, {
-        //   left: '-1vw',
-        // })
-        .to(carRef.current, {
-          left: '95vw',
-          duration: 5,
-          immediateRender: false,
-        })
-    )
+    return gsap.timeline().to(carRef.current, {
+      x: `+=${sectionRef.current?.getBoundingClientRect().width! * 0.925}px`,
+      duration: 5,
+      immediateRender: false,
+    })
   }
 
   const _modalTimeline = () => {

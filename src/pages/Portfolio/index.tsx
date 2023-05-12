@@ -1,4 +1,5 @@
 import './index.scss'
+import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
@@ -17,7 +18,8 @@ interface PortfolioProps {
 
 export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const classes = classNames(
-    'section section__portfolio position--relative',
+    'section__portfolio position--relative',
+    sectionStyles.section,
     className
   )
   return (

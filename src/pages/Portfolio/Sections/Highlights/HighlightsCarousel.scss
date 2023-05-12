@@ -4,10 +4,12 @@
     height: fit-content;
     opacity: 0.5;
     margin: auto 0;
+
     .highlight-frame {
       transition: 0.5s ease-in-out;
     }
   }
+
   .swiper-slide-active {
     opacity: 1;
   }
@@ -21,9 +23,20 @@
     opacity: 0.85;
 
     transition: color 0.15s ease-in, opacity 0.15s ease-in-out;
+
     &:hover {
       opacity: 1;
       color: var(--grey);
+    }
+  }
+
+  .swiper-pagination-bullets {
+    .swiper-pagination-bullet {
+      background-color: var(--grey-10);
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: var(--aqua-10);
     }
   }
 }
