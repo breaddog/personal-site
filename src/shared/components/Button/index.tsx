@@ -5,32 +5,31 @@ import { string } from 'yup'
 
 interface ButtonProps {
   className?: string
-  colour?: string
+  disabled?: boolean
   onClick?: Function
   children?: React.ReactNode
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
   className,
-  colour,
+  disabled = false,
   onClick = () => {},
   children,
 }) => {
-  /**
-   * to do:
-   * complete and decide button effect/styling
-   * finish up on the project page and routing including
-   * - error
-   * - default
-   * - paragraph styling
-   * fix the hyperlink hover effect
-   */
-  const classes = classNames(styles.button, className)
+  const classes = classNames(
+    styles.button,
+    disabled ? styles.disabled : styles.enabled,
+    className
+  )
 
   return (
     <div
       className={classes}
-      onClick={() => onClick()}
+      onClick={() => {
+        if (!disabled) {
+          onClick()
+        }
+      }}
     >
       <div className={styles.content}>{children}</div>
     </div>

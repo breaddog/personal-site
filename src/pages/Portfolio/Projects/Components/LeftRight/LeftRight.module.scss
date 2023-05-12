@@ -14,3 +14,50 @@
     width: 40%;
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .leftRight {
+    .text {
+      width: 35%;
+    }
+  }
+
+  .image {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .leftRight {
+    &.left {
+      flex-direction: column-reverse;
+
+      .image {
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+
+      .text {
+        width: 100%;
+      }
+    }
+
+    &.right {
+      flex-direction: column;
+
+      .image {
+        width: 100%;
+      }
+
+      .text {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .leftRight {
+    flex-direction: column;
+  }
+}

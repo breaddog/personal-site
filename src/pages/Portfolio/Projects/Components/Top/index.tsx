@@ -5,6 +5,7 @@ import classNames from 'classnames'
 
 import { TextProject } from '../Text'
 import { ProjectObject } from '../../../../../data/projects'
+import { map } from 'lodash'
 
 interface TopProjectSectionProps {
   className?: string
@@ -37,23 +38,32 @@ export const TopProjectSection: React.FunctionComponent<
 
       <div className={styles.right}>
         <div className={styles.info}>
-          <span>Role:</span>
-          <span>{project.scope}</span>
+          <span className={styles.infoTitle}>Role(s):</span>
+          <div className={styles.roles}>
+            {map(project?.role, (role: string, idx: string | number) => (
+              <span
+                className={styles.value}
+                key={idx}
+              >
+                {role}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className={styles.info}>
-          <span>Date:</span>
-          <span>{project.year}</span>
+          <span className={styles.infoTitle}>Type:</span>
+          <span className={styles.value}>{project.scope}</span>
         </div>
 
         <div className={styles.info}>
-          <span>Type:</span>
-          <span>{project.year}</span>
+          <span className={styles.infoTitle}>Date:</span>
+          <span className={styles.value}>{project.year}</span>
         </div>
 
         <div className={styles.info}>
-          <span>Site:</span>
-          <span>{project.year}</span>
+          <span className={styles.infoTitle}>Site:</span>
+          <span className={styles.value}>{project.url}</span>
         </div>
 
         <div className={styles.description}>

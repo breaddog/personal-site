@@ -12,7 +12,7 @@
   }
 
   .right {
-    width: 40%;
+    width: 50%;
     height: auto;
     background-color: var(--dark-grey);
     box-shadow: var(--box-shadow);
@@ -30,6 +30,22 @@
       span {
         font-size: var(--font-h4);
       }
+
+      .value {
+        text-align: end;
+      }
+
+      .roles {
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+        width: 60%;
+
+        .value {
+          width: 100%;
+          margin-bottom: 0.25rem;
+        }
+      }
     }
 
     .description {
@@ -38,6 +54,43 @@
       .title {
         font-size: var(--font-h4);
         margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .top {
+    flex-direction: column;
+
+    .left {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .right {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .top {
+    .right {
+      .info {
+        flex-direction: column;
+
+        .infoTitle {
+          margin-bottom: 0.5rem;
+        }
+
+        .value {
+          text-align: start;
+        }
+
+        .roles {
+          width: 100%;
+        }
       }
     }
   }

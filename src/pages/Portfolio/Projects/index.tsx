@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 
 import { ProjectObject } from '../../../data/projects'
 import { fetchProject, fetchProjectContent } from '../../../shared/projects'
-import { ErrorProjectTemplate } from './ProjectContent'
+import { DefaultProjectTemplate, ErrorProjectTemplate } from './ProjectContent'
 
 interface ProjectPageProps {
   className?: string
@@ -23,7 +23,6 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     sectionStyles.section,
     className
   )
-  // const projectData: ProjectProps = project.project
 
   const { projectKey } = useParams<{ projectKey: string }>()
   // loaded
@@ -33,8 +32,9 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
   const [projectBody, setProjectBody] = React.useState<
     React.ReactNode | React.ReactFragment | null
   >(null)
-  const [project, setProject] = React.useState<ProjectObject | null>(null)
+  const [project, setProject] = React.useState<ProjectObject | null>()
 
+  // fetch project info from stored info
   const retreiveProject = async (_projectKey: string) => {
     const _project = await fetchProject(_projectKey)
     setProject(_project)
@@ -52,21 +52,23 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     }
   }, [projectKey, project, projectBody, loaded])
 
-  return <ErrorProjectTemplate />
+  return null === project ? (
+    <ErrorProjectTemplate />
+  ) : (
+    <div
+      className={classes}
+      key={key}
+    >
+      {/* banner is always there */}
+      <div className={classNames(styles.banner, styles.top)}>
+        <img
+          src={project?.asset}
+          alt={project?.alt}
+        />
+      </div>
 
-  // return (
-  //   <div
-  //     className={classes}
-  //     key={key}
-  //   >
-  //     <div className={classNames(styles.banner, styles.top)}>
-  //       <img
-  //         src={project?.asset}
-  //         alt={project?.alt}
-  //       />
-  //     </div>
-
-  //     {projectBody}
-  //   </div>
-  // )
+      {/* FUTURE: template dependent after fetching from server*/}
+      {projectBody}
+    </div>
+  )
 }

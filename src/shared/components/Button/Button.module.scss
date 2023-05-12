@@ -17,9 +17,9 @@
 
   &:before {
     width: 200%;
-    height: 100%;
+    height: 150%;
     position: absolute;
-    top: 0;
+    top: -50%;
     bottom: 0;
     right: 0;
     left: -100%;
@@ -27,27 +27,39 @@
       to right,
       var(--purple-10) 25%,
       var(--purple-20) 50%,
-      var(--purple-special)
+      var(--purple-special) 75%,
+      var(--blue-10)
     );
+    opacity: 0.85;
 
     content: '';
     z-index: -1;
 
     overflow: hidden;
 
-    transition-property: left, right;
+    transition-property: left, right, top, bottom, opacity;
     transition-duration: 0.4s;
     transition-timing-function: ease-in-out;
   }
 
-  &:hover {
-    &:before {
-      left: 0;
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.enabled {
+    &:hover {
+      &:before {
+        left: 0;
+        top: 0;
+        opacity: 0.95;
+      }
     }
   }
 
   .content {
     font-family: 'Silkscreen';
     margin: auto 0;
+    color: var(--white);
   }
 }

@@ -10,16 +10,25 @@
     height: 50%;
 
     margin: auto;
+    padding: 0.5rem;
 
     .logo {
       position: relative;
-      width: fit-content;
+      width: 200px;
+      height: 200px;
+      display: flex;
 
       margin: 0 auto;
+      margin-bottom: 2rem;
+
+      background-color: var(--blue-10);
+      border-radius: 50%;
 
       img {
-        width: 200px;
-        height: 200px;
+        width: 75%;
+        height: 75%;
+        margin: auto;
+        margin-bottom: 15%;
       }
     }
 

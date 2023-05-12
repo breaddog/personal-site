@@ -2,6 +2,21 @@
   --section-margin: 2.5rem;
 }
 
+// sections
+.container {
+  width: 65%;
+  height: 50%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  margin: var(--section-margin) auto;
+}
+
+.section {
+  margin-bottom: var(--section-margin);
+}
+
 // generic stuff
 .banner {
   height: 400px;
@@ -26,10 +41,6 @@
   }
 }
 
-.section {
-  margin-bottom: var(--section-margin);
-}
-
 .text {
   margin-bottom: var(--section-margin);
 
@@ -38,13 +49,8 @@
   }
 }
 
-// sections
-.container {
-  width: 65%;
-  height: 50%;
-  margin: 0 auto;
-
-  display: flex;
-  flex-direction: column;
-  margin: var(--section-margin) auto;
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 80%;
+  }
 }

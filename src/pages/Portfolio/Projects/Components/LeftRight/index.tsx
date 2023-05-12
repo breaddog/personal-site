@@ -22,6 +22,7 @@ export const LeftRightProjectSection: React.FunctionComponent<
   )
 
   const textClasses = classNames(projectStyles.text, styles.text)
+  const imageClasses = classNames(projectStyles.image, styles.image)
 
   return (
     <div className={classes}>
@@ -34,7 +35,7 @@ export const LeftRightProjectSection: React.FunctionComponent<
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </TextProject>
-      <div className={projectStyles.image}>
+      <div className={imageClasses}>
         <img
           src={project.asset}
           alt={project.alt}

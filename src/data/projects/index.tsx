@@ -9,6 +9,7 @@ export interface ProjectObject {
   title: string
   year: string | number
   scope: string
+  role: string[]
   organisation: string
   url: string
   description: React.ReactFragment | string
@@ -25,6 +26,7 @@ export const PROJECTS: {
     title: 'AO ArtBall',
     year: '2022 - 2023',
     scope: 'NFT Art Project',
+    role: ['Lead Asset Engineer', 'Project Manager', 'Front-end Lead'],
     organisation: 'Tennis Australia / RIW / Pellar',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
@@ -37,6 +39,12 @@ export const PROJECTS: {
     title: 'LAYERS by Vhils',
     year: '2022 - 2023',
     scope: 'NFT Art Project',
+    role: [
+      'Lead Developer',
+      'Lead Asset Engineer',
+      'Project Manager',
+      'Deployment',
+    ],
     organisation: 'DRP / Vhils',
     url: 'https://drp.io/drops/vhils',
     description: 'Evolving Grafitti NFT Artwork',
@@ -49,6 +57,12 @@ export const PROJECTS: {
     title: 'Shintaro Kago',
     year: '2021 - 2023',
     scope: 'NFT Art Project',
+    role: [
+      'Project Manager',
+      'Front-end Lead',
+      'Asset Management',
+      'Deployment',
+    ],
     organisation: 'Shintaro Kago / DRP / Pellar',
     url: 'https://drp.io/artists/shintaro_kago',
     description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
@@ -61,6 +75,7 @@ export const PROJECTS: {
     title: 'BinKingz',
     year: '2022',
     scope: 'NFT Artwork',
+    role: ['Project Manager', 'Front-end Lead'],
     organisation: 'Scott Marsh / RIW / Pellar',
     url: 'https://ao.artball.io/',
     description: 'NFT Grafitti Art by Sydney based artist Scott Marsh',
@@ -73,6 +88,12 @@ export const PROJECTS: {
     title: 'The Red Village',
     year: '2022 - Present',
     scope: 'NFT Turn-Based Battle Arena',
+    role: [
+      'Front-end Developer',
+      'Project Manager',
+      'Asset Handling',
+      'Deployment',
+    ],
     organisation: 'Big Kid Studios / Pellar',
     url: 'https://theredvillage.com/',
     description: 'Turn Based Battle Arena Game with Unique Characters',
@@ -85,6 +106,7 @@ export const PROJECTS: {
     title: 'Lushsux',
     year: '2021',
     scope: 'NFT ArtWork',
+    role: ['Lead Asset Engineer', 'Deployment'],
     organisation: 'Lushsux / DRP / Pellar',
     url: 'https://drp.io/drops/lushsux',
     description: 'NFT Artwork turning his instagram posts into NFT\'s',
@@ -97,6 +119,7 @@ export const PROJECTS: {
     title: 'ADOTMarketplace',
     year: '2022 - Present',
     scope: 'NFT Community Hub',
+    role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
     organisation: 'T&B Global Media / Translucia / Pellar',
     url: 'https://ao.artball.io/',
     description:
@@ -110,6 +133,7 @@ export const PROJECTS: {
     title: 'Crown Token',
     year: '2022 - Present',
     scope: 'NFT Community Hub',
+    role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
     organisation: 'T&B Global Media / Translucia / Pellar',
     url: 'https://ao.artball.io/',
     description:
