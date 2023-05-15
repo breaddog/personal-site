@@ -3,6 +3,7 @@ import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
+import { PortfolioHeader } from './Header'
 import {
   PortfolioContacts,
   PortfolioJourney,
@@ -24,6 +25,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   )
   return (
     <>
+      <PortfolioHeader />
       <div className={classes}>
         <PortfolioLanding />
         <PortfolioDeveloper />

@@ -26,7 +26,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   const classes = classNames(
     'portfolio__manager',
     sectionStyles['sub-section'],
-    sectionStyles.wide,
+    // sectionStyles.wide,
     styles.manager,
     className
   )
@@ -38,7 +38,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   const [bridgeSections, setBridgeSections] = React.useState<number>(0)
 
   // for each layer
-  const N_CLOUDS = 12
+  const N_CLOUDS = 8
   // CLOUDS
   const cloudEffect = (reference: number, duration: number) => {
     const looper = document.querySelectorAll(
@@ -85,8 +85,6 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       })
     })
 
-    const _inverse = 0.5 < Math.random()
-
     // // cloud timeline
     // gsap.utils.toArray(looper).forEach((el: any) => {
     //   gsap
@@ -130,14 +128,16 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   // given width, dynamically add/remove sections of bridge
   const updateBridgeSections = () => {
     // edge case
-    const windowWidth = window.innerWidth
+    if (!sectionRef.current) return
+    // const windowWidth = window.innerWidth
+    const sectionWidth = sectionRef.current?.getBoundingClientRect().width
     const bridgeSection = document.getElementsByClassName(
       'portfolio__bridge-section'
     )[0]
     // edge case
     if (!bridgeSection) return
     // calculate how many can fit, always get ceil
-    const nSections = Math.ceil(windowWidth / bridgeSection.clientWidth) + 2
+    const nSections = Math.ceil(sectionWidth / bridgeSection.clientWidth)
     // if there was a change detected update
     setBridgeSections(nSections)
   }
@@ -170,7 +170,8 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   const _carTimeline = () => {
     return gsap.timeline().to(carRef.current, {
       x: `+=${sectionRef.current?.getBoundingClientRect().width! * 0.925}px`,
-      duration: 5,
+      // x: '90vw',
+      duration: 4,
       immediateRender: false,
     })
   }

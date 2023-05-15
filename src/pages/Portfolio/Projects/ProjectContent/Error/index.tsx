@@ -33,7 +33,10 @@ export const ErrorProjectTemplate: React.FunctionComponent<
           <b>{projectKey}</b> as an idea to me or want to get back?
         </div>
         <Link to={ROUTES.home.pathname}>
-          <Button className={styles.link}>
+          <Button
+            className={styles.link}
+            buttonStyle='gradient'
+          >
             Click here to return to the main page.
           </Button>
         </Link>

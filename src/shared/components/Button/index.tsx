@@ -8,6 +8,7 @@ interface ButtonProps {
   disabled?: boolean
   onClick?: Function
   children?: React.ReactNode
+  buttonStyle?: 'gradient' | null
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
@@ -15,9 +16,11 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   disabled = false,
   onClick = () => {},
   children,
+  buttonStyle,
 }) => {
   const classes = classNames(
     styles.button,
+    buttonStyle && styles[String(buttonStyle)],
     disabled ? styles.disabled : styles.enabled,
     className
   )

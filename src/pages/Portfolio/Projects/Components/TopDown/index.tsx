@@ -30,6 +30,7 @@ export const TopDownProjectSection: React.FunctionComponent<
         <LazyLoadImage
           src={project.asset}
           alt={project.alt}
+          effect='blur'
         />
       </div>
       <TextProject className={textClasses}>

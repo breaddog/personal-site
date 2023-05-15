@@ -1,0 +1,60 @@
+.header {
+  height: var(--header-height);
+  width: 100vw;
+
+  position: fixed;
+  // bottom: 0;
+  z-index: 100;
+
+  color: var(--white);
+  background-color: transparent;
+
+  .container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0.5rem 1.5rem;
+
+    .icon {
+      width: 15%;
+      height: auto;
+
+      img {
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .sections {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 80%;
+
+      .section {
+        text-transform: uppercase;
+        font-size: var(--font-h4);
+        font-family: 'Silkscreen';
+        margin: auto 1.5rem;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      width: 15%;
+
+      .wallet {
+        margin: auto 0;
+        background-color: var(--dark-grey-10);
+      }
+    }
+  }
+}

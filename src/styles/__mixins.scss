@@ -25,6 +25,8 @@
   // blue
   --blue: #bed5ff;
   --blue-10: #abc8fc;
+  --blue-20: #94abd6;
+  --blue-30: #8094b8;
 
   // aqua
   --aqua: #b3feff;
@@ -73,12 +75,15 @@
   );
   --border-radius-default: 1rem;
 
+  // header
+  --header-height: 80px;
+
   // font size
-  --font-h1: 50px;
-  --font-h2: 35px;
-  --font-h3: 28px;
-  --font-h4: 22px;
-  --font-p: 20px;
+  --font-h1: 48px;
+  --font-h2: 32px;
+  --font-h3: 26px;
+  --font-h4: 20px;
+  --font-p: 18px;
 
   // constraints
   --max-width: 1980px;
