@@ -4,6 +4,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { ProjectObject } from '../../../../../data/projects'
 import { TextProject } from '../Text'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 interface TopDownProjectSectionProps {
   className?: string
@@ -26,7 +27,7 @@ export const TopDownProjectSection: React.FunctionComponent<
   return (
     <div className={classes}>
       <div className={projectStyles.banner}>
-        <img
+        <LazyLoadImage
           src={project.asset}
           alt={project.alt}
         />

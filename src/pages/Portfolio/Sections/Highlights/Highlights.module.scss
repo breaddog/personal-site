@@ -93,6 +93,7 @@
     .carousel {
       height: 100%;
       width: 100%;
+      overflow: unset;
 
       .frame {
         &__head {
@@ -194,8 +195,10 @@
 
             &.active {
               display: initial;
+
               &:hover {
                 right: 5px;
+
                 &:after {
                   opacity: 1;
                   left: 5px;

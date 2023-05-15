@@ -4,6 +4,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { ProjectObject } from '../../../../../data/projects'
 import { TextProject } from '../Text'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 interface LeftRightProjectSectionProps {
   className?: string
@@ -36,9 +37,10 @@ export const LeftRightProjectSection: React.FunctionComponent<
         mollit anim id est laborum.
       </TextProject>
       <div className={imageClasses}>
-        <img
+        <LazyLoadImage
           src={project.asset}
           alt={project.alt}
+          effect='blur'
         />
       </div>
     </div>

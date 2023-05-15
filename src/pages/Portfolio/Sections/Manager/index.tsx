@@ -26,6 +26,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   const classes = classNames(
     'portfolio__manager',
     sectionStyles['sub-section'],
+    sectionStyles.wide,
     styles.manager,
     className
   )
@@ -37,7 +38,7 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   const [bridgeSections, setBridgeSections] = React.useState<number>(0)
 
   // for each layer
-  const N_CLOUDS = 8
+  const N_CLOUDS = 12
   // CLOUDS
   const cloudEffect = (reference: number, duration: number) => {
     const looper = document.querySelectorAll(
@@ -86,25 +87,25 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
 
     const _inverse = 0.5 < Math.random()
 
-    // cloud timeline
-    gsap.utils.toArray(looper).forEach((el: any) => {
-      gsap
-        .timeline({
-          repeat: -1,
-        })
-        .to(el, {
-          opacity: _inverse ? 0.1 : 1,
-          delay: randomValue(1, 10, false),
-        })
-        .to(el, {
-          opacity: _inverse ? 1 : 0.1,
-          delay: randomValue(1, 10, false),
-        })
-        .to(el, {
-          opacity: _inverse ? 0.1 : 1,
-          delay: randomValue(1, 10, false),
-        })
-    }, `-=${duration / 2}`)
+    // // cloud timeline
+    // gsap.utils.toArray(looper).forEach((el: any) => {
+    //   gsap
+    //     .timeline({
+    //       repeat: -1,
+    //     })
+    //     .to(el, {
+    //       opacity: _inverse ? 0.1 : 1,
+    //       delay: randomValue(1, 10, false),
+    //     })
+    //     .to(el, {
+    //       opacity: _inverse ? 1 : 0.1,
+    //       delay: randomValue(1, 10, false),
+    //     })
+    //     .to(el, {
+    //       opacity: _inverse ? 0.1 : 1,
+    //       delay: randomValue(1, 10, false),
+    //     })
+    // }, `-=${duration / 2}`)
 
     // main timeline
     gsap.timeline().to(looper, {
@@ -112,7 +113,6 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
       modifiers: {
         x: (x) => `${mod(parseFloat(x))}px`,
       },
-      opacity: 0.25,
       duration,
       ease: 'none',
       repeat: -1,

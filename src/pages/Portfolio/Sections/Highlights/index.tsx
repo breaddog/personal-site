@@ -14,6 +14,7 @@ import { CircleIcon } from '../../../../shared/components'
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
 import { PROJECTS, ProjectObject } from '../../../../data/projects'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 
 interface PortfolioHighlightsProps {
   className?: string
@@ -145,69 +146,71 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
           <Swiper {...swiperParams}>
             {map(PROJECTS, (project: ProjectObject, idx: number | string) => {
               return (
-                <SwiperSlide
-                  className={styles.slide}
-                  key={idx}
-                >
-                  {({ isActive }) => (
-                    <>
-                      <div className={styles.frame__head}></div>
-                      <div
-                        className={classNames(
-                          styles.frame__body,
-                          'highlight-frame'
-                        )}
-                        style={{
-                          backgroundImage: `url("${project.asset}")`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center center',
-                          backgroundRepeat: 'no-repeat',
-                        }}
-                      >
+                <LazyLoadComponent>
+                  <SwiperSlide
+                    className={styles.slide}
+                    key={idx}
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <div className={styles.frame__head}></div>
                         <div
                           className={classNames(
-                            styles.frame__overlay__body,
-                            isActive && styles.active
+                            styles.frame__body,
+                            'highlight-frame'
                           )}
+                          style={{
+                            backgroundImage: `url("${project.asset}")`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center',
+                            backgroundRepeat: 'no-repeat',
+                          }}
                         >
-                          <div className={styles.frame__overlay__container}>
-                            <p className={styles.frame__overlay__description}>
-                              {project.description}
-                            </p>
-                            <div
-                              className={classNames(
-                                styles.frame__overlay__link,
-                                isActive && styles.active
-                              )}
-                            >
-                              Read More
+                          <div
+                            className={classNames(
+                              styles.frame__overlay__body,
+                              isActive && styles.active
+                            )}
+                          >
+                            <div className={styles.frame__overlay__container}>
+                              <p className={styles.frame__overlay__description}>
+                                {project.description}
+                              </p>
+                              <div
+                                className={classNames(
+                                  styles.frame__overlay__link,
+                                  isActive && styles.active
+                                )}
+                              >
+                                Read More
+                              </div>
                             </div>
                           </div>
+                          <div
+                            className={classNames(
+                              styles.frame__header,
+                              styles.uppercase,
+                              styles.bold
+                            )}
+                          >
+                            {project.title}
+                          </div>
+                          <div
+                            className={classNames(
+                              styles.frame__footer,
+                              styles.uppercase,
+                              styles.bold
+                            )}
+                          >
+                            {project.scope}
+                            <br />
+                            {project.organisation}
+                          </div>
                         </div>
-                        <div
-                          className={classNames(
-                            styles.frame__header,
-                            styles.uppercase,
-                            styles.bold
-                          )}
-                        >
-                          {project.title}
-                        </div>
-                        <div
-                          className={classNames(
-                            styles.frame__footer,
-                            styles.uppercase,
-                            styles.bold
-                          )}
-                        >
-                          {project.scope}
-                          <br />
-                          {project.organisation}
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </SwiperSlide>
+                      </>
+                    )}
+                  </SwiperSlide>
+                </LazyLoadComponent>
               )
             })}
           </Swiper>

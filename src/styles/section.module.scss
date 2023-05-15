@@ -1,18 +1,23 @@
 // common components
 .section {
-  max-width: 1980px;
   width: 100vw;
   height: 100%;
 
   margin: 0 auto;
 
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 .sub-section {
-  // min-width: 100vw;
+  max-width: var(--max-width);
   max-height: 1980px;
   width: 100%;
   height: 100vh;
   background-color: var(--background-colour);
+
+  margin: 0 auto;
+
+  &.wide {
+    max-width: initial;
+  }
 }
