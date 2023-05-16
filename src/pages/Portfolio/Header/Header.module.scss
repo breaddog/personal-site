@@ -7,7 +7,11 @@
   z-index: 100;
 
   color: var(--white);
-  background-color: transparent;
+  background: linear-gradient(
+    to bottom,
+    var(--background-colour) 25%,
+    rgba(#394240, 0.1)
+  );
 
   .container {
     width: 100%;

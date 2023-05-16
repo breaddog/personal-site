@@ -12,6 +12,7 @@ import {
   PortfolioLanding,
   PortfolioManager
 } from './Sections/index'
+import { PortfolioManagerNew } from './Sections/ManagerNew'
 
 interface PortfolioProps {
   className?: string
@@ -29,7 +30,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
       <div className={classes}>
         <PortfolioLanding />
         <PortfolioDeveloper />
-        <PortfolioManager />
+        <PortfolioManagerNew />
+        {/* <PortfolioManager /> */}
         <PortfolioJourney />
         <PortfolioHighlights />
         <PortfolioContacts />

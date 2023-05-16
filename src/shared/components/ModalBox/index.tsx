@@ -32,6 +32,7 @@ export const ModalBox: React.FC<ModalBoxProps> = ({
         children
       ) : (
         <>
+          {/* treat this as a template for how to design */}
           <div className={classNames('modal__header', `${className}__header`)}>
             Header
           </div>

@@ -35,7 +35,7 @@
 
   .subHeading {
     margin-top: 1rem;
-    font-size: var(--font-p);
+    font-size: var(--font-h3);
     margin-left: 0.25rem;
   }
 
@@ -183,6 +183,7 @@
         width: 3rem;
 
         filter: brightness(0.2);
+
         img {
           width: 3rem;
         }

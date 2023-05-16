@@ -1,6 +1,6 @@
 .window {
-  --edge-size: 4px;
-  --box-size: 10px;
+  --edge-size: 8px;
+  --box-size: 12px;
 
   display: flex;
   flex-direction: column;
@@ -133,6 +133,7 @@
       height: 3px;
       width: 100%;
     }
+
     &.bottom {
       bottom: 0;
       height: 3px;
