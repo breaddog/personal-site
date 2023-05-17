@@ -13,6 +13,7 @@ import { CircleIcon } from '../../../../shared/components'
 
 import doubleArrowDownSVG from '../../../../assets/icons/double-arrow-down.svg'
 import onigiriSVG from '../../../../assets/icons/onigiri.svg'
+import { DoubleArrowDown } from '../../../../assets/svgs'
 
 interface PortfolioLandingProps {
   className?: string
@@ -30,12 +31,15 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
   return (
     <>
       <section className={classes}>
-        <div className={styles.container}>
+        <div className={classNames(sectionStyles.container, styles.container)}>
           <div className={styles.left}>
             <div className={styles.header}>
-              <h1 className={classNames(styles.title, styles.uppercase)}>
-                <b>Tien</b> Foong
-              </h1>
+              <div className={styles.titleContainer}>
+                <h1 className={classNames(styles.title, styles.uppercase)}>
+                  <b>Tien</b> Foong
+                </h1>
+                {/* <img src={onigiriSVG} alt='onigiri' /> */}
+              </div>
               <h2 className={styles.subtitle}>
                 {/* Developing Websites with Personality */}
                 Web Development with Individuality in Mind
@@ -77,10 +81,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
           </div>
         </div>
         <div className={classNames(styles.bottom, styles.animation__bounce)}>
-          <img
-            src={doubleArrowDownSVG}
-            alt='arrow-down'
-          />
+          <DoubleArrowDown className={styles.arrow} />
         </div>
       </section>
     </>

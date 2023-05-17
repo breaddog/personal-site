@@ -1,11 +1,12 @@
 .circleIcon {
   width: 60px;
   height: 60px;
+  min-width: 60px;
   border-radius: 50%;
 
   display: flex;
 
-  margin: 0 3rem;
+  // margin: 0 2rem;
 
   img {
     margin: auto;

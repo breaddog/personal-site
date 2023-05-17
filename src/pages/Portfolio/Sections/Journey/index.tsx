@@ -29,7 +29,7 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
   return (
     <>
       <section className={classes}>
-        <div className={styles.container}>
+        <div className={classNames(sectionStyles.container, styles.container)}>
           <div className={styles.header}>
             <h2
               className={classNames(

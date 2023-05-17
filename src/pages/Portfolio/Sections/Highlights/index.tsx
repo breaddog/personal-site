@@ -112,7 +112,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
       ></div>
       <div
         className={classNames(
-          styles.container,
+          classNames(sectionStyles.container, styles.container),
           determineIfEffectActive() && styles.active
         )}
       >

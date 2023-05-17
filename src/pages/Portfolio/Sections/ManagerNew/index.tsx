@@ -185,7 +185,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
       className={classes}
       ref={sectionRef}
     >
-      <div className={styles.container}>
+      <div className={classNames(sectionStyles.container, styles.container)}>
         <div className={styles.header}>
           <h2
             className={classNames(

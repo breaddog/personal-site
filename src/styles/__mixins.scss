@@ -91,4 +91,12 @@
   // screen breaks
   --screen-break-medium: 1400px;
   --screen-break-tablet: 876px;
+
+  @media screen and (max-width: 540px) {
+    --font-h1: 38px;
+    --font-h2: 26px;
+    --font-h3: 22px;
+    --font-h4: 28px;
+    --font-p: 16px;
+  }
 }

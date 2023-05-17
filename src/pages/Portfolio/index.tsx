@@ -26,7 +26,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   )
   return (
     <>
-      <PortfolioHeader />
+      {/* <PortfolioHeader /> */}
       <div className={classes}>
         <PortfolioLanding />
         <PortfolioDeveloper />
