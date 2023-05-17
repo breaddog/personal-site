@@ -13,13 +13,13 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 interface JobInfoProps {
   className?: string
-  key?: string | number
+  componentKey?: string | number
   jobData?: JobPosition
 }
 
 export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
   className,
-  key,
+  componentKey,
   jobData,
 }) => {
   const classes = classNames(styles.box, className)
@@ -86,7 +86,7 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
   return (
     <div
       className={classes}
-      key={key}
+      key={componentKey}
       ref={boxRef}
     >
       <div

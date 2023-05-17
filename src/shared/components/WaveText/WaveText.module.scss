@@ -7,29 +7,4 @@
     width: fit-content;
     height: fit-content;
   }
-
-  // &.animated {
-  //   .letter {
-  //     animation-name: wave;
-  //     animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  //   }
-  // }
-}
-
-@keyframes wave {
-  0% {
-    transform: translateY(0em);
-  }
-
-  30% {
-    transform: translateY(-1.5rem);
-  }
-
-  60% {
-    transform: translateY(1.5rem);
-  }
-
-  100% {
-    transform: translateY(0em);
-  }
 }

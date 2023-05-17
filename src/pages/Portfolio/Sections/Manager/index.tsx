@@ -213,14 +213,21 @@ export const PortfolioManager: React.FC<PortfolioManagerProps> = ({
   }
 
   // scroll trigger related stuff
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger)
       managerSectionTimeline()
-    })
-
+    }, sectionRef)
     return () => ctx.revert()
   }, [carRef, sectionRef])
+
+  // refresh
+  React.useEffect(() => {
+    window.addEventListener('load', () => ScrollTrigger.refresh())
+    return () => {
+      window.removeEventListener('load', () => ScrollTrigger.refresh())
+    }
+  }, [])
 
   return (
     <>

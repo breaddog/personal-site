@@ -4,6 +4,7 @@
   // height: 100vh;
   width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 .container {
@@ -98,7 +99,7 @@
           margin: auto;
           display: flex;
 
-          border: 2px solid var(--purple-10);
+          border: 3px solid var(--purple-10);
         }
 
         &__body {

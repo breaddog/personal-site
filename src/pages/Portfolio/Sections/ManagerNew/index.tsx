@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/all'
 import { CircleIcon, ModalBox, WaveText } from '../../../../shared/components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
-import { delay, map } from 'lodash'
+import { delay, map, reverse } from 'lodash'
 
 interface KeyWordProps {
   key: string
@@ -50,20 +50,22 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
   const sectionRef = React.useRef<HTMLDivElement | null>(null)
   const boxRef = React.useRef<HTMLDivElement | null>(null)
 
-  const entranceEffect = () => {
-    const _elements = gsap.utils.toArray(`.${WAVE_TEXT_CLASS}`) as Element[]
-  }
-
   // gsap version of on hover wave effect for entrance animation
-  const sineWaveTextEffect = (
-    parent: Element,
-    parentIndex: number,
-    duration: number = 2,
-    height: string = '1.5rem'
-  ) => {
+  const sineWaveTextEffect = ({
+    parent,
+    duration = 1,
+    height = '1.5rem',
+  }: {
+    parent: Element
+    duration?: number
+    height?: string
+  }) => {
     const children = gsap.utils.toArray(parent.children).slice(1) as Element[]
-    children.forEach((el: Element, idx: number) => {
-      gsap
+    const _masterTimeline = gsap.timeline()
+
+    // gsap reads it in reverse so need to realign
+    reverse(children).forEach((el: Element, idx: number) => {
+      const _childTimeline = gsap
         .timeline({
           delay: idx * 0.15,
           duration,
@@ -79,101 +81,187 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
         .to(el, {
           y: 0,
           ease: 'sine.inOut',
+          onComplete: () => {
+            parent.classList.remove('disabled')
+            console.log('removed')
+          },
         })
+      _masterTimeline.add(_childTimeline, `-${duration}`)
     })
+
+    return _masterTimeline
+  }
+
+  // wave timeline
+  const _waveTimeline = (el: Element, duration: number = 4) => {
+    return gsap
+      .timeline()
+      .from(el, {
+        x: '-200%',
+        ease: 'power2.inOut',
+        duration,
+        onStart: () => {
+          el.classList.add('disabled')
+          console.log('added')
+        },
+        onComplete: () => {
+          sineWaveTextEffect({
+            parent: el,
+            duration: 0,
+          })
+        },
+      })
+      .to({}, { duration })
+  }
+
+  const _modalTimeline = (duration: number = 5) => {
+    return gsap
+      .timeline()
+      .from('#manager-box', {
+        y: '-=400%',
+        ease: 'sine.inOut',
+        duration,
+      })
+      .from(
+        {},
+        {
+          duration: 0.75,
+        }
+      )
+  }
+
+  // entrance effect
+  const entranceEffect = () => {
+    if (!sectionRef.current) return
+    const _elements = gsap.utils.toArray(`.${WAVE_TEXT_CLASS}`) as Element[]
+
+    const scrollTrigger = {
+      trigger: sectionRef.current,
+      start: 'top top',
+      end: '+=3000px',
+      scrub: 0.1,
+      pin: true,
+    }
+
+    // main timeline
+    const _timeline = gsap.timeline({
+      scrollTrigger,
+    })
+
+    // add wave elemtns
+    _elements.forEach((el: Element) => {
+      _timeline.add(_waveTimeline(el, 5))
+    })
+
+    // modal should be next
+    _timeline.add(_modalTimeline(8))
+
+    // padding
+    _timeline.add(gsap.from({}, { duration: 5 }))
   }
 
   React.useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     let _ctx = gsap.context(() => {
+      ScrollTrigger.refresh()
       entranceEffect()
     })
 
     return () => {
-      _ctx.kill()
+      _ctx.revert()
+    }
+  }, [sectionRef])
+
+  // refresh
+  React.useEffect(() => {
+    window.addEventListener('load', () => ScrollTrigger.refresh())
+    return () => {
+      window.removeEventListener('load', () => ScrollTrigger.refresh())
     }
   }, [])
 
   return (
-    <>
-      <section
-        className={classes}
-        ref={sectionRef}
-      >
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <h2
-              className={classNames(
-                styles.title,
-                styles.bold,
-                'title__sub-section'
-              )}
-            >
-              Project Management
-            </h2>
-            <CircleIcon
-              className={styles.icon}
-              src={boxSVG}
-              alt='box'
-            />
+    <section
+      className={classes}
+      ref={sectionRef}
+    >
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2
+            className={classNames(
+              styles.title,
+              styles.bold,
+              'title__sub-section'
+            )}
+          >
+            Project Management
+          </h2>
+          <CircleIcon
+            className={styles.icon}
+            src={boxSVG}
+            alt='box'
+          />
+        </div>
+        <div className={styles.body}>
+          <div className={styles.left}>
+            {map(KEY_WORDS, (el: KeyWordProps, idx: number) => {
+              return (
+                <WaveText
+                  componentKey={idx}
+                  className={classNames(styles.emphasis, WAVE_TEXT_CLASS)}
+                  text={el.text}
+                  animationHeight='1.5rem'
+                  animationDelay={100}
+                />
+              )
+            })}
           </div>
-          <div className={styles.body}>
-            <div className={styles.left}>
-              {map(KEY_WORDS, (el: KeyWordProps, idx: number) => {
-                return (
-                  <WaveText
-                    componentKey={idx}
-                    className={classNames(styles.emphasis, WAVE_TEXT_CLASS)}
-                    text={el.text}
-                    animationHeight='1.5rem'
-                    animationDelay={100}
-                  />
-                )
-              })}
-            </div>
 
-            <div className={styles.right}>
-              <ModalBox className={styles.box__main}>
-                <h3
-                  className={classNames(
-                    'modal__header',
-                    styles.uppercase,
-                    styles.bold,
-                    styles.box__header
-                  )}
-                >
-                  Eliminating the information gap
-                </h3>
-                <div
-                  className={classNames('modal__body', styles.box__body)}
-                  ref={boxRef}
-                >
-                  <p className={styles.text}>
-                    With my experience of project mangement, I strive to
-                    establish an equal level of understanding between the{' '}
-                    <b>client</b> and <b>developers</b>.
-                  </p>
-                  <p className={styles.text}>
-                    Increasing visibility for the client on technical progress
-                    and feasibilities, whilst providing developers a platform to
-                    engage and suggest.
-                  </p>
+          <div className={styles.right}>
+            <ModalBox
+              className={styles.box__main}
+              id='manager-box'
+            >
+              <h3
+                className={classNames(
+                  'modal__header',
+                  styles.uppercase,
+                  styles.bold,
+                  styles.box__header
+                )}
+              >
+                Eliminating the information gap
+              </h3>
+              <div
+                className={classNames('modal__body', styles.box__body)}
+                ref={boxRef}
+              >
+                <p className={styles.text}>
+                  With my experience of project mangement, I strive to establish
+                  an equal level of understanding between the <b>client</b> and{' '}
+                  <b>developers</b>.
+                </p>
+                <p className={styles.text}>
+                  Increasing visibility for the client on technical progress and
+                  feasibilities, whilst providing developers a platform to
+                  engage and suggest.
+                </p>
 
-                  <p className={styles.text}>
-                    I am in the end a developer by heart and seek to{' '}
-                    <b>take inspiration and learn from all</b> to contribute
-                    towards a cohesive team in the end.
-                  </p>
+                <p className={styles.text}>
+                  I am in the end a developer by heart and seek to{' '}
+                  <b>take inspiration and learn from all</b> to contribute
+                  towards a cohesive team in the end.
+                </p>
 
-                  <p className={styles.text}>
-                    That's why I seek to get everyone involved and informed to
-                    ensure standards and expectations are met.
-                  </p>
-                </div>
-              </ModalBox>
-            </div>
+                <p className={styles.text}>
+                  That's why I seek to get everyone involved and informed to
+                  ensure standards and expectations are met.
+                </p>
+              </div>
+            </ModalBox>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

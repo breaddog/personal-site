@@ -52,7 +52,7 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
                 <JobInfo
                   className={styles.jobBox}
                   jobData={job}
-                  key={idx}
+                  componentKey={idx}
                 />
               )
             })}

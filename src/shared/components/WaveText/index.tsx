@@ -26,6 +26,7 @@ export const WaveText: React.FunctionComponent<WaveTextProps> = ({
   onMouseEnter = () => {},
 }) => {
   const [animating, setAnimating] = React.useState<boolean>(false)
+  const waveTextRef = React.useRef<HTMLDivElement>(null)
   const classes = classNames(
     styles.text,
     animating && styles.animated,
@@ -42,13 +43,20 @@ export const WaveText: React.FunctionComponent<WaveTextProps> = ({
     }, animationDuration + text.length * animationDelay)
   }
 
+  const checkIfMidTranslation = () => {
+    return waveTextRef?.current?.classList.contains('disabled')
+  }
+
   return (
     <div
       className={classes}
       key={componentKey}
+      ref={waveTextRef}
       onMouseEnter={() => {
-        startAnimation()
-        onMouseEnter()
+        if (!checkIfMidTranslation()) {
+          startAnimation()
+          onMouseEnter()
+        }
       }}
     >
       {/* inject styling */}
@@ -70,7 +78,8 @@ export const WaveText: React.FunctionComponent<WaveTextProps> = ({
               animationDuration: `${animationDuration}ms`,
               animationDelay: `${animationDelay * idx}ms`,
               animationTimingFunction: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)',
-              animationName: animating ? animationName : 'none',
+              animationName:
+                animating && !checkIfMidTranslation() ? animationName : 'none',
             }}
           >
             {/* edge case for spaces */}

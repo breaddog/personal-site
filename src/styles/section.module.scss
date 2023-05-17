@@ -2,10 +2,10 @@
 .section {
   width: 100vw;
   height: 100%;
-
   margin: 0 auto;
 
-  // overflow-x: hidden;
+  // background by www.svgbackgrounds.com
+  background-image: url('../assets/background/subtle-prism-black.svg');
 }
 
 .sub-section {
@@ -13,11 +13,11 @@
   max-height: 1980px;
   width: 100%;
   height: 100vh;
-  background-color: var(--background-colour);
+  // background-color: var(--background-colour);
 
   margin: 0 auto;
 
-  border: 2px solid var(--dark-grey);
+  // border: 2px solid var(--dark-grey);
 
   &.wide {
     max-width: initial;

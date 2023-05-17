@@ -47,9 +47,9 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
           )}
         </div>
 
-        <div className={styles.right}>
+        {/* <div className={styles.right}>
           <Button className={styles.wallet}>Connect Wallet</Button>
-        </div>
+        </div> */}
       </div>
     </header>
   )

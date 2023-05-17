@@ -233,7 +233,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
         orbitContainerRef.current.addEventListener('mouseenter', slowOrbit)
         orbitContainerRef.current.addEventListener('mouseleave', resumeOrbit)
       }
-    })
+    }, devSectionRef)
     return () => {
       ctx.revert()
       if (orbitContainerRef.current) {

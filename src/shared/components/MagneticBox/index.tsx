@@ -60,7 +60,7 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
       magneticAreaRef.current.addEventListener('mouseleave', () =>
         magneticMouseLeaveEffect()
       )
-    })
+    }, magneticAreaRef)
 
     return () => {
       if (!magneticAreaRef.current) return
