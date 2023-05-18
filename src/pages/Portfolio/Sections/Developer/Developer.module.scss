@@ -14,31 +14,6 @@
   display: flex;
   flex-direction: column;
 
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-
-  .header {
-    display: flex;
-    flex-direction: row;
-    margin-top: var(--header-margin);
-
-    .title {
-      margin: auto 0;
-      text-transform: uppercase;
-    }
-
-    .icon {
-      background-color: var(--purple);
-    }
-  }
-
-  .subHeading {
-    margin-top: 1rem;
-    font-size: var(--font-h3);
-    margin-left: 0.25rem;
-  }
-
   .body {
     margin-top: 5vmin;
 

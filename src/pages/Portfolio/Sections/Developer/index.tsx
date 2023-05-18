@@ -5,7 +5,12 @@ import classNames from 'classnames'
 
 import gsap from 'gsap'
 import { Draggable, MotionPathPlugin, ScrollTrigger } from 'gsap/all'
-import { CircleIcon, Window } from '../../../../shared/components'
+import {
+  SectionHeader,
+  SectionContainer,
+  Window,
+  SectionSubHeader
+} from '../../../../shared/components'
 
 import { detectScrollBoundary } from '../../../../shared/functions/functions'
 
@@ -275,26 +280,17 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
             setHighestZIndex,
           }}
         >
-          <div className={styles.container}>
-            <div className={styles.header}>
-              <h2
-                className={classNames(
-                  styles.title,
-                  styles.bold,
-                  'title__sub-section'
-                )}
-              >
-                Web Developer
-              </h2>
-              <CircleIcon
-                className={styles.icon}
-                src={laptopSVG}
-                alt='laptop'
-              />
-            </div>
-            <div className={styles.subHeading}>
+          <SectionContainer className={styles.container}>
+            <SectionHeader
+              className={styles.header}
+              title='Web Developer'
+              src={laptopSVG}
+              alt='laptop'
+              backgroundColour='var(--purple)'
+            />
+            <SectionSubHeader className={styles.subheading}>
               <b>Hint:</b> Try dragging and re-sizing the windows...
-            </div>
+            </SectionSubHeader>
             <div className={styles.body}>
               <div className={styles.left}>
                 <Window
@@ -464,7 +460,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                 </Window>
               </div>
             </div>
-          </div>
+          </SectionContainer>
         </PortfolioDevContext.Provider>
       </section>
     </>

@@ -6,7 +6,13 @@ import classNames from 'classnames'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
-import { CircleIcon, ModalBox, WaveText } from '../../../../shared/components'
+import {
+  CircleIcon,
+  ModalBox,
+  SectionContainer,
+  SectionHeader,
+  WaveText
+} from '../../../../shared/components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
 import { delay, map, reverse } from 'lodash'
@@ -185,23 +191,14 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
       className={classes}
       ref={sectionRef}
     >
-      <div className={classNames(sectionStyles.container, styles.container)}>
-        <div className={styles.header}>
-          <h2
-            className={classNames(
-              styles.title,
-              styles.bold,
-              'title__sub-section'
-            )}
-          >
-            Project Management
-          </h2>
-          <CircleIcon
-            className={styles.icon}
-            src={boxSVG}
-            alt='box'
-          />
-        </div>
+      <SectionContainer className={styles.container}>
+        <SectionHeader
+          className={styles.header}
+          title='Project Manager'
+          src={boxSVG}
+          alt='box'
+          backgroundColour='var(--blue)'
+        />
         <div className={styles.body}>
           <div className={styles.left}>
             {map(KEY_WORDS, (el: KeyWordProps, idx: number) => {
@@ -261,7 +258,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
             </ModalBox>
           </div>
         </div>
-      </div>
+      </SectionContainer>
     </section>
   )
 }

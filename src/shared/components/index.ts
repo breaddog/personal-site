@@ -13,3 +13,5 @@ export * from './Button'
 export * from './Hyperlink'
 
 export * from './Keyframes'
+
+export * from './Sections'

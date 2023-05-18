@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  margin-top: var(--header-margin);
+
+  .title {
+    margin: auto 0;
+    font-size: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .icon {
+    margin: 0 2rem;
+    background-color: var(--purple);
+  }
+}

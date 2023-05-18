@@ -9,7 +9,7 @@ import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
 import { map } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
-import { CircleIcon } from '../../../../shared/components'
+import { SectionContainer, SectionHeader } from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
@@ -25,8 +25,8 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
 }) => {
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
-  const [iconBulbActive, setIconBulbActive] = React.useState<boolean>(false)
-  const [manualBulbActive, setManualBulbActive] = React.useState<boolean>(true)
+  // const [iconBulbActive, setIconBulbActive] = React.useState<boolean>(false)
+  // const [manualBulbActive, setManualBulbActive] = React.useState<boolean>(true)
 
   const swiperParams: SwiperProps = {
     id: 'highlights-carousel',
@@ -55,35 +55,6 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
     },
   }
 
-  // // light bulb
-  // const lightBulbScrollDetection = async () => {
-  //   if (!highlightsRef.current?.offsetTop) return
-  //   const _targetBoundary =
-  //     highlightsRef.current?.offsetTop - highlightsRef.current?.offsetTop * 0.05
-  //   const _boundaryHit = await detectScrollBoundary(_targetBoundary)
-
-  //   if (_boundaryHit && !iconBulbActive) {
-  //     setIconBulbActive(true)
-  //   }
-
-  //   if (!_boundaryHit && iconBulbActive) {
-  //     setIconBulbActive(false)
-  //   }
-  // }
-
-  // respect if manual override, else follow std logic by page
-  const determineIfEffectActive = () => {
-    if (!manualBulbActive) return false
-    return iconBulbActive
-  }
-
-  // React.useEffect(() => {
-  //   window.addEventListener('scroll', lightBulbScrollDetection)
-  //   return () => {
-  //     window.removeEventListener('scroll', lightBulbScrollDetection)
-  //   }
-  // }, [highlightsRef, iconBulbActive])
-
   React.useEffect(() => {
     window.addEventListener('load', () => ScrollTrigger.refresh())
     return () => {
@@ -103,41 +74,14 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
       className={classes}
       ref={highlightsRef}
     >
-      {/* idea: on scroll have the direction of gradient change */}
-      <div
-        className={classNames(
-          styles.containerBg,
-          determineIfEffectActive() && styles.active
-        )}
-      ></div>
-      <div
-        className={classNames(
-          classNames(sectionStyles.container, styles.container),
-          determineIfEffectActive() && styles.active
-        )}
-      >
-        <div className={styles.header}>
-          <h2
-            className={classNames(
-              styles.title,
-              styles.bold,
-              'title__sub-section'
-            )}
-          >
-            Highlights
-          </h2>
-          <CircleIcon
-            className={classNames(styles.icon, styles.bulb)}
-            src={bulbSVG}
-            alt='box'
-            backgroundColor={
-              determineIfEffectActive() ? 'var(--yellow)' : 'var(--blue)'
-            }
-            onClick={() => {
-              setManualBulbActive(!manualBulbActive)
-            }}
-          />
-        </div>
+      <SectionContainer className={styles.container}>
+        <SectionHeader
+          className={styles.header}
+          title='Highlights'
+          src={bulbSVG}
+          alt='bulb'
+          backgroundColour='var(--blue)'
+        />
         <div className={styles.body}>
           <div className={styles.subheading}>
             Here's a list of projects that I have worked on, feel free to have a
@@ -215,7 +159,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
             })}
           </Swiper>
         </div>
-      </div>
+      </SectionContainer>
     </section>
   )
 }

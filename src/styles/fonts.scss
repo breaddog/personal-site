@@ -3,6 +3,7 @@
   &__silkscreen {
     font-family: 'Silkscreen';
   }
+
   &__silkscreen-bold {
     font-family: 'Silkscreen Bold';
   }
@@ -29,12 +30,12 @@ p {
   line-height: calc(var(--font-p) * 1.5);
 }
 
-.title {
-  &__sub-section {
-    font-size: 40px;
-    font-weight: 500;
-  }
-}
+// .title {
+//   &__sub-section {
+//     font-size: 40px;
+//     font-weight: 500;
+//   }
+// }
 
 // transforms
 .uppercase {
@@ -60,6 +61,7 @@ p {
 
 .bullet-point {
   position: relative;
+
   // margin-right: 0.3rem;
   &:before {
     content: '>';

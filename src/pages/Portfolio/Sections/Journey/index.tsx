@@ -6,7 +6,11 @@ import classNames from 'classnames'
 import { map } from 'lodash'
 
 import { JobInfo } from './Components'
-import { CircleIcon } from '../../../../shared/components'
+import {
+  CircleIcon,
+  SectionContainer,
+  SectionHeader
+} from '../../../../shared/components'
 
 import reactSVG from '../../../../assets/icons/react.svg'
 
@@ -29,23 +33,14 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
   return (
     <>
       <section className={classes}>
-        <div className={classNames(sectionStyles.container, styles.container)}>
-          <div className={styles.header}>
-            <h2
-              className={classNames(
-                styles.title,
-                styles.bold,
-                'title__sub-section'
-              )}
-            >
-              Journey So Far
-            </h2>
-            <CircleIcon
-              className={styles.icon}
-              src={reactSVG}
-              alt='react'
-            />
-          </div>
+        <SectionContainer className={styles.container}>
+          <SectionHeader
+            className={styles.header}
+            title='Journey So Far'
+            src={reactSVG}
+            alt='react'
+            backgroundColour='var(--purple-10)'
+          />
           <div className={styles.body}>
             {map(JOB_POSITIONS, (job: JobPosition, idx: number) => {
               return (
@@ -57,7 +52,7 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
               )
             })}
           </div>
-        </div>
+        </SectionContainer>
       </section>
     </>
   )

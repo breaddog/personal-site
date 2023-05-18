@@ -9,7 +9,7 @@ import reactSVG from '../../../../assets/icons/react.svg'
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 import mailSVG from '../../../../assets/icons/mail.svg'
 
-import { CircleIcon } from '../../../../shared/components'
+import { CircleIcon, SectionContainer } from '../../../../shared/components'
 
 import doubleArrowDownSVG from '../../../../assets/icons/double-arrow-down.svg'
 import onigiriSVG from '../../../../assets/icons/onigiri.svg'
@@ -31,7 +31,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
   return (
     <>
       <section className={classes}>
-        <div className={classNames(sectionStyles.container, styles.container)}>
+        <SectionContainer className={styles.container}>
           <div className={styles.left}>
             <div className={styles.header}>
               <div className={styles.titleContainer}>
@@ -79,7 +79,8 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> = ({
               alt='onigiri'
             />
           </div>
-        </div>
+        </SectionContainer>
+
         <div className={classNames(styles.bottom, styles.animation__bounce)}>
           <DoubleArrowDown className={styles.arrow} />
         </div>
