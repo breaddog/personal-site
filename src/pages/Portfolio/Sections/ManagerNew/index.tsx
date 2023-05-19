@@ -89,7 +89,6 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
           ease: 'sine.inOut',
           onComplete: () => {
             parent.classList.remove('disabled')
-            console.log('removed')
           },
         })
       _masterTimeline.add(_childTimeline, `-${duration}`)
@@ -108,7 +107,6 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
         duration,
         onStart: () => {
           el.classList.add('disabled')
-          console.log('added')
         },
         onComplete: () => {
           sineWaveTextEffect({

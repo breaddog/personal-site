@@ -14,16 +14,44 @@ import {
   Navigate
 } from 'react-router-dom'
 import { ProjectPage } from './pages/Portfolio/Projects'
+import { CONSTANTS } from './shared/constants'
+import { ScrollTrigger } from 'gsap/all'
 
 interface AppProps {
   className?: string
 }
 
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
-  const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
+  const { mobileMediaQuery } = CONSTANTS
   const { active } = React.useContext(LoadingContext)
 
+  const [isMobile, setIsMobile] = React.useState<boolean>(false)
+  const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
+
+  const isMobileMatcher = window.matchMedia(mobileMediaQuery)
   const classes = classNames(styles.app, active && styles.active, className)
+
+  // listener for desktop or mobile
+  const handleDesktopListener = () => {
+    // if mobile size and havent been set
+    if (isMobileMatcher.matches && !isMobile) {
+      setIsMobile(true)
+      ScrollTrigger.refresh()
+    }
+    // if not mobile size and havent been set
+    if (!isMobileMatcher.matches && isMobile) {
+      setIsMobile(false)
+      ScrollTrigger.refresh()
+    }
+  }
+
+  React.useEffect(() => {
+    handleDesktopListener()
+    window.addEventListener('resize', handleDesktopListener)
+    return () => {
+      window.removeEventListener('resize', handleDesktopListener)
+    }
+  }, [isMobile, isMobileMatcher])
 
   React.useEffect(() => {
     AOS.init({
@@ -37,6 +65,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     <Router>
       <AppContext.Provider
         value={{
+          isMobile,
           scrollEnabled,
           setScrollEnabled,
         }}
@@ -84,11 +113,13 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 }
 
 interface AppContextProps {
+  isMobile: boolean
   scrollEnabled: boolean
   setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const AppContext = React.createContext<AppContextProps>({
+  isMobile: false,
   scrollEnabled: true,
   setScrollEnabled: () => {},
 })

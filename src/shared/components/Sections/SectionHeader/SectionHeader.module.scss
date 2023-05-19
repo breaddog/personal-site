@@ -16,3 +16,19 @@
     background-color: var(--purple);
   }
 }
+
+// smaller size
+@media screen and (max-width: 876px) {
+  .header {
+    flex-flow: column-reverse;
+
+    .title {
+      text-align: center;
+    }
+
+    .icon {
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
+  }
+}

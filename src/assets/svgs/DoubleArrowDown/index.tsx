@@ -21,12 +21,12 @@ export const DoubleArrowDown: React.FunctionComponent<DoubleArrowDownProps> = ({
       <path
         d='M18 12L12 18L6 12'
         stroke={stroke}
-        stroke-width='2'
+        strokeWidth='2'
       />
       <path
         d='M18 6L12 12L6 6'
         stroke={stroke}
-        stroke-width='2'
+        strokeWidth='2'
       />
     </svg>
   )

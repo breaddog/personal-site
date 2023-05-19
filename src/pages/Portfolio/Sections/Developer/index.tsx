@@ -9,9 +9,12 @@ import {
   SectionHeader,
   SectionContainer,
   Window,
-  SectionSubHeader
+  SectionSubHeader,
+  WindowHandle
 } from '../../../../shared/components'
 
+// libraries
+import { map } from 'lodash'
 import { detectScrollBoundary } from '../../../../shared/functions/functions'
 
 // orbit
@@ -35,11 +38,16 @@ import codepipelineSVG from '../../../../assets/logos/codepipeline.svg'
 import ethSVG from '../../../../assets/logos/eth.svg'
 import githubSVG from '../../../../assets/logos/github.svg'
 
-const ORBIT_ITEMS: {
+import { CONSTANTS } from '../../../../shared/constants'
+import { AppContext } from '../../../../App'
+const { mobileMediaQuery } = CONSTANTS
+
+interface OrbitItemProps {
   src: string
   alt: string
   type: string
-}[] = [
+}
+const ORBIT_ITEMS: OrbitItemProps[] = [
   {
     src: htmlSVG,
     alt: 'html',
@@ -114,6 +122,7 @@ interface PortfolioDeveloperProps {
 export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   className,
 }) => {
+  const { isMobile } = React.useContext(AppContext)
   // class
   const classes = classNames(
     'sub-section__dev',
@@ -121,9 +130,15 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     styles.dev,
     className
   )
+
+  // refs
   const devSectionRef = React.useRef<HTMLDivElement | null>(null)
   const orbitContainerRef = React.useRef<HTMLDivElement | null>(null)
   const orbitTimelinesRef = React.useRef<gsap.core.Timeline[] | null>(null)
+
+  // for windows
+  const textWindowRef = React.useRef<WindowHandle>(null)
+  const orbitWindowRef = React.useRef<WindowHandle>(null)
 
   const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
   // if animation init
@@ -133,10 +148,9 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   // current highlighted stack component
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(-1)
 
-  // start orbit
+  // initiate and is used to reset the orbit items
   const initiateItemOrbit = () => {
-    // convert to path or breaks
-    MotionPathPlugin.convertToPath(DOTTED_CIRCLE_PATH)
+    if (isMobile) return
     // vars
     const orbitItems = gsap.utils.toArray('.orbit-item')
     const nItems = orbitItems.length
@@ -149,43 +163,46 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       // somehow the +1 makes it more stable? better to put more rotation ig
       const _end = Number((idx / nItems + 1).toFixed(2)) + 1
 
-      let _timeline = gsap
-        .timeline()
-        .fromTo(
-          item,
-          {
-            opacity: 0,
+      // const _starting = gsap.timeline()
+      //   .fromTo(
+      //     item,
+      //     {
+      //       opacity: 0,
+      //     },
+      //     {
+      //       opacity: 1,
+      //       duration: 0.5,
+      //     }
+      //   )
+
+      let _timeline = gsap.timeline().to(
+        item,
+        {
+          motionPath: {
+            path: DOTTED_CIRCLE_PATH,
+            align: DOTTED_CIRCLE_PATH,
+            autoRotate: false,
+            alignOrigin: [0.5, 0.5],
+            start: _start,
+            end: _end,
           },
-          {
-            opacity: 1,
-            duration: 0.5,
-          }
-        )
-        .to(
-          item,
-          {
-            motionPath: {
-              path: DOTTED_CIRCLE_PATH,
-              align: DOTTED_CIRCLE_PATH,
-              autoRotate: false,
-              alignOrigin: [0.5, 0.5],
-              start: _start,
-              end: _end,
-            },
-            ease: 'none',
-            duration: 45,
-            repeat: -1,
-          },
-          '-=0.5'
-        )
+          ease: 'none',
+          duration: 45,
+          repeat: -1,
+        },
+        '-=0.5'
+      )
       _orbitTimelines.push(_timeline)
     })
 
+    // sets it to a timeline ref
     orbitTimelinesRef.current = _orbitTimelines
   }
 
   // orbit timeline
   const orbitTimeline = () => {
+    if (isMobile) return
+
     return gsap
       .timeline()
       .from('#orbit-items-container', {
@@ -226,6 +243,151 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     }
   }
 
+  // JSX
+  // detect when animation should start
+  const sectionTriggerDetection = async () => {
+    if (animationInit || isMobile) return
+    const _offsetTop = devSectionRef.current?.offsetTop
+    if (!_offsetTop) return
+    const _targetBoundary = _offsetTop - _offsetTop * 0.85
+    const _boundaryHit = await detectScrollBoundary(_targetBoundary)
+    if (!animationInit && _boundaryHit) {
+      setAnimationInit(true)
+    }
+  }
+
+  // desktop
+  const desktopOrbitJSX = () => {
+    return (
+      <div
+        className={classNames(
+          styles.orbitContainerDesktop,
+          isMobile && styles.disabled
+        )}
+      >
+        <div className={styles.orbitItemHighlight__container}>
+          <div
+            className={classNames(
+              styles.orbitItemHighlight__left,
+              0 > selectedItemIndex && styles.inactive
+            )}
+          >
+            {0 > selectedItemIndex ? (
+              <div className={classNames(styles.orbitItemHighlight__text)}>
+                SELECT LOGO TO VIEW STACK INFO
+              </div>
+            ) : (
+              <div className={classNames(styles.orbitItemHighlight__text)}>
+                {ORBIT_ITEMS[selectedItemIndex].type || null}
+              </div>
+            )}
+          </div>
+          {0 <= selectedItemIndex && (
+            <div className={styles.orbitItemHighlight__right}>
+              <div
+                className={classNames(
+                  styles.orbitItemHighlight__text,
+                  styles.uppercase,
+                  styles.bold
+                )}
+              >
+                {ORBIT_ITEMS[selectedItemIndex].alt || null}
+              </div>
+              <img
+                className={styles.orbitItemHighlight__img}
+                src={ORBIT_ITEMS[selectedItemIndex].src}
+                alt={ORBIT_ITEMS[selectedItemIndex].alt || ''}
+                style={{
+                  filter:
+                    'tien' === ORBIT_ITEMS[selectedItemIndex].alt
+                      ? 'brightness(0.2)'
+                      : 'initial',
+                }}
+              />
+            </div>
+          )}
+        </div>
+        <div
+          id='orbit-container'
+          className={styles.orbitContainer}
+          ref={orbitContainerRef}
+        >
+          <div
+            id='orbit-items-container'
+            className={styles.orbitItemsContainer}
+            // style={{
+            //   backgroundImage: `url("${solidCircleSVG}")`,
+            //   backgroundPosition: 'center',
+            //   backgroundSize: 'contain',
+            //   backgroundRepeat: 'no-repeat'
+            // }}
+          >
+            <DottedCircle
+              className={styles.orbitCircle}
+              id='developer-circle'
+              pathId={DOTTED_CIRCLE_PATH.slice(1)}
+            />
+
+            {ORBIT_ITEMS.slice(0, -1).map(
+              (item: { src: string; alt: string }, idx: number | string) => {
+                return (
+                  <div
+                    className={classNames(styles.item, 'orbit-item')}
+                    key={idx}
+                    onClick={() => setSelectedItemIndex(Number(idx))}
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                    />
+                  </div>
+                )
+              }
+            )}
+          </div>
+          <img
+            className={classNames(styles.itemCenter, 'orbit-center')}
+            src={userSVG}
+            alt='user'
+            onClick={() => setSelectedItemIndex(ORBIT_ITEMS.length - 1)}
+          />
+        </div>
+      </div>
+    )
+  }
+
+  const mobileOrbitJSX = () => {
+    return (
+      <div
+        className={classNames(
+          styles.orbitContainerMobile,
+          !isMobile && styles.disabled
+        )}
+      >
+        {/* remove the last one as thats a reference */}
+        {map(
+          ORBIT_ITEMS.slice(0, ORBIT_ITEMS.length - 1),
+          (el: OrbitItemProps, idx: number) => {
+            return (
+              <div
+                className={styles.row}
+                key={idx}
+              >
+                <div className={styles.item}>{el.alt}</div>
+                <div className={styles.image}>
+                  <img
+                    src={el.src}
+                    alt={el.alt}
+                  />
+                </div>
+              </div>
+            )
+          }
+        )}
+      </div>
+    )
+  }
+
   // orbit mechanics
   React.useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -233,6 +395,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
       // orbit timeline initaite
       if (animationInit && orbitContainerRef.current) {
+        MotionPathPlugin.convertToPath(DOTTED_CIRCLE_PATH)
         orbitTimeline()
         // on hover need to slow to allow user to interact
         orbitContainerRef.current.addEventListener('mouseenter', slowOrbit)
@@ -247,18 +410,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       }
     }
   }, [animationInit, orbitContainerRef, orbitTimelinesRef])
-
-  // detect when animation should start
-  const sectionTriggerDetection = async () => {
-    if (animationInit) return
-    const _offsetTop = devSectionRef.current?.offsetTop
-    if (!_offsetTop) return
-    const _targetBoundary = _offsetTop - _offsetTop * 0.85
-    const _boundaryHit = await detectScrollBoundary(_targetBoundary)
-    if (!animationInit && _boundaryHit) {
-      setAnimationInit(true)
-    }
-  }
 
   // detect if triggered
   React.useEffect(() => {
@@ -278,6 +429,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
           value={{
             highestZIndex,
             setHighestZIndex,
+            resetOrbitTimeline: initiateItemOrbit,
           }}
         >
           <SectionContainer className={styles.container}>
@@ -289,16 +441,17 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
               backgroundColour='var(--purple)'
             />
             <SectionSubHeader className={styles.subheading}>
-              <b>Hint:</b> Try dragging and re-sizing the windows...
+              <b>Hint:</b> On Desktop, try dragging and re-sizing the windows...
             </SectionSubHeader>
             <div className={styles.body}>
               <div className={styles.left}>
                 <Window
-                  className={classNames(styles.window, styles.window__dev)}
+                  className={classNames(styles.window, styles.about)}
                   windowTitle='Tien Powershell'
                   windowStyle='dark'
                   referenceKey='0'
                   boundaryContainer='.sub-section__dev'
+                  ref={textWindowRef}
                 >
                   <h3 className={classNames(styles.windowHeader, styles.bold)}>
                     About Me
@@ -357,106 +510,16 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
               </div>
               <div className={styles.right}>
                 <Window
-                  className={classNames(styles.window, styles.window__dev)}
+                  className={classNames(styles.window, styles.orbit)}
                   windowTitle='My Development Stack'
                   windowStyle='dark'
                   referenceKey='1'
+                  boundaryContainer='.sub-section__dev'
+                  onResize={() => initiateItemOrbit()}
+                  ref={orbitWindowRef}
                 >
-                  <div className={styles.orbitItemHighlight__container}>
-                    <div
-                      className={classNames(
-                        styles.orbitItemHighlight__left,
-                        0 > selectedItemIndex && styles.inactive
-                      )}
-                    >
-                      {0 > selectedItemIndex ? (
-                        <div
-                          className={classNames(
-                            styles.orbitItemHighlight__text
-                          )}
-                        >
-                          SELECT LOGO TO VIEW STACK INFO
-                        </div>
-                      ) : (
-                        <div
-                          className={classNames(
-                            styles.orbitItemHighlight__text
-                          )}
-                        >
-                          {ORBIT_ITEMS[selectedItemIndex].type || null}
-                        </div>
-                      )}
-                    </div>
-                    {0 <= selectedItemIndex && (
-                      <div className={styles.orbitItemHighlight__right}>
-                        <div
-                          className={classNames(
-                            styles.orbitItemHighlight__text,
-                            styles.uppercase,
-                            styles.bold
-                          )}
-                        >
-                          {ORBIT_ITEMS[selectedItemIndex].alt || null}
-                        </div>
-                        <img
-                          className={styles.orbitItemHighlight__img}
-                          src={ORBIT_ITEMS[selectedItemIndex].src}
-                          alt={ORBIT_ITEMS[selectedItemIndex].alt || ''}
-                          style={{
-                            filter:
-                              'tien' === ORBIT_ITEMS[selectedItemIndex].alt
-                                ? 'brightness(0.2)'
-                                : 'initial',
-                          }}
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  <div
-                    id='orbit-container'
-                    className={styles.orbitContainer}
-                    ref={orbitContainerRef}
-                  >
-                    <div
-                      id='orbit-items-container'
-                      className={styles.orbitItemsContainer}
-                    >
-                      <DottedCircle
-                        className={styles.orbitCircle}
-                        id='developer-circle'
-                        pathId={DOTTED_CIRCLE_PATH.slice(1)}
-                      />
-
-                      {ORBIT_ITEMS.slice(0, -1).map(
-                        (
-                          item: { src: string; alt: string },
-                          idx: number | string
-                        ) => {
-                          return (
-                            <div
-                              className={classNames(styles.item, 'orbit-item')}
-                              key={idx}
-                              onClick={() => setSelectedItemIndex(Number(idx))}
-                            >
-                              <img
-                                src={item.src}
-                                alt={item.alt}
-                              />
-                            </div>
-                          )
-                        }
-                      )}
-                    </div>
-                    <img
-                      className={classNames(styles.itemCenter, 'orbit-center')}
-                      src={userSVG}
-                      alt='user'
-                      onClick={() =>
-                        setSelectedItemIndex(ORBIT_ITEMS.length - 1)
-                      }
-                    />
-                  </div>
+                  {desktopOrbitJSX()}
+                  {mobileOrbitJSX()}
                 </Window>
               </div>
             </div>
@@ -470,10 +533,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
 interface PortfolioDevContextProps {
   highestZIndex: number
   setHighestZIndex: React.Dispatch<React.SetStateAction<number>>
+  resetOrbitTimeline: Function
 }
 
 export const PortfolioDevContext =
   React.createContext<PortfolioDevContextProps>({
     highestZIndex: 0,
     setHighestZIndex: () => {},
+    resetOrbitTimeline: () => {},
   })

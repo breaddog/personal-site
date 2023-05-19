@@ -6,7 +6,7 @@
   flex-direction: column;
   position: relative;
 
-  min-height: 400px;
+  min-height: 240px;
   max-height: 80vmin;
   min-width: 240px;
   max-width: 80vmax;
@@ -150,6 +150,22 @@
       right: 0;
       width: 3px;
       height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .window {
+    min-width: 200px;
+    min-height: 400px;
+
+    .header {
+      height: fit-content;
+    }
+
+    .box,
+    .edge {
+      display: none !important;
     }
   }
 }

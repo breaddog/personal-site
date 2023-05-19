@@ -2,7 +2,7 @@
 .section {
   width: 100vw;
   height: 100%;
-  margin: 0 auto;
+  margin: 2rem auto;
 
   // background by www.svgbackgrounds.com
   background-image: url('../assets/background/subtle-prism-black.svg');
@@ -10,14 +10,10 @@
 
 .sub-section {
   max-width: var(--max-width);
-  max-height: 1980px;
   width: 100%;
   height: 100vh;
-  // background-color: var(--background-colour);
 
   margin: 0 auto;
-
-  // border: 2px solid var(--dark-grey);
 
   &.wide {
     max-width: initial;
