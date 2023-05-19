@@ -142,15 +142,22 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
     const scrollTrigger = {
       trigger: sectionRef.current,
       start: 'top top',
-      end: '+=3000px',
+      end: '+=5000px',
       scrub: 0.1,
       pin: true,
     }
 
     // main timeline
-    const _timeline = gsap.timeline({
-      scrollTrigger,
-    })
+    const _timeline = gsap
+      .timeline({
+        scrollTrigger,
+      })
+      .to(
+        {},
+        {
+          duration: 10,
+        }
+      )
 
     // add wave elemtns
     _elements.forEach((el: Element) => {
@@ -161,7 +168,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
     _timeline.add(_modalTimeline(8))
 
     // padding
-    _timeline.add(gsap.from({}, { duration: 5 }))
+    _timeline.add(gsap.from({}, { duration: 10 }))
   }
 
   React.useEffect(() => {

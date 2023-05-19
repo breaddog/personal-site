@@ -16,32 +16,11 @@
   height: 100%;
   margin: 0 auto;
 
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: var(--header-margin);
-
-    max-width: var(--max-width);
-
-    .title {
-      margin: auto 0;
-      text-transform: uppercase;
-    }
-
-    .icon {
-      background-color: var(--blue);
-      margin-right: 0;
-    }
-  }
-
   .body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 60%;
+    height: 65%;
     width: 100%;
 
     margin: 0 auto;
@@ -51,7 +30,7 @@
 
     .left {
       width: 40%;
-      height: 85%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
@@ -114,6 +93,71 @@
 
       .text {
         margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .container {
+    .body {
+      .right {
+        width: 75%;
+
+        .box {
+          &__main {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container {
+    .body {
+      .right {
+        .box {
+          &__main {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1048px) {
+  .container {
+    .body {
+      height: auto;
+      flex-direction: column;
+
+      .left {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 2rem;
+
+        .emphasis {
+          width: fit-content;
+          margin: 0 auto;
+          margin-bottom: 2.5rem;
+          font-size: calc(var(--font-h1) * 0.8);
+        }
+      }
+
+      .right {
+        width: 100%;
+        height: 80%;
+
+        .box {
+          &__main {
+            margin-right: unset;
+            margin: 0 auto;
+            width: 100%;
+          }
+        }
       }
     }
   }
