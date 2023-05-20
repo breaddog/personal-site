@@ -78,6 +78,7 @@ export const JOB_POSITIONS: JobPosition[] = [
         info: [
           'Creating Bespoke Sites with React (JS, TS)',
           'Conceptualising Development Specifications (Site, Server)',
+          'Managing a team of international developers to align with project expectations',
           'Bridging communications between clients and developers',
           'Project Quality Control Assurance',
           'Building Smart Contracts (Solidity)',

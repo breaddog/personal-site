@@ -6,11 +6,7 @@ import classNames from 'classnames'
 import { map } from 'lodash'
 
 import { JobInfo } from './Components'
-import {
-  CircleIcon,
-  SectionContainer,
-  SectionHeader
-} from '../../../../shared/components'
+import { SectionContainer, SectionHeader } from '../../../../shared/components'
 
 import reactSVG from '../../../../assets/icons/react.svg'
 
@@ -31,29 +27,27 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
     className
   )
   return (
-    <>
-      <section className={classes}>
-        <SectionContainer className={styles.container}>
-          <SectionHeader
-            className={styles.header}
-            title='Journey So Far'
-            src={reactSVG}
-            alt='react'
-            backgroundColour='var(--purple-10)'
-          />
-          <div className={styles.body}>
-            {map(JOB_POSITIONS, (job: JobPosition, idx: number) => {
-              return (
-                <JobInfo
-                  className={styles.jobBox}
-                  jobData={job}
-                  componentKey={idx}
-                />
-              )
-            })}
-          </div>
-        </SectionContainer>
-      </section>
-    </>
+    <section className={classes}>
+      <SectionContainer className={styles.container}>
+        <SectionHeader
+          className={styles.header}
+          title='Journey So Far'
+          src={reactSVG}
+          alt='react'
+          backgroundColour='var(--purple-10)'
+        />
+        <div className={styles.body}>
+          {map(JOB_POSITIONS, (job: JobPosition, idx: number) => {
+            return (
+              <JobInfo
+                className={styles.jobBox}
+                jobData={job}
+                componentKey={idx}
+              />
+            )
+          })}
+        </div>
+      </SectionContainer>
+    </section>
   )
 }

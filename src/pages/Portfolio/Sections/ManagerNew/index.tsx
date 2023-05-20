@@ -7,7 +7,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
 import {
-  CircleIcon,
   ModalBox,
   SectionContainer,
   SectionHeader,
@@ -15,7 +14,7 @@ import {
 } from '../../../../shared/components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
-import { delay, map, reverse } from 'lodash'
+import { map, reverse } from 'lodash'
 
 interface KeyWordProps {
   key: string
@@ -143,7 +142,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
       trigger: sectionRef.current,
       start: 'top top',
       end: '+=5000px',
-      scrub: 0.1,
+      scrub: 1,
       pin: true,
     }
 

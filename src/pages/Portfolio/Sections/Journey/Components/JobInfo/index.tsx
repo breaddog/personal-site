@@ -100,24 +100,25 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
           height: `${gradientDiameter}px`,
         }}
       ></div>
-      <div className={styles.left}>
-        <div className={styles.nameContainer}>
-          <h4 className={styles.name}>{jobData?.company}</h4>
-          <h4 className={styles.title}>{jobData?.title}</h4>
-          <h4 className={styles.date}>
-            {jobData?.start} - {jobData?.end}
-          </h4>
+      <div className={styles.body}>
+        <div className={classNames(styles.section, styles.mainInfo)}>
+          <div className={styles.nameContainer}>
+            <h4 className={styles.name}>{jobData?.company}</h4>
+            <h4 className={styles.title}>{jobData?.title}</h4>
+            <h4 className={styles.date}>
+              {jobData?.start} - {jobData?.end}
+            </h4>
+          </div>
+
+          <div className={styles.logo}>
+            <LazyLoadImage
+              src={jobData?.logo}
+              alt={jobData?.logoAlt}
+              effect='blur'
+            />
+          </div>
         </div>
 
-        <div className={styles.logo}>
-          <LazyLoadImage
-            src={jobData?.logo}
-            alt={jobData?.logoAlt}
-            effect='blur'
-          />
-        </div>
-      </div>
-      <div className={styles.right}>
         {map(
           jobData?.sections,
           (data: JobPositionData, idx: number | string) => (
@@ -133,24 +134,19 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
               <div className={classNames(styles.content, jobData?.className)}>
                 {map(
                   data?.info,
-                  (
-                    line: string | React.ReactFragment,
-                    _idx: number | string
-                  ) => {
+                  (line: string | React.ReactFragment, _idx: number) => {
                     return (
-                      <>
-                        <span
-                          className={classNames(
-                            styles.info,
-                            data?.isText ? styles.infoText : 'bullet-point',
-                            data?.className && styles[data?.className]
-                          )}
-                          key={_idx}
-                        >
-                          {line}
-                          {Number(_idx) < data?.info.length - 1 && <br />}
-                        </span>
-                      </>
+                      <span
+                        className={classNames(
+                          styles.info,
+                          data?.isText ? styles.infoText : 'bullet-point',
+                          data?.className && styles[data?.className]
+                        )}
+                        key={_idx}
+                      >
+                        {line}
+                        {Number(_idx) < data?.info.length - 1 && <br />}
+                      </span>
                     )
                   }
                 )}
