@@ -16,42 +16,49 @@ import {
 import { ProjectPage } from './pages/Portfolio/Projects'
 import { CONSTANTS } from './shared/constants'
 import { ScrollTrigger } from 'gsap/all'
+import { handleDesktopListener } from './shared/functions/functions'
 
 interface AppProps {
   className?: string
 }
 
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
-  const { mobileMediaQuery } = CONSTANTS
+  const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
   const { active } = React.useContext(LoadingContext)
 
   const [isMobile, setIsMobile] = React.useState<boolean>(false)
+  const [isMedium, setIsMedium] = React.useState<boolean>(false)
+  const [isDesktop, setIsDesktop] = React.useState<boolean>(false)
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
 
   const isMobileMatcher = window.matchMedia(mobileMediaQuery)
+  const isMediumMatcher = window.matchMedia(mediumMediaQuery)
   const classes = classNames(styles.app, active && styles.active, className)
 
   // listener for desktop or mobile
-  const handleDesktopListener = () => {
-    // if mobile size and havent been set
-    if (isMobileMatcher.matches && !isMobile) {
-      setIsMobile(true)
-      ScrollTrigger.refresh()
+  const desktopSizeListenerHandlers = () => {
+    // if medium size checker
+    handleDesktopListener(isMediumMatcher, isMedium, setIsMedium)
+    // if mobile size checker
+    handleDesktopListener(isMobileMatcher, isMobile, setIsMobile)
+
+    // desktop false check
+    if ((isMedium || isMobile) && isDesktop) {
+      setIsDesktop(false)
     }
-    // if not mobile size and havent been set
-    if (!isMobileMatcher.matches && isMobile) {
-      setIsMobile(false)
-      ScrollTrigger.refresh()
+    // desktop true check
+    if ((!isMedium || !isMobile) && !isDesktop) {
+      setIsDesktop(true)
     }
   }
 
   React.useEffect(() => {
-    handleDesktopListener()
-    window.addEventListener('resize', handleDesktopListener)
+    desktopSizeListenerHandlers()
+    window.addEventListener('resize', desktopSizeListenerHandlers)
     return () => {
-      window.removeEventListener('resize', handleDesktopListener)
+      window.removeEventListener('resize', desktopSizeListenerHandlers)
     }
-  }, [isMobile, isMobileMatcher])
+  }, [isMobile, isMedium, isDesktop, isMobileMatcher, isMediumMatcher])
 
   React.useEffect(() => {
     AOS.init({
@@ -66,6 +73,8 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       <AppContext.Provider
         value={{
           isMobile,
+          isMedium,
+          isDesktop,
           scrollEnabled,
           setScrollEnabled,
         }}
@@ -114,12 +123,16 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
 interface AppContextProps {
   isMobile: boolean
+  isMedium: boolean
+  isDesktop: boolean
   scrollEnabled: boolean
   setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const AppContext = React.createContext<AppContextProps>({
   isMobile: false,
+  isMedium: false,
+  isDesktop: false,
   scrollEnabled: true,
   setScrollEnabled: () => {},
 })

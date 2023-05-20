@@ -1,7 +1,7 @@
 import styles from './Window.module.scss'
 import React from 'react'
 import classNames from 'classnames'
-import { max } from 'lodash'
+import { every, max } from 'lodash'
 
 import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
@@ -94,6 +94,14 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
     // constraints
     const MIN_HEIGHT = 400
     const MIN_WIDTH = 240
+
+    const DRAGGABLE_REFS_TO_CHECK = [
+      draggableRef,
+      topDraggable,
+      bottomDraggable,
+      leftDraggable,
+      rightDraggable,
+    ]
 
     // disable and reset on small screen sizes
     // const interactivityDisabled = window.matchMedia(mobileMediaQuery)
@@ -303,23 +311,31 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
       })
     }
 
+    // check for refs
+    const checkIfRefsSet = () => {
+      return every(
+        DRAGGABLE_REFS_TO_CHECK,
+        (ref: React.MutableRefObject<HTMLDivElement>) => ref.current
+      )
+    }
+
     const enableWindowFunctions = () => {
-      if (!draggableRef.current) return
+      if (!checkIfRefsSet()) return
       draggableRef.current.enable()
       topDraggable.current.enable()
       bottomDraggable.current.enable()
       leftDraggable.current.enable()
       rightDraggable.current.enable()
 
-      draggableRef.current.update()
-      topDraggable.current.update()
-      bottomDraggable.current.update()
-      leftDraggable.current.update()
-      rightDraggable.current.update()
+      // draggableRef.current.update()
+      // topDraggable.current.update()
+      // bottomDraggable.current.update()
+      // leftDraggable.current.update()
+      // rightDraggable.current.update()
     }
 
     const disableWindowFunctions = () => {
-      if (!draggableRef.current) return
+      if (!checkIfRefsSet()) return
       draggableRef.current.disable()
       topDraggable.current.disable()
       bottomDraggable.current.disable()

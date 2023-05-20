@@ -1,3 +1,6 @@
+import { ScrollTrigger } from 'gsap/all'
+import React from 'react'
+
 // random
 export const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min)
@@ -13,6 +16,22 @@ export const getRandomIntInclusive = (min: number, max: number) => {
 export const detectScrollBoundary = async (refOffsetTarget: number) => {
   const scrollY = window.scrollY
   return scrollY >= refOffsetTarget
+}
+
+// for sizes
+export const handleDesktopListener = (
+  query: MediaQueryList,
+  secondCheck: boolean,
+  secondCheckSetter: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  if (query.matches && !secondCheck) {
+    secondCheckSetter(true)
+    ScrollTrigger.refresh()
+  }
+  if (!query.matches && secondCheck) {
+    secondCheckSetter(false)
+    ScrollTrigger.refresh()
+  }
 }
 
 // utility

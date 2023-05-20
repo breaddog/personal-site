@@ -15,6 +15,7 @@ import bulbSVG from '../../../../assets/icons/bulb.svg'
 
 import { PROJECTS, ProjectObject } from '../../../../data/projects'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
+import { AppContext } from '../../../../App'
 
 interface PortfolioHighlightsProps {
   className?: string
@@ -23,27 +24,27 @@ interface PortfolioHighlightsProps {
 export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   className,
 }) => {
+  const { isMobile, isMedium, isDesktop } = React.useContext(AppContext)
+
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
-  // const [iconBulbActive, setIconBulbActive] = React.useState<boolean>(false)
-  // const [manualBulbActive, setManualBulbActive] = React.useState<boolean>(true)
+  const slideViewParamsRegular = {
+    initialSlide: 2,
+    slidesPerView: 2.5,
+  }
+
+  const slideViewParamsMedium = {
+    slidesPerView: 1.5,
+  }
+
+  const slideViewParamsSmall = {
+    slidesPerView: 1,
+  }
 
   const swiperParams: SwiperProps = {
     id: 'highlights-carousel',
     className: styles.carousel,
     modules: [Pagination, Navigation, EffectCoverflow, Keyboard],
-    initialSlide: 2,
-    centeredSlides: true,
-    slidesPerView: 2.5,
-    autoplay: true,
-    loop: true,
-    pagination: true,
-    navigation: true,
-    grabCursor: true,
-    keyboard: {
-      onlyInViewport: true,
-      enabled: true,
-    },
     effect: 'coverflow',
     coverflowEffect: {
       rotate: 10,
@@ -53,6 +54,17 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
       stretch: 200,
       scale: 0.725,
     },
+    autoplay: true,
+    loop: true,
+    centeredSlides: true,
+    pagination: true,
+    navigation: true,
+    grabCursor: true,
+    keyboard: {
+      onlyInViewport: true,
+      enabled: true,
+    },
+    ...slideViewParamsMedium,
   }
 
   React.useEffect(() => {

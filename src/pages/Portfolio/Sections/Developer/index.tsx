@@ -38,9 +38,7 @@ import codepipelineSVG from '../../../../assets/logos/codepipeline.svg'
 import ethSVG from '../../../../assets/logos/eth.svg'
 import githubSVG from '../../../../assets/logos/github.svg'
 
-import { CONSTANTS } from '../../../../shared/constants'
 import { AppContext } from '../../../../App'
-const { mobileMediaQuery } = CONSTANTS
 
 interface OrbitItemProps {
   src: string
@@ -163,18 +161,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       // somehow the +1 makes it more stable? better to put more rotation ig
       const _end = Number((idx / nItems + 1).toFixed(2)) + 1
 
-      // const _starting = gsap.timeline()
-      //   .fromTo(
-      //     item,
-      //     {
-      //       opacity: 0,
-      //     },
-      //     {
-      //       opacity: 1,
-      //       duration: 0.5,
-      //     }
-      //   )
-
       let _timeline = gsap.timeline().to(
         item,
         {
@@ -235,7 +221,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     }
   }
 
-  const resumeOrbit = () => {
+  const setDefaultOrbitSpeed = () => {
     if (orbitTimelinesRef.current) {
       for (const _timeline of orbitTimelinesRef.current) {
         _timeline.timeScale(1)
@@ -243,7 +229,22 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     }
   }
 
-  // JSX
+  const pauseOrbit = () => {
+    if (orbitTimelinesRef.current) {
+      for (const _timeline of orbitTimelinesRef.current) {
+        _timeline.pause()
+      }
+    }
+  }
+
+  const resumeOrbit = () => {
+    if (orbitTimelinesRef.current) {
+      for (const _timeline of orbitTimelinesRef.current) {
+        _timeline.resume()
+      }
+    }
+  }
+
   // detect when animation should start
   const sectionTriggerDetection = async () => {
     if (animationInit || isMobile) return
@@ -256,6 +257,24 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     }
   }
 
+  const mobileSizeHandler = () => {
+    if (!orbitTimelinesRef.current) return
+
+    const _timelineChild: gsap.core.Timeline = orbitTimelinesRef.current[0]
+
+    // if on mobile and not paused yet
+    if (isMobile && _timelineChild.isActive()) {
+      pauseOrbit()
+    }
+    // if not on mobile and still paused
+    if (!isMobile && !_timelineChild.isActive()) {
+      resumeOrbit()
+    }
+  }
+
+  // TO DO: determine if should set resize cutoff at 1200px
+
+  // JSX
   // desktop
   const desktopOrbitJSX = () => {
     return (
@@ -315,12 +334,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
           <div
             id='orbit-items-container'
             className={styles.orbitItemsContainer}
-            // style={{
-            //   backgroundImage: `url("${solidCircleSVG}")`,
-            //   backgroundPosition: 'center',
-            //   backgroundSize: 'contain',
-            //   backgroundRepeat: 'no-repeat'
-            // }}
           >
             <DottedCircle
               className={styles.orbitCircle}
@@ -399,17 +412,26 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
         orbitTimeline()
         // on hover need to slow to allow user to interact
         orbitContainerRef.current.addEventListener('mouseenter', slowOrbit)
-        orbitContainerRef.current.addEventListener('mouseleave', resumeOrbit)
+        orbitContainerRef.current.addEventListener(
+          'mouseleave',
+          setDefaultOrbitSpeed
+        )
       }
+      // for pausing on mobile
+      window.addEventListener('resize', mobileSizeHandler)
     }, devSectionRef)
     return () => {
       ctx.revert()
       if (orbitContainerRef.current) {
         orbitContainerRef.current.removeEventListener('mouseenter', slowOrbit)
-        orbitContainerRef.current.removeEventListener('mouseleave', resumeOrbit)
+        orbitContainerRef.current.removeEventListener(
+          'mouseleave',
+          setDefaultOrbitSpeed
+        )
       }
+      window.removeEventListener('resize', mobileSizeHandler)
     }
-  }, [animationInit, orbitContainerRef, orbitTimelinesRef])
+  }, [animationInit, orbitContainerRef, orbitTimelinesRef, isMobile])
 
   // detect if triggered
   React.useEffect(() => {

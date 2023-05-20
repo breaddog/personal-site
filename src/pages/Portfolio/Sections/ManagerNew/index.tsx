@@ -16,6 +16,8 @@ import {
 import boxSVG from '../../../../assets/icons/box.svg'
 import { map, reverse } from 'lodash'
 
+// TO DO: solve height consistency issues on mobile with pin
+
 interface KeyWordProps {
   key: string
   text: string
@@ -101,7 +103,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
     return gsap
       .timeline()
       .from(el, {
-        x: '-200%',
+        x: '-100vw',
         ease: 'power2.inOut',
         duration,
         onStart: () => {
@@ -142,7 +144,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
       trigger: sectionRef.current,
       start: 'top top',
       end: '+=5000px',
-      scrub: 1,
+      scrub: 0.5,
       pin: true,
     }
 
@@ -160,11 +162,11 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
 
     // add wave elemtns
     _elements.forEach((el: Element) => {
-      _timeline.add(_waveTimeline(el, 5))
+      _timeline.add(_waveTimeline(el, 10))
     })
 
     // modal should be next
-    _timeline.add(_modalTimeline(8))
+    _timeline.add(_modalTimeline(20))
 
     // padding
     _timeline.add(gsap.from({}, { duration: 10 }))
