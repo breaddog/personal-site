@@ -204,6 +204,7 @@
   .box {
     .body {
       flex-direction: column;
+      flex-wrap: unset;
 
       .section {
         width: 100%;
@@ -212,6 +213,7 @@
         &:nth-child(1) {
           width: fit-content;
           // margin: auto;
+          margin-left: auto;
           margin-right: auto;
           flex-direction: column-reverse;
         }
