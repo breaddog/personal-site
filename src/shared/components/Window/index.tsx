@@ -26,9 +26,6 @@ interface WindowProps {
   ref?: React.ForwardedRef<WindowHandle>
 }
 
-// TO DO: finish and solve weird resizing issue at mobile size
-// get it to do it flexibility
-
 export const Window: React.FC<WindowProps> = React.forwardRef<
   WindowHandle,
   WindowProps
