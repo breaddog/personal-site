@@ -16,8 +16,6 @@ import {
 import boxSVG from '../../../../assets/icons/box.svg'
 import { map, reverse } from 'lodash'
 
-// TO DO: solve height consistency issues on mobile with pin
-
 interface KeyWordProps {
   key: string
   text: string
@@ -175,7 +173,6 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
   React.useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
     let _ctx = gsap.context(() => {
-      ScrollTrigger.refresh()
       entranceEffect()
     })
 
