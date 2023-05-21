@@ -24,7 +24,7 @@ interface PortfolioHighlightsProps {
 export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   className,
 }) => {
-  const { isMobile, isMedium, isDesktop } = React.useContext(AppContext)
+  const { isMobile, isMedium } = React.useContext(AppContext)
 
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 

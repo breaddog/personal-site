@@ -108,9 +108,9 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
 
   const classes = classNames(
     'section__loading position--relative',
-    styles.loading,
     active && styles.active,
     sectionStyles.section,
+    styles.loading,
     className
   )
 

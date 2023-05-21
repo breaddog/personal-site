@@ -11,7 +11,7 @@ import mailSVG from '../../../../assets/icons/mail.svg'
 
 import { CircleIcon, SectionContainer } from '../../../../shared/components'
 
-import doubleArrowDownSVG from '../../../../assets/icons/double-arrow-down.svg'
+// import doubleArrowDownSVG from '../../../../assets/icons/double-arrow-down.svg'
 import onigiriSVG from '../../../../assets/icons/onigiri.svg'
 import { DoubleArrowDown } from '../../../../assets/svgs'
 

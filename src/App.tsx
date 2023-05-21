@@ -37,28 +37,58 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
   // listener for desktop or mobile
   const desktopSizeListenerHandlers = () => {
-    // if medium size checker
-    handleDesktopListener(isMediumMatcher, isMedium, setIsMedium)
-    // if mobile size checker
-    handleDesktopListener(isMobileMatcher, isMobile, setIsMobile)
-
-    // desktop false check
-    if ((isMedium || isMobile) && isDesktop) {
+    // // desktop false check
+    if (isMedium && isMobile && isDesktop) {
       setIsDesktop(false)
     }
     // desktop true check
-    if ((!isMedium || !isMobile) && !isDesktop) {
+    if (!isMedium && !isMobile && !isDesktop) {
       setIsDesktop(true)
     }
   }
 
+  const mediumSizeListenerHandler = () => {
+    handleDesktopListener(isMediumMatcher, isMedium, setIsMedium)
+  }
+
+  const mobileSizeListenerHandler = () => {
+    handleDesktopListener(isMobileMatcher, isMobile, setIsMobile)
+  }
+
+  // desktop
   React.useEffect(() => {
-    desktopSizeListenerHandlers()
     window.addEventListener('resize', desktopSizeListenerHandlers)
     return () => {
       window.removeEventListener('resize', desktopSizeListenerHandlers)
     }
-  }, [isMobile, isMedium, isDesktop, isMobileMatcher, isMediumMatcher])
+  }, [isDesktop, isMedium, isMobile])
+
+  // medium
+  React.useEffect(() => {
+    mediumSizeListenerHandler()
+    window.addEventListener('resize', mediumSizeListenerHandler)
+    return () => {
+      window.removeEventListener('resize', mediumSizeListenerHandler)
+    }
+  }, [isMedium, mediumMediaQuery])
+
+  // mobile
+  React.useEffect(() => {
+    mobileSizeListenerHandler()
+    window.addEventListener('resize', mobileSizeListenerHandler)
+
+    return () => {
+      window.removeEventListener('resize', mobileSizeListenerHandler)
+    }
+  }, [isMobile, isMobileMatcher])
+
+  // React.useEffect(() => {
+  //   desktopSizeListenerHandlers()
+  //   window.addEventListener('resize', desktopSizeListenerHandlers)
+  //   return () => {
+  //     window.removeEventListener('resize', desktopSizeListenerHandlers)
+  //   }
+  // }, [isMobile, isMedium, isDesktop, isMobileMatcher, isMediumMatcher])
 
   React.useEffect(() => {
     AOS.init({

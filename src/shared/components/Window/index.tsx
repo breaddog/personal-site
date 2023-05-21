@@ -13,6 +13,7 @@ export interface WindowHandle {
   resetWindow: Function
   enableWindowFunctions: Function
   disableWindowFunctions: Function
+  invalidateWindow: Function
 }
 interface WindowProps {
   className?: string
@@ -44,6 +45,7 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
     },
     ref
   ) => {
+    // classes
     const classes = classNames(
       styles.window,
       styles[windowStyle],
@@ -235,7 +237,6 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
         cursor: 'e-resize',
         onDrag: function () {
           if (!interactivityEnabled) return
-
           const diffX = this.x - rightPrevX.current
           if (checkWindowConstraints(false, diffX, true)) {
             gsap.set(containerRef.current, {
@@ -311,6 +312,14 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
       })
     }
 
+    const invalidateWindow = () => {
+      if (!checkIfRefsSet()) return
+      topPrevY.current = 0
+      bottomPrevY.current = 0
+      leftPrevX.current = 0
+      rightPrevX.current = 0
+    }
+
     // check for refs
     const checkIfRefsSet = () => {
       return every(
@@ -327,11 +336,11 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
       leftDraggable.current.enable()
       rightDraggable.current.enable()
 
-      // draggableRef.current.update()
-      // topDraggable.current.update()
-      // bottomDraggable.current.update()
-      // leftDraggable.current.update()
-      // rightDraggable.current.update()
+      draggableRef.current.update()
+      topDraggable.current.update()
+      bottomDraggable.current.update()
+      leftDraggable.current.update()
+      rightDraggable.current.update()
     }
 
     const disableWindowFunctions = () => {
@@ -382,6 +391,7 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
       resetWindow,
       enableWindowFunctions,
       disableWindowFunctions,
+      invalidateWindow,
     }))
 
     return (

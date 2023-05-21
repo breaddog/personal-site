@@ -129,6 +129,9 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     className
   )
 
+  // specific flex checker
+  const flexMediaMatcher = window.matchMedia('(max-width: 1200px)')
+
   // refs
   const devSectionRef = React.useRef<HTMLDivElement | null>(null)
   const orbitContainerRef = React.useRef<HTMLDivElement | null>(null)
@@ -140,11 +143,13 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
 
   const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
   // if animation init
-  const [animationInit, setAnimationInit] = React.useState<boolean>(false)
+  // const [animationInit, setAnimationInit] = React.useState<boolean>(false)
   // z-index tracker
   const [highestZIndex, setHighestZIndex] = React.useState<number>(0)
   // current highlighted stack component
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(-1)
+  // flex
+  const isColumnRef = React.useRef<boolean>(false)
 
   // initiate and is used to reset the orbit items
   const initiateItemOrbit = () => {
@@ -245,18 +250,28 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     }
   }
 
-  // detect when animation should start
-  const sectionTriggerDetection = async () => {
-    if (animationInit || isMobile) return
-    const _offsetTop = devSectionRef.current?.offsetTop
-    if (!_offsetTop) return
-    const _targetBoundary = _offsetTop - _offsetTop * 0.85
-    const _boundaryHit = await detectScrollBoundary(_targetBoundary)
-    if (!animationInit && _boundaryHit) {
-      setAnimationInit(true)
-    }
+  // invalidate all windows
+  const invalidateAllWindowProps = () => {
+    if (!textWindowRef.current || !orbitWindowRef.current) return
+    textWindowRef.current?.invalidateWindow()
+    orbitWindowRef.current?.invalidateWindow()
+    textWindowRef.current?.resetWindow()
+    textWindowRef.current?.resetWindow()
   }
 
+  // detect when animation should start
+  // const sectionTriggerDetection = async () => {
+  //   if (animationInit || isMobile) return
+  //   const _offsetTop = devSectionRef.current?.offsetTop
+  //   if (!_offsetTop) return
+  //   const _targetBoundary = _offsetTop - _offsetTop * 0.85
+  //   const _boundaryHit = await detectScrollBoundary(_targetBoundary)
+  //   if (!animationInit && _boundaryHit) {
+  //     setAnimationInit(true)
+  //   }
+  // }
+
+  // for mobile to improve eprforamnce
   const mobileSizeHandler = () => {
     if (!orbitTimelinesRef.current) return
 
@@ -272,7 +287,19 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
     }
   }
 
-  // TO DO: determine if should set resize cutoff at 1200px
+  // column wise check
+  // ref used here due to weird rendering bug
+  const flexDectectionHandler = () => {
+    if (flexMediaMatcher.matches && !isColumnRef.current) {
+      isColumnRef.current = true
+      invalidateAllWindowProps()
+    }
+
+    if (!flexMediaMatcher.matches && isColumnRef.current) {
+      isColumnRef.current = false
+      invalidateAllWindowProps()
+    }
+  }
 
   // JSX
   // desktop
@@ -407,7 +434,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       // register
       gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable)
       // orbit timeline initaite
-      if (animationInit && orbitContainerRef.current) {
+      if (orbitContainerRef.current) {
         MotionPathPlugin.convertToPath(DOTTED_CIRCLE_PATH)
         orbitTimeline()
         // on hover need to slow to allow user to interact
@@ -420,6 +447,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       // for pausing on mobile
       window.addEventListener('resize', mobileSizeHandler)
     }, devSectionRef)
+
     return () => {
       ctx.revert()
       if (orbitContainerRef.current) {
@@ -431,15 +459,15 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
       }
       window.removeEventListener('resize', mobileSizeHandler)
     }
-  }, [animationInit, orbitContainerRef, orbitTimelinesRef, isMobile])
+  }, [orbitContainerRef, orbitTimelinesRef, isMobile])
 
-  // detect if triggered
   React.useEffect(() => {
-    window.addEventListener('scroll', sectionTriggerDetection)
+    flexDectectionHandler()
+    window.addEventListener('resize', flexDectectionHandler)
     return () => {
-      window.removeEventListener('scroll', sectionTriggerDetection)
+      window.addEventListener('resize', flexDectectionHandler)
     }
-  }, [devSectionRef, animationInit])
+  }, [isColumnRef, flexMediaMatcher])
 
   return (
     <>
