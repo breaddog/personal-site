@@ -131,21 +131,20 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
         <div className={styles.body}>
           <div className={styles.carousel}>
             <div className={styles.carouselTrack}>
-              {map(
-                [...Array(ONIGIRI_AMOUNT).keys()],
-                (el: string | number, idx: number) => {
-                  return (
-                    <div className={styles.carouselSlide}>
-                      <img
-                        className={styles.onigiri}
-                        key={idx}
-                        src={onigiriSVG}
-                        alt='onigiri'
-                      />
-                    </div>
-                  )
-                }
-              )}
+              {map([...Array(ONIGIRI_AMOUNT).keys()], (_, idx: number) => {
+                return (
+                  <div
+                    className={styles.carouselSlide}
+                    key={idx}
+                  >
+                    <img
+                      className={styles.onigiri}
+                      src={onigiriSVG}
+                      alt='onigiri'
+                    />
+                  </div>
+                )
+              })}
             </div>
           </div>
           <div className={styles.bottom}>

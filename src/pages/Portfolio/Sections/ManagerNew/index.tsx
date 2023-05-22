@@ -207,6 +207,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> = ({
             {map(KEY_WORDS, (el: KeyWordProps, idx: number) => {
               return (
                 <WaveText
+                  key={idx}
                   componentKey={idx}
                   className={classNames(styles.emphasis, WAVE_TEXT_CLASS)}
                   text={el.text}

@@ -40,3 +40,15 @@
     }
   }
 }
+
+@media screen and (max-width: 876px) {
+  #highlights-carousel {
+    .swiper-button-prev {
+      left: -10px;
+    }
+
+    .swiper-button-next {
+      right: -10px;
+    }
+  }
+}

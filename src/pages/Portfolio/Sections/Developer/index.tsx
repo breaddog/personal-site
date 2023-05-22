@@ -369,7 +369,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
             />
 
             {ORBIT_ITEMS.slice(0, -1).map(
-              (item: { src: string; alt: string }, idx: number | string) => {
+              (item: { src: string; alt: string }, idx: number) => {
                 return (
                   <div
                     className={classNames(styles.item, 'orbit-item')}
@@ -529,32 +529,26 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
                     </h3>
 
                     <p className={styles.listHeading}>Design</p>
-                    <p className={styles.text}>
-                      <ul className={styles.list}>
-                        <li>Conceptualisation</li>
-                        <li>UI/UX Specifications</li>
-                        <li>Technical Specifications</li>
-                      </ul>
-                    </p>
+                    <ul className={styles.list}>
+                      <li>Conceptualisation</li>
+                      <li>UI/UX Specifications</li>
+                      <li>Technical Specifications</li>
+                    </ul>
 
                     <p className={styles.listHeading}>Development</p>
-                    <p className={styles.text}>
-                      <ul className={styles.list}>
-                        <li>Mockup to Web Translations</li>
-                        <li>Bespoke Component Integration</li>
-                        <li>Stylings + Animations</li>
+                    <ul className={styles.list}>
+                      <li>Mockup to Web Translations</li>
+                      <li>Bespoke Component Integration</li>
+                      <li>Stylings + Animations</li>
 
-                        <li>Asset Optimisation + Hosting</li>
-                      </ul>
-                    </p>
+                      <li>Asset Optimisation + Hosting</li>
+                    </ul>
 
                     <p className={styles.listHeading}>Deployment</p>
-                    <p className={styles.text}>
-                      <ul className={styles.list}>
-                        <li>Prod/Dev Environments</li>
-                        <li>CI/CD</li>
-                      </ul>
-                    </p>
+                    <ul className={styles.list}>
+                      <li>Prod/Dev Environments</li>
+                      <li>CI/CD</li>
+                    </ul>
                   </div>
                 </Window>
               </div>

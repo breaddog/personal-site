@@ -1,5 +1,6 @@
 import './HighlightsCarousel.scss'
 import styles from './Highlights.module.scss'
+import frameStyles from './HighlightsFrame.module.scss'
 import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
@@ -16,6 +17,7 @@ import bulbSVG from '../../../../assets/icons/bulb.svg'
 import { PROJECTS, ProjectObject } from '../../../../data/projects'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import { AppContext } from '../../../../App'
+import { HighlightsHeaderWrapper } from './Components'
 
 interface PortfolioHighlightsProps {
   className?: string
@@ -25,11 +27,11 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   className,
 }) => {
   const { isMobile, isMedium } = React.useContext(AppContext)
+  console.log('mobile', isMobile, 'medium', isMedium)
 
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
   const slideViewParamsRegular = {
-    initialSlide: 2,
     slidesPerView: 2.5,
   }
 
@@ -39,6 +41,13 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
 
   const slideViewParamsSmall = {
     slidesPerView: 1,
+  }
+
+  // for slider params
+  const determineSlideViewParams = () => {
+    if (isMobile) return slideViewParamsSmall
+    if (isMedium) return slideViewParamsMedium
+    return slideViewParamsRegular
   }
 
   const swiperParams: SwiperProps = {
@@ -64,7 +73,8 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
       onlyInViewport: true,
       enabled: true,
     },
-    ...slideViewParamsMedium,
+    initialSlide: 2,
+    ...determineSlideViewParams(),
   }
 
   React.useEffect(() => {
@@ -87,7 +97,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
       ref={highlightsRef}
     >
       <SectionContainer className={styles.container}>
-        <SectionHeader
+        <HighlightsHeaderWrapper
           className={styles.header}
           title='Highlights'
           src={bulbSVG}
@@ -100,19 +110,18 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
             look!
           </div>
           <Swiper {...swiperParams}>
-            {map(PROJECTS, (project: ProjectObject, idx: number | string) => {
+            {map(PROJECTS, (project: ProjectObject, idx: number) => {
               return (
-                <LazyLoadComponent>
+                <LazyLoadComponent key={idx + 100}>
                   <SwiperSlide
                     className={styles.slide}
                     key={idx}
                   >
                     {({ isActive }) => (
                       <>
-                        <div className={styles.frame__head}></div>
                         <div
                           className={classNames(
-                            styles.frame__body,
+                            frameStyles.body,
                             'highlight-frame'
                           )}
                           style={{
@@ -124,17 +133,17 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
                         >
                           <div
                             className={classNames(
-                              styles.frame__overlay__body,
-                              isActive && styles.active
+                              frameStyles.overlay,
+                              isActive && frameStyles.active
                             )}
                           >
-                            <div className={styles.frame__overlay__container}>
-                              <p className={styles.frame__overlay__description}>
+                            <div className={frameStyles.container}>
+                              <p className={frameStyles.description}>
                                 {project.description}
                               </p>
                               <div
                                 className={classNames(
-                                  styles.frame__overlay__link,
+                                  frameStyles.link,
                                   isActive && styles.active
                                 )}
                               >
@@ -144,16 +153,19 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
                           </div>
                           <div
                             className={classNames(
-                              styles.frame__header,
+                              frameStyles.header,
                               styles.uppercase,
                               styles.bold
                             )}
                           >
-                            {project.title}
+                            <div className={frameStyles.draggable}></div>
+                            <div className={frameStyles.content}>
+                              {project.title}
+                            </div>
                           </div>
                           <div
                             className={classNames(
-                              styles.frame__footer,
+                              frameStyles.footer,
                               styles.uppercase,
                               styles.bold
                             )}

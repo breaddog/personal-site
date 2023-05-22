@@ -119,41 +119,38 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
           </div>
         </div>
 
-        {map(
-          jobData?.sections,
-          (data: JobPositionData, idx: number | string) => (
-            <div
-              className={classNames(
-                styles.section,
-                styles.duration,
-                styles.opacityCustom
+        {map(jobData?.sections, (data: JobPositionData, idx: number) => (
+          <div
+            className={classNames(
+              styles.section,
+              styles.duration,
+              styles.opacityCustom
+            )}
+            key={idx}
+          >
+            <div className={styles.title}>{data.title}</div>
+            <div className={classNames(styles.content, jobData?.className)}>
+              {map(
+                data?.info,
+                (line: string | React.ReactFragment, _idx: number) => {
+                  return (
+                    <span
+                      className={classNames(
+                        styles.info,
+                        data?.isText ? styles.infoText : 'bullet-point',
+                        data?.className && styles[data?.className]
+                      )}
+                      key={_idx}
+                    >
+                      {line}
+                      {Number(_idx) < data?.info.length - 1 && <br />}
+                    </span>
+                  )
+                }
               )}
-              key={idx}
-            >
-              <div className={styles.title}>{data.title}</div>
-              <div className={classNames(styles.content, jobData?.className)}>
-                {map(
-                  data?.info,
-                  (line: string | React.ReactFragment, _idx: number) => {
-                    return (
-                      <span
-                        className={classNames(
-                          styles.info,
-                          data?.isText ? styles.infoText : 'bullet-point',
-                          data?.className && styles[data?.className]
-                        )}
-                        key={_idx}
-                      >
-                        {line}
-                        {Number(_idx) < data?.info.length - 1 && <br />}
-                      </span>
-                    )
-                  }
-                )}
-              </div>
             </div>
-          )
-        )}
+          </div>
+        ))}
       </div>
     </div>
   )

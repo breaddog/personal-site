@@ -4,12 +4,13 @@ import classNames from 'classnames'
 
 import { CircleIcon } from '../../CircleIcon'
 
-interface SectionHeaderProps {
+export interface SectionHeaderProps {
   className?: string
   title: string
   src: string
   alt: string
   backgroundColour?: string
+  onClick?: Function
 }
 
 export const SectionHeader: React.FunctionComponent<SectionHeaderProps> = ({
@@ -18,6 +19,7 @@ export const SectionHeader: React.FunctionComponent<SectionHeaderProps> = ({
   src,
   alt,
   backgroundColour = 'var(--blue)',
+  onClick,
 }) => {
   const classes = classNames(styles.header, className)
 
@@ -29,6 +31,7 @@ export const SectionHeader: React.FunctionComponent<SectionHeaderProps> = ({
         src={src}
         alt={alt}
         backgroundColor={backgroundColour}
+        onClick={onClick}
       />
     </div>
   )

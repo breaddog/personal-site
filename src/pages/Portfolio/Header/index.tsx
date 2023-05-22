@@ -34,7 +34,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
         <div className={styles.sections}>
           {map(
             PORTFOLIO_SECTIONS,
-            (section: SectionNavInterface, idx: number | string) => {
+            (section: SectionNavInterface, idx: number) => {
               return (
                 <span
                   className={styles.section}

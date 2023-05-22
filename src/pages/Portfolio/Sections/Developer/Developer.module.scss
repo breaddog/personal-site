@@ -45,7 +45,11 @@
     }
 
     .list {
+      margin-bottom: 2rem;
+
       li {
+        font-size: var(--font-p);
+
         &:before {
           content: '>';
         }
