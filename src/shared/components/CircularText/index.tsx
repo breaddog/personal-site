@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { RotationDirection } from '../../types/effects'
 
-interface CircularTextProps {
+export interface CircularTextProps {
   className?: string
   text?: string | React.ReactFragment
   animationDuration?: number

@@ -31,7 +31,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
         <PortfolioLanding />
         <PortfolioDeveloper />
         <PortfolioManagerNew />
-        {/* <PortfolioManager /> */}
         <PortfolioJourney />
         <PortfolioHighlights />
         <PortfolioContacts />

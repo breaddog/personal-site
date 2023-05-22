@@ -19,6 +19,7 @@ import mailSVG from '../../../../assets/icons/mail.svg'
 import resumeSVG from '../../../../assets/icons/resume.svg'
 import githubSVG from '../../../../assets/logos/github.svg'
 import linkedinSVG from '../../../../assets/logos/linkedin.svg'
+import { ContactInfo } from './Components'
 
 interface PortfolioContactsProps {
   className?: string
@@ -33,6 +34,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
   const classes = classNames(
     'portfolio__contacts',
     sectionStyles['sub-section'],
+    styles.contacts,
     className
   )
 
@@ -49,126 +51,86 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
           />
           <div className={styles.body}>
             <div className={styles.contacts}>
-              <MagneticBox
-                className={classNames(styles.contactBox, styles.linkedin)}
-                innerBoxClassName={styles.contactBoxBody}
-              >
-                <a
-                  href={EXTERNAL_LINKS.linkedin}
-                  rel='noopenner noreferrer'
-                  target='_blank'
-                >
-                  <div className={styles.container}>
-                    <div className={styles.iconBg}>
-                      <img
-                        className={styles.icon}
-                        src={linkedinSVG}
-                        alt='linkedin'
-                      />
-                    </div>
-                    <CircularText
-                      className={styles.circularText}
-                      text={<>LinkedIn&nbsp;LinkedIn&nbsp;LinkedIn</>}
-                      fontSize={CIRCULAR_ANIMATION_FONT_SIZE}
-                      direction='clockwise'
-                      animationDuration={CIRCULAR_ANIMATION_DURATION}
-                    />
-                  </div>
-                </a>
-                <div className={styles.info}>View my Job Portfolio Page</div>
-              </MagneticBox>
+              <ContactInfo
+                className={styles.contactBox}
+                contactType='linkedin'
+                link={EXTERNAL_LINKS.linkedin}
+                icon={{
+                  src: linkedinSVG,
+                  alt: 'linkedin',
+                }}
+                circularText={{
+                  text: 'Linkedin',
+                  spacing: 1,
+                  repetitions: 3,
+                  direction: 'clockwise',
+                  duration: CIRCULAR_ANIMATION_DURATION,
+                  fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
+                }}
+                hoverText='View my Job Portfolio Page'
+              />
 
-              <MagneticBox
-                className={classNames(styles.contactBox, styles.github)}
-                innerBoxClassName={styles.contactBoxBody}
-              >
-                <a
-                  href={EXTERNAL_LINKS.github}
-                  rel='noopenner noreferrer'
-                  target='_blank'
-                >
-                  <div className={styles.container}>
-                    <div className={styles.iconBg}>
-                      <img
-                        className={styles.icon}
-                        src={githubSVG}
-                        alt='github'
-                      />
-                    </div>
-                    <CircularText
-                      className={styles.circularText}
-                      text={<>Github&emsp;Github&emsp;Github</>}
-                      fontSize={CIRCULAR_ANIMATION_FONT_SIZE}
-                      direction='clockwise'
-                      animationDuration={CIRCULAR_ANIMATION_DURATION}
-                    />
-                  </div>
-                </a>
-                <div className={styles.info}>Projects and Stuff on Github</div>
-              </MagneticBox>
+              <ContactInfo
+                className={styles.contactBox}
+                contactType='github'
+                link={EXTERNAL_LINKS.github}
+                icon={{
+                  src: githubSVG,
+                  alt: 'github',
+                }}
+                circularText={{
+                  text: 'Github',
+                  spacing: 3,
+                  repetitions: 3,
+                  direction: 'clockwise',
+                  duration: CIRCULAR_ANIMATION_DURATION,
+                  fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
+                }}
+                hoverText='Projects and Stuff on Github'
+              />
+              <ContactInfo
+                className={styles.contactBox}
+                contactType='email'
+                link={`mailto:${EXTERNAL_LINKS.email}`}
+                icon={{
+                  src: mailSVG,
+                  alt: 'mail',
+                }}
+                circularText={{
+                  text: 'Email',
+                  spacing: 6,
+                  repetitions: 3,
+                  direction: 'clockwise',
+                  duration: CIRCULAR_ANIMATION_DURATION,
+                  fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
+                }}
+                hoverText={
+                  <>
+                    Get in contact with me
+                    <br />
+                    <span>tienfoong@gmail.com</span>
+                  </>
+                }
+              />
 
-              <MagneticBox
-                className={classNames(styles.contactBox, styles.email)}
-                innerBoxClassName={styles.contactBoxBody}
-              >
-                <a
-                  href={`mailto:${EXTERNAL_LINKS.email}`}
-                  rel='noopenner noreferrer'
-                  target='_blank'
-                >
-                  <div className={styles.container}>
-                    <div className={styles.iconBg}>
-                      <img
-                        className={styles.icon}
-                        src={mailSVG}
-                        alt='mail'
-                      />
-                    </div>
-                    <CircularText
-                      className={styles.circularText}
-                      text={<>E-mail&emsp;&nbsp;E-mail&emsp;&nbsp;E-mail</>}
-                      fontSize={CIRCULAR_ANIMATION_FONT_SIZE}
-                      direction='clockwise'
-                      animationDuration={CIRCULAR_ANIMATION_DURATION}
-                    />
-                  </div>
-                </a>
-                <div className={styles.info}>
-                  Get in contact with me
-                  <br />
-                  <span>tienfoong@gmail.com</span>
-                </div>
-              </MagneticBox>
-
-              <MagneticBox
-                className={classNames(styles.contactBox, styles.resume)}
-                innerBoxClassName={styles.contactBoxBody}
-              >
-                <a
-                  href={EXTERNAL_LINKS.resume}
-                  download
-                  rel='noopenner noreferrer'
-                  target='_blank'
-                >
-                  <div className={styles.container}>
-                    <div className={styles.iconBg}>
-                      <img
-                        className={styles.icon}
-                        src={resumeSVG}
-                        alt='resume'
-                      />
-                    </div>
-                    <CircularText
-                      className={styles.circularText}
-                      text={<>Resume&nbsp;&nbsp;Resume&nbsp;&nbsp;Resume</>}
-                      fontSize={CIRCULAR_ANIMATION_FONT_SIZE}
-                      direction='clockwise'
-                      animationDuration={CIRCULAR_ANIMATION_DURATION}
-                    />
-                  </div>
-                  <div className={styles.info}>Download my Resume</div>
-                </a>
-              </MagneticBox>
+              <ContactInfo
+                className={styles.contactBox}
+                contactType='resume'
+                link={EXTERNAL_LINKS.resume}
+                icon={{
+                  src: resumeSVG,
+                  alt: 'resume',
+                }}
+                circularText={{
+                  text: 'Resume',
+                  spacing: 2,
+                  repetitions: 3,
+                  direction: 'clockwise',
+                  duration: CIRCULAR_ANIMATION_DURATION,
+                  fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
+                }}
+                hoverText='Download my Resume'
+              />
             </div>
 
             {/* submission form */}

@@ -1,12 +1,6 @@
 .box {
-  --min-size: 220px;
-  --size-desktop: 300px;
-  --size-mobile: 100%;
-
-  min-width: var(--min-size);
-  min-height: var(--min-size);
-  width: var(--size-desktop);
-  height: var(--size-desktop);
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
 
   // debug
@@ -26,8 +20,8 @@
 
   .body {
     margin: auto 0;
-    width: var(--min-size);
-    height: var(--min-size);
+    width: 220px;
+    height: 220px;
 
     // debug
     // border: 2px dashed var(--grey-10);
@@ -64,5 +58,21 @@
         opacity: 1;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    .body {
+      width: 220px;
+      height: 220px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .box {
+    width: 220px;
+    height: 220px;
   }
 }

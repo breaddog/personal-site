@@ -13,10 +13,14 @@
   max-width: var(--max-width);
   width: 100%;
   height: 100vh;
+  min-height: 100vh;
 
   margin: 0 auto;
 
   &.wide {
     max-width: initial;
   }
+}
+
+@media screen and (max-width: 768px) {
 }
