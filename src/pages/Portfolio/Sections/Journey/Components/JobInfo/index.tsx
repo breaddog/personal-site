@@ -10,6 +10,7 @@ import {
   JobPositionData
 } from '../../../../../../shared/interfaces'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { AppContext } from '../../../../../../App'
 
 interface JobInfoProps {
   className?: string
@@ -24,6 +25,8 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
 }) => {
   const classes = classNames(styles.box, className)
 
+  const { isMobile } = React.useContext(AppContext)
+
   const [gradientActive, setGradientActive] = React.useState<boolean>(false)
   // default is 300
   const [gradientDiameter, setGradientDiameter] = React.useState<number>(300)
@@ -35,7 +38,7 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
   // OR: gradient changes as you scroll through
   // const gradient active
   const gradientFollowCursor = (e: MouseEvent) => {
-    if (!boxRef.current || !gradientRef.current) return
+    if (!boxRef.current || !gradientRef.current || isMobile) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop
     const boundingRect = boxRef.current.getBoundingClientRect()
     const halfDiff = Math.abs(boundingRect.width - boundingRect.height) / 2

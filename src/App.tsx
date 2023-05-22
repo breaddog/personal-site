@@ -15,7 +15,6 @@ import {
 } from 'react-router-dom'
 import { ProjectPage } from './pages/Portfolio/Projects'
 import { CONSTANTS } from './shared/constants'
-import { ScrollTrigger } from 'gsap/all'
 import { handleDesktopListener } from './shared/functions/functions'
 
 interface AppProps {

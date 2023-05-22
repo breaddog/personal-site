@@ -9,6 +9,7 @@ export interface SectionHeaderProps {
   title: string
   src: string
   alt: string
+  hasSubheading?: boolean
   backgroundColour?: string
   onClick?: Function
 }
@@ -18,10 +19,15 @@ export const SectionHeader: React.FunctionComponent<SectionHeaderProps> = ({
   title,
   src,
   alt,
+  hasSubheading = false,
   backgroundColour = 'var(--blue)',
   onClick,
 }) => {
-  const classes = classNames(styles.header, className)
+  const classes = classNames(
+    styles.header,
+    hasSubheading && styles.hasSubheading,
+    className
+  )
 
   return (
     <div className={classes}>

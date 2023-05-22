@@ -3,7 +3,7 @@
 .dev {
   // background-color: var(--purple);
   position: relative;
-  z-index: 3;
+  z-index: 4;
 }
 
 .textHighlight {
@@ -14,9 +14,9 @@
   display: flex;
   flex-direction: column;
 
-  .subheading {
-    margin-bottom: 6vmin;
-  }
+  // .subheading {
+  //   margin-bottom: 2rem;
+  // }
 
   .body {
     display: flex;
@@ -245,21 +245,28 @@
       flex-direction: column;
       justify-content: space-evenly;
 
-      // margin-top: 8vmin;
-
       .left {
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .right {
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
-      .orbitContainer {
-        margin-left: auto;
-        margin-right: auto;
+      .orbitContainerDesktop {
+        .orbitContainer {
+          margin-top: 4rem;
+          min-height: 400px;
+          // max-height: 80%;
+        }
       }
 
       .window {
@@ -274,7 +281,7 @@
         }
 
         &.orbit {
-          height: 100%;
+          height: 80%;
           max-height: unset;
           min-width: unset;
           min-height: unset;

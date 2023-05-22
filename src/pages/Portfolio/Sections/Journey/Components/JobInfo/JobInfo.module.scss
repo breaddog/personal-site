@@ -202,6 +202,10 @@
 
 @media screen and (max-width: 876px) {
   .box {
+    .gradientHover {
+      opacity: 0 !important;
+    }
+
     .body {
       flex-direction: column;
       flex-wrap: unset;

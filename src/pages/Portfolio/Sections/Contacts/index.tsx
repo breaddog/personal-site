@@ -61,7 +61,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
                 }}
                 circularText={{
                   text: 'Linkedin',
-                  spacing: 1,
+                  spacing: 3,
                   repetitions: 3,
                   direction: 'clockwise',
                   duration: CIRCULAR_ANIMATION_DURATION,
@@ -80,7 +80,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
                 }}
                 circularText={{
                   text: 'Github',
-                  spacing: 3,
+                  spacing: 6,
                   repetitions: 3,
                   direction: 'clockwise',
                   duration: CIRCULAR_ANIMATION_DURATION,
@@ -98,7 +98,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
                 }}
                 circularText={{
                   text: 'Email',
-                  spacing: 6,
+                  spacing: 8,
                   repetitions: 3,
                   direction: 'clockwise',
                   duration: CIRCULAR_ANIMATION_DURATION,
@@ -123,7 +123,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> = ({
                 }}
                 circularText={{
                   text: 'Resume',
-                  spacing: 2,
+                  spacing: 4,
                   repetitions: 3,
                   direction: 'clockwise',
                   duration: CIRCULAR_ANIMATION_DURATION,

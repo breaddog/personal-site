@@ -4,7 +4,7 @@
   height: 100%;
   width: 100%;
   position: relative;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 .container {
@@ -24,7 +24,6 @@
     width: 100%;
 
     margin: 0 auto;
-    margin-top: 5vmin;
 
     position: relative;
 
@@ -107,6 +106,7 @@
         .box {
           &__main {
             width: 80%;
+            margin-right: 0;
           }
         }
       }
@@ -155,10 +155,44 @@
           &__main {
             margin-right: unset;
             margin: 0 auto;
-            width: 100%;
+            width: 75%;
           }
 
           &__body {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    .body {
+      .left {
+        .emphasis {
+          margin-bottom: 4rem;
+        }
+      }
+
+      .right {
+        .box {
+          &__main {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    .body {
+      .right {
+        .box {
+          &__main {
             width: 100%;
           }
         }

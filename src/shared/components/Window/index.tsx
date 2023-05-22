@@ -300,10 +300,17 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
     }, [containerRef, draggableRef, referenceKey, boundaryContainer, isMobile])
 
     // INTERACTIVITY
-    const resetWindow = () => {
+    const resetWindow = (
+      params: {
+        width?: string
+        height?: string
+      } = { width: '100%', height: '100%' }
+    ) => {
+      const { width, height } = params
+      console.log('test', width, height)
       gsap.set(containerRef.current, {
-        width: '100%',
-        height: '100%',
+        width,
+        height,
         x: 0,
         y: 0,
       })

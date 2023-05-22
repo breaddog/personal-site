@@ -15,7 +15,7 @@ import {
 
 // libraries
 import { map } from 'lodash'
-import { detectScrollBoundary } from '../../../../shared/functions/functions'
+// import { detectScrollBoundary } from '../../../../shared/functions/functions'
 
 // orbit
 import { DottedCircle } from '../../../../assets/svgs/index'
@@ -251,12 +251,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   }
 
   // invalidate all windows
-  const invalidateAllWindowProps = () => {
+  const invalidateAllWindowProps = (toColumn: boolean = false) => {
     if (!textWindowRef.current || !orbitWindowRef.current) return
     textWindowRef.current?.invalidateWindow()
     orbitWindowRef.current?.invalidateWindow()
     textWindowRef.current?.resetWindow()
-    textWindowRef.current?.resetWindow()
+    orbitWindowRef.current?.resetWindow()
   }
 
   // detect when animation should start
@@ -292,12 +292,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
   const flexDectectionHandler = () => {
     if (flexMediaMatcher.matches && !isColumnRef.current) {
       isColumnRef.current = true
-      invalidateAllWindowProps()
+      invalidateAllWindowProps(true)
     }
 
     if (!flexMediaMatcher.matches && isColumnRef.current) {
       isColumnRef.current = false
-      invalidateAllWindowProps()
+      invalidateAllWindowProps(false)
     }
   }
 
@@ -488,6 +488,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> = ({
               title='Web Developer'
               src={laptopSVG}
               alt='laptop'
+              hasSubheading={true}
               backgroundColour='var(--purple)'
             />
             <SectionSubHeader className={styles.subheading}>

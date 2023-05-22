@@ -31,12 +31,15 @@
   }
 
   .swiper-pagination-bullets {
+    bottom: -8%;
+
     .swiper-pagination-bullet {
-      background-color: var(--grey-10);
+      background-color: var(--dark-grey-10);
+      opacity: 0.8;
     }
 
     .swiper-pagination-bullet-active {
-      background-color: var(--aqua-10);
+      background-color: var(--aqua);
     }
   }
 }

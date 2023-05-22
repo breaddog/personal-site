@@ -42,11 +42,15 @@ export const CircularText: React.FunctionComponent<CircularTextProps> = ({
             a 37,37 0 1,1 -74,0'
           />
         </defs>
-        <text
-          className={styles.text}
-          fontSize={fontSize}
-        >
-          <textPath xlinkHref='#circularTextCircle'>{text}</textPath>
+        <text className={styles.text}>
+          <textPath
+            xlinkHref='#circularTextCircle'
+            style={{
+              fontSize,
+            }}
+          >
+            {text}
+          </textPath>
         </text>
       </svg>
     </div>

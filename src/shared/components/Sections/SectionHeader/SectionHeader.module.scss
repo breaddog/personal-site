@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: row;
   margin-top: var(--header-margin);
+  // margin-bottom: 5vmin !important;
+  margin-bottom: 2rem;
+
+  &.hasSubheading {
+    margin-bottom: 1rem;
+  }
 
   .title {
     margin: auto 0;
@@ -21,6 +27,7 @@
 @media screen and (max-width: 876px) {
   .header {
     flex-flow: column-reverse;
+    margin-bottom: 2rem;
 
     .title {
       text-align: center;

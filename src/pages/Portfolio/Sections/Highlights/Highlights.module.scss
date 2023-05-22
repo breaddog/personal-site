@@ -26,33 +26,14 @@
   }
 
   .header {
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: var(--header-margin);
-
     width: 90%;
-
-    .title {
-      margin: auto 0;
-      text-transform: uppercase;
-    }
-
-    .icon {
-      transition: background-color 0.5s ease-in-out;
-    }
-
-    .bulb {
-      cursor: pointer;
-      transition: scale 0.3s ease-in-out;
-
-      &:active {
-        scale: 0.85;
-      }
-    }
   }
 
   .body {
     --transition-duration: 0.25s;
-    margin-top: 5vmin;
 
     display: flex;
     flex-direction: column;
@@ -62,8 +43,8 @@
 
     .subheading {
       width: 90%;
-      margin: 0 auto;
-
+      margin-left: auto;
+      margin-right: auto;
       font-size: var(--font-h3);
     }
 
@@ -72,6 +53,12 @@
       width: 100%;
       overflow: unset;
     }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .highlights {
+    height: 100%;
   }
 }
 

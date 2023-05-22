@@ -10,7 +10,11 @@ import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
 import { map } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
-import { SectionContainer, SectionHeader } from '../../../../shared/components'
+import {
+  SectionContainer,
+  SectionHeader,
+  SectionSubHeader
+} from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
@@ -27,7 +31,6 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   className,
 }) => {
   const { isMobile, isMedium } = React.useContext(AppContext)
-  console.log('mobile', isMobile, 'medium', isMedium)
 
   const highlightsRef = React.useRef<HTMLDivElement | null>(null)
 
@@ -36,7 +39,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
   }
 
   const slideViewParamsMedium = {
-    slidesPerView: 1.5,
+    slidesPerView: 1.25,
   }
 
   const slideViewParamsSmall = {
@@ -102,13 +105,14 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> = ({
           title='Highlights'
           src={bulbSVG}
           alt='bulb'
+          hasSubheading={true}
           backgroundColour='var(--blue)'
         />
         <div className={styles.body}>
-          <div className={styles.subheading}>
+          <SectionSubHeader className={styles.subheading}>
             Here's a list of projects that I have worked on, feel free to have a
             look!
-          </div>
+          </SectionSubHeader>
           <Swiper {...swiperParams}>
             {map(PROJECTS, (project: ProjectObject, idx: number) => {
               return (

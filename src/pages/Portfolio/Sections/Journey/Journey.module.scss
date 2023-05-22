@@ -10,14 +10,11 @@
   flex-direction: column;
 
   .body {
-    margin-top: 5vmin;
-
     display: flex;
     flex-direction: column;
 
     .subheading {
       width: 90%;
-
       font-size: var(--font-h3);
     }
 
