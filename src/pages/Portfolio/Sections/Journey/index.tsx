@@ -11,44 +11,57 @@ import { SectionContainer, SectionHeader } from '../../../../shared/components'
 import reactSVG from '../../../../assets/icons/react.svg'
 
 import { JOB_POSITIONS } from '../../../../data/jobs'
-import { JobPosition } from '../../../../shared/interfaces'
+import {
+  GenericSubSectionForwardInterface,
+  GenericForwardRefInterface,
+  JobPosition
+} from '../../../../shared/interfaces'
 
-interface PortfolioJourneyProps {
-  className?: string
-}
+interface PortfolioJourneyProps extends GenericSubSectionForwardInterface {}
 
-export const PortfolioJourney: React.FC<PortfolioJourneyProps> = ({
-  className,
-}) => {
-  const classes = classNames(
-    'portfolio__journey',
-    sectionStyles['sub-section'],
-    styles.journey,
-    className
+export const PortfolioJourney: React.FC<PortfolioJourneyProps> =
+  React.forwardRef<GenericForwardRefInterface, PortfolioJourneyProps>(
+    ({ className }, ref) => {
+      const journeyRef = React.useRef<HTMLDivElement>(null)
+
+      const classes = classNames(
+        'portfolio__journey',
+        sectionStyles['sub-section'],
+        styles.journey,
+        className
+      )
+
+      React.useImperativeHandle(ref, () => ({
+        element: journeyRef.current as Element,
+      }))
+
+      return (
+        <section
+          className={classes}
+          ref={journeyRef}
+        >
+          <SectionContainer className={styles.container}>
+            <SectionHeader
+              className={styles.header}
+              title='Journey So Far'
+              src={reactSVG}
+              alt='react'
+              backgroundColour='var(--purple-10)'
+            />
+            <div className={styles.body}>
+              {map(JOB_POSITIONS, (job: JobPosition, idx: number) => {
+                return (
+                  <JobInfo
+                    className={styles.jobBox}
+                    jobData={job}
+                    componentKey={idx}
+                    key={idx}
+                  />
+                )
+              })}
+            </div>
+          </SectionContainer>
+        </section>
+      )
+    }
   )
-  return (
-    <section className={classes}>
-      <SectionContainer className={styles.container}>
-        <SectionHeader
-          className={styles.header}
-          title='Journey So Far'
-          src={reactSVG}
-          alt='react'
-          backgroundColour='var(--purple-10)'
-        />
-        <div className={styles.body}>
-          {map(JOB_POSITIONS, (job: JobPosition, idx: number) => {
-            return (
-              <JobInfo
-                className={styles.jobBox}
-                jobData={job}
-                componentKey={idx}
-                key={idx}
-              />
-            )
-          })}
-        </div>
-      </SectionContainer>
-    </section>
-  )
-}

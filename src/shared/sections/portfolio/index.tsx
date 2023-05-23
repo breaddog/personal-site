@@ -9,11 +9,11 @@ export const PORTFOLIO_SECTIONS: {
   },
   developer: {
     title: 'developer',
-    key: 'landing',
+    key: 'developer',
   },
   manager: {
     title: 'manager',
-    key: 'landing',
+    key: 'manager',
   },
   journey: {
     title: 'journey',
@@ -23,7 +23,7 @@ export const PORTFOLIO_SECTIONS: {
     title: 'highlights',
     key: 'highlights',
   },
-  contact: {
+  contacts: {
     title: 'contact',
     key: 'contact',
   },

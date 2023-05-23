@@ -1,3 +1,4 @@
-export * from './SVG/index'
-export * from './Data/index'
-export * from './Assets/index'
+export * from './SVG'
+export * from './Data'
+export * from './Assets'
+export * from './Sections'

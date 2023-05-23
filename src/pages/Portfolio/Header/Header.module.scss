@@ -1,3 +1,22 @@
+.selectable {
+  &.highlight {
+    color: var(--purple-special);
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+}
+
+// hide on mobile
+.disabled {
+  display: none;
+}
+
 .header {
   height: var(--header-height);
   width: 100vw;
@@ -9,9 +28,19 @@
   color: var(--white);
   background: linear-gradient(
     to bottom,
-    var(--background-colour) 25%,
+    rgba(#282b2d, 0.8) 20%,
     rgba(#394240, 0.1)
   );
+
+  transition-property: top, opacity;
+  transition-duration: 0.325s;
+  transition-timing-function: linear;
+  top: 0;
+
+  &.hidden {
+    top: calc(var(--header-height) * -1 * 0.65);
+    opacity: 0;
+  }
 
   .container {
     width: 100%;
@@ -37,28 +66,172 @@
     .sections {
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-end;
       width: 80%;
 
       .section {
         text-transform: uppercase;
-        font-size: var(--font-h4);
+        font-size: var(--font-p);
         font-family: 'Silkscreen';
-        margin: auto 1.5rem;
+        margin: auto 1rem;
+
+        // margin: auto 0;
+        cursor: pointer;
       }
     }
 
-    .right {
+    .wallet {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
       width: 15%;
 
-      .wallet {
+      .button {
         margin: auto 0;
         background-color: var(--dark-grey-10);
+        min-width: unset;
+        height: fit-content;
       }
     }
+  }
+}
+
+.toggle {
+  --transition-duration: 0.5s;
+
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: fit-content;
+  z-index: 101;
+
+  animation-duration: var(--transition-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  width: 52px;
+  height: 52px;
+
+  &.animating {
+    animation-name: toggleAnti;
+
+    &.active {
+      animation-name: toggle;
+    }
+  }
+
+  img {
+    position: absolute;
+    transform: scaleX(-1);
+    width: 100%;
+    height: 100%;
+
+    transition-property: opacity;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: linear;
+
+    &.open {
+      opacity: 1;
+    }
+
+    &.close {
+      opacity: 0;
+    }
+  }
+
+  &.active {
+    img {
+      &.open {
+        opacity: 0;
+      }
+
+      &.close {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.mobileHeader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+
+  z-index: 100;
+
+  background-color: var(--black);
+  background-image: url('../../../assets//background/subtle-prism-black.svg');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+
+  transition-property: left;
+  transition-duration: 0.8s;
+  transition-timing-function: ease-in-out;
+  left: -100%;
+
+  &.active {
+    left: 0;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .body {
+      width: 80%;
+      height: 80%;
+      margin: auto;
+
+      .icon {
+        width: 82px;
+        height: 82px;
+
+        margin: 0 auto;
+        margin-bottom: 2rem;
+      }
+
+      .sections {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80%;
+        width: 100%;
+
+        .section {
+          text-transform: uppercase;
+          font-size: var(--font-h3);
+          font-family: 'Silkscreen';
+          margin: 2rem auto;
+
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@keyframes toggle {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes toggleAnti {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: -360deg;
   }
 }

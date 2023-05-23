@@ -141,6 +141,80 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
       }
     }
 
+    // INTERACTIVITY
+    const resetWindow = (
+      params: {
+        width?: string
+        height?: string
+      } = { width: '100%', height: '100%' }
+    ) => {
+      const { width, height } = params
+      gsap.set(containerRef.current, {
+        width,
+        height,
+        x: 0,
+        y: 0,
+      })
+    }
+
+    const invalidateWindow = () => {
+      if (!checkIfRefsSet()) return
+      topPrevY.current = 0
+      bottomPrevY.current = 0
+      leftPrevX.current = 0
+      rightPrevX.current = 0
+    }
+
+    // check for refs
+    const checkIfRefsSet = () => {
+      return every(
+        DRAGGABLE_REFS_TO_CHECK,
+        (ref: React.MutableRefObject<HTMLDivElement>) => ref.current
+      )
+    }
+
+    const enableWindowFunctions = () => {
+      if (!checkIfRefsSet()) return
+      draggableRef.current.enable()
+      topDraggable.current.enable()
+      bottomDraggable.current.enable()
+      leftDraggable.current.enable()
+      rightDraggable.current.enable()
+
+      draggableRef.current.update()
+      topDraggable.current.update()
+      bottomDraggable.current.update()
+      leftDraggable.current.update()
+      rightDraggable.current.update()
+    }
+
+    const disableWindowFunctions = () => {
+      if (!checkIfRefsSet()) return
+      draggableRef.current.disable()
+      topDraggable.current.disable()
+      bottomDraggable.current.disable()
+      leftDraggable.current.disable()
+      rightDraggable.current.disable()
+    }
+
+    // listener for resize and disable functions
+    const handleInteractivityCheck = () => {
+      // if should be disabled and not set to mobile yet
+      if (isMobile && interactivityEnabled) {
+        setInteractivityEnabled(false)
+        resetWindow()
+        onResize()
+        disableWindowFunctions()
+      }
+      // going back to desktop there shouldnt be a need to reset
+      // if it doesnt match and its still set to mobile
+      if (!isMobile && !interactivityEnabled) {
+        setInteractivityEnabled(true)
+        onResize()
+        enableWindowFunctions()
+      }
+    }
+
     // draggable resize
     React.useLayoutEffect(() => {
       gsap.registerPlugin(Draggable)
@@ -281,7 +355,6 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
     // registration to drag
     React.useLayoutEffect(() => {
       gsap.registerPlugin(Draggable)
-
       // main dragger
       if (containerRef.current && !draggableRef.current) {
         const mainWindow = new Draggable(containerRef.current, {
@@ -297,82 +370,11 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
         draggableRef.current = mainWindow
         draggableRef.current.enable()
       }
+
+      // return () => {
+      //   killDraggable(draggableRef.current)
+      // }
     }, [containerRef, draggableRef, referenceKey, boundaryContainer, isMobile])
-
-    // INTERACTIVITY
-    const resetWindow = (
-      params: {
-        width?: string
-        height?: string
-      } = { width: '100%', height: '100%' }
-    ) => {
-      const { width, height } = params
-      console.log('test', width, height)
-      gsap.set(containerRef.current, {
-        width,
-        height,
-        x: 0,
-        y: 0,
-      })
-    }
-
-    const invalidateWindow = () => {
-      if (!checkIfRefsSet()) return
-      topPrevY.current = 0
-      bottomPrevY.current = 0
-      leftPrevX.current = 0
-      rightPrevX.current = 0
-    }
-
-    // check for refs
-    const checkIfRefsSet = () => {
-      return every(
-        DRAGGABLE_REFS_TO_CHECK,
-        (ref: React.MutableRefObject<HTMLDivElement>) => ref.current
-      )
-    }
-
-    const enableWindowFunctions = () => {
-      if (!checkIfRefsSet()) return
-      draggableRef.current.enable()
-      topDraggable.current.enable()
-      bottomDraggable.current.enable()
-      leftDraggable.current.enable()
-      rightDraggable.current.enable()
-
-      draggableRef.current.update()
-      topDraggable.current.update()
-      bottomDraggable.current.update()
-      leftDraggable.current.update()
-      rightDraggable.current.update()
-    }
-
-    const disableWindowFunctions = () => {
-      if (!checkIfRefsSet()) return
-      draggableRef.current.disable()
-      topDraggable.current.disable()
-      bottomDraggable.current.disable()
-      leftDraggable.current.disable()
-      rightDraggable.current.disable()
-    }
-
-    // listener for resize and disable functions
-    const handleInteractivityCheck = () => {
-      // if should be disabled and not set to mobile yet
-      if (isMobile && interactivityEnabled) {
-        setInteractivityEnabled(false)
-        resetWindow()
-        onResize()
-        disableWindowFunctions()
-      }
-      // going back to desktop there shouldnt be a need to reset
-      // if it doesnt match and its still set to mobile
-      if (!isMobile && !interactivityEnabled) {
-        setInteractivityEnabled(true)
-        onResize()
-        enableWindowFunctions()
-      }
-    }
 
     React.useEffect(() => {
       handleInteractivityCheck()

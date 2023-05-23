@@ -18,7 +18,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-lazy-load-image-component": "^1.5.1",
     "@types/react-modal": "^3.13.1",
-    "@types/react-redux": "^7.1.18",
+    "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.17",
     "@types/react-tabs": "^2.3.3",

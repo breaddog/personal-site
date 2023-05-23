@@ -4,15 +4,19 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { PortfolioHeader } from './Header'
+
 import {
   PortfolioContacts,
   PortfolioJourney,
   PortfolioDeveloper,
   PortfolioHighlights,
   PortfolioLanding,
-  PortfolioManager
+  PortfolioManagerNew
 } from './Sections/index'
-import { PortfolioManagerNew } from './Sections/ManagerNew'
+
+import { GenericForwardRefInterface } from '../../shared/interfaces'
+import { PORTFOLIO_SECTIONS } from '../../shared/sections'
+import { wrapForwardRefAsElementRef } from '../../shared/functions/functions'
 
 interface PortfolioProps {
   className?: string
@@ -24,17 +28,107 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     sectionStyles.section,
     className
   )
+
+  // section refs
+  const landingRef = React.useRef<GenericForwardRefInterface>(null)
+  const developerRef = React.useRef<GenericForwardRefInterface>(null)
+  const managerRef = React.useRef<GenericForwardRefInterface>(null)
+  const journeyRef = React.useRef<GenericForwardRefInterface>(null)
+  const highlightsRef = React.useRef<GenericForwardRefInterface>(null)
+  const contactsRef = React.useRef<GenericForwardRefInterface>(null)
+
+  // for scrolling
+  const scrollToSection = (key: string) => {
+    const _scrollToSection = (
+      sectionRef: React.RefObject<GenericForwardRefInterface>
+    ) => {
+      console.log(sectionRef)
+      sectionRef.current?.element?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      })
+    }
+    console.log(key, 'test', PORTFOLIO_SECTIONS.journey.key)
+    // TO DO: find better way to generalise this for any section
+    switch (key) {
+      case PORTFOLIO_SECTIONS.landing.key:
+        _scrollToSection(landingRef)
+        break
+      case PORTFOLIO_SECTIONS.developer.key:
+        _scrollToSection(developerRef)
+        break
+      case PORTFOLIO_SECTIONS.manager.key:
+        _scrollToSection(managerRef)
+        break
+      case PORTFOLIO_SECTIONS.journey.key:
+        _scrollToSection(journeyRef)
+        break
+      case PORTFOLIO_SECTIONS.highlights.key:
+        _scrollToSection(highlightsRef)
+        break
+      case PORTFOLIO_SECTIONS.contacts.key:
+        _scrollToSection(contactsRef)
+        break
+      default:
+        break
+    }
+  }
+
   return (
     <>
-      {/* <PortfolioHeader /> */}
-      <div className={classes}>
-        <PortfolioLanding />
-        <PortfolioDeveloper />
-        <PortfolioManagerNew />
-        <PortfolioJourney />
-        <PortfolioHighlights />
-        <PortfolioContacts />
-      </div>
+      <PortfolioContext.Provider
+        value={{
+          landingRef: wrapForwardRefAsElementRef(landingRef),
+          developerRef: wrapForwardRefAsElementRef(developerRef),
+          managerRef: wrapForwardRefAsElementRef(managerRef),
+          journeyRef: wrapForwardRefAsElementRef(journeyRef),
+          highlightsRef: wrapForwardRefAsElementRef(highlightsRef),
+          contactsRef: wrapForwardRefAsElementRef(contactsRef),
+          scrollToSection,
+        }}
+      >
+        <PortfolioHeader />
+        <div className={classes}>
+          <PortfolioLanding ref={landingRef} />
+          <PortfolioDeveloper ref={developerRef} />
+          <PortfolioManagerNew ref={managerRef} />
+          <PortfolioJourney ref={journeyRef} />
+          <PortfolioHighlights ref={highlightsRef} />
+          <PortfolioContacts ref={contactsRef} />
+        </div>
+      </PortfolioContext.Provider>
     </>
   )
 }
+
+interface PortfolioContextProps {
+  landingRef?: React.RefObject<
+    HTMLDivElement | Element | null | undefined
+  > | null
+  developerRef?: React.RefObject<
+    HTMLDivElement | Element | null | undefined
+  > | null
+  managerRef?: React.RefObject<
+    HTMLDivElement | Element | null | undefined
+  > | null
+  journeyRef?: React.RefObject<
+    HTMLDivElement | Element | null | undefined
+  > | null
+  highlightsRef?: React.RefObject<
+    HTMLDivElement | Element | null | undefined
+  > | null
+  contactsRef?: React.RefObject<
+    HTMLDivElement | Element | null | undefined
+  > | null
+  scrollToSection: Function
+}
+
+export const PortfolioContext = React.createContext<PortfolioContextProps>({
+  landingRef: null,
+  developerRef: null,
+  managerRef: null,
+  journeyRef: null,
+  highlightsRef: null,
+  contactsRef: null,
+  scrollToSection: () => {},
+})

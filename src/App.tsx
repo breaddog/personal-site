@@ -1,10 +1,12 @@
 import styles from './App.module.scss'
-import React from 'react'
+import React, { useCallback } from 'react'
 import AOS from 'aos'
 import classNames from 'classnames'
 
 import { PROJECTS } from './data/projects'
 import { ROUTES } from './routes'
+
+import { ScrollDirection } from './shared/types'
 
 import { CSSHeader, LoadingContext, LoadingSection, Portfolio } from './pages'
 import {
@@ -25,9 +27,14 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
   const { active } = React.useContext(LoadingContext)
 
+  // listeners
   const [isMobile, setIsMobile] = React.useState<boolean>(false)
   const [isMedium, setIsMedium] = React.useState<boolean>(false)
   const [isDesktop, setIsDesktop] = React.useState<boolean>(false)
+
+  // misc
+  const [scrollDirection, setScrollDirection] =
+    React.useState<ScrollDirection>('up')
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
 
   const isMobileMatcher = window.matchMedia(mobileMediaQuery)
@@ -81,14 +88,27 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     }
   }, [isMobile, isMobileMatcher])
 
-  // React.useEffect(() => {
-  //   desktopSizeListenerHandlers()
-  //   window.addEventListener('resize', desktopSizeListenerHandlers)
-  //   return () => {
-  //     window.removeEventListener('resize', desktopSizeListenerHandlers)
-  //   }
-  // }, [isMobile, isMedium, isDesktop, isMobileMatcher, isMediumMatcher])
+  // scroll handler
+  React.useEffect(() => {
+    let prevScrollY = window.scrollY
 
+    const updateScrollDirectionHandler = () => {
+      const scrollY = window.scrollY
+      const isBigger = scrollY > prevScrollY
+      // no difference (default to up)
+      if (scrollY === prevScrollY) return setScrollDirection('up')
+      // otherwise set direction
+      setScrollDirection(isBigger ? 'down' : 'up')
+      prevScrollY = scrollY
+    }
+
+    window.addEventListener('scroll', updateScrollDirectionHandler)
+    return () => {
+      window.removeEventListener('scroll', updateScrollDirectionHandler)
+    }
+  }, [scrollDirection])
+
+  // AOS
   React.useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -105,6 +125,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
           isMedium,
           isDesktop,
           scrollEnabled,
+          scrollDirection,
           setScrollEnabled,
         }}
       >
@@ -155,6 +176,7 @@ interface AppContextProps {
   isMedium: boolean
   isDesktop: boolean
   scrollEnabled: boolean
+  scrollDirection: ScrollDirection
   setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -163,5 +185,6 @@ export const AppContext = React.createContext<AppContextProps>({
   isMedium: false,
   isDesktop: false,
   scrollEnabled: true,
+  scrollDirection: 'up',
   setScrollEnabled: () => {},
 })

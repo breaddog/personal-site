@@ -49,7 +49,6 @@
     "no-var": "error",
     "prefer-arrow-callback": "warn",
     "spaced-comment": ["warn", "always"],
-    "yoda": ["warn", "always"],
     "prefer-spread": "warn",
     "array-bracket-spacing": "warn",
     "comma-dangle": [

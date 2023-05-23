@@ -7,11 +7,13 @@ interface DoubleArrowDownProps extends SVGCustomInterface {
 
 export const DoubleArrowDown: React.FunctionComponent<DoubleArrowDownProps> = ({
   className,
+  onClick = () => {},
   stroke = 'currentColor',
 }) => {
   return (
     <svg
       className={className}
+      onClick={() => onClick()}
       width='24'
       height='24'
       viewBox='0 0 24 24'

@@ -27,7 +27,7 @@
 @media screen and (max-width: 876px) {
   .sub-section {
     height: 100%;
-    margin-bottom: 6vmin !important;
+    margin-bottom: 6vmin;
 
     &:nth-last-child(1) {
       margin-bottom: unset;

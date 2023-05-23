@@ -48,10 +48,14 @@
   #highlights-carousel {
     .swiper-button-prev {
       left: -10px;
+      width: 40px;
+      height: 40px;
     }
 
     .swiper-button-next {
       right: -10px;
+      width: 40px;
+      height: 40px;
     }
   }
 }

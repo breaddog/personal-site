@@ -27,7 +27,7 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
   // if changed, also change in scss
   const ONIGIRI_AMOUNT = 14
   // active or not (can be toggled)
-  const [active, setActive] = React.useState<boolean>(true)
+  const [active, setActive] = React.useState<boolean>(false)
   const [amountLoaded, setAmountLoaded] = React.useState<number>(100)
   const [loaded, setLoaded] = React.useState<boolean>(false)
   const [selectedFlavourIndex, setSelectedFlavourIndex] =

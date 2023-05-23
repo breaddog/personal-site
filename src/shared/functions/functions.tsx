@@ -1,5 +1,6 @@
 import { ScrollTrigger } from 'gsap/all'
 import React from 'react'
+import { GenericForwardRefInterface } from '../interfaces'
 
 // random
 export const getRandomInt = (min: number, max: number) => {
@@ -48,4 +49,20 @@ export const disableScroll = () => {
 // delay always in ms
 export const delay = async (duration: number = 1000) => {
   return await new Promise((resolve) => setTimeout(resolve, duration))
+}
+
+// // experimenting
+// export const customComponentRefWrapper = <T extends HTMLDivElement>(
+//   _ref: React.ForwardedRef<React.RefObject<T>>
+// ) => {
+//   const ref = React.useRef<T | null>(null)
+//   return { ref }
+// }
+
+export const wrapForwardRefAsElementRef = (
+  forwardRef: React.RefObject<GenericForwardRefInterface>
+) => {
+  const ref = React.useRef<Element | undefined | null>(null)
+  ref.current = forwardRef.current?.element
+  return ref
 }
