@@ -55,11 +55,24 @@
     .icon {
       width: 15%;
       height: auto;
+      display: flex;
 
-      img {
-        width: auto;
-        height: 100%;
-        margin: 0 auto;
+      .img {
+        animation-timing-function: linear;
+        transform-origin: center;
+
+        height: 64px;
+        width: 64px;
+
+        img {
+          width: auto;
+          height: 100%;
+          margin: 0 auto;
+        }
+
+        &.animating {
+          animation-name: toggleAnti;
+        }
       }
     }
 

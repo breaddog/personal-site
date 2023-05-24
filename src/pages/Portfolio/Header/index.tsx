@@ -10,7 +10,7 @@ import walletDisconnectedSVG from '../../../assets/icons/wallet-disconnected.svg
 import { PORTFOLIO_SECTIONS } from '../../../shared/sections'
 import { map, delay } from 'lodash'
 import { SectionNavInterface } from '../../../shared/types/nav'
-import { Button } from '../../../shared/components'
+import { Button, OnClickAnimation } from '../../../shared/components'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPortfolioSectionSelector } from '../../../store/portfolio/selectors'
 import { setPortfolioCurrentSection } from '../../../store/portfolio/action'
@@ -125,10 +125,18 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
       >
         <div className={styles.container}>
           <div className={styles.icon}>
-            <LazyLoadImage
-              src={onigiriSVG}
-              alt='onigiri'
-            />
+            <OnClickAnimation
+              className={styles.img}
+              animation={{
+                animatingClass: styles.animating,
+                duration: 1000,
+              }}
+            >
+              <LazyLoadImage
+                src={onigiriSVG}
+                alt='onigiri'
+              />
+            </OnClickAnimation>
           </div>
 
           <div className={styles.sections}>

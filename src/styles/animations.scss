@@ -1,7 +1,26 @@
 // animations
 .animation {
   &__bounce {
-    animation: bounce 2.125s infinite;
+    animation-name: bounce;
+    animation-duration: 2.125s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  &__rotate {
+    &-clockwise {
+      animation-name: rotateClockwise;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    &-anticlockwise {
+      animation-name: rotateAnticlockwise;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
   }
 }
 
@@ -9,10 +28,32 @@
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-0.25rem);
   }
+
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes rotateClockwise {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes rotateAnticlockwise {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: -360deg;
   }
 }
