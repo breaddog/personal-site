@@ -6,9 +6,9 @@ import classNames from 'classnames'
 import { useParams } from 'react-router-dom'
 
 import { ProjectObject } from '../../../data/projects'
-import { fetchProject, fetchProjectContent } from '../../../shared/projects'
+import { fetchProject, fetchProjectContent } from '../../../shared'
 import { DefaultProjectTemplate, ErrorProjectTemplate } from './ProjectContent'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { BannerProjectSection } from './Components'
 
 interface ProjectPageProps {
   className?: string
@@ -60,14 +60,11 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
       className={classes}
       key={key}
     >
-      {/* banner is always there */}
-      <div className={classNames(styles.banner, styles.top)}>
-        <LazyLoadImage
-          alt={project?.alt}
-          src={project?.asset}
-          effect='blur'
-        />
-      </div>
+      {/* banner is always present in allsections */}
+      <BannerProjectSection
+        alt={project?.alt}
+        src={project?.asset}
+      />
 
       {/* FUTURE: template dependent after fetching from server*/}
       {projectBody}

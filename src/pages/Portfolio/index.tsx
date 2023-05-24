@@ -16,7 +16,7 @@ import {
 
 import { GenericForwardRefInterface } from '../../shared/interfaces'
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
-import { wrapForwardRefAsElementRef } from '../../shared/functions/functions'
+import { wrapForwardRefAsElementRef } from '../../shared'
 
 interface PortfolioProps {
   className?: string

@@ -1,5 +1,5 @@
 import styles from './App.module.scss'
-import React, { useCallback } from 'react'
+import React from 'react'
 import AOS from 'aos'
 import classNames from 'classnames'
 
@@ -16,8 +16,7 @@ import {
   Navigate
 } from 'react-router-dom'
 import { ProjectPage } from './pages/Portfolio/Projects'
-import { CONSTANTS } from './shared/constants'
-import { handleDesktopListener } from './shared/functions/functions'
+import { CONSTANTS, handleDesktopListener } from './shared'
 
 interface AppProps {
   className?: string
@@ -40,6 +39,10 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const isMobileMatcher = window.matchMedia(mobileMediaQuery)
   const isMediumMatcher = window.matchMedia(mediumMediaQuery)
   const classes = classNames(styles.app, active && styles.active, className)
+
+  {
+    /* TO DO: add wallet connectivity */
+  }
 
   // listener for desktop or mobile
   const desktopSizeListenerHandlers = () => {

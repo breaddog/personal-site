@@ -8,12 +8,7 @@ import { LOADING_TEXT } from './LoadingText'
 
 import { map } from 'lodash'
 import onigiriSVG from '../../assets/icons/onigiri.svg'
-import {
-  delay,
-  disableScroll,
-  enableScroll,
-  getRandomInt
-} from '../../shared/functions/functions'
+import { delay, disableScroll, enableScroll, getRandomInt } from '../../shared/'
 import { LoadingDots } from '../../shared/components'
 import { AppContext } from '../../App'
 

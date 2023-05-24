@@ -3,7 +3,6 @@ import React from 'react'
 import classNames from 'classnames'
 import { MagneticBox, CircularText } from '../../../../../../shared/components'
 import { RotationDirection } from '../../../../../../shared/types/effects'
-import { map } from 'lodash'
 
 interface ContactInfoProps {
   className?: string

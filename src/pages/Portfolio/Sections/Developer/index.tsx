@@ -20,8 +20,6 @@ import {
 } from '../../../../shared/components'
 
 import { AppContext } from '../../../../App'
-// libraries
-// import { detectScrollBoundary } from '../../../../shared/functions/functions'
 import { ORBIT_ITEMS, OrbitItemProps } from './orbitItems'
 // orbit
 import { DottedCircle } from '../../../../assets/svgs/index'
@@ -478,6 +476,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                   </Window>
                 </div>
                 <div className={styles.right}>
+                  {/* to do: add simplified view toggle */}
                   <Window
                     className={classNames(styles.window, styles.orbit)}
                     windowTitle='My Development Stack'

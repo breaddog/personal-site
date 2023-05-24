@@ -1,6 +1,6 @@
 import { ScrollTrigger } from 'gsap/all'
 import React from 'react'
-import { GenericForwardRefInterface } from '../interfaces'
+import { GenericForwardRefInterface } from './interfaces'
 
 // random
 export const getRandomInt = (min: number, max: number) => {

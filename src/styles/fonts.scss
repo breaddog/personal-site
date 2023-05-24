@@ -27,15 +27,8 @@ h3 {
 
 p {
   font-size: var(--font-p);
-  line-height: calc(var(--font-p) * 1.5);
+  line-height: calc(var(--font-p) * 1.625);
 }
-
-// .title {
-//   &__sub-section {
-//     font-size: 40px;
-//     font-weight: 500;
-//   }
-// }
 
 // transforms
 .uppercase {

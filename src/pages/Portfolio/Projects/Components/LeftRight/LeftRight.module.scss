@@ -13,6 +13,11 @@
   .text {
     width: 40%;
   }
+
+  .image {
+    background-color: var(--black-10);
+    object-fit: contain;
+  }
 }
 
 @media screen and (max-width: 1400px) {

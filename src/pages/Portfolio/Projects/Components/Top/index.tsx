@@ -7,14 +7,20 @@ import { TextProject } from '../Text'
 import { ProjectObject } from '../../../../../data/projects'
 import { map } from 'lodash'
 
+export interface ExtraInfoInterface {
+  title: string
+  value: string | number
+}
+
 interface TopProjectSectionProps {
   className?: string
   project: ProjectObject
+  extraInfo?: ExtraInfoInterface[]
 }
 
 export const TopProjectSection: React.FunctionComponent<
   TopProjectSectionProps
-> = ({ className, project }) => {
+> = ({ className, project, extraInfo }) => {
   const classes = classNames(projectStyles.section, styles.top, className)
 
   return (
@@ -38,7 +44,7 @@ export const TopProjectSection: React.FunctionComponent<
 
       <div className={styles.right}>
         <div className={styles.info}>
-          <span className={styles.infoTitle}>Role(s):</span>
+          <span className={styles.title}>Role(s):</span>
           <div className={styles.roles}>
             {map(project?.role, (role: string, idx: string | number) => (
               <span
@@ -52,19 +58,29 @@ export const TopProjectSection: React.FunctionComponent<
         </div>
 
         <div className={styles.info}>
-          <span className={styles.infoTitle}>Type:</span>
+          <span className={styles.title}>Type:</span>
           <span className={styles.value}>{project.scope}</span>
         </div>
 
         <div className={styles.info}>
-          <span className={styles.infoTitle}>Date:</span>
+          <span className={styles.title}>Date:</span>
           <span className={styles.value}>{project.year}</span>
         </div>
 
         <div className={styles.info}>
-          <span className={styles.infoTitle}>Site:</span>
+          <span className={styles.title}>Site:</span>
           <span className={styles.value}>{project.url}</span>
         </div>
+
+        {map(extraInfo, (info: ExtraInfoInterface, idx: number) => (
+          <div
+            className={styles.info}
+            key={idx}
+          >
+            <span className={styles.title}>{info.title}</span>
+            <span className={styles.value}>{info.value}</span>
+          </div>
+        ))}
 
         <div className={styles.description}>
           <div className={styles.title}>Description</div>

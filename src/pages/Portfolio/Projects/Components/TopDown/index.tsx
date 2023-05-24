@@ -28,9 +28,12 @@ export const TopDownProjectSection: React.FunctionComponent<
     <div className={classes}>
       <div className={projectStyles.banner}>
         <LazyLoadImage
+          className={classNames(projectStyles.img, projectStyles.contain)}
           src={project.asset}
           alt={project.alt}
           effect='blur'
+          width={'100%'}
+          height={'inherit'}
         />
       </div>
       <TextProject className={textClasses}>

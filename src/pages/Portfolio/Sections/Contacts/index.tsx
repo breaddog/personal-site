@@ -3,7 +3,7 @@ import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { EXTERNAL_LINKS } from '../../../../shared/links'
+import { EXTERNAL_LINKS } from '../../../../shared'
 
 import { SectionContainer, SectionHeader } from '../../../../shared/components'
 

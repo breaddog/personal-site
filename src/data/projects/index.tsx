@@ -1,5 +1,5 @@
 import React from 'react'
-import { CONSTANTS } from '../../shared/constants'
+import { CONSTANTS } from '../../shared'
 
 const { projectImageRoot } = CONSTANTS
 

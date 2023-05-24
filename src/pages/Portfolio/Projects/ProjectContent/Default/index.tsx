@@ -1,12 +1,10 @@
 import styles from '../../Project.module.scss'
 import React from 'react'
-import classNames from 'classnames'
 
 import {
   TopProjectSection,
   TopDownProjectSection,
-  LeftRightProjectSection,
-  TextProject
+  LeftRightProjectSection
 } from '../../Components'
 import { ProjectObject } from '../../../../../data/projects'
 

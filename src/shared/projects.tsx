@@ -1,8 +1,8 @@
-import { PROJECTS } from '../../data/projects'
+import { PROJECTS } from '../data/projects'
 import {
   ArtBallProject
   // DefaultProjectTemplate
-} from '../../pages/Portfolio/Projects/ProjectContent'
+} from '../pages/Portfolio/Projects/ProjectContent'
 
 export const fetchProject = async (projectKey: string) => {
   const _projects = PROJECTS[projectKey.toLowerCase()]

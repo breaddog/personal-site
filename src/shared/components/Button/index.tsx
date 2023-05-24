@@ -1,7 +1,6 @@
 import styles from './Button.module.scss'
 import React from 'react'
 import classNames from 'classnames'
-import { string } from 'yup'
 
 interface ButtonProps {
   className?: string

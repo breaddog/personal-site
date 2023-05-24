@@ -10,11 +10,13 @@
 
   display: flex;
   flex-direction: column;
-  margin: var(--section-margin) auto;
+  padding-bottom: 2.5rem;
 }
 
 .section {
-  margin-bottom: var(--section-margin);
+  &:not(:nth-last-child(1)) {
+    margin-bottom: var(--section-margin);
+  }
 }
 
 // generic stuff
@@ -23,11 +25,16 @@
   width: 100%;
   margin-bottom: var(--section-margin);
 
-  img {
+  .img {
     width: 100%;
-    height: 100%;
+    height: inherit;
+    background-color: var(--black-10);
     object-fit: cover;
     object-position: center;
+
+    &.contain {
+      object-fit: contain;
+    }
   }
 }
 
@@ -53,4 +60,7 @@
   .container {
     width: 80%;
   }
+}
+
+@media screen and (max-width: 876px) {
 }
