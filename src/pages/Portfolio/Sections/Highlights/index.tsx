@@ -153,7 +153,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                                   <div
                                     className={classNames(
                                       frameStyles.link,
-                                      isActive && styles.active
+                                      isActive && frameStyles.active
                                     )}
                                   >
                                     Read More

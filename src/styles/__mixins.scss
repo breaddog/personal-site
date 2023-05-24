@@ -1,65 +1,65 @@
 :root {
   // white
-  --white: #ffffff;
-  --white-10: #ffffff;
+  --white: rgb(255, 255, 255);
+  --white-10: rgb(255, 255, 255);
 
   // black
-  --black: #282b2d;
-  --black-10: #1a1c1d;
+  --black: rgb(40, 43, 45);
+  --black-10: rgb(26, 28, 29);
 
   // grey
-  --grey: #e3e3e3;
-  --grey-10: #b8b8b8;
-  --grey-20: #b6b5b5;
-  --grey-30: #9b9b9e;
-  --grey-40: #959595;
+  --grey: rgb(227, 227, 227);
+  --grey-10: rgb(184, 184, 184);
+  --grey-20: rgb(182, 181, 181);
+  --grey-30: rgb(155, 155, 158);
+  --grey-40: rgb(149, 149, 149);
 
   // light grey
-  --light-grey: #9c9c9c;
+  --light-grey: rgb(156, 156, 156);
 
   // dark grey
-  --dark-grey: #404548;
-  --dark-grey-10: #50565a;
-  --dark-grey-20: #394240;
+  --dark-grey: rgb(64, 69, 72);
+  --dark-grey-10: rgb(80, 86, 90);
+  --dark-grey-20: rgb(57, 66, 64);
 
   // blue
-  --blue: #bed5ff;
-  --blue-10: #abc8fc;
-  --blue-20: #94abd6;
-  --blue-30: #8094b8;
+  --blue: rgb(190, 213, 255);
+  --blue-10: rgb(171, 200, 252);
+  --blue-20: rgb(148, 171, 214);
+  --blue-30: rgb(128, 148, 184);
 
   // aqua
-  --aqua: #b3feff;
-  --aqua-10: #96dbdc;
+  --aqua: rgb(179, 254, 255);
+  --aqua-10: rgb(150, 219, 220);
 
   // purple
-  --purple: #d2cbf8;
-  --purple-10: #baaef7;
-  --purple-20: #a2a8e8;
-  --purple-30: #9095c4;
-  --purple-40: #868cc2;
-  --purple-50: #6a6f9c;
+  --purple: rgb(210, 203, 248);
+  --purple-10: rgb(186, 174, 247);
+  --purple-20: rgb(162, 168, 232);
+  --purple-30: rgb(144, 149, 196);
+  --purple-40: rgb(134, 140, 194);
+  --purple-50: rgb(106, 111, 156);
 
   // oshi
-  --purple-special: #b190fc;
+  --purple-special: rgb(177, 144, 252);
 
   // dark purple
-  --dark-purple: #a2a8e8;
-  --dark-purple-10: #868cc2;
+  --dark-purple: rgb(162, 168, 232);
+  --dark-purple-10: rgb(134, 140, 194);
 
   // red
-  --red: #ff4b4b;
+  --red: rgb(255, 75, 75);
 
   // yellow-light
-  --yellow-light: #f3efc2;
+  --yellow-light: rgb(243, 239, 194);
 
   // yellow
-  --yellow: #f5ed8e;
-  --yellow-10: #d1ca7c;
+  --yellow: rgb(245, 237, 142);
+  --yellow-10: rgb(209, 202, 124);
 
   // green
-  --green: #b2f5a0;
-  --green-10: #9edb8d;
+  --green: rgb(178, 245, 160);
+  --green-10: rgb(158, 219, 141);
 
   // commons
   --background-colour: var(--black);

@@ -13,13 +13,18 @@ import {
   GenericForwardRefInterface,
   GenericSubSectionForwardInterface
 } from '../../../../shared/interfaces'
-import { CircleIcon, SectionContainer } from '../../../../shared/components'
+import {
+  CircleIcon,
+  OnClickAnimation,
+  SectionContainer
+} from '../../../../shared/components'
 
 // import doubleArrowDownSVG from '../../../../assets/icons/double-arrow-down.svg'
 import onigiriSVG from '../../../../assets/icons/onigiri.svg'
 import { DoubleArrowDown } from '../../../../assets/svgs'
 import { PortfolioContext } from '../..'
 import { PORTFOLIO_SECTIONS } from '../../../../shared/sections'
+import { random } from 'lodash'
 
 interface PortfolioLandingProps extends GenericSubSectionForwardInterface {}
 
@@ -29,12 +34,26 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
       const { scrollToSection } = React.useContext(PortfolioContext)
 
       const landingRef = React.useRef<HTMLDivElement | null>(null)
+
+      // for randomising animation types on click of onigiri
+      const [selectedAnimation, setSelectedAnimation] =
+        React.useState<number>(-1)
+      const ANIMATION_TYPES: string[] = [
+        'rotateClockwise',
+        'rotateAnticlockwise',
+        'bounce',
+      ]
       const classes = classNames(
         'position--relative',
         sectionStyles['sub-section'],
         styles.landing,
         className
       )
+
+      const handleAnimationSetter = () => {
+        const randomIndex = random(0, ANIMATION_TYPES.length - 1)
+        setSelectedAnimation(randomIndex)
+      }
 
       const handleScrollToNextSection = () => {
         scrollToSection(PORTFOLIO_SECTIONS.developer.key)
@@ -93,10 +112,29 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                 </div>
               </div>
               <div className={styles.right}>
-                <img
-                  src={onigiriSVG}
-                  alt='onigiri'
-                />
+                {/* TO DO: add a few more animations or just let it bounce also */}
+                <OnClickAnimation
+                  className={styles.onigiri}
+                  animation={{
+                    animatingClass: styles.animating,
+                    name:
+                      selectedAnimation >= 0
+                        ? ANIMATION_TYPES[selectedAnimation]
+                        : 'none',
+                    duration: 600,
+                    iterationCount: 1,
+                    onStart: () => {
+                      if (selectedAnimation >= 0) return
+                      handleAnimationSetter()
+                    },
+                    onComplete: () => handleAnimationSetter(),
+                  }}
+                >
+                  <img
+                    src={onigiriSVG}
+                    alt='onigiri'
+                  />
+                </OnClickAnimation>
               </div>
             </SectionContainer>
 

@@ -53,26 +53,22 @@
     padding: 0.5rem 1.5rem;
 
     .icon {
-      width: 15%;
-      height: auto;
       display: flex;
 
-      .img {
-        animation-timing-function: linear;
-        transform-origin: center;
+      animation-timing-function: linear;
+      transform-origin: center;
 
-        height: 64px;
-        width: 64px;
+      height: 64px;
+      width: 64px;
 
-        img {
-          width: auto;
-          height: 100%;
-          margin: 0 auto;
-        }
+      img {
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+      }
 
-        &.animating {
-          animation-name: toggleAnti;
-        }
+      &.animating {
+        animation-name: toggleAnti;
       }
     }
 
@@ -207,6 +203,13 @@
 
         margin: 0 auto;
         margin-bottom: 2rem;
+
+        animation-timing-function: linear;
+        transform-origin: center;
+
+        &.animating {
+          animation-name: toggleAnti;
+        }
       }
 
       .sections {

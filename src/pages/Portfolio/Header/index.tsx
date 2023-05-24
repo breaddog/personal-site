@@ -8,7 +8,7 @@ import onigiriSVG from '../../../assets/icons/onigiri.svg'
 import walletDisconnectedSVG from '../../../assets/icons/wallet-disconnected.svg'
 
 import { PORTFOLIO_SECTIONS } from '../../../shared/sections'
-import { map, delay } from 'lodash'
+import { map } from 'lodash'
 import { SectionNavInterface } from '../../../shared/types/nav'
 import { Button, OnClickAnimation } from '../../../shared/components'
 import { useSelector, useDispatch } from 'react-redux'
@@ -106,20 +106,18 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
         onMouseLeave={() => handleDesktopMouseHoverLeave()}
       >
         <div className={styles.container}>
-          <div className={styles.icon}>
-            <OnClickAnimation
-              className={styles.img}
-              animation={{
-                animatingClass: styles.animating,
-                duration: 1000,
-              }}
-            >
-              <LazyLoadImage
-                src={onigiriSVG}
-                alt='onigiri'
-              />
-            </OnClickAnimation>
-          </div>
+          <OnClickAnimation
+            className={styles.icon}
+            animation={{
+              animatingClass: styles.animating,
+              duration: 1000,
+            }}
+          >
+            <LazyLoadImage
+              src={onigiriSVG}
+              alt='onigiri'
+            />
+          </OnClickAnimation>
 
           <div className={styles.sections}>
             {map(
@@ -176,12 +174,18 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
       <div className={mobileClasses}>
         <div className={styles.container}>
           <div className={styles.body}>
-            <div className={styles.icon}>
+            <OnClickAnimation
+              className={styles.icon}
+              animation={{
+                animatingClass: styles.animating,
+                duration: 1000,
+              }}
+            >
               <LazyLoadImage
                 src={onigiriSVG}
                 alt='onigiri'
               />
-            </div>
+            </OnClickAnimation>
 
             <div className={styles.sections}>
               {map(

@@ -27,6 +27,7 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
 
   const { isMobile } = React.useContext(AppContext)
 
+  const GRADIENT_CIRCLE_SIZE_RATIO = 0.8
   const [gradientActive, setGradientActive] = React.useState<boolean>(false)
   // default is 300
   const [gradientDiameter, setGradientDiameter] = React.useState<number>(300)
@@ -36,7 +37,6 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
   // GRADIENT FOLLOW
   // TO DO: change gradient as cursor moves through
   // OR: gradient changes as you scroll through
-  // const gradient active
   const gradientFollowCursor = (e: MouseEvent) => {
     if (!boxRef.current || !gradientRef.current || isMobile) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop
@@ -102,7 +102,18 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
           width: `${gradientDiameter}px`,
           height: `${gradientDiameter}px`,
         }}
-      ></div>
+      >
+        <div
+          className={styles.circle}
+          style={{
+            boxShadow: `10px 10px ${
+              gradientDiameter * GRADIENT_CIRCLE_SIZE_RATIO
+            }px ${
+              gradientDiameter * GRADIENT_CIRCLE_SIZE_RATIO
+            }px rgba(26, 28, 29, 0.4)`,
+          }}
+        ></div>
+      </div>
       <div className={styles.body}>
         <div className={classNames(styles.section, styles.mainInfo)}>
           <div className={styles.nameContainer}>
