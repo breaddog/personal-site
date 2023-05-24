@@ -11,6 +11,8 @@ interface OnClickAnimationProps {
     duration?: number
     timingFunction?: string
     iterationCount?: number | string
+    onStart?: Function
+    onComplete?: Function
   }
   children?: React.ReactNode
 }
@@ -29,6 +31,8 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
     duration = 600,
     timingFunction = 'linear',
     iterationCount = 1,
+    onStart = () => {},
+    onComplete = () => {},
   } = animation
 
   const classes = classNames(
@@ -41,9 +45,11 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
   const handleToggleAnimation = () => {
     if (animating) return
     setAnimating(true)
+    onStart()
 
     delay(() => {
       setAnimating(false)
+      onComplete()
     }, duration)
   }
 

@@ -37,7 +37,6 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
 
   // toggle button state
   const [active, setActive] = React.useState<boolean>(false)
-  const [animating, setAnimating] = React.useState<boolean>(false)
 
   // mobile menu active
   const [mobileHeaderActive, setMobileHeaderActive] =
@@ -79,23 +78,6 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
     !mobileHeaderActive && styles.disabled,
     className
   )
-  const toggleMenuClasses = classNames(
-    styles.toggle,
-    active && styles.active,
-    animating && styles.animating,
-    !mobileHeaderActive && styles.disabled
-  )
-
-  // toggle animation for menu
-  const handleToggleAnimation = () => {
-    if (animating) return
-    setAnimating(true)
-    setActive(!active)
-
-    delay(() => {
-      setAnimating(false)
-    }, 600)
-  }
 
   // change sections
   const handleChangeSection = (key: string) => {
@@ -167,10 +149,17 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
         </div>
       </header>
       {/* mobile section menu toggle */}
-
-      <div
-        className={toggleMenuClasses}
-        onClick={() => handleToggleAnimation()}
+      <OnClickAnimation
+        className={classNames(
+          styles.toggle,
+          active && styles.active,
+          !mobileHeaderActive && styles.disabled
+        )}
+        animation={{
+          animatingClass: styles.animating,
+          duration: 600,
+          onStart: () => setActive(!active),
+        }}
       >
         <img
           className={classNames(styles.icon, styles.open)}
@@ -182,7 +171,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
           src={crossSVG}
           alt='cross'
         />
-      </div>
+      </OnClickAnimation>
       {/* mobile section */}
       <div className={mobileClasses}>
         <div className={styles.container}>
