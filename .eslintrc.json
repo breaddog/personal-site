@@ -62,6 +62,7 @@
       }
     ],
     "eqeqeq": "error",
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "windows"],
+    "no-case-declarations": "off"
   }
 }

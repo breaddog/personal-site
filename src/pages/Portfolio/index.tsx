@@ -42,13 +42,11 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     const _scrollToSection = (
       sectionRef: React.RefObject<GenericForwardRefInterface>
     ) => {
-      console.log(sectionRef)
       sectionRef.current?.element?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
       })
     }
-    console.log(key, 'test', PORTFOLIO_SECTIONS.journey.key)
     // TO DO: find better way to generalise this for any section
     switch (key) {
       case PORTFOLIO_SECTIONS.landing.key:

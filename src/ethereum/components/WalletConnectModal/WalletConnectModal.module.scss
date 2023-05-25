@@ -1,0 +1,98 @@
+.walletConnect {
+  width: 600px;
+  height: fit-content;
+
+  border: 2px solid var(--black-10);
+  box-shadow: var(--box-shadow);
+
+  padding: 2.5rem 2rem;
+}
+
+.body {
+  .header {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .status {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0.5rem;
+
+      &:nth-last-child(1) {
+        margin-bottom: 2rem;
+      }
+
+      &.error {
+        color: var(--red);
+      }
+
+      .title {
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      .value {
+        &.capitalise {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  .info {
+    &:not(:nth-last-child(1)) {
+      margin-bottom: 2rem;
+    }
+
+    &:nth-last-child(1) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+
+    .option {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+
+      border: 2px solid rgba(171, 200, 252, 0.5);
+
+      &:not(:nth-last-child(1)) {
+        margin-bottom: 1rem;
+      }
+
+      .logo {
+        width: 42px;
+        height: 42px;
+
+        &.coinbase {
+          scale: 0.9;
+        }
+
+        &.logout {
+          opacity: 0.9;
+          transform: translateX(-5px);
+        }
+      }
+
+      .name {
+        margin: auto 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: calc(var(--font-h3) * 0.85);
+      }
+    }
+  }
+}

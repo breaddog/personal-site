@@ -17,6 +17,13 @@ import {
 } from 'react-router-dom'
 import { ProjectPage } from './pages/Portfolio/Projects'
 import { CONSTANTS, handleDesktopListener } from './shared'
+import { useWeb3React } from '@web3-react/core'
+import {
+  WalletConnectModal,
+  ConnectionType,
+  tryAutoReconnect
+} from './ethereum'
+import { APP_ENV } from './config'
 
 interface AppProps {
   className?: string
@@ -25,6 +32,11 @@ interface AppProps {
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
   const { active } = React.useContext(LoadingContext)
+
+  // web3 stuff
+  const { chainId, account, isActive } = useWeb3React()
+  const [connectionType, setConnectionType] =
+    React.useState<ConnectionType | null>(null)
 
   // listeners
   const [isMobile, setIsMobile] = React.useState<boolean>(false)
@@ -36,14 +48,25 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     React.useState<ScrollDirection>('up')
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
 
+  // matchers
   const isMobileMatcher = window.matchMedia(mobileMediaQuery)
   const isMediumMatcher = window.matchMedia(mediumMediaQuery)
+
+  // classes
   const classes = classNames(styles.app, active && styles.active, className)
 
-  {
-    /* TO DO: add wallet connectivity */
-  }
+  // WEB 3
+  // auto reconnect
+  React.useEffect(() => {
+    if (!account) return
+    localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, String(connectionType))
+  }, [account, connectionType])
 
+  React.useEffect(() => {
+    tryAutoReconnect(setConnectionType)
+  }, [])
+
+  // LISTENERS
   // listener for desktop or mobile
   const desktopSizeListenerHandlers = () => {
     // // desktop false check
@@ -135,6 +158,12 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         <div className={classes}>
           <CSSHeader />
           <LoadingSection />
+          <WalletConnectModal
+            activeConnectionType={connectionType}
+            connectionActive={isActive}
+            onActivate={setConnectionType}
+            onDeactivate={setConnectionType}
+          />
           <Routes>
             {/* all the import components will go here */}
             <Route
