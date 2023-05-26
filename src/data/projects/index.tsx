@@ -17,6 +17,7 @@ export interface ProjectObject {
   alt: string
 }
 
+// TO DO: look into possible better serialisation
 export const PROJECTS: {
   [key: string]: ProjectObject
 } = {

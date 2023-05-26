@@ -20,11 +20,13 @@ import onigiriSVG from '../../../assets/icons/onigiri.svg'
 interface ProjectPageProps {
   className?: string
   key?: string
+  children?: React.ReactNode
 }
 
 export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
   className,
   key,
+  children,
 }) => {
   const classes = classNames(
     styles.projectPage,
@@ -58,14 +60,14 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     if (projectKey && !loaded) {
       retreiveProject(projectKey)
     }
-  }, [projectKey, project, projectBody, loaded])
+  }, [projectKey, project, loaded])
 
   return (
     <div className={sectionStyles.section}>
       <GenericHeader
         icon={{
           src: onigiriSVG,
-          alt: 'onigiir',
+          alt: 'onigiri',
         }}
         mobile={{
           flexActive: false,
@@ -86,8 +88,9 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
             src={project?.asset}
           />
 
-          {/* FUTURE: template dependent after fetching from server*/}
+          {/* FUTURE: template dependent after fetching from server */}
           {projectBody}
+          {children}
         </div>
       )}
     </div>

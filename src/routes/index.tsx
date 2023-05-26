@@ -2,14 +2,8 @@ export interface Path {
   [key: string]: {
     key: string
     pathname: string
+    parentPath?: string
   }
-}
-
-export const PATHS: Path = {
-  projects: {
-    key: 'projects',
-    pathname: '/project',
-  },
 }
 
 export const ROUTES: Path = {
@@ -19,7 +13,8 @@ export const ROUTES: Path = {
   },
   projects: {
     key: 'projects',
-    pathname: '/project/:projectKey',
+    pathname: '/project/:projectKey/*',
+    parentPath: '/project',
   },
   home: {
     key: 'home',

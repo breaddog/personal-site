@@ -33,7 +33,6 @@ export class ERC721Request extends ContractRequest {
     }
   }
 
-  // TO DO: possibly optimise to call via query contract
   // owned tokens
   async getOwnedTokens(wallet: string) {
     try {

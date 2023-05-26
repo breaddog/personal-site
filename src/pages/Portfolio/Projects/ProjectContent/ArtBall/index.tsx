@@ -15,6 +15,7 @@ import {
   ARTBALL_22_CONTRACT_ADDRESS,
   ARTBALL_23_CONTRACT_ADDRESS
 } from '../../../../../contracts'
+import { useWeb3React } from '@web3-react/core'
 
 interface ArtBallProjectProps {
   key?: string
@@ -32,36 +33,17 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
     unique: true,
   })
 
+  // classes
+  const classes = classNames(artballStyles.artball, styles.container)
+
+  // web3
+  const { account } = useWeb3React()
   // balance
-  const [balance22, setBalance22] = React.useState<number>(0)
-  const [balance23, setBalance23] = React.useState<number>(0)
+  const [balance22, setBalance22] = React.useState<number>(-1)
+  const [balance23, setBalance23] = React.useState<number>(-1)
   // supply
   const [totalSupply22, setTotalSupply22] = React.useState<number>(0)
   const [totalSupply23, setTotalSupply23] = React.useState<number>(0)
-
-  const classes = classNames(artballStyles.artball, styles.container)
-
-  const getArtballTotalSupplies = async () => {
-    try {
-      const _supply22 = await artball22Request.getTotalSupply()
-      const _supply23 = await artball23Request.getTotalSupply()
-      setTotalSupply22(_supply22)
-      setTotalSupply23(_supply23)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  const getArtballBalances = async () => {
-    try {
-      const _balance22 = await artball22Request.getBalanceOf('')
-      const _balance23 = await artball23Request.getBalanceOf('')
-      setBalance22(_balance22)
-      setBalance23(_balance23)
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   const extraWeb3Info: ExtraInfoInterface[] = [
     {
@@ -74,17 +56,54 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
     },
     {
       title: 'Owned \'22:',
-      value: balance22,
+      value: balance22 < 0 ? 'Connect Wallet to View' : balance22,
     },
     {
       title: 'Owned \'23:',
-      value: balance23,
+      value: balance23 < 0 ? 'Connect Wallet to View' : balance23,
     },
   ]
 
+  const getArtballTotalSupplies = async () => {
+    try {
+      const _supply22 = await artball22Request.getTotalSupply()
+      const _supply23 = await artball23Request.getTotalSupply()
+      setTotalSupply22(_supply22)
+      setTotalSupply23(_supply23)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const getArtballBalances = async (account: string | null) => {
+    if (!account) return -1
+    try {
+      const _balance22 = await artball22Request.getBalanceOf(account)
+      const _balance23 = await artball23Request.getBalanceOf(account)
+      setBalance22(_balance22)
+      setBalance23(_balance23)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const resetWalletState = () => {
+    setBalance22(-1)
+    setBalance23(-1)
+  }
+
   React.useEffect(() => {
-    // getArtballTotalSupplies()
+    getArtballTotalSupplies()
   }, [])
+
+  React.useEffect(() => {
+    if (account) {
+      getArtballBalances(account)
+    } else {
+      resetWalletState()
+    }
+  }, [account])
+
   return (
     <div
       className={classes}

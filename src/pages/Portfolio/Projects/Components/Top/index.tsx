@@ -9,7 +9,7 @@ import { map } from 'lodash'
 
 export interface ExtraInfoInterface {
   title: string
-  value: string | number
+  value: string | number | null
 }
 
 interface TopProjectSectionProps {

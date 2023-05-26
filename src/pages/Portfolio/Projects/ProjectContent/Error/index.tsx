@@ -29,8 +29,15 @@ export const ErrorProjectTemplate: React.FunctionComponent<
           />
         </div>
         <div className={styles.text}>
-          Seems that <b>{projectKey}</b> doesn't exist yet. Fancy suggesting{' '}
-          <b>{projectKey}</b> as an idea to me or want to get back?
+          Seems that <b>{projectKey}</b> doesn't exist yet.{' '}
+          {projectKey ? (
+            <>
+              Fancy suggesting <b>{projectKey}</b> as an idea to me or want to
+              get back?
+            </>
+          ) : (
+            'Want to get back to the homepage?'
+          )}
         </div>
         <Link to={ROUTES.home.pathname}>
           <Button
