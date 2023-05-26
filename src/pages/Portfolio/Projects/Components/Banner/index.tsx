@@ -1,4 +1,4 @@
-import styles from './Banner.module.scss'
+// import styles from './Banner.module.scss'
 import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'

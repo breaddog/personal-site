@@ -6,12 +6,7 @@ import {
   PopupModalProps
 } from '../../../shared/components/PopupModal'
 
-import {
-  ConnectionType,
-  checkIfCoinbaseWalletInstalled,
-  checkIfMetaMaskInstalled,
-  connectionTypeToNetworkName
-} from '../../connectors'
+import { ConnectionType, connectionTypeToNetworkName } from '../../connectors'
 import { omit } from 'lodash'
 import { OptionWrapper } from '../Option'
 import { useWeb3React } from '@web3-react/core'
@@ -23,7 +18,6 @@ import {
 } from '../../../shared'
 
 import metamaskSVG from '../../../assets/logos/metamask.svg'
-import walletConnectSVG from '../../../assets/logos/walletconnect.svg'
 import coinbaseSVG from '../../../assets/logos/coinbase.svg'
 
 import logoutSVG from '../../../assets/icons/logout.svg'
@@ -31,7 +25,9 @@ import logoutSVG from '../../../assets/icons/logout.svg'
 interface WalletConnectModalProps extends PopupModalProps {
   activeConnectionType: ConnectionType | null
   connectionActive: boolean
-  onActivate: (connectionType: ConnectionType) => void
+  // eslint-disable-next-line
+  onActivate: (_connectionType: ConnectionType) => void
+  // eslint-disable-next-line
   onDeactivate: (connectionType: null) => void
 }
 

@@ -10,12 +10,14 @@ import { buildInjectedConnector } from './injected'
 import { buildWalletConnectConnector } from './wallet-connect'
 import { APP_ENV } from '../config'
 
+/* eslint-disable no-unused-vars */
 export enum ConnectionType {
   COINBASE_WALLET = 'COINBASE_WALLET',
   INJECTED = 'INJECTED',
   NETWORK = 'NETWORK',
   WALLET_CONNECT = 'WALLET_CONNECT',
 }
+/* eslint-disable no-unused-vars */
 
 export interface Connection {
   connector: Connector

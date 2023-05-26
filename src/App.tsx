@@ -3,7 +3,8 @@ import React from 'react'
 import AOS from 'aos'
 import classNames from 'classnames'
 
-import { PROJECTS } from './data/projects'
+// TO DO: map this out in a separate page router
+// import { PROJECTS } from './data/projects'
 import { ROUTES } from './routes'
 
 import { ScrollDirection } from './shared/types'

@@ -8,7 +8,6 @@ interface LoadingDotsProps {
   delay?: number
   text?: string
   color?: string
-  active?: boolean
 }
 
 export const LoadingDots: React.FC<LoadingDotsProps> = ({
@@ -17,7 +16,6 @@ export const LoadingDots: React.FC<LoadingDotsProps> = ({
   delay = 1000,
   text = '',
   color = 'white', // hex or string
-  active = true,
 }) => {
   const classes = classNames(styles.loadingDots, className)
   const dotsRef = React.useRef<any>(null)

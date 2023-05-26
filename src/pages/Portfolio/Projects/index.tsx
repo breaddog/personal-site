@@ -7,8 +7,15 @@ import { useParams } from 'react-router-dom'
 
 import { ProjectObject } from '../../../data/projects'
 import { fetchProject, fetchProjectContent } from '../../../shared'
-import { DefaultProjectTemplate, ErrorProjectTemplate } from './ProjectContent'
+import {
+  // eslint-disable-next-line
+  DefaultProjectTemplate,
+  ErrorProjectTemplate
+} from './ProjectContent'
 import { BannerProjectSection } from './Components'
+import { GenericHeader } from '../../../shared/components'
+
+import onigiriSVG from '../../../assets/icons/onigiri.svg'
 
 interface ProjectPageProps {
   className?: string
@@ -53,21 +60,36 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     }
   }, [projectKey, project, projectBody, loaded])
 
-  return null === project ? (
-    <ErrorProjectTemplate />
-  ) : (
-    <div
-      className={classes}
-      key={key}
-    >
-      {/* banner is always present in allsections */}
-      <BannerProjectSection
-        alt={project?.alt}
-        src={project?.asset}
+  return (
+    <div className={sectionStyles.section}>
+      <GenericHeader
+        icon={{
+          src: onigiriSVG,
+          alt: 'onigiir',
+        }}
+        mobile={{
+          flexActive: false,
+        }}
+        className={styles.projectHeader}
       />
 
-      {/* FUTURE: template dependent after fetching from server*/}
-      {projectBody}
+      {null === project ? (
+        <ErrorProjectTemplate />
+      ) : (
+        <div
+          className={classes}
+          key={key}
+        >
+          {/* banner is always present in allsections */}
+          <BannerProjectSection
+            alt={project?.alt}
+            src={project?.asset}
+          />
+
+          {/* FUTURE: template dependent after fetching from server*/}
+          {projectBody}
+        </div>
+      )}
     </div>
   )
 }

@@ -2,8 +2,6 @@ import styles from './Option.module.scss'
 import React from 'react'
 import {
   ConnectionType,
-  checkIfCoinbaseWalletInstalled,
-  checkIfMetaMaskInstalled,
   checkIfProviderInstalled,
   connectionTypeToNetworkName,
   getConnection,
@@ -12,7 +10,6 @@ import {
 } from '../../connectors'
 import classNames from 'classnames'
 import { toast } from 'react-toastify'
-import { useWeb3React } from '@web3-react/core'
 import { APP_ENV } from '../../../config'
 
 export type ConnectionMode = 'connect' | 'disconnect'

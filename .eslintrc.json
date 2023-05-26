@@ -27,12 +27,6 @@
     "no-dupe-keys": "error",
     "no-irregular-whitespace": "warn",
     "no-unreachable": "error",
-    "no-unused-vars": [
-      "warn",
-      {
-        "vars": "local"
-      }
-    ],
     "use-isnan": "error",
     "max-depth": ["warn", 3],
     "jsx-quotes": ["error", "prefer-single"],
@@ -63,6 +57,19 @@
     ],
     "eqeqeq": "error",
     "linebreak-style": ["error", "windows"],
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "local"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "vars": "local",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }
