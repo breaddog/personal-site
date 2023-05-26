@@ -1,4 +1,4 @@
-// import styles from './Banner.module.scss'
+import styles from './Banner.module.scss'
 import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
@@ -14,7 +14,12 @@ interface BannerProjectSectionProps {
 export const BannerProjectSection: React.FunctionComponent<
   BannerProjectSectionProps
 > = ({ className, src = '', alt = '' }) => {
-  const classes = classNames(projectStyles.banner, projectStyles.top, className)
+  const classes = classNames(
+    projectStyles.banner,
+    projectStyles.top,
+    styles.banner,
+    className
+  )
 
   return (
     <div className={classes}>

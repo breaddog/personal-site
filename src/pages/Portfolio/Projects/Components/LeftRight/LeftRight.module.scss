@@ -17,6 +17,9 @@
   .image {
     background-color: var(--black-10);
     object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
