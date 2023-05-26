@@ -35,8 +35,6 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
   const gradientRef = React.useRef<HTMLDivElement | null>(null)
 
   // GRADIENT FOLLOW
-  // TO DO: change gradient as cursor moves through
-  // OR: gradient changes as you scroll through
   const gradientFollowCursor = (e: MouseEvent) => {
     if (!boxRef.current || !gradientRef.current || isMobile) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop

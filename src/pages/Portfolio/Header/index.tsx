@@ -39,7 +39,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
         alt: 'onigiri',
       }}
       mobile={{
-        flexActive: false,
+        flexActive: true,
         flexSize: 1150,
       }}
       sections={PORTFOLIO_SECTIONS}

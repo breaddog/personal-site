@@ -33,6 +33,23 @@
 
     .right {
       width: 40%;
+      position: relative;
+
+      .toggleView {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        height: fit-content;
+
+        margin: 0 auto;
+        margin-bottom: 1rem;
+
+        .toggleTitle {
+          margin-right: 0.5rem;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+      }
     }
 
     .text {
@@ -91,6 +108,7 @@
           height: 50px;
           padding: 0.5rem 1.25rem;
           margin: 0 auto;
+          margin-bottom: 1rem;
 
           border: 2px solid black;
           border-radius: 1rem;
@@ -205,11 +223,14 @@
 
       .row {
         width: 100%;
-        margin-bottom: 1rem;
 
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
+        max-width: 400px;
+        margin: 0 auto;
+        margin-bottom: 1rem;
 
         .item {
           text-transform: uppercase;
@@ -222,8 +243,8 @@
         }
 
         .image {
-          width: 60px;
-          height: 60px;
+          width: 56px;
+          height: 56px;
 
           img {
             width: 100%;
@@ -282,7 +303,7 @@
 
         &.orbit {
           height: 80%;
-          max-height: unset;
+          max-height: 1000px;
           min-width: unset;
           min-height: unset;
         }
@@ -316,6 +337,29 @@
         .window {
           &.orbit {
             height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    .body {
+      .orbitContainerMobile {
+        .row {
+          flex-direction: column;
+          margin: 0 auto;
+          margin-bottom: 2rem;
+          text-align: center;
+
+          .item {
+            margin-bottom: 0.5rem;
+          }
+
+          .image {
+            margin: 0 auto;
           }
         }
       }

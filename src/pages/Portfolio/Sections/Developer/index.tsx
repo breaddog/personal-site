@@ -16,7 +16,8 @@ import {
   SectionContainer,
   Window,
   SectionSubHeader,
-  WindowHandle
+  WindowHandle,
+  ToggleSlider
 } from '../../../../shared/components'
 
 import { AppContext } from '../../../../App'
@@ -29,7 +30,7 @@ import userSVG from '../../../../assets/icons/user.svg'
 // header
 import laptopSVG from '../../../../assets/icons/laptop.svg'
 
-interface PortfolioDeveloperProps extends GenericSubSectionForwardInterface {}
+interface PortfolioDeveloperProps extends GenericSubSectionForwardInterface { }
 
 export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
   React.forwardRef<GenericForwardRefInterface, PortfolioDeveloperProps>(
@@ -56,8 +57,10 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
       const orbitWindowRef = React.useRef<WindowHandle>(null)
 
       const DOTTED_CIRCLE_PATH = '#dottedCirclePath'
-      // if animation init
-      // const [animationInit, setAnimationInit] = React.useState<boolean>(false)
+
+      // simplified view tracker
+      const [simplifiedView, setSimplifiedView] = React.useState<boolean>(false)
+
       // z-index tracker
       const [highestZIndex, setHighestZIndex] = React.useState<number>(0)
       // current highlighted stack component
@@ -212,6 +215,18 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
         }
       }
 
+      // on mobile we respect mobile boundaries
+      // otherwise respect the toggle
+      const determineIfSimplifiedView = () => {
+        if (isMobile) return isMobile
+        return simplifiedView
+      }
+
+      // simplified view? (on desktop its just mobile)
+      const handleToggleSimplifiedView = () => {
+        setSimplifiedView(!simplifiedView)
+      }
+
       // JSX
       // desktop
       const desktopOrbitJSX = () => {
@@ -219,7 +234,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
           <div
             className={classNames(
               styles.orbitContainerDesktop,
-              isMobile && styles.disabled
+              determineIfSimplifiedView() && styles.disabled
             )}
           >
             <div className={styles.orbitItemHighlight__container}>
@@ -312,7 +327,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
           <div
             className={classNames(
               styles.orbitContainerMobile,
-              !isMobile && styles.disabled
+              !determineIfSimplifiedView() && styles.disabled
             )}
           >
             {/* remove the last one as thats a reference */}
@@ -476,7 +491,6 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                   </Window>
                 </div>
                 <div className={styles.right}>
-                  {/* to do: add simplified view toggle */}
                   <Window
                     className={classNames(styles.window, styles.orbit)}
                     windowTitle='My Development Stack'
@@ -486,6 +500,18 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                     onResize={() => initiateItemOrbit()}
                     ref={orbitWindowRef}
                   >
+                    {!isMobile && (
+                      <div className={styles.toggleView}>
+                        <div className={styles.toggleTitle}>
+                          Toggle Simplified View
+                        </div>
+                        <ToggleSlider
+                          className={styles.toggle}
+                          isActive={simplifiedView}
+                          onSlide={() => handleToggleSimplifiedView()}
+                        />
+                      </div>
+                    )}
                     {desktopOrbitJSX()}
                     {mobileOrbitJSX()}
                   </Window>
@@ -507,6 +533,6 @@ interface PortfolioDevContextProps {
 export const PortfolioDevContext =
   React.createContext<PortfolioDevContextProps>({
     highestZIndex: 0,
-    setHighestZIndex: () => {},
-    resetOrbitTimeline: () => {},
+    setHighestZIndex: () => { },
+    resetOrbitTimeline: () => { },
   })

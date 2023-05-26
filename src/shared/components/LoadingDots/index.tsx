@@ -20,7 +20,6 @@ export const LoadingDots: React.FC<LoadingDotsProps> = ({
   const classes = classNames(styles.loadingDots, className)
   const dotsRef = React.useRef<any>(null)
 
-  // TO DO: rework this to accomodate pausing/remove interval
   React.useEffect(() => {
     let interval = setInterval(() => {
       const dots = dotsRef.current.innerHTML

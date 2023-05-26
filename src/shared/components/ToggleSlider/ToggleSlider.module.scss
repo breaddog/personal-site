@@ -1,0 +1,38 @@
+.slider {
+  --transition-duration: 0.4s;
+  --slide-width-ratio: 0.6;
+  --slider-width: 50px;
+  --slider-height: 22px;
+
+  width: var(--slider-width);
+  height: var(--slider-height);
+
+  background-color: var(--black);
+  border-radius: 1rem;
+  position: relative;
+
+  transition-property: background-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: linear;
+
+  .dot {
+    height: 22px;
+    width: 22px;
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--white);
+    left: 0;
+
+    transition-property: left;
+    transition-duration: calc(var(--transition-duration) * 1.2);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &.active {
+    background-color: var(--purple-10);
+
+    .dot {
+      left: calc(var(--slider-width) * var(--slide-width-ratio));
+    }
+  }
+}

@@ -13,6 +13,7 @@ export * from './OnClickAnimation'
 
 export * from './Button'
 export * from './Hyperlink'
+export * from './ToggleSlider'
 
 export * from './Keyframes'
 
