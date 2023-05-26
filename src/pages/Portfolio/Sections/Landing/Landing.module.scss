@@ -4,6 +4,7 @@
 .landing {
   // background-color: var(--blue);
   position: relative;
+  min-height: 100vh;
   z-index: 3;
   display: flex;
   flex-direction: column;

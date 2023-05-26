@@ -1,8 +1,6 @@
 @import '../../../../styles/styles.scss';
 
 .highlights {
-  position: relative;
-  height: 100vh;
 }
 
 .container {
@@ -13,7 +11,7 @@
   justify-content: space-between;
 
   width: 100%;
-  height: fit-content;
+  height: 100%;
   margin: 0 auto;
 
   position: relative;
@@ -54,6 +52,8 @@
       height: fit-content;
       margin: auto 0;
       overflow: unset;
+
+      margin-top: 2rem;
     }
   }
 }

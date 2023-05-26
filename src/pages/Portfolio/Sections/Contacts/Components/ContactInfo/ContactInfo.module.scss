@@ -149,7 +149,19 @@
 
       .contactBoxBody {
         .info {
-          bottom: -25%;
+          bottom: -26%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    .contactBox {
+      .contactBoxBody {
+        .info {
+          bottom: -50%;
         }
       }
     }
