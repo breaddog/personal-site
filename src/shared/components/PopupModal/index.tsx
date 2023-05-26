@@ -19,6 +19,7 @@ export interface PopupModalProps {
   id?: string
   isOpen?: boolean
   contentLabel?: string
+  onRequestCloseActive?: boolean
   onClose?: Function
   children?: React.ReactNode
 }
@@ -28,6 +29,7 @@ export const PopupModal: React.FunctionComponent<PopupModalProps> = ({
   id = '',
   isOpen = false,
   contentLabel,
+  onRequestCloseActive = true,
   onClose = () => {},
   children,
 }) => {
@@ -40,11 +42,14 @@ export const PopupModal: React.FunctionComponent<PopupModalProps> = ({
   return (
     <ReactModal
       id={id}
-      isOpen={true}
+      isOpen={isOpen}
       contentLabel={contentLabel}
       ariaHideApp={false}
       className={classes}
-      onRequestClose={() => handleModalClose()}
+      onRequestClose={() => {
+        if (!onRequestCloseActive) return
+        onClose()
+      }}
       style={REACT_MODAL_STYLES}
     >
       <>
@@ -53,6 +58,7 @@ export const PopupModal: React.FunctionComponent<PopupModalProps> = ({
             className={styles.close}
             src={crossSVG}
             alt='close'
+            onClick={() => handleModalClose()}
           />
         </div>
         {children}

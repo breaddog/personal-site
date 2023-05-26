@@ -102,7 +102,7 @@ export const WalletConnectModal: React.FunctionComponent<
             <div className={styles.value}>{chainId ?? 'Not Connected'}</div>
           </div>
           <div className={styles.row}>
-            <div className={styles.title}>Connected Provider:</div>
+            <div className={styles.title}>Provider:</div>
             <div
               className={classNames(
                 styles.value,
@@ -128,7 +128,7 @@ export const WalletConnectModal: React.FunctionComponent<
           </div>
         </div>
 
-        {window.ethereum && (
+        {!window.ethereum && (
           <div className={classNames(styles.info)}>
             <b>NOTE:&nbsp;</b>An Ethereum supported wallet widget is required to
             continue, here are widgets currently supported by this site:
@@ -144,7 +144,7 @@ export const WalletConnectModal: React.FunctionComponent<
 
         <div className={styles.options}>
           <OptionWrapper
-            className={styles.option}
+            className={classNames(styles.option, 'effect--hoverPop')}
             disabledClass={styles.disabled}
             isEnabled={
               isNoOptionActive ||
@@ -179,7 +179,7 @@ export const WalletConnectModal: React.FunctionComponent<
         </div> */}
 
           <OptionWrapper
-            className={styles.option}
+            className={classNames(styles.option, 'effect--hoverPop')}
             disabledClass={styles.disabled}
             ethereumInstalled={ethereumInstalled}
             isEnabled={
@@ -205,7 +205,7 @@ export const WalletConnectModal: React.FunctionComponent<
           </OptionWrapper>
 
           <OptionWrapper
-            className={styles.option}
+            className={classNames(styles.option, 'effect--hoverPop')}
             disabledClass={styles.disabled}
             ethereumInstalled={ethereumInstalled}
             isEnabled={activeConnectionType !== undefined}

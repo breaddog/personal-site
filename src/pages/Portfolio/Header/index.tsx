@@ -19,6 +19,7 @@ import menuSVG from '../../../assets/icons/menu-slanted.svg'
 import crossSVG from '../../../assets/icons/cross.svg'
 import { AppContext } from '../../../App'
 import { PortfolioContext } from '..'
+import { useWeb3React } from '@web3-react/core'
 
 interface PortfolioHeaderProps {
   className?: string
@@ -30,10 +31,12 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
   const dispatch = useDispatch()
   const currentSection = useSelector(getPortfolioSectionSelector)
 
-  const mobileHeaderMatcher = window.matchMedia('(max-width: 1000px)')
+  const mobileHeaderMatcher = window.matchMedia('(max-width: 1150px)')
 
-  const { scrollDirection } = React.useContext(AppContext)
+  const { scrollDirection, web3ModalActive, setWeb3ModalActive } =
+    React.useContext(AppContext)
   const { scrollToSection } = React.useContext(PortfolioContext)
+  const { isActive, account } = useWeb3React()
 
   // toggle button state
   const [active, setActive] = React.useState<boolean>(false)
@@ -128,6 +131,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
                     className={classNames(
                       styles.section,
                       styles.selectable,
+                      'effect--hoverPop',
                       currentSection === section.key && styles.highlight
                     )}
                     onClick={() => handleChangeSection(section.key)}
@@ -138,12 +142,15 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
                 )
               }
             )}
+            <div className={styles.wallet}>
+              <Button
+                className={classNames(styles.button, 'effects--hoverPop')}
+                onClick={() => setWeb3ModalActive(!web3ModalActive)}
+              >
+                {account ? 'Disconnect Wallet' : 'Connect Wallet'}
+              </Button>
+            </div>
           </div>
-          {/* web3 in future */}
-
-          {/* <div className={styles.wallet}>
-            <Button className={styles.button}>Connect Wallet</Button>
-          </div> */}
         </div>
       </header>
       {/* mobile section menu toggle */}
@@ -155,7 +162,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
         )}
         animation={{
           animatingClass: styles.animating,
-          duration: 600,
+          duration: 400,
           onStart: () => setActive(!active),
         }}
       >
@@ -196,6 +203,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
                       className={classNames(
                         styles.section,
                         styles.selectable,
+                        'effect--hoverPop',
                         currentSection === section.key && styles.highlight
                       )}
                       onClick={() => handleChangeSection(section.key)}
@@ -206,6 +214,14 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
                   )
                 }
               )}
+              <div className={classNames(styles.section, styles.wallet)}>
+                <Button
+                  className={classNames(styles.button, 'effects--hoverPop')}
+                  onClick={() => setWeb3ModalActive(!web3ModalActive)}
+                >
+                  {account ? 'Disconnect Wallet' : 'Connect Wallet'}
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -2,14 +2,6 @@
   &.highlight {
     color: var(--purple-special);
   }
-
-  &:hover {
-    scale: 1.05;
-  }
-
-  &:active {
-    scale: 0.95;
-  }
 }
 
 // hide on mobile
@@ -88,21 +80,24 @@
         cursor: pointer;
       }
     }
+  }
+}
 
-    .wallet {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+.wallet {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-      width: 15%;
+  width: fit-content;
+  margin: auto 1rem;
 
-      .button {
-        margin: auto 0;
-        background-color: var(--dark-grey-10);
-        min-width: unset;
-        height: fit-content;
-      }
-    }
+  .button {
+    margin: auto 0;
+    background-color: var(--dark-grey-10);
+    min-width: unset;
+    height: fit-content;
+
+    white-space: nowrap;
   }
 }
 
@@ -121,12 +116,10 @@
   width: 52px;
   height: 52px;
 
-  &.animating {
-    animation-name: toggleAnti;
+  animation-name: toggleAnti;
 
-    &.active {
-      animation-name: toggle;
-    }
+  &.active {
+    animation-name: toggle;
   }
 
   img {
@@ -226,6 +219,16 @@
           margin: 2rem auto;
 
           cursor: pointer;
+        }
+
+        .wallet {
+          margin: 2rem auto;
+          margin-top: 2rem;
+
+          .button {
+            font-size: var(--font-h4);
+            white-space: pre-wrap;
+          }
         }
       }
     }

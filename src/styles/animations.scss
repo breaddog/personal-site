@@ -8,18 +8,30 @@
   }
 
   &__rotate {
-    &-clockwise {
+    &--clockwise {
       animation-name: rotateClockwise;
       animation-duration: 2s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
     }
 
-    &-anticlockwise {
+    &--anticlockwise {
       animation-name: rotateAnticlockwise;
       animation-duration: 2s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
+    }
+  }
+}
+
+.effects {
+  &--hoverPop {
+    &:hover {
+      scale: 1.025;
+    }
+
+    &:active {
+      scale: 0.975;
     }
   }
 }

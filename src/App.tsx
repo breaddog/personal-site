@@ -34,7 +34,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const { active } = React.useContext(LoadingContext)
 
   // web3 stuff
-  const { chainId, account, isActive } = useWeb3React()
+  const { account, isActive } = useWeb3React()
   const [connectionType, setConnectionType] =
     React.useState<ConnectionType | null>(null)
 
@@ -47,6 +47,9 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const [scrollDirection, setScrollDirection] =
     React.useState<ScrollDirection>('up')
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
+
+  // web3 modal
+  const [web3ModalActive, setWeb3ModalActive] = React.useState<boolean>(false)
 
   // matchers
   const isMobileMatcher = window.matchMedia(mobileMediaQuery)
@@ -78,11 +81,11 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       setIsDesktop(true)
     }
   }
-
+  // medium
   const mediumSizeListenerHandler = () => {
     handleDesktopListener(isMediumMatcher, isMedium, setIsMedium)
   }
-
+  // mobile
   const mobileSizeListenerHandler = () => {
     handleDesktopListener(isMobileMatcher, isMobile, setIsMobile)
   }
@@ -153,12 +156,17 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
           scrollEnabled,
           scrollDirection,
           setScrollEnabled,
+          web3ModalActive,
+          setWeb3ModalActive,
         }}
       >
         <div className={classes}>
           <CSSHeader />
           <LoadingSection />
           <WalletConnectModal
+            onRequestCloseActive={false}
+            isOpen={web3ModalActive}
+            onClose={() => setWeb3ModalActive(false)}
             activeConnectionType={connectionType}
             connectionActive={isActive}
             onActivate={setConnectionType}
@@ -210,6 +218,8 @@ interface AppContextProps {
   scrollEnabled: boolean
   scrollDirection: ScrollDirection
   setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
+  web3ModalActive: boolean
+  setWeb3ModalActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const AppContext = React.createContext<AppContextProps>({
@@ -219,4 +229,6 @@ export const AppContext = React.createContext<AppContextProps>({
   scrollEnabled: true,
   scrollDirection: 'up',
   setScrollEnabled: () => {},
+  web3ModalActive: false,
+  setWeb3ModalActive: () => {},
 })

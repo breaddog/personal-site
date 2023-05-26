@@ -6,6 +6,10 @@
   box-shadow: var(--box-shadow);
 
   padding: 2.5rem 2rem;
+
+  &:visited {
+    border: none;
+  }
 }
 
 .body {
@@ -22,6 +26,7 @@
     .row {
       display: flex;
       flex-direction: row;
+      justify-content: flex-start;
       margin-bottom: 0.5rem;
 
       &:nth-last-child(1) {
@@ -35,6 +40,7 @@
       .title {
         font-weight: bold;
         margin-right: 0.5rem;
+        width: fit-content;
       }
 
       .value {
@@ -92,6 +98,78 @@
         font-weight: bold;
         text-transform: uppercase;
         font-size: calc(var(--font-h3) * 0.85);
+        text-align: end;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .walletConnect {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .body {
+    .status {
+      .row {
+        justify-content: space-between;
+
+        .value {
+          text-align: end;
+          width: 80%;
+        }
+      }
+    }
+
+    .options {
+      .option {
+        &:not(:nth-last-child(1)) {
+          margin-bottom: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .body {
+    .header {
+      text-align: center;
+    }
+
+    .status {
+      .row {
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        margin-bottom: 0.5rem;
+
+        .title {
+          margin: 0 auto;
+        }
+
+        .value {
+          text-align: center;
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+    }
+
+    .options {
+      .option {
+        flex-direction: column;
+
+        .logo {
+          margin: 0 auto;
+          margin-bottom: 0.5rem;
+        }
+
+        .name {
+          margin: 0 auto;
+          text-align: center;
+        }
       }
     }
   }

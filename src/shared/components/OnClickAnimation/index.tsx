@@ -30,7 +30,6 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
   const {
     animatingClass,
     duration = 600,
-    name = 'none',
     timingFunction = 'linear',
     iterationCount = 1,
     onStart = () => {},
@@ -60,7 +59,7 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
       className={classes}
       onClick={() => handleToggleAnimation()}
       style={{
-        animationName: name,
+        // animationName: name,
         animationDuration: `${duration}`,
         animationTimingFunction: timingFunction,
         animationIterationCount: iterationCount,

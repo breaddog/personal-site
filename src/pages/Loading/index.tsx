@@ -154,14 +154,16 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
                 }}
               ></div>
             </div>
-            <LoadingDots
-              className={classNames(styles.text, styles.loadingDots)}
-              text={
-                0 <= selectedFlavourIndex
-                  ? LOADING_TEXT[selectedFlavourIndex]
-                  : 'Loading'
-              }
-            />
+            {active && (
+              <LoadingDots
+                className={classNames(styles.text, styles.loadingDots)}
+                text={
+                  0 <= selectedFlavourIndex
+                    ? LOADING_TEXT[selectedFlavourIndex]
+                    : 'Loading'
+                }
+              />
+            )}
           </div>
         </div>
       </section>
