@@ -59,47 +59,48 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
       const boxRef = React.useRef<HTMLDivElement | null>(null)
 
       // gsap version of on hover wave effect for entrance animation
-      const sineWaveTextEffect = ({
-        parent,
-        duration = 1,
-        height = '1.5rem',
-      }: {
-        parent: Element
-        duration?: number
-        height?: string
-      }) => {
-        const children = gsap.utils
-          .toArray(parent.children)
-          .slice(1) as Element[]
-        const _masterTimeline = gsap.timeline()
+      // const sineWaveTextEffect = ({
+      //   parent,
+      //   duration = 1,
+      //   height = '1.5rem',
+      // }: {
+      //   parent: Element
+      //   duration?: number
+      //   height?: string
+      // }) => {
+      //   const children = gsap.utils
+      //     .toArray(parent.children)
+      //     .slice(1) as Element[]
 
-        // gsap reads it in reverse so need to realign
-        reverse(children).forEach((el: Element, idx: number) => {
-          const _childTimeline = gsap
-            .timeline({
-              delay: idx * 0.15,
-              duration,
-            })
-            .to(el, {
-              y: `-${height}`,
-              ease: 'sine.inOut',
-            })
-            .to(el, {
-              y: height,
-              ease: 'sine.inOut',
-            })
-            .to(el, {
-              y: 0,
-              ease: 'sine.inOut',
-              onComplete: () => {
-                parent.classList.remove('disabled')
-              },
-            })
-          _masterTimeline.add(_childTimeline, `-${duration}`)
-        })
+      //   const _masterTimeline = gsap.timeline()
 
-        return _masterTimeline
-      }
+      //   // gsap reads it in reverse so need to realign
+      //   reverse(children).forEach((el: Element, idx: number) => {
+      //     const _childTimeline = gsap
+      //       .timeline({
+      //         delay: idx * 0.15,
+      //         duration,
+      //       })
+      //       .to(el, {
+      //         y: `-${height}`,
+      //         ease: 'sine.inOut',
+      //       })
+      //       .to(el, {
+      //         y: height,
+      //         ease: 'sine.inOut',
+      //       })
+      //       .to(el, {
+      //         y: 0,
+      //         ease: 'sine.inOut',
+      //         onComplete: () => {
+      //           parent.classList.remove('disabled')
+      //         },
+      //       })
+      //     _masterTimeline.add(_childTimeline, `-${duration}`)
+      //   })
+
+      //   return _masterTimeline
+      // }
 
       // wave timeline
       const _waveTimeline = (el: Element, duration: number = 4) => {
@@ -113,10 +114,11 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
               el.classList.add('disabled')
             },
             onComplete: () => {
-              sineWaveTextEffect({
-                parent: el,
-                duration: 0,
-              })
+              el.classList.remove('disabled')
+              // sineWaveTextEffect({
+              //   parent: el,
+              //   duration: 0,
+              // })
             },
           })
           .to({}, { duration })
@@ -126,14 +128,14 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
         return gsap
           .timeline()
           .from('#manager-box', {
-            y: '-=400%',
+            y: '-=200%',
             ease: 'sine.inOut',
             duration,
           })
           .from(
             {},
             {
-              duration: 0.75,
+              duration: 1,
             }
           )
       }
