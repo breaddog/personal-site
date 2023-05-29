@@ -10,6 +10,7 @@
 
   display: flex;
   flex-direction: column;
+  height: auto;
 
   .header {
     margin-bottom: 2rem;
@@ -21,16 +22,19 @@
     margin: auto 0;
     margin-top: 2rem;
 
+    display: flex;
+    flex-direction: column;
+
     .contacts {
+      width: 100%;
+      height: fit-content;
+
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       position: relative;
 
       vertical-align: middle;
-
-      width: 100%;
-      height: 80%;
     }
   }
 }
