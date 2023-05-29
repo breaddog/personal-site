@@ -54,6 +54,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
               />
               <div className={styles.body}>
                 <div className={styles.contacts}>
+                  {/* TO DO: generalise to ms, serialise into object and map */}
                   <ContactInfo
                     className={styles.contactBox}
                     contactType='linkedin'
@@ -64,7 +65,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                     }}
                     circularText={{
                       text: 'Linkedin',
-                      spacing: 3,
+                      spacing: 5,
                       repetitions: 3,
                       direction: 'clockwise',
                       duration: CIRCULAR_ANIMATION_DURATION,
@@ -83,7 +84,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                     }}
                     circularText={{
                       text: 'Github',
-                      spacing: 6,
+                      spacing: 7,
                       repetitions: 3,
                       direction: 'clockwise',
                       duration: CIRCULAR_ANIMATION_DURATION,
@@ -101,7 +102,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                     }}
                     circularText={{
                       text: 'Email',
-                      spacing: 8,
+                      spacing: 10,
                       repetitions: 3,
                       direction: 'clockwise',
                       duration: CIRCULAR_ANIMATION_DURATION,
@@ -126,7 +127,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                     }}
                     circularText={{
                       text: 'Resume',
-                      spacing: 4,
+                      spacing: 7,
                       repetitions: 3,
                       direction: 'clockwise',
                       duration: CIRCULAR_ANIMATION_DURATION,

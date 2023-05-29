@@ -11,7 +11,7 @@ interface HighlightsHeaderWrapperProps extends SectionHeaderProps {}
 export const HighlightsHeaderWrapper: React.FunctionComponent<
   HighlightsHeaderWrapperProps
 > = (props) => {
-  const [active, setActive] = React.useState<boolean>(true)
+  const [active, setActive] = React.useState<boolean>(false)
   const classes = classNames(
     styles.header,
     active && styles.active,

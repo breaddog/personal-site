@@ -303,7 +303,7 @@
 
         &.orbit {
           height: 80%;
-          max-height: 1000px;
+          max-height: 800px;
           min-width: unset;
           min-height: unset;
         }
@@ -321,6 +321,12 @@
     .body {
       .left {
         margin-bottom: 2rem;
+      }
+
+      .window {
+        &.orbit {
+          max-height: unset;
+        }
       }
     }
   }

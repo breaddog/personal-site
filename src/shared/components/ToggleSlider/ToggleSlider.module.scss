@@ -15,13 +15,17 @@
   transition-duration: var(--transition-duration);
   transition-timing-function: linear;
 
+  display: flex;
+
   .dot {
-    height: 22px;
-    width: 22px;
+    height: 16px;
+    width: 16px;
     position: relative;
     border-radius: 50%;
     background-color: var(--white);
-    left: 0;
+
+    left: 4px;
+    margin: auto 0;
 
     transition-property: left;
     transition-duration: calc(var(--transition-duration) * 1.2);

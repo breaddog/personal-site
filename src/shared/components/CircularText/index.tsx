@@ -29,6 +29,7 @@ export const CircularText: React.FunctionComponent<CircularTextProps> = ({
         width='100'
         height='100'
         style={{
+          // TO DO: standardise to ms
           animationDuration: `${animationDuration}s`,
         }}
       >

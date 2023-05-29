@@ -30,6 +30,7 @@ interface PortfolioManagerProps extends GenericSubSectionForwardInterface {}
 export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
   React.forwardRef<GenericForwardRefInterface, PortfolioManagerProps>(
     ({ className }, ref) => {
+      // for the effect thingy
       const KEY_WORDS: KeyWordProps[] = [
         {
           key: 'transparency',
@@ -144,7 +145,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
 
         const scrollTrigger = {
           trigger: sectionRef.current,
-          start: 'top top',
+          start: '-7% top',
           end: '+=5000px',
           scrub: 0.5,
           pin: true,
@@ -219,6 +220,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
                       componentKey={idx}
                       className={classNames(styles.emphasis, WAVE_TEXT_CLASS)}
                       text={el.text}
+                      animationDuration={1500}
                       animationHeight='1.5rem'
                       animationDelay={100}
                     />

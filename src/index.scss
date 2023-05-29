@@ -1,23 +1,72 @@
 @use './styles/styles.scss';
 
+// silkscreen
 @font-face {
   font-family: 'Silkscreen';
   font-weight: normal;
+  font-style: normal;
   src: url('./assets/fonts/Silkscreen/Silkscreen-Regular.ttf')
     format('truetype');
 }
 
 @font-face {
-  font-family: 'Silkscreen Bold';
-  font-weight: normal;
+  font-family: 'Silkscreen';
+  font-weight: bold;
+  font-style: normal;
   src: url('./assets/fonts/Silkscreen/Silkscreen-Bold.ttf') format('truetype');
+}
+
+// noto sans JP font
+@font-face {
+  font-family: 'NotoSansJP';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/NotoSansJP/NotoSansJP-Regular.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSansJP';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./assets/fonts/NotoSansJP/NotoSansJP-Bold.ttf') format('truetype');
+}
+
+// ubuntu
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./assets/fonts/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+}
+
+// rubik
+@font-face {
+  font-family: 'Rubik';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/Rubik/Rubik-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./assets/fonts/Rubik/Rubik-Bold.ttf') format('truetype');
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Ubuntu', 'Inter', sans-serif;
 }
 
 a {
