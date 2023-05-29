@@ -1,21 +1,21 @@
 import styles from './Project.module.scss'
-import sectionStyles from '../../../styles/section.module.scss'
+import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
 import { useParams } from 'react-router-dom'
 
-import { ProjectObject } from '../../../data/projects'
-import { fetchProject, fetchProjectContent } from '../../../shared'
+import { ProjectObject } from '../../data/projects'
+import { fetchProject, fetchProjectContent } from '../../shared'
 import {
   // eslint-disable-next-line
   DefaultProjectTemplate,
   ErrorProjectTemplate
 } from './ProjectContent'
 import { BannerProjectSection } from './Components'
-import { GenericHeader } from '../../../shared/components'
+import { GenericHeader } from '../../shared/components'
 
-import onigiriSVG from '../../../assets/icons/onigiri.svg'
+import onigiriSVG from '../../assets/icons/onigiri.svg'
 
 interface ProjectPageProps {
   className?: string

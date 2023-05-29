@@ -52,7 +52,6 @@ export class ERC721Request extends ContractRequest {
   async getTotalSupply() {
     try {
       const totalSupply = await this.CONTRACT.totalSupply()
-      console.log(await this.CONTRACT.getAddress())
       return Number(totalSupply)
     } catch (err) {
       console.log('totalsupply 721 error', this.ADDRESS)

@@ -6,7 +6,7 @@ import {
   TopDownProjectSection,
   LeftRightProjectSection
 } from '../../Components'
-import { ProjectObject } from '../../../../../data/projects'
+import { ProjectObject } from '../../../../data/projects'
 
 interface DefaultProjectTemplateProps {
   project: ProjectObject

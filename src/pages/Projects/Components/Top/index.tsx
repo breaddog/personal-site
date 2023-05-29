@@ -4,9 +4,9 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { TextProject } from '../Text'
-import { ProjectObject } from '../../../../../data/projects'
+import { ProjectObject } from '../../../../data/projects'
 import { map } from 'lodash'
-import { Hyperlink } from '../../../../../shared/components'
+import { Hyperlink } from '../../../../shared/components'
 
 export interface ExtraInfoInterface {
   title: string

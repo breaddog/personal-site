@@ -14,7 +14,7 @@ import {
   Routes,
   Navigate
 } from 'react-router-dom'
-import { ProjectPage } from './pages/Portfolio/Projects'
+import { ProjectPage } from './pages/Projects'
 import { CONSTANTS, handleDesktopListener } from './shared'
 import { useWeb3React } from '@web3-react/core'
 import {

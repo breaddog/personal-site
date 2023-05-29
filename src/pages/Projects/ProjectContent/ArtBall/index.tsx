@@ -3,18 +3,18 @@ import styles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { PROJECTS, ProjectObject } from '../../../../../data/projects'
+import { PROJECTS, ProjectObject } from '../../../../data/projects'
 import {
   ExtraInfoInterface,
   LeftRightProjectSection,
   TopDownProjectSection,
   TopProjectSection
 } from '../../Components'
-import { RequestFactory } from '../../../../../requests'
+import { RequestFactory } from '../../../../requests'
 import {
   ARTBALL_22_CONTRACT_ADDRESS,
   ARTBALL_23_CONTRACT_ADDRESS
-} from '../../../../../contracts'
+} from '../../../../contracts'
 import { useWeb3React } from '@web3-react/core'
 
 interface ArtBallProjectProps {

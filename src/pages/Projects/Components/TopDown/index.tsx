@@ -1,32 +1,41 @@
-import styles from './LeftRight.module.scss'
+import styles from './TopDown.module.scss'
 import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
-import { ProjectObject } from '../../../../../data/projects'
+import { ProjectObject } from '../../../../data/projects'
 import { TextProject } from '../Text'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
-interface LeftRightProjectSectionProps {
+interface TopDownProjectSectionProps {
   className?: string
-  imagePlacement?: 'left' | 'right'
   project: ProjectObject
+  imagePlacement?: 'top' | 'bottom'
 }
 
-export const LeftRightProjectSection: React.FunctionComponent<
-  LeftRightProjectSectionProps
+export const TopDownProjectSection: React.FunctionComponent<
+  TopDownProjectSectionProps
 > = ({ className, project, imagePlacement }) => {
   const classes = classNames(
     projectStyles.section,
-    styles.leftRight,
+    styles.topdown,
     styles[String(imagePlacement)],
     className
   )
 
   const textClasses = classNames(projectStyles.text, styles.text)
-  const imageClasses = classNames(projectStyles.image, styles.image)
 
   return (
     <div className={classes}>
+      <div className={projectStyles.banner}>
+        <LazyLoadImage
+          className={classNames(projectStyles.img, projectStyles.contain)}
+          src={project.asset}
+          alt={project.alt}
+          effect='blur'
+          width={'100%'}
+          height={'inherit'}
+        />
+      </div>
       <TextProject className={textClasses}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -36,13 +45,6 @@ export const LeftRightProjectSection: React.FunctionComponent<
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </TextProject>
-      <div className={imageClasses}>
-        <LazyLoadImage
-          src={project.asset}
-          alt={project.alt}
-          effect='blur'
-        />
-      </div>
     </div>
   )
 }

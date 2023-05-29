@@ -4,9 +4,9 @@ import classNames from 'classnames'
 
 import { Link, useParams } from 'react-router-dom'
 
-import satelliteSVG from '../../../../../assets/icons/satellite.svg'
-import { Button } from '../../../../../shared/components'
-import { ROUTES } from '../../../../../routes'
+import satelliteSVG from '../../../../assets/icons/satellite.svg'
+import { Button } from '../../../../shared/components'
+import { ROUTES } from '../../../../routes'
 
 interface ErrorProjectTemplateProps {
   className?: string
