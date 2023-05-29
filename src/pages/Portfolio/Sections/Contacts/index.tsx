@@ -11,18 +11,20 @@ import mailSVG from '../../../../assets/icons/mail.svg'
 import resumeSVG from '../../../../assets/icons/resume.svg'
 import githubSVG from '../../../../assets/logos/github.svg'
 import linkedinSVG from '../../../../assets/logos/linkedin.svg'
-import { ContactInfo } from './Components'
+import { ContactInfo, ContactInfoProps } from './Components'
 import {
   GenericForwardRefInterface,
   GenericSubSectionForwardInterface
 } from '../../../../shared/interfaces'
+import { map } from 'lodash'
+import { CONTACT_INFOS } from './contacts'
 
 interface PortfolioContactsProps extends GenericSubSectionForwardInterface {}
 
 export const PortfolioContacts: React.FC<PortfolioContactsProps> =
   React.forwardRef<GenericForwardRefInterface, PortfolioContactsProps>(
     ({ className }, ref) => {
-      const CIRCULAR_ANIMATION_DURATION = 8
+      const CIRCULAR_ANIMATION_DURATION = 8000
       const CIRCULAR_ANIMATION_FONT_SIZE = '0.875rem'
 
       const contactsRef = React.useRef<HTMLDivElement | null>(null)
@@ -54,87 +56,29 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
               />
               <div className={styles.body}>
                 <div className={styles.contacts}>
-                  {/* TO DO: generalise to ms, serialise into object and map */}
-                  <ContactInfo
-                    className={styles.contactBox}
-                    contactType='linkedin'
-                    link={EXTERNAL_LINKS.linkedin}
-                    icon={{
-                      src: linkedinSVG,
-                      alt: 'linkedin',
-                    }}
-                    circularText={{
-                      text: 'Linkedin',
-                      spacing: 5,
-                      repetitions: 3,
-                      direction: 'clockwise',
-                      duration: CIRCULAR_ANIMATION_DURATION,
-                      fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
-                    }}
-                    hoverText='View my Job Portfolio Page'
-                  />
+                  {map(
+                    CONTACT_INFOS,
+                    (props: ContactInfoProps, idx: number) => {
+                      // add extra info
+                      const _circularText = {
+                        ...props.circularText,
+                        duration: CIRCULAR_ANIMATION_DURATION,
+                        fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
+                      }
+                      props.circularText = _circularText
 
-                  <ContactInfo
-                    className={styles.contactBox}
-                    contactType='github'
-                    link={EXTERNAL_LINKS.github}
-                    icon={{
-                      src: githubSVG,
-                      alt: 'github',
-                    }}
-                    circularText={{
-                      text: 'Github',
-                      spacing: 7,
-                      repetitions: 3,
-                      direction: 'clockwise',
-                      duration: CIRCULAR_ANIMATION_DURATION,
-                      fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
-                    }}
-                    hoverText='Projects and Stuff on Github'
-                  />
-                  <ContactInfo
-                    className={styles.contactBox}
-                    contactType='email'
-                    link={`mailto:${EXTERNAL_LINKS.email}`}
-                    icon={{
-                      src: mailSVG,
-                      alt: 'mail',
-                    }}
-                    circularText={{
-                      text: 'Email',
-                      spacing: 10,
-                      repetitions: 3,
-                      direction: 'clockwise',
-                      duration: CIRCULAR_ANIMATION_DURATION,
-                      fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
-                    }}
-                    hoverText={
-                      <>
-                        Get in contact with me
-                        <br />
-                        <span>tienfoong@gmail.com</span>
-                      </>
+                      return (
+                        <ContactInfo
+                          {...props}
+                          className={classNames(
+                            styles.contactBox,
+                            props.className
+                          )}
+                          key={idx}
+                        />
+                      )
                     }
-                  />
-
-                  <ContactInfo
-                    className={styles.contactBox}
-                    contactType='resume'
-                    link={EXTERNAL_LINKS.resume}
-                    icon={{
-                      src: resumeSVG,
-                      alt: 'resume',
-                    }}
-                    circularText={{
-                      text: 'Resume',
-                      spacing: 7,
-                      repetitions: 3,
-                      direction: 'clockwise',
-                      duration: CIRCULAR_ANIMATION_DURATION,
-                      fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
-                    }}
-                    hoverText='Download my Resume'
-                  />
+                  )}
                 </div>
 
                 {/* submission form */}

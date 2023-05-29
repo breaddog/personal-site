@@ -51,7 +51,7 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
     delay(() => {
       setAnimating(false)
       onComplete()
-    }, duration)
+    }, duration * 0.9)
   }
 
   return (

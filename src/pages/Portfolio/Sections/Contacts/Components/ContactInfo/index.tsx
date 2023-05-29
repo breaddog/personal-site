@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import { MagneticBox, CircularText } from '../../../../../../shared/components'
 import { RotationDirection } from '../../../../../../shared/types/effects'
 
-interface ContactInfoProps {
+export interface ContactInfoProps {
   className?: string
-  contactType: string
+  type: string
   link?: string
   icon: {
     src: string
@@ -25,13 +25,13 @@ interface ContactInfoProps {
 
 export const ContactInfo: React.FunctionComponent<ContactInfoProps> = ({
   className,
-  contactType,
+  type,
   link,
   icon,
   circularText,
   hoverText,
 }) => {
-  const classes = classNames(styles.wrapper, styles[contactType], className)
+  const classes = classNames(styles.wrapper, styles[type], className)
 
   // text
   const {
@@ -39,7 +39,7 @@ export const ContactInfo: React.FunctionComponent<ContactInfoProps> = ({
     spacing = 1,
     repetitions = 3,
     direction = 'clockwise',
-    duration = 8,
+    duration = 8000,
     fontSize = '1rem',
   } = circularText
 
@@ -71,7 +71,7 @@ export const ContactInfo: React.FunctionComponent<ContactInfoProps> = ({
               text={generateCircularText()}
               fontSize={fontSize}
               direction={direction}
-              animationDuration={duration}
+              duration={duration}
             />
           </div>
         </a>

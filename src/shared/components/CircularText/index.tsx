@@ -7,7 +7,7 @@ import { RotationDirection } from '../../types/effects'
 export interface CircularTextProps {
   className?: string
   text?: string | React.ReactFragment
-  animationDuration?: number
+  duration?: number
   direction?: RotationDirection
   fontSize?: string
 }
@@ -15,7 +15,7 @@ export interface CircularTextProps {
 export const CircularText: React.FunctionComponent<CircularTextProps> = ({
   className,
   text = 'Sample Text Defined Here',
-  animationDuration = 10,
+  duration = 10,
   direction = 'clockwise',
   fontSize = '1rem',
 }) => {
@@ -29,8 +29,7 @@ export const CircularText: React.FunctionComponent<CircularTextProps> = ({
         width='100'
         height='100'
         style={{
-          // TO DO: standardise to ms
-          animationDuration: `${animationDuration}s`,
+          animationDuration: `${duration}ms`,
         }}
       >
         <defs>
