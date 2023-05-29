@@ -188,16 +188,15 @@ export const tryAutoReconnect = async (onActivate: Function) => {
 
     // else activate as is
     onActivate(activate)
-
     // otherwise set item for future ease
     toast.success(
-      `Successfully auto-connected via ${capitaliseText(
+      `Successfully auto connected with ${capitaliseText(
         String(connectionType)
       )}!`
     )
     localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, connectionType)
-  } catch (err) {
-    // console.log('auto connection error', err)
+  } catch (err: any) {
+    // console.log('auto connection error', err.name)
     return localStorage.removeItem(APP_ENV.CONNECTOR_TYPE_STORAGE)
   }
 }

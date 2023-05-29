@@ -69,3 +69,48 @@
     rotate: -360deg;
   }
 }
+
+// assume start is always at 180deg
+@keyframes moveCircle {
+  0% {
+    transform: translate(0rem, 0rem);
+  }
+
+  25% {
+    transform: translate(-2rem, 1rem);
+  }
+
+  50% {
+    transform: translate(0rem, 2rem);
+  }
+
+  75% {
+    transform: translate(2rem, -1rem);
+  }
+
+  100% {
+    transform: translate(0rem, 0rem);
+  }
+}
+
+@keyframes moveCircleAnticlockwise {
+  0% {
+    transform: translate(0rem, 0rem);
+  }
+
+  25% {
+    transform: translate(2rem, -1rem);
+  }
+
+  50% {
+    transform: translate(0rem, -2rem);
+  }
+
+  75% {
+    transform: translate(-2rem, 1rem);
+  }
+
+  100% {
+    transform: translate(0rem, 0rem);
+  }
+}

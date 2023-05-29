@@ -122,7 +122,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                 title='Contact Me'
                 src={mailSVG}
                 alt='mail'
-                backgroundColour='var(--purple-special)'
+                backgroundColour='var(--purple-20)'
               />
               <div className={styles.body}>
                 <div className={styles.contacts}>

@@ -15,6 +15,7 @@ import {
 } from '../../../../shared/interfaces'
 import {
   CircleIcon,
+  Keyframes,
   OnClickAnimation,
   SectionContainer
 } from '../../../../shared/components'
@@ -41,7 +42,9 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
       const ANIMATION_TYPES: string[] = [
         'rotateClockwise',
         'rotateAnticlockwise',
-        'bounce',
+        'bounceLanding',
+        'moveCircle',
+        'moveCircleAnticlockwise',
       ]
       const classes = classNames(
         'position--relative',
@@ -63,6 +66,14 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
       React.useImperativeHandle(ref, () => ({
         element: landingRef.current as Element,
       }))
+
+      React.useEffect(() => {
+        window.addEventListener('load', handleAnimationSetter)
+        return () => {
+          window.removeEventListener('load', handleAnimationSetter)
+        }
+      }, [])
+
       return (
         <>
           <section
@@ -76,7 +87,6 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                     <h1 className={classNames(styles.title, styles.uppercase)}>
                       <b>Tien</b> Foong
                     </h1>
-                    {/* <img src={onigiriSVG} alt='onigiri' /> */}
                   </div>
                   <h2 className={styles.subtitle}>
                     {/* Developing Websites with Personality */}
@@ -113,6 +123,14 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
               </div>
               <div className={styles.right}>
                 {/* TO DO: add a few more animations or just let it bounce also */}
+                <Keyframes
+                  name='bounceLanding'
+                  animationProps={{
+                    '0%': 'transform: translateY(0)',
+                    '50%': 'transform: translateY(-2rem)',
+                    '100%': 'transform: translateY(0)',
+                  }}
+                />
                 <OnClickAnimation
                   className={styles.onigiri}
                   animation={{
@@ -120,14 +138,11 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                     name:
                       selectedAnimation >= 0
                         ? ANIMATION_TYPES[selectedAnimation]
-                        : 'none',
+                        : null,
                     duration: 600,
                     iterationCount: 1,
-                    onStart: () => {
-                      if (selectedAnimation >= 0) return
-                      handleAnimationSetter()
-                    },
-                    onComplete: () => handleAnimationSetter(),
+                    onStart: () => handleAnimationSetter(),
+                    // onComplete: () => handleAnimationSetter(),
                   }}
                 >
                   <img

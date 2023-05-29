@@ -124,7 +124,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
             className={styles.icon}
             animation={{
               animatingClass: styles.animating,
-              duration: 1000,
+              duration: 800,
             }}
           >
             <Link to={ROUTES.home.pathname}>

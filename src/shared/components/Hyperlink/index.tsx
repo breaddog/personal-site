@@ -5,7 +5,8 @@ import classNames from 'classnames'
 interface HyperlinkProps {
   className?: string
   children?: React.ReactNode
-  color?: string
+  colour?: string
+  highlightColour?: string
   thickness?: string
   underline?: boolean
 }
@@ -13,24 +14,58 @@ interface HyperlinkProps {
 export const Hyperlink: React.FunctionComponent<HyperlinkProps> = ({
   className = '',
   children,
-  color = 'var(--grey)',
+  colour = 'var(--grey)',
+  highlightColour = 'var(--purple-10)',
   thickness = '1px',
   underline = true,
 }) => {
+  const [hover, setHover] = React.useState<boolean>(false)
+  const [visited, setVisited] = React.useState<boolean>(false)
+
   const classes = classNames(
     styles.hyperlink,
     className,
-    underline ? styles.underline : styles.default
+    underline ? styles.underline : styles.default,
+    visited && styles.visited
   )
+
+  const determineStyles = () => {
+    // hover
+    if (hover) {
+      return {
+        backgroundSize: `0% ${thickness}`,
+        backgroundImage: `linear-gradient(${highlightColour} 0 0)`,
+        color: `${highlightColour}`,
+      }
+    }
+
+    // visited link
+    if (visited) {
+      return {
+        backgroundSize: `100% ${thickness}`,
+        backgroundImage: `linear-gradient(${highlightColour} 0 0)`,
+        color: `${highlightColour}`,
+      }
+    }
+
+    // regular
+    return {
+      backgroundSize: `100% ${thickness}`,
+      backgroundImage: `linear-gradient(${colour} 0 0)`,
+      color: `${colour}`,
+    }
+  }
 
   return (
     <span
       className={classes}
-      style={{
-        backgroundSize: `100% ${thickness}`,
-        backgroundImage: `linear-gradient(${color} 0 0)`,
-        color: `${color}`,
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={() => {
+        if (visited) return
+        setVisited(true)
       }}
+      style={determineStyles()}
     >
       {children}
     </span>

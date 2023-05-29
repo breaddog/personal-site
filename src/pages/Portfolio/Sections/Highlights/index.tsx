@@ -25,6 +25,8 @@ import {
   GenericForwardRefInterface,
   GenericSubSectionForwardInterface
 } from '../../../../shared/interfaces'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../../../../routes'
 
 interface PortfolioHighlightsProps extends GenericSubSectionForwardInterface {}
 
@@ -77,7 +79,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
           onlyInViewport: true,
           enabled: true,
         },
-        initialSlide: 2,
+        initialSlide: 0,
         ...determineSlideViewParams(),
       }
 
@@ -147,17 +149,19 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                                 )}
                               >
                                 <div className={frameStyles.container}>
+                                  {/* TO DO: description, links... */}
                                   <p className={frameStyles.description}>
                                     {project.description}
                                   </p>
-                                  <div
+                                  <Link
+                                    to={`${ROUTES.projects.parentPath}/${project.key}`}
                                     className={classNames(
                                       frameStyles.link,
                                       isActive && frameStyles.active
                                     )}
                                   >
                                     Read More
-                                  </div>
+                                  </Link>
                                 </div>
                               </div>
                               <div

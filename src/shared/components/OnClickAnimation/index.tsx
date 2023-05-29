@@ -8,7 +8,7 @@ interface OnClickAnimationProps {
   className?: string
   animation: {
     animatingClass: string
-    name?: string
+    name?: string | null
     duration?: number
     timingFunction?: string
     iterationCount?: number | string
@@ -34,6 +34,7 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
     iterationCount = 1,
     onStart = () => {},
     onComplete = () => {},
+    name = null,
   } = animation
 
   const classes = classNames(
@@ -44,26 +45,41 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
 
   // toggle animation
   const handleToggleAnimation = () => {
+    console.log('clicked')
     if (animating) return
     setAnimating(true)
     onStart()
+    console.log('started')
 
     delay(() => {
       setAnimating(false)
       onComplete()
-    }, duration * 0.9)
+      console.log('ended')
+    }, duration)
+  }
+
+  const getStyles = () => {
+    const _styles: {
+      [key: string]: string | number
+    } = {
+      animationDuration: `${duration}ms`,
+      animationTimingFunction: timingFunction,
+      animationIterationCount: iterationCount,
+    }
+
+    // name addition
+    if (name) {
+      _styles.animationName = name
+    }
+
+    return _styles
   }
 
   return (
     <div
       className={classes}
       onClick={() => handleToggleAnimation()}
-      style={{
-        // animationName: name,
-        animationDuration: `${duration}`,
-        animationTimingFunction: timingFunction,
-        animationIterationCount: iterationCount,
-      }}
+      style={getStyles()}
     >
       {children}
     </div>

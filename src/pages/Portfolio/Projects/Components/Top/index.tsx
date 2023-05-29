@@ -6,10 +6,12 @@ import classNames from 'classnames'
 import { TextProject } from '../Text'
 import { ProjectObject } from '../../../../../data/projects'
 import { map } from 'lodash'
+import { Hyperlink } from '../../../../../shared/components'
 
 export interface ExtraInfoInterface {
   title: string
   value: string | number | null
+  isLink?: boolean
 }
 
 interface TopProjectSectionProps {
@@ -69,7 +71,15 @@ export const TopProjectSection: React.FunctionComponent<
 
         <div className={styles.info}>
           <span className={styles.title}>Site:</span>
-          <span className={styles.value}>{project.url}</span>
+          <Hyperlink className={styles.value}>
+            <a
+              href={project.url}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              {project.url}
+            </a>
+          </Hyperlink>
         </div>
 
         {map(extraInfo, (info: ExtraInfoInterface, idx: number) => (

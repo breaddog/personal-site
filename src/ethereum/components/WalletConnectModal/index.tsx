@@ -117,12 +117,7 @@ export const WalletConnectModal: React.FunctionComponent<
                 : 'Not Connected'}
             </div>
           </div>
-          {/* 
-          TO DO: 
-          - hook up error parts
-          - hook up modal opening and easy context function
-          - test out error displays and context
-        */}
+          {/* future: error handling if adding more complex behaviour */}
           <div className={classNames(styles.row, styles.error)}>
             <div className={styles.title}>Error:</div>
             <div className={styles.value}>
@@ -131,13 +126,12 @@ export const WalletConnectModal: React.FunctionComponent<
           </div>
         </div>
 
-        {!window.ethereum && (
+        {window.ethereum && (
           <div className={classNames(styles.info)}>
             <b>NOTE:&nbsp;</b>An Ethereum supported wallet widget is required to
-            continue, here are widgets currently supported by this site:
-            <br />
+            continue, here are widgets currently supported by this site:{' '}
             <a href={EXTERNAL_LINKS.metamask.download}>Metamask</a>,{' '}
-            <a href={EXTERNAL_LINKS.coinbase.download}>Coinbase</a>
+            <a href={EXTERNAL_LINKS.coinbase.download}>Coinbase.</a>
           </div>
         )}
         {/* 

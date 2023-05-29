@@ -161,6 +161,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       >
         <div className={classes}>
           <CSSHeader />
+          {/* TO DO: link this to load on first visit/if assets require to be loaded */}
           <LoadingSection />
           <WalletConnectModal
             onRequestCloseActive={false}
