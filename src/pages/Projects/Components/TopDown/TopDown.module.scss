@@ -1,4 +1,10 @@
-.topDown {
+.body {
+  display: flex;
+
+  .text {
+    margin-bottom: 1rem;
+  }
+
   &.top {
     flex-direction: column;
   }

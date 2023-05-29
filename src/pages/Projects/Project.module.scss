@@ -17,6 +17,11 @@
   &:not(:nth-last-child(1)) {
     margin-bottom: var(--section-margin);
   }
+
+  .header {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
 }
 
 // generic stuff

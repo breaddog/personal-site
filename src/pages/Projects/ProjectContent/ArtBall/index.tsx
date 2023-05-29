@@ -115,12 +115,14 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
       />
       <TopDownProjectSection
         project={project}
+        headerText='Asset Generation'
         imagePlacement='bottom'
       />
 
       <LeftRightProjectSection
         project={project}
-        imagePlacement='left'
+        headerText='Testing Stuff'
+        imagePlacement='right'
       />
     </div>
   )

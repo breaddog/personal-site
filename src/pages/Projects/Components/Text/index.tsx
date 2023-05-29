@@ -1,3 +1,4 @@
+import styles from './Text.module.scss'
 import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
@@ -11,7 +12,7 @@ export const TextProject: React.FunctionComponent<TextProjectProps> = ({
   className,
   children,
 }) => {
-  const classes = classNames(projectStyles.text, className)
+  const classes = classNames(projectStyles.text, styles.text, className)
 
   return <p className={classes}>{children}</p>
 }
