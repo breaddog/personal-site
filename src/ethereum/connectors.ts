@@ -6,14 +6,16 @@ import { CHAIN_INFO } from './constants'
 
 import { buildCoinbaseWalletConnector } from './coinbase'
 import { buildNetworkConnector } from './network'
-import { buildInjectedConnector } from './injected'
+import { buildMetamaskConnector } from './metamask'
 import { buildWalletConnectConnector } from './wallet-connect'
 import { APP_ENV } from '../config'
+import { toast } from 'react-toastify'
+import { capitaliseText } from '../shared'
 
 /* eslint-disable no-unused-vars */
 export enum ConnectionType {
   COINBASE_WALLET = 'COINBASE_WALLET',
-  INJECTED = 'INJECTED',
+  METAMASK = 'METAMASK',
   NETWORK = 'NETWORK',
   WALLET_CONNECT = 'WALLET_CONNECT',
 }
@@ -46,7 +48,7 @@ export function onConnectionError(error: Error) {
 
 // connectors we want
 export const PRIORITIZED_CONNECTORS: ConnectorProps = {
-  [ConnectionType.INJECTED]: buildInjectedConnector(),
+  [ConnectionType.METAMASK]: buildMetamaskConnector(),
   [ConnectionType.COINBASE_WALLET]: buildCoinbaseWalletConnector(),
   [ConnectionType.WALLET_CONNECT]: buildWalletConnectConnector(),
   [ConnectionType.NETWORK]: buildNetworkConnector(),
@@ -56,7 +58,7 @@ export const connectionTypeToNetworkName = (
   connectionType: ConnectionType | null
 ) => {
   switch (connectionType) {
-    case ConnectionType.INJECTED:
+    case ConnectionType.METAMASK:
       return 'Metamask'
     case ConnectionType.COINBASE_WALLET:
       return 'Coinbase Wallet'
@@ -81,8 +83,8 @@ export function getConnection(c: Connector | ConnectionType) {
     return connection
   } else {
     switch (c) {
-      case ConnectionType.INJECTED:
-        return PRIORITIZED_CONNECTORS[ConnectionType.INJECTED]
+      case ConnectionType.METAMASK:
+        return PRIORITIZED_CONNECTORS[ConnectionType.METAMASK]
       case ConnectionType.COINBASE_WALLET:
         return PRIORITIZED_CONNECTORS[ConnectionType.COINBASE_WALLET]
       case ConnectionType.WALLET_CONNECT:
@@ -142,7 +144,7 @@ export const checkIfProviderInstalled = async (
 ) => {
   switch (connectionType) {
     // metamask
-    case ConnectionType.INJECTED:
+    case ConnectionType.METAMASK:
       return checkIfMetaMaskInstalled(ethereum)
     case ConnectionType.COINBASE_WALLET:
       return checkIfCoinbaseWalletInstalled(ethereum)
@@ -186,10 +188,16 @@ export const tryAutoReconnect = async (onActivate: Function) => {
 
     // else activate as is
     onActivate(activate)
+
     // otherwise set item for future ease
+    toast.success(
+      `Successfully auto-connected via ${capitaliseText(
+        String(connectionType)
+      )}!`
+    )
     localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, connectionType)
   } catch (err) {
-    console.log('auto connection error', err)
+    // console.log('auto connection error', err)
     return localStorage.removeItem(APP_ENV.CONNECTOR_TYPE_STORAGE)
   }
 }

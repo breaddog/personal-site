@@ -187,11 +187,11 @@ export const WalletConnectModal: React.FunctionComponent<
             ethereumInstalled={ethereumInstalled}
             isEnabled={
               isNoOptionActive ||
-              activeConnectionType === ConnectionType.INJECTED
+              activeConnectionType === ConnectionType.METAMASK
             }
-            isConnected={activeConnectionType === ConnectionType.INJECTED}
+            isConnected={activeConnectionType === ConnectionType.METAMASK}
             activeConnectionType={activeConnectionType}
-            connectionType={ConnectionType.INJECTED}
+            connectionType={ConnectionType.METAMASK}
             onActivate={onActivate}
             onDeactivate={onDeactivate}
           >
@@ -202,7 +202,7 @@ export const WalletConnectModal: React.FunctionComponent<
             />
             <div className={styles.name}>
               Metamask{' '}
-              {activeConnectionType === ConnectionType.INJECTED &&
+              {activeConnectionType === ConnectionType.METAMASK &&
                 '(Connected)'}
             </div>
           </OptionWrapper>

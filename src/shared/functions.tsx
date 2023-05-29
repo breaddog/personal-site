@@ -2,6 +2,12 @@ import { ScrollTrigger } from 'gsap/all'
 import React from 'react'
 import { GenericForwardRefInterface } from './interfaces'
 
+// fonts
+export const capitaliseText = (string: string) => {
+  if (!string.length) return ''
+  return string[0].toUpperCase() + string.slice(1).toLowerCase()
+}
+
 // random
 export const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min)
@@ -51,14 +57,7 @@ export const delay = async (duration: number = 1000) => {
   return await new Promise((resolve) => setTimeout(resolve, duration))
 }
 
-// // experimenting
-// export const customComponentRefWrapper = <T extends HTMLDivElement>(
-//   _ref: React.ForwardedRef<React.RefObject<T>>
-// ) => {
-//   const ref = React.useRef<T | null>(null)
-//   return { ref }
-// }
-
+// just in case
 export const wrapForwardRefAsElementRef = (
   forwardRef: React.RefObject<GenericForwardRefInterface>
 ) => {
