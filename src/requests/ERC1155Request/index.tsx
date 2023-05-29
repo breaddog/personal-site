@@ -1,5 +1,8 @@
 import { ERC1155_INTERFACE } from '../../contracts'
-import { GenericContractInterface, createContractObject } from '../../shared'
+import {
+  GenericContractInterface,
+  createContractObject
+} from '../../ethereum/utils'
 
 import { map } from 'lodash'
 import { ethers } from 'ethers'

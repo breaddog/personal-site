@@ -1,5 +1,8 @@
 import { ERC721_INTERFACE } from '../../contracts'
-import { GenericContractInterface, createContractObject } from '../../shared'
+import {
+  GenericContractInterface,
+  createContractObject
+} from '../../ethereum/utils'
 
 import { ethers } from 'ethers'
 import { ContractRequest } from '../ContractRequest'

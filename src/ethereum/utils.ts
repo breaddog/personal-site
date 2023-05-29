@@ -66,6 +66,14 @@ export const createContractObject = ({
   return new ethers.Contract(address, abi, provider)
 }
 
-export const shortenAddress = (address: string, length: number = 6) => {
-  return `${address.slice(0, length)}...${address.slice(-length)}`
+export const shortenAddress = ({
+  address,
+  length = 6,
+  tail = false,
+}: {
+  address: string
+  length?: number
+  tail?: boolean
+}) => {
+  return `${address.slice(0, length)}...${tail ? address.slice(-length) : ''}`
 }

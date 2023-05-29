@@ -10,12 +10,13 @@ import { ConnectionType, connectionTypeToNetworkName } from '../../connectors'
 import { omit } from 'lodash'
 import { OptionWrapper } from '../Option'
 import { useWeb3React } from '@web3-react/core'
+import { EXTERNAL_LINKS } from '../../../shared'
+
 import {
-  EXTERNAL_LINKS,
   chainIdToName,
   getNetworkNameFromProvider,
   shortenAddress
-} from '../../../shared'
+} from '../../utils'
 
 import metamaskSVG from '../../../assets/logos/metamask.svg'
 import coinbaseSVG from '../../../assets/logos/coinbase.svg'
@@ -84,7 +85,13 @@ export const WalletConnectModal: React.FunctionComponent<
           <div className={styles.row}>
             <div className={styles.title}>Wallet:</div>
             <div className={styles.value}>
-              {account ? shortenAddress(account ?? '') : 'Not Connected'}
+              {account
+                ? shortenAddress({
+                    address: account ?? '',
+                    length: 10,
+                    tail: false,
+                  })
+                : 'Not Connected'}
             </div>
           </div>
           <div className={styles.row}>

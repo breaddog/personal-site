@@ -4,7 +4,7 @@ import {
   QUERY_CONTRACT_ADDRESS_ETHEREUM,
   QUERY_CONTRACT_ADDRESS_POLYGON
 } from '../contracts'
-import { NetworkType, createContractObject } from '../shared'
+import { NetworkType, createContractObject } from '../ethereum/utils'
 import { BaseRequest } from './BaseRequest'
 
 // generic contract interface

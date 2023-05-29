@@ -3,27 +3,97 @@ import sectionStyles from '../../../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { EXTERNAL_LINKS } from '../../../../shared'
-
 import { SectionContainer, SectionHeader } from '../../../../shared/components'
 
-import mailSVG from '../../../../assets/icons/mail.svg'
-import resumeSVG from '../../../../assets/icons/resume.svg'
-import githubSVG from '../../../../assets/logos/github.svg'
-import linkedinSVG from '../../../../assets/logos/linkedin.svg'
+import { map } from 'lodash'
+import { EXTERNAL_LINKS } from '../../../../shared'
 import { ContactInfo, ContactInfoProps } from './Components'
 import {
   GenericForwardRefInterface,
   GenericSubSectionForwardInterface
 } from '../../../../shared/interfaces'
-import { map } from 'lodash'
-import { CONTACT_INFOS } from './contacts'
+
+import mailSVG from '../../../../assets/icons/mail.svg'
+import resumeSVG from '../../../../assets/icons/resume.svg'
+import githubSVG from '../../../../assets/logos/github.svg'
+import linkedinSVG from '../../../../assets/logos/linkedin.svg'
 
 interface PortfolioContactsProps extends GenericSubSectionForwardInterface {}
 
 export const PortfolioContacts: React.FC<PortfolioContactsProps> =
   React.forwardRef<GenericForwardRefInterface, PortfolioContactsProps>(
     ({ className }, ref) => {
+      // contact infos
+      const CONTACT_INFOS: ContactInfoProps[] = [
+        {
+          type: 'linkedin',
+          link: EXTERNAL_LINKS.linkedin,
+          icon: {
+            src: linkedinSVG,
+            alt: 'linkedin',
+          },
+          circularText: {
+            text: 'LinkedIn',
+            spacing: 5,
+            repetitions: 3,
+            direction: 'clockwise',
+          },
+          hoverText: 'View my Job Portfolio Page',
+        },
+        {
+          type: 'github',
+          link: EXTERNAL_LINKS.github,
+          icon: {
+            src: githubSVG,
+            alt: 'github',
+          },
+          circularText: {
+            text: 'GitHub',
+            spacing: 7,
+            repetitions: 3,
+            direction: 'clockwise',
+          },
+          hoverText: 'Projects and Stuff on Github',
+        },
+        {
+          type: 'email',
+          link: `mailto:${EXTERNAL_LINKS.email}`,
+          icon: {
+            src: mailSVG,
+            alt: 'mail',
+          },
+          circularText: {
+            text: 'Email',
+            spacing: 10,
+            repetitions: 3,
+            direction: 'clockwise',
+          },
+          hoverText: (
+            <>
+              Get in contact with me
+              <br />
+              <span>tienfoong@gmail.com</span>
+            </>
+          ),
+        },
+        {
+          type: 'resume',
+          link: EXTERNAL_LINKS.resume,
+          icon: {
+            src: resumeSVG,
+            alt: 'resuume',
+          },
+          circularText: {
+            text: 'Resume',
+            spacing: 7,
+            repetitions: 3,
+            direction: 'clockwise',
+          },
+          hoverText: 'Download my Resume',
+        },
+      ]
+
+      // generic params
       const CIRCULAR_ANIMATION_DURATION = 8000
       const CIRCULAR_ANIMATION_FONT_SIZE = '0.875rem'
 

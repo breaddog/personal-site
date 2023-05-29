@@ -6,14 +6,14 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 import { map } from 'lodash'
 import { SectionNavInterface } from '../../types/nav'
-import { Button, OnClickAnimation } from '..'
+import { OnClickAnimation } from '..'
 
 import menuSVG from '../../../assets/icons/menu-slanted.svg'
 import crossSVG from '../../../assets/icons/cross.svg'
 import { AppContext } from '../../../App'
-import { useWeb3React } from '@web3-react/core'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../../routes'
+import { WalletConnectButton } from '../../../ethereum'
 
 interface GenericHeaderProps {
   className?: string
@@ -49,7 +49,6 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
 
   const { scrollDirection, web3ModalActive, setWeb3ModalActive } =
     React.useContext(AppContext)
-  const { account } = useWeb3React()
 
   // toggle button state
   const [active, setActive] = React.useState<boolean>(false)
@@ -153,12 +152,10 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
               )
             })}
             <div className={styles.wallet}>
-              <Button
-                className={classNames(styles.button, 'effects--hoverPop')}
+              <WalletConnectButton
+                className={styles.button}
                 onClick={() => setWeb3ModalActive(!web3ModalActive)}
-              >
-                {account ? 'Disconnect Wallet' : 'Connect Wallet'}
-              </Button>
+              />
             </div>
           </div>
         </div>
@@ -223,12 +220,10 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                 )
               })}
               <div className={classNames(styles.section, styles.wallet)}>
-                <Button
-                  className={classNames(styles.button, 'effects--hoverPop')}
+                <WalletConnectButton
+                  className={styles.button}
                   onClick={() => setWeb3ModalActive(!web3ModalActive)}
-                >
-                  {account ? 'Disconnect Wallet' : 'Connect Wallet'}
-                </Button>
+                />
               </div>
             </div>
           </div>
