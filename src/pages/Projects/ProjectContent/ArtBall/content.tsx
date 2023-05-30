@@ -19,11 +19,11 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       content: (
         <>
           <p>
-            The ArtBall Project is a yearly NFT Art Project tie in with the
-            Australian Open (AO) since 2022 that aims to link live court data
-            with uniquely generated artistic tennis styled balls in display
-            cases that exist on the Ethereum Blockchain throughout the two-week
-            event.
+            PLAY BALL! The ArtBall Project is a yearly NFT Art Project tie in
+            with the Australian Open (AO) since 2022 that aims to link live
+            court data with uniquely generated artistic tennis styled balls in
+            display cases that exist on the Ethereum Blockchain throughout the
+            two-week event.
           </p>
           <br />
           <p>

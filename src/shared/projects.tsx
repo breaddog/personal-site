@@ -1,6 +1,7 @@
 import { PROJECTS } from '../data/projects'
 import {
-  ArtBallProject
+  ArtBallProject,
+  BinKingzProject
   // DefaultProjectTemplate
 } from '../pages/Projects/ProjectContent'
 
@@ -13,6 +14,8 @@ export const fetchProjectContent = async (projectKey: string) => {
   switch (projectKey) {
     case 'artball':
       return <ArtBallProject />
+    case 'binkingz':
+      return <BinKingzProject />
     // FUTURE: add some form of distribution that takes content from a server
     default:
       return null

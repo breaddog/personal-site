@@ -31,6 +31,7 @@ interface GenericHeaderProps {
   }
   // eslint-disable-next-line
   onSectionChange?: (key: string) => void
+  closeOnChange?: boolean
   currentSection?: string | null
 }
 
@@ -42,6 +43,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   mobile,
   currentSection = null,
   onSectionChange = () => {},
+  closeOnChange = true,
 }) => {
   const { flexActive = true, flexSize = 1080 } = mobile
 
@@ -112,6 +114,13 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
     setDesktopHeaderHover(false)
   }
 
+  const handleSectionChange = (sectionKey: string) => {
+    if (closeOnChange) {
+      setActive(false)
+    }
+    onSectionChange(sectionKey)
+  }
+
   return (
     <>
       <header
@@ -144,7 +153,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                     'effect--hoverPop',
                     currentSection === section.key && styles.highlight
                   )}
-                  onClick={() => onSectionChange(section.key)}
+                  onClick={() => handleSectionChange(section.key)}
                   key={idx}
                 >
                   {section.title}
@@ -212,7 +221,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                       'effect--hoverPop',
                       currentSection === section.key && styles.highlight
                     )}
-                    onClick={() => onSectionChange(section.key)}
+                    onClick={() => handleSectionChange(section.key)}
                     key={idx}
                   >
                     {section.title}

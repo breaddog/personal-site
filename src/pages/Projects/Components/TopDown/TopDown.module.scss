@@ -6,18 +6,22 @@
   }
 
   .banner {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   &.top {
     flex-direction: column;
+
+    .banner {
+      margin-bottom: var(--section-margin);
+    }
   }
 
   &.bottom {
     flex-direction: column-reverse;
 
     .text {
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
     }
   }
 }

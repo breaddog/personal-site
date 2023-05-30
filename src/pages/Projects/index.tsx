@@ -12,10 +12,11 @@ import {
   DefaultProjectTemplate,
   ErrorProjectTemplate
 } from './ProjectContent'
-import { BannerProjectSection } from './Components'
+import { BannerProjectSection, TopProjectSection } from './Components'
 import { GenericHeader } from '../../shared/components'
 
 import onigiriSVG from '../../assets/icons/onigiri.svg'
+import { isNull, isUndefined } from 'lodash'
 
 interface ProjectPageProps {
   className?: string
@@ -62,6 +63,8 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     }
   }, [projectKey, project, loaded])
 
+  // TO DO: trigger loading for min 1-2 seconds
+
   return (
     <div className={sectionStyles.section}>
       <GenericHeader
@@ -75,7 +78,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
         className={styles.projectHeader}
       />
 
-      {null === project ? (
+      {isNull(project) || isUndefined(project) ? (
         <ErrorProjectTemplate />
       ) : (
         <div
@@ -89,8 +92,23 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
           />
 
           {/* FUTURE: template dependent after fetching from server */}
-          {projectBody}
-          {children}
+          {projectBody ? (
+            <>
+              {projectBody}
+              {children}
+            </>
+          ) : (
+            <div className={styles.container}>
+              <TopProjectSection
+                project={project}
+                content={
+                  <>
+                    <p>Content currently under development!</p>
+                  </>
+                }
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

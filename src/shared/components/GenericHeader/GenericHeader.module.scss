@@ -104,7 +104,7 @@
 .toggle {
   --transition-duration: 0.5s;
 
-  position: absolute;
+  position: fixed;
   top: 5px;
   right: 5px;
   width: fit-content;
@@ -187,7 +187,7 @@
 
     .body {
       width: 80%;
-      height: 80%;
+      height: 90%;
       margin: auto;
 
       .icon {

@@ -77,9 +77,9 @@ export const generateProjectBodyElement = ({
       const _image = image?.single as ImageProjectSectionProps
       return (
         <ImageProjectSection
-          key={key}
           className={className}
           imageclassname={_image?.className}
+          key={key}
           {...omit(_image, 'className')}
         />
       )
@@ -101,6 +101,7 @@ export const generateProjectBodyElement = ({
     case 'topdown':
       return (
         <TopDownProjectSection
+          className={className}
           project={project}
           headerText={title}
           content={content}
@@ -115,6 +116,7 @@ export const generateProjectBodyElement = ({
     case 'leftright':
       return (
         <LeftRightProjectSection
+          className={className}
           project={project}
           headerText={title}
           content={content}

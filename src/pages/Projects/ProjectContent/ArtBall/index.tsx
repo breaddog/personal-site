@@ -98,7 +98,7 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
   }
 
   const getArtballBalances = async (account: string | null) => {
-    if (!account) return -1
+    if (!account) return
     try {
       const _balance22 = await artball22Request.getBalanceOf(account)
       const _balance23 = await artball23Request.getBalanceOf(account)
@@ -132,7 +132,6 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
       className={classes}
       key={key}
     >
-      {/* TO DO: serialise this to create based on template */}
       {map(BODY_CONTENT_ARTBALL, (body: BodyContentProps, idx: number) => {
         return generateProjectBodyElement({
           body,
