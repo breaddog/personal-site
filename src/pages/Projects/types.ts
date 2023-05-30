@@ -3,6 +3,7 @@ import { ImageProjectSectionProps } from './Components'
 
 export type ProjectSectionType =
   | 'text'
+  | 'header'
   | 'image'
   | 'imageMulti'
   | 'top'
@@ -46,8 +47,8 @@ export interface ProjectSectionGenericProps {
   // images
   image?: {
     placement?: ProjectSectionImagePlacement
-    single?: Omit<ImageProjectSectionProps, 'className'>
-    multi?: Omit<ImageProjectSectionProps, 'className'>[]
+    single?: ImageProjectSectionProps
+    multi?: ImageProjectSectionProps[]
   }
 
   // additinonalInfo

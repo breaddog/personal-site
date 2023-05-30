@@ -9,11 +9,11 @@ import {
 
 export interface ImageProjectSectionProps extends LazyLoadImageProps {
   className?: string
-  imageClassName?: string
+  imageclassname?: string
   src: string
   alt: string
   caption?: string | JSX.IntrinsicElements
-  key?: string | number
+  componentKey?: string | number
   containerStyle?: React.CSSProperties
 }
 
@@ -22,7 +22,7 @@ export const ImageProjectSection: React.FunctionComponent<
 > = (props) => {
   const {
     className,
-    imageClassName,
+    imageclassname,
     src,
     alt,
     effect = 'blur',
@@ -30,16 +30,16 @@ export const ImageProjectSection: React.FunctionComponent<
     height = '90%',
     caption = '',
     containerStyle,
-    key,
+    componentKey,
   } = props
 
   const classes = classNames(styles.container, className)
-  const imageClasses = classNames(styles.image, imageClassName)
+  const imageClasses = classNames(styles.image, imageclassname)
 
   return (
     <div
       className={classes}
-      key={key}
+      key={componentKey}
       style={containerStyle}
     >
       <LazyLoadImage

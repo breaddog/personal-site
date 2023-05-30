@@ -25,41 +25,42 @@
 }
 
 @media screen and (max-width: 1400px) {
-  .leftRight {
+  .body {
     .text {
-      width: 35%;
+      width: 50%;
     }
-  }
 
-  .image {
-    width: 55%;
+    .imageContainer {
+      max-height: 340px;
+      width: 40%;
+    }
   }
 }
 
 @media screen and (max-width: 1100px) {
-  .leftRight {
+  .body {
+    .imageContainer {
+      width: 100%;
+      max-height: unset;
+    }
+
+    .text {
+      width: 100%;
+    }
+
     &.left {
       flex-direction: column-reverse;
 
-      .image {
-        margin-bottom: 2rem;
-        width: 100%;
-      }
-
       .text {
-        width: 100%;
+        margin-bottom: 1.5rem;
       }
     }
 
     &.right {
       flex-direction: column;
 
-      .image {
-        width: 100%;
-      }
-
-      .text {
-        margin-bottom: 2rem;
+      .imageContainer {
+        margin-bottom: 1.5rem;
       }
     }
   }

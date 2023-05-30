@@ -1,5 +1,15 @@
 .projectPage {
   --section-margin: 2.5rem;
+
+  ul {
+    li {
+      margin-bottom: 0.5rem;
+
+      &:nth-child(1) {
+        margin-top: 0.5rem;
+      }
+    }
+  }
 }
 
 // sections

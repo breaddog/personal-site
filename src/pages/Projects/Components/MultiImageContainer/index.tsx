@@ -4,19 +4,20 @@ import React from 'react'
 import classNames from 'classnames'
 import { ImageProjectSection, ImageProjectSectionProps } from '../Image'
 import { map } from 'lodash'
-import { roundToNearestUnit } from '../../../../shared'
+import { handleDesktopListener, roundToNearestUnit } from '../../../../shared'
 import { AppContext } from '../../../../App'
 
 interface MultiProjectImageContainerProps {
   className?: string
-  imageClassName?: string
+  imageclassname?: string
   images: Omit<ImageProjectSectionProps, 'className'>[]
 }
 
 export const MultiProjectImageContainer: React.FunctionComponent<
   MultiProjectImageContainerProps
-> = ({ className, imageClassName, images }) => {
+> = ({ className, imageclassname, images }) => {
   const { isMobile } = React.useContext(AppContext)
+  // const flexMatcher = window.matchMedia('(max-with: 1100px)')
   const [useCalculation, setUseCalculation] = React.useState<boolean>(false)
 
   const calculateWidthDivision = (adjustment: number) => {
@@ -26,6 +27,11 @@ export const MultiProjectImageContainer: React.FunctionComponent<
   }
 
   const handleCalculationListener = () => {
+    // handleDesktopListener(
+    //   flexMatcher,
+    //   useCalculation,
+    //   setUseCalculation
+    // )
     if (isMobile && useCalculation) {
       setUseCalculation(false)
     }
@@ -53,7 +59,7 @@ export const MultiProjectImageContainer: React.FunctionComponent<
           width: '100%',
           height: '100%',
           className: classNames(styles.imageContainer, _props.className),
-          imageClassName: classNames(styles.image, imageClassName),
+          imageclassname: classNames(styles.image, imageclassname),
         }
 
         if (useCalculation) {

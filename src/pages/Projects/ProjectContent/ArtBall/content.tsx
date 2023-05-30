@@ -1,5 +1,7 @@
+import { map } from 'lodash'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
+import { capitaliseText } from '../../../../shared'
 
 export const ARTBALL_LINKS: {
   [key: string]: string
@@ -33,31 +35,29 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             processing.
           </p>
           <br />
-          <p>
-            My role in the two years of the ArtBall project was to:
-            <ul>
-              <li>
-                Assemble the intial instances of ArtBalls using the assets
-                provided
-              </li>
-              <li>
-                Update the ArtBalls with processed match data programatically to
-                be reflected on chain
-              </li>
-              <li>
-                Build and develop websites associated with the project (e.g.
-                Match points, Main Site, ArtBall Ticket Redemption...)
-              </li>
-              <li>
-                Communicate and work with the clients on hard/soft requirements
-                and update on progress
-              </li>
-              <li>
-                Manage and keep the team informed to ensure the event runs
-                smoothly and targets are met
-              </li>
-            </ul>
-          </p>
+          <p>My role in the two years of the ArtBall project was to:</p>
+          <ul>
+            <li>
+              Assemble the intial instances of ArtBalls using the assets
+              provided
+            </li>
+            <li>
+              Update the ArtBalls with processed match data programatically to
+              be reflected on chain
+            </li>
+            <li>
+              Build and develop websites associated with the project (e.g. Match
+              points, Main Site, ArtBall Ticket Redemption...)
+            </li>
+            <li>
+              Communicate and work with the clients on hard/soft requirements
+              and update on progress
+            </li>
+            <li>
+              Manage and keep the team informed to ensure the event runs
+              smoothly and targets are met
+            </li>
+          </ul>
         </>
       ),
     },
@@ -194,6 +194,12 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
     },
   },
   {
+    type: 'header',
+    props: {
+      content: 'Final Thoughts and Links',
+    },
+  },
+  {
     type: 'text',
     props: {
       content: (
@@ -213,6 +219,29 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             opportunity to work alongside great inviduals as a part of one of
             the four Grand Slams in the tennis world.
           </p>
+        </>
+      ),
+    },
+  },
+  {
+    type: 'text',
+    props: {
+      content: (
+        <>
+          <p>You can find the links to each of the sites below:</p>
+          <ul>
+            {map(ARTBALL_LINKS, (link: string, key: string) => {
+              return (
+                <li key={key}>
+                  <span>
+                    {key === 'main' ? 'Main Site' : capitaliseText(key)}:
+                  </span>
+                  &nbsp;
+                  <Hyperlink>{link}</Hyperlink>
+                </li>
+              )
+            })}
+          </ul>
         </>
       ),
     },

@@ -51,7 +51,7 @@ export const LeftRightProjectSection: React.FunctionComponent<
       <div className={classNames(styles.body, styles[String(placement)])}>
         <ImageProjectSection
           className={imageClasses}
-          imageClassName={classNames(projectStyles.img, projectStyles.contain)}
+          imageclassname={classNames(projectStyles.img, projectStyles.contain)}
           src={src}
           alt={alt}
           caption={caption}

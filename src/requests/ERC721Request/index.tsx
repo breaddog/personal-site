@@ -31,6 +31,7 @@ export class ERC721Request extends ContractRequest {
       const balance = await this.CONTRACT.balanceOf(wallet)
       return Number(balance.toString())
     } catch (err) {
+      console.log(err)
       console.log('balance 721 error', this.ADDRESS)
       return 0
     }
@@ -45,6 +46,7 @@ export class ERC721Request extends ContractRequest {
       )
       return ownedTokens
     } catch (err) {
+      console.log(err)
       return []
     }
   }
@@ -54,6 +56,7 @@ export class ERC721Request extends ContractRequest {
       const totalSupply = await this.CONTRACT.totalSupply()
       return Number(totalSupply)
     } catch (err) {
+      console.log(err)
       console.log('totalsupply 721 error', this.ADDRESS)
       return 0
     }

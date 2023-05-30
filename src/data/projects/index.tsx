@@ -40,7 +40,8 @@ export const PROJECTS: {
     ],
     organisation: 'Tennis Australia / RIW / Pellar',
     url: 'https://ao.artball.io/',
-    description: 'NFT ArtBall Description',
+    description:
+      'NFT Project that links live tennis match data to randomly generated tennis artballs on the Ethereum Blockchain. Done in collaboration with Tennis Australia.',
     asset: `${projectImageRoot}/artball/artball.jpg`,
     alt: 'artball',
   },

@@ -5,6 +5,8 @@ import {
   ProjectSectionGenericProps
 } from './types'
 import {
+  HeaderProjectSection,
+  ImageProjectSection,
   ImageProjectSectionProps,
   LeftRightImagePlacement,
   LeftRightImageProps,
@@ -17,6 +19,8 @@ import {
   TopProjectSection
 } from './Components'
 import { ProjectObject } from '../../data/projects'
+
+import { omit } from 'lodash'
 
 // find extra info
 export const findExtraInfoOfType = (
@@ -46,20 +50,41 @@ export const generateProjectBodyElement = ({
   // expand props
   const { className, title, content, image } = props
 
-  // first case for text
-  if (sectionType === 'text') {
-    return (
-      <TextProject
-        className={className}
-        key={key}
-      >
-        {content}
-      </TextProject>
-    )
-  }
-
   // filter out if content is string
   switch (sectionType) {
+    // generic items
+    case 'text':
+      return (
+        <TextProject
+          className={className}
+          key={key}
+        >
+          {content}
+        </TextProject>
+      )
+
+    case 'header':
+      return (
+        <HeaderProjectSection
+          className={className}
+          key={key}
+        >
+          {content}
+        </HeaderProjectSection>
+      )
+
+    case 'image':
+      const _image = image?.single as ImageProjectSectionProps
+      return (
+        <ImageProjectSection
+          key={key}
+          className={className}
+          imageclassname={_image?.className}
+          {...omit(_image, 'className')}
+        />
+      )
+
+    // other section types
     // top is most likely to have extra information
     case 'top':
       const _extraInfo = findExtraInfoOfType(extraInfo, 'top')
@@ -106,6 +131,7 @@ export const generateProjectBodyElement = ({
         <MultiProjectImageContainer
           className={className}
           images={image?.multi as ImageProjectSectionProps[]}
+          key={key}
         />
       )
     default:
