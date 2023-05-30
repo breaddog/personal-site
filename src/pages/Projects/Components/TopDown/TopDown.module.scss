@@ -5,11 +5,19 @@
     margin-bottom: 1rem;
   }
 
+  .banner {
+    margin-bottom: 2.5rem;
+  }
+
   &.top {
     flex-direction: column;
   }
 
   &.bottom {
     flex-direction: column-reverse;
+
+    .text {
+      margin-bottom: 2.5rem;
+    }
   }
 }

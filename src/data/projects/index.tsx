@@ -10,6 +10,7 @@ export interface ProjectObject {
   year: string | number
   scope: string
   role: string[]
+  responsibilities: string[]
   organisation: string
   url: string
   description: React.ReactFragment | string
@@ -27,7 +28,16 @@ export const PROJECTS: {
     title: 'AO ArtBall',
     year: '2022 - 2023',
     scope: 'NFT Art Project',
-    role: ['Lead Asset Engineer', 'Project Manager', 'Front-end Lead'],
+    role: ['Lead Engineer', 'Project Manager', 'Front-end Lead'],
+    responsibilities: [
+      'Asset Assembley & Scripting',
+      'Linking/Updating Assets with Live Data',
+      'Website Building (AO23)',
+      'Project Maintenance During Event',
+      'API Integrations',
+      'Quality Control & Assurance',
+      'CI/CD',
+    ],
     organisation: 'Tennis Australia / RIW / Pellar',
     url: 'https://ao.artball.io/',
     description: 'NFT ArtBall Description',
@@ -45,6 +55,13 @@ export const PROJECTS: {
       'Lead Asset Engineer',
       'Project Manager',
       'Deployment',
+    ],
+    responsibilities: [
+      'Asset Generation & Assembley',
+      'Website Building',
+      'Project Management',
+      'Project Maintenance',
+      'CI/CD',
     ],
     organisation: 'DRP / Vhils',
     url: 'https://drp.io/drops/vhils',
@@ -64,6 +81,8 @@ export const PROJECTS: {
       'Asset Management',
       'Deployment',
     ],
+    responsibilities: ['Asset Generation & Assembley'],
+
     organisation: 'Shintaro Kago / DRP / Pellar',
     url: 'https://drp.io/artists/shintaro_kago',
     description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
@@ -77,6 +96,7 @@ export const PROJECTS: {
     year: '2022',
     scope: 'NFT Artwork',
     role: ['Project Manager', 'Front-end Lead'],
+    responsibilities: [],
     organisation: 'Scott Marsh / RIW / Pellar',
     url: 'https://ao.artball.io/',
     description: 'NFT Grafitti Art by Sydney based artist Scott Marsh',
@@ -95,6 +115,7 @@ export const PROJECTS: {
       'Asset Handling',
       'Deployment',
     ],
+    responsibilities: [],
     organisation: 'Big Kid Studios / Pellar',
     url: 'https://theredvillage.com/',
     description: 'Turn Based Battle Arena Game with Unique Characters',
@@ -108,6 +129,7 @@ export const PROJECTS: {
     year: '2021',
     scope: 'NFT ArtWork',
     role: ['Lead Asset Engineer', 'Deployment'],
+    responsibilities: [],
     organisation: 'Lushsux / DRP / Pellar',
     url: 'https://drp.io/drops/lushsux',
     description: 'NFT Artwork turning his instagram posts into NFT\'s',
@@ -121,6 +143,7 @@ export const PROJECTS: {
     year: '2022 - Present',
     scope: 'NFT Community Hub',
     role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
+    responsibilities: [],
     organisation: 'T&B Global Media / Translucia / Pellar',
     url: 'https://ao.artball.io/',
     description:
@@ -135,6 +158,7 @@ export const PROJECTS: {
     year: '2022 - Present',
     scope: 'NFT Community Hub',
     role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
+    responsibilities: [],
     organisation: 'T&B Global Media / Translucia / Pellar',
     url: 'https://ao.artball.io/',
     description:

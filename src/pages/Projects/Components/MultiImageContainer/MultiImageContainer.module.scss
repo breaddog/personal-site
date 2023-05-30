@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .imageContainer {
+    // width: 80%;
+    height: 100%;
+
+    .image {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+
+    .imageContainer {
+      &:not(:nth-last-child(1)) {
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+}

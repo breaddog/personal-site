@@ -17,16 +17,19 @@ export const DefaultProjectTemplate: React.FunctionComponent<
 > = ({ project }) => {
   return (
     <div className={styles.container}>
-      <TopProjectSection project={project} />
+      {/* <TopProjectSection
+        project={project}
+        content=''
+      />
       <TopDownProjectSection
         project={project}
-        imagePlacement='bottom'
+        content=''
       />
 
       <LeftRightProjectSection
         project={project}
-        imagePlacement='left'
-      />
+        content=''
+      /> */}
     </div>
   )
 }

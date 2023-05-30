@@ -3,13 +3,13 @@ import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-interface ProjectSectionHeaderProps {
+interface HeaderProjectSectionProps {
   className?: string
   children?: React.ReactNode
 }
 
-export const ProjectSectionHeader: React.FunctionComponent<
-  ProjectSectionHeaderProps
+export const HeaderProjectSection: React.FunctionComponent<
+  HeaderProjectSectionProps
 > = ({ className, children }) => {
   const classes = classNames(projectStyles.header, styles.header, className)
 

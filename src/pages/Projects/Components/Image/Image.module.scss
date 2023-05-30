@@ -1,0 +1,15 @@
+.container {
+  height: auto;
+
+  .image {
+    object-fit: contain;
+    background-color: var(--black-10);
+  }
+
+  .caption {
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    width: fit-content;
+    font-size: var(--font-caption);
+  }
+}

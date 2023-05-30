@@ -7,8 +7,17 @@
     "node": true
   },
   "globals": {
-    "document": false
+    "document": false,
+    "JSX": "readonly"
   },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",

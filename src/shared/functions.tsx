@@ -8,6 +8,11 @@ export const capitaliseText = (string: string) => {
   return string[0].toUpperCase() + string.slice(1).toLowerCase()
 }
 
+// util
+export const roundToNearestUnit = (number: number, unit: number) => {
+  return Math.ceil(number / unit) * unit
+}
+
 // random
 export const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min)

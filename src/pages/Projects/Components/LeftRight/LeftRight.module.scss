@@ -11,15 +11,16 @@
   }
 
   .text {
-    width: 40%;
+    width: 45%;
   }
 
-  .image {
-    background-color: var(--black-10);
+  .imageContainer {
+    // background-color: var(--black-10);
     object-fit: contain;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 

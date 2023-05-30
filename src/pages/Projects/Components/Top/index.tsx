@@ -7,22 +7,18 @@ import { TextProject } from '../Text'
 import { ProjectObject } from '../../../../data/projects'
 import { map } from 'lodash'
 import { Hyperlink } from '../../../../shared/components'
-
-export interface ExtraInfoInterface {
-  title: string
-  value: string | number | null
-  isLink?: boolean
-}
+import { ProjectSectionContentType, ExtraInfoInterface } from '../../types'
 
 interface TopProjectSectionProps {
   className?: string
   project: ProjectObject
+  content: ProjectSectionContentType
   extraInfo?: ExtraInfoInterface[]
 }
 
 export const TopProjectSection: React.FunctionComponent<
   TopProjectSectionProps
-> = ({ className, project, extraInfo }) => {
+> = ({ className, project, content, extraInfo }) => {
   const classes = classNames(projectStyles.section, styles.top, className)
 
   return (
@@ -33,15 +29,7 @@ export const TopProjectSection: React.FunctionComponent<
           <h3 className={styles.organisation}>{project.organisation}</h3>
         </div>
 
-        <TextProject>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </TextProject>
+        <TextProject>{content}</TextProject>
       </div>
 
       <div className={styles.right}>
@@ -88,13 +76,37 @@ export const TopProjectSection: React.FunctionComponent<
             key={idx}
           >
             <span className={styles.title}>{info.title}</span>
-            <span className={styles.value}>{info.value}</span>
+            {info?.isLink ? (
+              <Hyperlink className={styles.value}>
+                <a
+                  href={info.link?.url}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                  title={info.link?.title}
+                >
+                  {info?.value}
+                </a>
+              </Hyperlink>
+            ) : (
+              <span className={styles.value}>{info.value}</span>
+            )}
           </div>
         ))}
 
-        <div className={styles.description}>
-          <div className={styles.title}>Description</div>
-          <p className={projectStyles.text}>{project.description}</p>
+        <div className={styles.responsibilities}>
+          <div className={styles.title}>Responsibilities</div>
+          <ul className={styles.body}>
+            {map(project.responsibilities, (el: string, idx: number) => {
+              return (
+                <li
+                  className={styles.value}
+                  key={idx}
+                >
+                  {el}
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     </div>

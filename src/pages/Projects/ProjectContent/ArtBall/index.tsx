@@ -4,18 +4,21 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { PROJECTS, ProjectObject } from '../../../../data/projects'
-import {
-  ExtraInfoInterface,
-  LeftRightProjectSection,
-  TopDownProjectSection,
-  TopProjectSection
-} from '../../Components'
 import { RequestFactory } from '../../../../requests'
 import {
   ARTBALL_22_CONTRACT_ADDRESS,
   ARTBALL_23_CONTRACT_ADDRESS
 } from '../../../../contracts'
 import { useWeb3React } from '@web3-react/core'
+
+import { ARTBALL_LINKS, BODY_CONTENT_ARTBALL } from './content'
+import { map } from 'lodash'
+import {
+  BodyContentProps,
+  ExtraInfoWrapperProps,
+  ExtraInfoInterface
+} from '../../types'
+import { generateProjectBodyElement } from '../../helpers'
 
 interface ArtBallProjectProps {
   key?: string
@@ -45,7 +48,17 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
   const [totalSupply22, setTotalSupply22] = React.useState<number>(0)
   const [totalSupply23, setTotalSupply23] = React.useState<number>(0)
 
+  // top extra information
   const extraWeb3Info: ExtraInfoInterface[] = [
+    {
+      title: 'Opensea Collection:',
+      value: 'View Here',
+      isLink: true,
+      link: {
+        url: ARTBALL_LINKS.opensea,
+        title: 'ArtBall Collection on Opensea',
+      },
+    },
     {
       title: 'Total Sold \'22:',
       value: `${totalSupply22}`,
@@ -64,6 +77,15 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
     },
   ]
 
+  // extra info wrapper
+  const extraArtballInfo: ExtraInfoWrapperProps[] = [
+    {
+      type: 'top',
+      content: extraWeb3Info,
+    },
+  ]
+
+  // WEB3 GETTERS
   const getArtballTotalSupplies = async () => {
     try {
       const _supply22 = await artball22Request.getTotalSupply()
@@ -104,26 +126,21 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
     }
   }, [account])
 
+  // main
   return (
     <div
       className={classes}
       key={key}
     >
-      <TopProjectSection
-        project={project}
-        extraInfo={extraWeb3Info}
-      />
-      <TopDownProjectSection
-        project={project}
-        headerText='Asset Generation'
-        imagePlacement='bottom'
-      />
-
-      <LeftRightProjectSection
-        project={project}
-        headerText='Testing Stuff'
-        imagePlacement='right'
-      />
+      {/* TO DO: serialise this to create based on template */}
+      {map(BODY_CONTENT_ARTBALL, (body: BodyContentProps, idx: number) => {
+        return generateProjectBodyElement({
+          body,
+          project,
+          key: idx,
+          extraInfo: extraArtballInfo,
+        })
+      })}
     </div>
   )
 }

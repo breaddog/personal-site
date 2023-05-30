@@ -14,8 +14,16 @@
 }
 
 .section {
+  &.small {
+    margin-bottom: calc(var(--section-margin) * 0.5);
+  }
+
   &:not(:nth-last-child(1)) {
     margin-bottom: var(--section-margin);
+
+    &.small {
+      margin-bottom: calc(var(--section-margin) * 0.5);
+    }
   }
 
   .header {
@@ -44,7 +52,7 @@
 }
 
 .image {
-  width: 50%;
+  width: 45%;
   height: auto;
 
   img {
@@ -55,6 +63,10 @@
 
 .text {
   margin-bottom: var(--section-margin);
+
+  &.small {
+    margin-bottom: calc(var(--section-margin) * 0.5);
+  }
 
   &:nth-last-child(1) {
     margin-bottom: 0;

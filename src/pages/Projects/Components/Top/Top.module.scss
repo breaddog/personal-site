@@ -63,7 +63,7 @@
       }
     }
 
-    .description {
+    .responsibilities {
       border-top: 1px solid rgba(184, 184, 184, 0.1);
       padding-top: 1rem;
 
@@ -71,6 +71,11 @@
         font-weight: bold;
         font-size: var(--font-h4);
         margin-bottom: 0.5rem;
+      }
+
+      .value {
+        font-size: var(--font-h4);
+        margin-bottom: 0.25rem;
       }
     }
   }

@@ -6,3 +6,5 @@ export * from './TopDown'
 export * from './LeftRight'
 
 export * from './Text'
+export * from './Image'
+export * from './MultiImageContainer'

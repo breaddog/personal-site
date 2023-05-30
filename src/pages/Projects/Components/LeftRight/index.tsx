@@ -2,56 +2,63 @@ import styles from './LeftRight.module.scss'
 import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
-import { ProjectObject } from '../../../../data/projects'
 import { TextProject } from '../Text'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { ProjectSectionHeader } from '../Header'
+import { HeaderProjectSection } from '../Header'
+import {
+  ProjectSectionGenericProps,
+  ProjectSectionImagePlacement
+} from '../../types'
+import { ImageProjectSection, ImageProjectSectionProps } from '../Image'
 
-interface LeftRightProjectSectionProps {
-  className?: string
-  headerText?: string
-  imagePlacement?: 'left' | 'right'
-  project: ProjectObject
+export type LeftRightImagePlacement = Extract<
+  ProjectSectionImagePlacement,
+  'left' | 'right'
+>
+export type LeftRightImageProps = Omit<
+  ImageProjectSectionProps,
+  'className'
+> & {
+  placement: LeftRightImagePlacement
+}
+
+interface LeftRightProjectSectionProps
+  extends Omit<ProjectSectionGenericProps, 'image'> {
+  image?: LeftRightImageProps
 }
 
 export const LeftRightProjectSection: React.FunctionComponent<
   LeftRightProjectSectionProps
-> = ({ className, headerText, project, imagePlacement }) => {
+> = ({ className, headerText, content, image = {} }) => {
+  const { src = '', alt = '', caption = '', placement = 'left' } = image
+
   const classes = classNames(
     projectStyles.section,
     styles.leftRight,
-    styles[String(imagePlacement)],
+    styles[String(placement)],
     className
   )
 
   const textClasses = classNames(projectStyles.text, styles.text)
-  const imageClasses = classNames(projectStyles.image, styles.image)
+  const imageClasses = classNames(projectStyles.image, styles.imageContainer)
 
   return (
     <div className={classes}>
       {headerText && (
-        <ProjectSectionHeader className={projectStyles.header}>
+        <HeaderProjectSection className={projectStyles.header}>
           {headerText}
-        </ProjectSectionHeader>
+        </HeaderProjectSection>
       )}
-
-      <div className={classNames(styles.body, styles[String(imagePlacement)])}>
-        <TextProject className={textClasses}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </TextProject>
-        <div className={imageClasses}>
-          <LazyLoadImage
-            src={project.asset}
-            alt={project.alt}
-            effect='blur'
-          />
-        </div>
+      <div className={classNames(styles.body, styles[String(placement)])}>
+        <ImageProjectSection
+          className={imageClasses}
+          imageClassName={classNames(projectStyles.img, projectStyles.contain)}
+          src={src}
+          alt={alt}
+          caption={caption}
+          effect='blur'
+          width={'100%'}
+        />
+        <TextProject className={textClasses}>{content}</TextProject>
       </div>
     </div>
   )
