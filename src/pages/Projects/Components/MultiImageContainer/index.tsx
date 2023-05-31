@@ -68,7 +68,6 @@ export const MultiProjectImageContainer: React.FunctionComponent<
           }
         }
 
-        // TO DO: add adjustment to ignore if on smaller screen sizes
         return (
           <ImageProjectSection
             {...imageProps}

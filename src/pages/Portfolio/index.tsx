@@ -95,7 +95,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
           <PortfolioLanding ref={landingRef} />
           <PortfolioDeveloper ref={developerRef} />
           <PortfolioManagerNew ref={managerRef} />
-          {/* TO DO: add web3 section to advertise funcitonality */}
           <PortfolioWeb3 ref={web3Ref} />
           <PortfolioJourney ref={journeyRef} />
           <PortfolioHighlights ref={highlightsRef} />
