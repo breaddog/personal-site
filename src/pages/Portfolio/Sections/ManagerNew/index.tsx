@@ -19,6 +19,7 @@ import {
   GenericSubSectionForwardInterface,
   GenericForwardRefInterface
 } from '../../../../shared/interfaces'
+import { AppContext } from '../../../../App'
 
 interface KeyWordProps {
   key: string
@@ -56,6 +57,8 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
 
       const sectionRef = React.useRef<HTMLDivElement | null>(null)
       const boxRef = React.useRef<HTMLDivElement | null>(null)
+
+      const { isMobile } = React.useContext(AppContext)
 
       // gsap version of on hover wave effect for entrance animation
       // const sineWaveTextEffect = ({
@@ -127,7 +130,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
         return gsap
           .timeline()
           .from('#manager-box', {
-            y: '-=200%',
+            y: '-=400%',
             ease: 'sine.inOut',
             duration,
           })
@@ -146,7 +149,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
 
         const scrollTrigger = {
           trigger: sectionRef.current,
-          start: '-7% top',
+          start: `${isMobile ? 'top' : '-7%'} top`,
           end: '+=5000px',
           scrub: 0.5,
           pin: true,

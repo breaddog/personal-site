@@ -30,13 +30,24 @@ interface PortfolioWeb3Props extends GenericSubSectionForwardInterface {}
 export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
   React.forwardRef<GenericForwardRefInterface, PortfolioWeb3Props>(
     ({ className }, ref) => {
+      // refs
       const sectionRef = React.useRef<HTMLDivElement | null>(null)
       const web3WindowRef = React.useRef<WindowHandle>(null)
 
-      const { connectionType, ethBalance, maticBalance } =
-        React.useContext(AppContext)
+      const flexMediaMatcher = window.matchMedia('(max-width: 1050px)')
+      const isColumnRef = React.useRef<boolean>(false)
+
+      // props
+      const {
+        connectionType,
+        ethBalance,
+        maticBalance,
+        web3ModalActive,
+        setWeb3ModalActive,
+      } = React.useContext(AppContext)
       const { account, chainId } = useWeb3React()
 
+      // classes
       const classes = classNames(
         'sub-section__web3',
         sectionStyles['sub-section'],
@@ -44,17 +55,54 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
         className
       )
 
+      // message
       const determineEthWindowMessage = () => {
         if (!window.ethereum) {
-          return 'Please install an ethereum wallet widget to proceed.'
+          return 'Please install an ethereum wallet to proceed.'
         }
 
         if (!account) {
-          return 'Please connect your wallet to continue'
+          return 'Please connect your wallet to view information'
         }
 
         return 'Connected'
       }
+
+      const invalidateAllWindowProps = ({
+        width,
+        height,
+      }: {
+        width?: string
+        height?: string
+      }) => {
+        if (!web3WindowRef.current) return
+        web3WindowRef.current.invalidateWindow()
+        web3WindowRef.current.resetWindow({
+          width,
+          height,
+        })
+      }
+
+      // window related stuff
+      const flexDetectionHandler = () => {
+        if (flexMediaMatcher.matches && !isColumnRef.current) {
+          isColumnRef.current = true
+          invalidateAllWindowProps({})
+        }
+
+        if (!flexMediaMatcher.matches && isColumnRef.current) {
+          isColumnRef.current = false
+          invalidateAllWindowProps({ width: '80%', height: '75%' })
+        }
+      }
+
+      React.useEffect(() => {
+        flexDetectionHandler()
+        window.addEventListener('resize', flexDetectionHandler)
+        return () => {
+          window.addEventListener('resize', flexDetectionHandler)
+        }
+      }, [isColumnRef, flexMediaMatcher])
 
       React.useImperativeHandle(ref, () => ({
         element: sectionRef.current as Element,
@@ -77,15 +125,19 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
             <div className={styles.body}>
               <div className={styles.left}>
                 <h3 className={styles.subheader}>Buzzwords?</h3>
-                <p className={styles.text}>
-                  Putting the hot buzzwords aside, certain parts of the site are
-                  Web3 enabled and engages with the <b>Ethereum Blockchain.</b>
-                </p>
-                <p className={styles.text}>
-                  Some highlighted projects on this site have Web3 features,
-                  indicated by the <b>Connect Wallet to View</b> prompt.
-                  Supported wallet providers are listed below:
-                  <ul>
+                <div className={styles.text}>
+                  <p>
+                    Putting the hot buzzwords aside, certain parts of the site
+                    are Web3 enabled and engages with the{' '}
+                    <b>Ethereum Blockchain.</b>
+                  </p>
+                  <br />
+                  <p>
+                    Some highlighted projects on this site have Web3 features,
+                    indicated by the <b>Connect Wallet to View</b> prompt.
+                    Supported wallet providers are listed below:
+                  </p>
+                  <ul className={styles.wallets}>
                     <li>
                       <Hyperlink>
                         <a href={EXTERNAL_LINKS.metamask.download}>Metamask</a>
@@ -97,7 +149,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       </Hyperlink>
                     </li>
                   </ul>
-                </p>
+                </div>
 
                 <h3 className={styles.subheader}>
                   Web3 Explained Like I'm Five
@@ -115,8 +167,8 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   Ethereum works off a <b>Proof of Stake</b> network, meaning
                   the more you stake in the network when starting a{' '}
                   <b>validator node (independent person)</b>, the higher chance
-                  you have of being <b>selected</b>
-                  as one of the validator nodes participating in the{' '}
+                  you have of being <b>selected</b> as one of the validator
+                  nodes participating in the{' '}
                   <b>confirmation of a single block (answer)</b> and receiving a
                   cut of fees used in transactions.
                 </p>
@@ -149,24 +201,19 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       View your Ethereum Account Details!
                     </h3>
 
-                    <div className={styles.status}>
-                      <div
-                        className={classNames(
-                          styles.row,
-                          account && styles.connected
-                        )}
-                      >
+                    <div
+                      className={classNames(
+                        styles.status,
+                        account && styles.connected
+                      )}
+                    >
+                      <div className={styles.row}>
                         <span className={styles.key}>STATUS:</span>
                         <span className={styles.value}>
                           {account ? 'Connected' : 'Not Connected'}
                         </span>
                       </div>
-                      <div
-                        className={classNames(
-                          styles.row,
-                          account && styles.connected
-                        )}
-                      >
+                      <div className={styles.row}>
                         <span className={styles.key}>MESSAGE:</span>
                         <span className={styles.value}>
                           {determineEthWindowMessage()}
@@ -174,7 +221,12 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       </div>
                     </div>
 
-                    <div className={styles.info}>
+                    <div
+                      className={classNames(
+                        styles.info,
+                        account && styles.connected
+                      )}
+                    >
                       <div className={styles.row}>
                         <span className={styles.key}>Account:</span>
                         <span className={styles.value}>{account ?? '--'}</span>
@@ -206,9 +258,16 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                         </span>
                       </div>
                     </div>
-                  </div>
-                  <div className={styles.connect}>
-                    <WalletConnectButton className={styles.button} />
+
+                    <div className={styles.connect}>
+                      <WalletConnectButton
+                        className={classNames(
+                          styles.button,
+                          !account && styles.connect
+                        )}
+                        onClick={() => setWeb3ModalActive(!web3ModalActive)}
+                      />
+                    </div>
                   </div>
                 </Window>
               </div>

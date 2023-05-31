@@ -19,6 +19,10 @@ export const PORTFOLIO_SECTIONS: {
     title: 'journey',
     key: 'journey',
   },
+  web3: {
+    title: 'web3',
+    key: 'web3',
+  },
   highlights: {
     title: 'highlights',
     key: 'highlights',

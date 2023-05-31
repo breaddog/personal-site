@@ -63,7 +63,7 @@ export const MultiProjectImageContainer: React.FunctionComponent<
         }
 
         if (useCalculation) {
-          imageProps.containerStyle = {
+          imageProps.containerstyle = {
             width: `${calculateWidthDivision(-5)}%`,
           }
         }

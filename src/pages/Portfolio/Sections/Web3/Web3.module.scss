@@ -28,10 +28,18 @@
     }
 
     .left {
-      width: 35%;
+      width: 40%;
 
       b {
         color: var(--purple-10);
+      }
+
+      ul {
+        margin-top: 0.5rem;
+
+        li {
+          margin-bottom: 0.5rem;
+        }
       }
     }
 
@@ -71,19 +79,25 @@
           .status {
             margin-bottom: 2rem;
 
+            .value {
+              color: var(--red);
+            }
+
             &.connected {
               .value {
                 color: var(--green);
               }
             }
-
-            .value {
-              color: var(--red);
-            }
           }
 
           .info {
             margin-bottom: 2rem;
+
+            &.connected {
+              .value {
+                color: var(--purple-20);
+              }
+            }
           }
 
           .connect {
@@ -93,6 +107,58 @@
             .button {
               white-space: pre-wrap;
               min-width: unset;
+
+              transition-property: background-color;
+              transition-duration: 0.4s;
+              transition-timing-function: ease-in-out;
+
+              &.connect {
+                background-color: var(--purple-40);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    .body {
+      flex-direction: column;
+
+      .left {
+        width: 100%;
+
+        .text {
+          margin-bottom: 2.5rem;
+        }
+      }
+
+      .right {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    .body {
+      .right {
+        .window {
+          height: fit-content;
+
+          .windowContainer {
+            .status {
+              .row {
+                flex-direction: column;
+
+                .key {
+                  margin-bottom: 0.25rem;
+                }
+              }
             }
           }
         }

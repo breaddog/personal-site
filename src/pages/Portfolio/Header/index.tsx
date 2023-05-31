@@ -40,7 +40,7 @@ export const PortfolioHeader: React.FunctionComponent<PortfolioHeaderProps> = ({
       }}
       mobile={{
         flexActive: true,
-        flexSize: 1150,
+        flexSize: 1200,
       }}
       sections={PORTFOLIO_SECTIONS}
       className={classes}

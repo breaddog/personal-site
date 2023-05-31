@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
-import { map } from 'lodash'
+import { debounce, map } from 'lodash'
 import { SectionNavInterface } from '../../types/nav'
 import { OnClickAnimation } from '..'
 
@@ -46,20 +46,19 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   closeOnChange = true,
 }) => {
   const { flexActive = true, flexSize = 1080 } = mobile
+  const { web3ModalActive, setWeb3ModalActive } = React.useContext(AppContext)
 
   const mobileHeaderMatcher = window.matchMedia(`(max-width: ${flexSize}px)`)
 
-  const { scrollDirection, web3ModalActive, setWeb3ModalActive } =
-    React.useContext(AppContext)
-
   // toggle button state
   const [active, setActive] = React.useState<boolean>(false)
-
   // mobile menu active
   const [mobileHeaderActive, setMobileHeaderActive] =
     React.useState<boolean>(false)
-  const [desktopHeaderHover, setDesktopHeaderHover] =
-    React.useState<boolean>(false)
+  // const [desktopHeaderHover, setDesktopHeaderHover] =
+  //   React.useState<boolean>(false)
+
+  const headerRef = React.useRef<HTMLHeadElement>(null)
 
   // resize if mobile size is required
   const headerResizeHandler = () => {
@@ -90,7 +89,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   // classes
   const regularClasses = classNames(
     styles.header,
-    'down' === scrollDirection && !desktopHeaderHover && styles.hidden,
+    // 'down' === scrollDirection && !desktopHeaderHover && styles.hidden,
     mobileHeaderActive && styles.disabled,
     className
   )
@@ -102,18 +101,39 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   )
 
   // hover over effect
-  const handleDesktopMouseHoverEnter = () => {
-    if (mobileHeaderActive) return
-    if ('down' === scrollDirection) {
-      setDesktopHeaderHover(true)
+  // const handleDesktopMouseHoverEnter = () => {
+  //   if (mobileHeaderActive) return
+  //   if ('down' === scrollDirection) {
+  //     setDesktopHeaderHover(true)
+  //   }
+  // }
+
+  // const handleDesktopMouseHoverLeave = () => {
+  //   if (mobileHeaderActive) return
+  //   setDesktopHeaderHover(false)
+  // }
+
+  // SCROLL HIDE
+  const handleScrollEnd = React.useMemo(
+    () =>
+      debounce(() => headerRef.current?.classList.remove(styles.hidden), 600),
+    []
+  )
+
+  // end scroll
+  const handleScroll = () => {
+    headerRef.current?.classList.add(styles.hidden)
+    handleScrollEnd()
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
     }
-  }
+  }, [headerRef])
 
-  const handleDesktopMouseHoverLeave = () => {
-    if (mobileHeaderActive) return
-    setDesktopHeaderHover(false)
-  }
-
+  // section change
   const handleSectionChange = (sectionKey: string) => {
     if (closeOnChange) {
       setActive(false)
@@ -125,8 +145,9 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
     <>
       <header
         className={regularClasses}
-        onMouseEnter={() => handleDesktopMouseHoverEnter()}
-        onMouseLeave={() => handleDesktopMouseHoverLeave()}
+        ref={headerRef}
+        // onMouseEnter={() => handleDesktopMouseHoverEnter()}
+        // onMouseLeave={() => handleDesktopMouseHoverLeave()}
       >
         <div className={styles.container}>
           <OnClickAnimation
@@ -150,7 +171,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                   className={classNames(
                     styles.section,
                     styles.selectable,
-                    'effect--hoverPop',
+                    'effects--hoverPop',
                     currentSection === section.key && styles.highlight
                   )}
                   onClick={() => handleSectionChange(section.key)}
@@ -218,7 +239,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                     className={classNames(
                       styles.section,
                       styles.selectable,
-                      'effect--hoverPop',
+                      'effects--hoverPop',
                       currentSection === section.key && styles.highlight
                     )}
                     onClick={() => handleSectionChange(section.key)}

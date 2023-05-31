@@ -49,6 +49,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   // misc
   const [scrollDirection, setScrollDirection] =
     React.useState<ScrollDirection>('up')
+  const [isScrolling, setScrolling] = React.useState<boolean>(false)
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
 
   // web3 modal

@@ -63,6 +63,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
       case PORTFOLIO_SECTIONS.journey.key:
         _scrollToSection(journeyRef)
         break
+      case PORTFOLIO_SECTIONS.web3.key:
+        _scrollToSection(web3Ref)
+        break
       case PORTFOLIO_SECTIONS.highlights.key:
         _scrollToSection(highlightsRef)
         break

@@ -118,12 +118,12 @@ export const WalletConnectModal: React.FunctionComponent<
             </div>
           </div>
           {/* future: error handling if adding more complex behaviour */}
-          <div className={classNames(styles.row, styles.error)}>
+          {/* <div className={classNames(styles.row, styles.error)}>
             <div className={styles.title}>Error:</div>
             <div className={styles.value}>
               Insert error message formatted here
             </div>
-          </div>
+          </div> */}
         </div>
 
         {window.ethereum && (

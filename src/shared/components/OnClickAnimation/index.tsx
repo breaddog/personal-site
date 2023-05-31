@@ -45,16 +45,13 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
 
   // toggle animation
   const handleToggleAnimation = () => {
-    console.log('clicked')
     if (animating) return
     setAnimating(true)
     onStart()
-    console.log('started')
 
     delay(() => {
       setAnimating(false)
       onComplete()
-      console.log('ended')
     }, duration)
   }
 

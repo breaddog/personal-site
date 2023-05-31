@@ -30,7 +30,7 @@ import userSVG from '../../../../assets/icons/user.svg'
 // header
 import laptopSVG from '../../../../assets/icons/laptop.svg'
 
-interface PortfolioDeveloperProps extends GenericSubSectionForwardInterface { }
+interface PortfolioDeveloperProps extends GenericSubSectionForwardInterface {}
 
 export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
   React.forwardRef<GenericForwardRefInterface, PortfolioDeveloperProps>(
@@ -203,7 +203,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
 
       // column wise check
       // ref used here due to weird rendering bug
-      const flexDectectionHandler = () => {
+      const flexDetectionHandler = () => {
         if (flexMediaMatcher.matches && !isColumnRef.current) {
           isColumnRef.current = true
           invalidateAllWindowProps()
@@ -392,10 +392,10 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
       }, [orbitContainerRef, orbitTimelinesRef, isMobile])
 
       React.useEffect(() => {
-        flexDectectionHandler()
-        window.addEventListener('resize', flexDectectionHandler)
+        flexDetectionHandler()
+        window.addEventListener('resize', flexDetectionHandler)
         return () => {
-          window.addEventListener('resize', flexDectectionHandler)
+          window.addEventListener('resize', flexDetectionHandler)
         }
       }, [isColumnRef, flexMediaMatcher])
 
@@ -533,6 +533,6 @@ interface PortfolioDevContextProps {
 export const PortfolioDevContext =
   React.createContext<PortfolioDevContextProps>({
     highestZIndex: 0,
-    setHighestZIndex: () => { },
-    resetOrbitTimeline: () => { },
+    setHighestZIndex: () => {},
+    resetOrbitTimeline: () => {},
   })
