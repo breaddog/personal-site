@@ -58,7 +58,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
       const sectionRef = React.useRef<HTMLDivElement | null>(null)
       const boxRef = React.useRef<HTMLDivElement | null>(null)
 
-      const { isMobile } = React.useContext(AppContext)
+      const { isMobile, isMedium } = React.useContext(AppContext)
 
       // gsap version of on hover wave effect for entrance animation
       // const sineWaveTextEffect = ({
@@ -149,7 +149,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
 
         const scrollTrigger = {
           trigger: sectionRef.current,
-          start: `${isMobile ? 'top' : '-7%'} top`,
+          start: `${isMobile ? 'top' : isMedium ? '-2%' : '-4%'} top`,
           end: '+=5000px',
           scrub: 0.5,
           pin: true,

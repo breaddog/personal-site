@@ -12,6 +12,7 @@ export interface CollapsibleFAQProps {
   }
   className?: string
   bodyclassname?: string
+  componentkey?: string | number
   children?: React.ReactNode
 }
 
@@ -19,13 +20,17 @@ export const CollapsibleFAQ: React.FunctionComponent<CollapsibleFAQProps> = ({
   title,
   className,
   bodyclassname,
+  componentkey,
   children,
 }) => {
   const [active, setActive] = React.useState<boolean>(false)
   const classes = classNames(styles.faq, className)
 
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      key={componentkey}
+    >
       <div className={classNames(styles.title, title?.classname)}>
         <span className={styles.content}>{title?.content}</span>
         <ArrowDown
