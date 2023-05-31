@@ -17,7 +17,7 @@ import { generateProjectBodyElement } from '../../helpers'
 
 export interface ERC721ProjectProps {
   className?: string
-  key?: string
+  componentkey?: string
   project: ProjectObject
   extraInfo?: ExtraInfoWrapperProps[]
   overrideExtraInfo?: boolean
@@ -25,7 +25,7 @@ export interface ERC721ProjectProps {
 
 export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
   className,
-  key,
+  componentkey,
   project,
   extraInfo = [],
   overrideExtraInfo = false,
@@ -108,7 +108,7 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
   return (
     <div
       className={classes}
-      key={key}
+      key={componentkey}
     >
       {map(project.body, (body: BodyContentProps, idx: number) => {
         return generateProjectBodyElement({

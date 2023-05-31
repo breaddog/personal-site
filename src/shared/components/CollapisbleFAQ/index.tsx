@@ -2,7 +2,6 @@ import styles from './CollapsibleFAQ.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import arrowDownSVG from '../../../assets/icons/arrow-down.svg'
 import { ArrowDown } from '../../../assets/svgs'
 
 export interface CollapsibleFAQProps {

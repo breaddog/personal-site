@@ -1,7 +1,6 @@
-import { PROJECTS, ProjectObject, ProjectType } from '../data/projects'
+import { PROJECTS, ProjectObject } from '../data/projects'
 import {
   ArtBallProject,
-  BinKingzProject,
   ERC721Project
   // DefaultProjectTemplate
 } from '../pages/Projects/ProjectContent'
@@ -14,6 +13,8 @@ export const fetchProject = async (projectKey: string) => {
 export const fetchProjectContent = async (project: ProjectObject | null) => {
   if (!project) return null
 
+  console.log(project)
+
   const { key, type } = project
   // FIRST: check if theres a custom one
   switch (key) {
@@ -22,11 +23,15 @@ export const fetchProjectContent = async (project: ProjectObject | null) => {
 
     // SECOND: check if can be assigned to one of the templates
     default:
+      // nothing yet? use default template
+      if (!project?.body) return null
+
+      // otherwise check
       switch (type) {
         case 'ERC721':
           return (
             <ERC721Project
-              key={key}
+              componentkey={key}
               project={project}
             />
           )

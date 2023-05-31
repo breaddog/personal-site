@@ -2,7 +2,7 @@ import React from 'react'
 import { CONSTANTS } from '../../shared'
 import { ContractType, NetworkType } from '../../ethereum/utils'
 import { BodyContentProps } from '../../pages/Projects/types'
-import { BODY_CONTENT_BINKINGZ } from '../../pages/Projects/ProjectContent/BinKingz/content'
+import { BODY_CONTENT_BINKINGZ } from '../../pages/Projects/ProjectContent/BinKingz'
 import { BINKINGZ_CONTRACT_ADDRESS } from '../../contracts'
 
 const { projectImageRoot } = CONSTANTS
@@ -146,27 +146,6 @@ export const PROJECTS: {
     description: 'Turn Based Battle Arena Game with Unique Characters',
     asset: `${projectImageRoot}//redvillage/redvillage.jpg`,
     alt: 'redvillage',
-  },
-  lushsux: {
-    key: 'lushsux',
-    pathname: 'lushsux',
-    title: 'LushSux.io',
-    type: 'ERC721',
-    year: '2021',
-    scope: 'NFT Artwork',
-    role: ['Lead Asset Engineer', 'Asset Deployment'],
-    responsibilities: [
-      'Data Crawling',
-      'Asset Generation',
-      'Asset Assembley',
-      'Asset Deployment',
-    ],
-    organisation: 'Lushsux / DRP / Pellar',
-    url: 'https://drp.io/drops/lushsux',
-    description:
-      'Melbourne based street artist Lushsux creating a collection out of his instragram posts.',
-    asset: `${projectImageRoot}/lushsux/lushsux.jpg`,
-    alt: 'lushsux',
   },
   adot: {
     key: 'adot',

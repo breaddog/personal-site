@@ -7,8 +7,8 @@
     "node": true
   },
   "globals": {
-    "document": false,
-    "JSX": "readonly"
+    "document": false
+    // "JSX": "readonly"
   },
   "overrides": [
     {
@@ -67,12 +67,7 @@
     "eqeqeq": "error",
     "linebreak-style": ["error", "windows"],
     "no-case-declarations": "off",
-    "no-unused-vars": [
-      "warn",
-      {
-        "vars": "local"
-      }
-    ],
+    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
