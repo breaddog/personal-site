@@ -49,7 +49,6 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
       const WAVE_TEXT_CLASS = 'manager-wave-text'
 
       const classes = classNames(
-        'portfolio__manager',
         sectionStyles['sub-section'],
         styles.manager,
         className

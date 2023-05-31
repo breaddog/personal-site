@@ -90,6 +90,7 @@ export const BinKingzProject: React.FunctionComponent<BinKingzProjectProps> = ({
     getBinKingzTotalSupply()
   }, [])
 
+  // BEFORE DEPLOY: reactive web3
   // React.useEffect(() => {
   //   if (account) {
   //     getBinkingzBalance(account)

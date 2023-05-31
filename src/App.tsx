@@ -23,6 +23,7 @@ import {
   tryAutoReconnect
 } from './ethereum'
 import { APP_ENV } from './config'
+import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'
 
 interface AppProps {
   className?: string
@@ -36,6 +37,9 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const { account, isActive } = useWeb3React()
   const [connectionType, setConnectionType] =
     React.useState<ConnectionType | null>(null)
+  // balances
+  const [ethBalance, setEthBalance] = React.useState<number>(0)
+  const [maticBalance, setMaticBalance] = React.useState<number>(0)
 
   // listeners
   const [isMobile, setIsMobile] = React.useState<boolean>(false)
@@ -58,12 +62,47 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const classes = classNames(styles.app, active && styles.active, className)
 
   // WEB 3
-  // auto reconnect
+  // ETH BALANCES
+  const resetBalances = () => {
+    setEthBalance(0)
+    setMaticBalance(0)
+  }
+
+  const handleGetEthBalance = async (_account: string) => {
+    try {
+      const balance = await getAccountEthBalance(_account)
+      setEthBalance(balance)
+    } catch (err) {
+      setEthBalance(0)
+    }
+  }
+
+  const handleGetMaticBalance = async (_account: string) => {
+    try {
+      const balance = await getAccountMaticBalance(_account)
+      setMaticBalance(balance)
+    } catch (err) {
+      setMaticBalance(0)
+    }
+  }
+
+  const handleUpdateBalances = (account: string) => {
+    handleGetEthBalance(account)
+    handleGetMaticBalance(account)
+  }
+
+  // auto reconnect and account dependencies
   React.useEffect(() => {
-    if (!account) return
+    // no account? reset everything
+    if (!account) {
+      resetBalances()
+      return
+    }
     localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, String(connectionType))
+    // handleUpdateBalances(account)
   }, [account, connectionType])
 
+  // on load
   React.useEffect(() => {
     tryAutoReconnect(setConnectionType)
   }, [])
@@ -157,6 +196,11 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
           setScrollEnabled,
           web3ModalActive,
           setWeb3ModalActive,
+          connectionType,
+          ethBalance,
+          maticBalance,
+          resetBalances,
+          updateBalances: handleUpdateBalances,
         }}
       >
         <div className={classes}>
@@ -220,6 +264,13 @@ interface AppContextProps {
   setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
   web3ModalActive: boolean
   setWeb3ModalActive: React.Dispatch<React.SetStateAction<boolean>>
+  // web3 stuff
+  connectionType: ConnectionType | null
+  ethBalance: number
+  maticBalance: number
+  resetBalances: Function
+  // eslint-disable-next-line no-unused-vars
+  updateBalances: (account: string) => void
 }
 
 export const AppContext = React.createContext<AppContextProps>({
@@ -231,4 +282,10 @@ export const AppContext = React.createContext<AppContextProps>({
   setScrollEnabled: () => {},
   web3ModalActive: false,
   setWeb3ModalActive: () => {},
+  connectionType: null,
+  ethBalance: 0,
+  maticBalance: 0,
+  resetBalances: () => {},
+  // eslint-disable-next-line no-unused-vars
+  updateBalances: (account: string) => {},
 })

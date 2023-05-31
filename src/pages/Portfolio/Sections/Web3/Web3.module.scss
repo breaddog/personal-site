@@ -1,0 +1,102 @@
+.web3 {
+  --text-margin: 2rem;
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+
+  .body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    .text {
+      margin-bottom: var(--text-margin);
+    }
+
+    .subheader {
+      margin-bottom: 0.5rem;
+    }
+
+    .left {
+      width: 35%;
+
+      b {
+        color: var(--purple-10);
+      }
+    }
+
+    .right {
+      display: flex;
+      width: 50%;
+
+      .window {
+        height: 75%;
+        width: 75%;
+        margin: 0 auto;
+
+        min-width: 380px;
+        min-height: 540px;
+
+        position: relative;
+
+        .windowContainer {
+          display: flex;
+          flex-direction: column;
+
+          .title {
+            margin-bottom: 2rem;
+          }
+
+          .row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+
+            .key {
+              margin-right: 0.5rem;
+            }
+          }
+
+          .status {
+            margin-bottom: 2rem;
+
+            &.connected {
+              .value {
+                color: var(--green);
+              }
+            }
+
+            .value {
+              color: var(--red);
+            }
+          }
+
+          .info {
+            margin-bottom: 2rem;
+          }
+
+          .connect {
+            position: relative;
+            bottom: 0;
+
+            .button {
+              white-space: pre-wrap;
+              min-width: unset;
+            }
+          }
+        }
+      }
+    }
+  }
+}

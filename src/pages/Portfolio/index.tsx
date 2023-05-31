@@ -11,7 +11,8 @@ import {
   PortfolioDeveloper,
   PortfolioHighlights,
   PortfolioLanding,
-  PortfolioManagerNew
+  PortfolioManagerNew,
+  PortfolioWeb3
 } from './Sections/index'
 
 import { GenericForwardRefInterface } from '../../shared/interfaces'
@@ -34,6 +35,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const developerRef = React.useRef<GenericForwardRefInterface>(null)
   const managerRef = React.useRef<GenericForwardRefInterface>(null)
   const journeyRef = React.useRef<GenericForwardRefInterface>(null)
+  const web3Ref = React.useRef<GenericForwardRefInterface>(null)
   const highlightsRef = React.useRef<GenericForwardRefInterface>(null)
   const contactsRef = React.useRef<GenericForwardRefInterface>(null)
 
@@ -90,6 +92,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
           <PortfolioLanding ref={landingRef} />
           <PortfolioDeveloper ref={developerRef} />
           <PortfolioManagerNew ref={managerRef} />
+          {/* TO DO: add web3 section to advertise funcitonality */}
+          <PortfolioWeb3 ref={web3Ref} />
           <PortfolioJourney ref={journeyRef} />
           <PortfolioHighlights ref={highlightsRef} />
           <PortfolioContacts ref={contactsRef} />

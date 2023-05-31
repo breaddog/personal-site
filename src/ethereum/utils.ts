@@ -53,6 +53,34 @@ export const getNetworkProvider = (network: NetworkType) => {
   }
 }
 
+// wallet
+export const getAccountEthBalance = async (
+  account: string,
+  decimals: number = 4
+) => {
+  if (!account) return 0
+  try {
+    const provider = ethers.getDefaultProvider(APP_ENV.ETHEREUM_PROVIDER)
+    const balance = await provider.getBalance(account)
+    return Number(Number(ethers.formatEther(balance)).toFixed(decimals))
+  } catch (err) {
+    return 0
+  }
+}
+
+export const getAccountMaticBalance = async (
+  account: string,
+  decimals: number = 4
+) => {
+  try {
+    const provider = ethers.getDefaultProvider(APP_ENV.POLYGON_PROVIDER)
+    const balance = await provider.getBalance(account)
+    return Number(Number(ethers.formatEther(balance)).toFixed(decimals))
+  } catch (err) {
+    return 0
+  }
+}
+
 // generic contract object
 export const createContractObject = ({
   address,

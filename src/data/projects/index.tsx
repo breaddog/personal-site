@@ -100,7 +100,8 @@ export const PROJECTS: {
     responsibilities: ['Asset Engineer', 'Front-end Lead'],
     organisation: 'Scott Marsh / Visual Tonic / RIW / Pellar',
     url: 'https://binkingz.com/',
-    description: 'NFT Grafitti Art by Sydney based artist Scott Marsh',
+    description:
+      'NFT Grafitti Artwork Project by Sydney based grafitti artist Scott Marsh',
     asset: `${projectImageRoot}//binkingz/binkingz.jpg`,
     alt: 'binkingz',
   },

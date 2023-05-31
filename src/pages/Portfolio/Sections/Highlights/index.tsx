@@ -119,6 +119,8 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
               <SectionSubHeader className={styles.subheading}>
                 Here's a list of projects that I have worked on, feel free to
                 have a look!
+                <br />
+                Some projects are Web3 Enabled as well.
               </SectionSubHeader>
               <Swiper {...swiperParams}>
                 {map(PROJECTS, (project: ProjectObject, idx: number) => {

@@ -114,6 +114,7 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
     setBalance23(-1)
   }
 
+  // BEFORE DEPLOY: reactive web3
   // React.useEffect(() => {
   //   getArtballTotalSupplies()
   // }, [])

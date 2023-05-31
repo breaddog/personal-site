@@ -1,35 +1,23 @@
 import styles from '../../Project.module.scss'
 import React from 'react'
 
-import {
-  TopProjectSection,
-  TopDownProjectSection,
-  LeftRightProjectSection
-} from '../../Components'
+// import {
+//   TopProjectSection,
+//   TopDownProjectSection,
+//   LeftRightProjectSection
+// } from '../../Components'
 import { ProjectObject } from '../../../../data/projects'
 
 interface DefaultProjectTemplateProps {
   project: ProjectObject
 }
 
+// FUTURE: re-visit this if can afford server hosted/db hosted content
 export const DefaultProjectTemplate: React.FunctionComponent<
   DefaultProjectTemplateProps
-> = ({ project }) => {
-  return (
-    <div className={styles.container}>
-      {/* <TopProjectSection
-        project={project}
-        content=''
-      />
-      <TopDownProjectSection
-        project={project}
-        content=''
-      />
-
-      <LeftRightProjectSection
-        project={project}
-        content=''
-      /> */}
-    </div>
-  )
+> = ({
+  // eslint-disable-next-line
+  project,
+}) => {
+  return <div className={styles.container}></div>
 }

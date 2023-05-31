@@ -11,4 +11,7 @@ export const EXTERNAL_LINKS = {
     download: 'https://www.coinbase.com/wallet/downloads/',
     main: 'https://www.coinbase.com/',
   },
+  ethereum: {
+    info: 'https://ethereum.org/en/what-is-ethereum/',
+  },
 }
