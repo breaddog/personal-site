@@ -1,7 +1,8 @@
-import { PROJECTS } from '../data/projects'
+import { PROJECTS, ProjectObject, ProjectType } from '../data/projects'
 import {
   ArtBallProject,
-  BinKingzProject
+  BinKingzProject,
+  ERC721Project
   // DefaultProjectTemplate
 } from '../pages/Projects/ProjectContent'
 
@@ -10,18 +11,27 @@ export const fetchProject = async (projectKey: string) => {
   return _projects || null
 }
 
-export const fetchProjectContent = async (projectKey: string) => {
-  switch (projectKey) {
+export const fetchProjectContent = async (project: ProjectObject | null) => {
+  if (!project) return null
+
+  const { key, type } = project
+  // FIRST: check if theres a custom one
+  switch (key) {
     case 'artball':
       return <ArtBallProject />
-    case 'binkingz':
-      return <BinKingzProject />
-    // FUTURE: add some form of distribution that takes content from a server
+
+    // SECOND: check if can be assigned to one of the templates
     default:
-      return null
-    // eslint-disable-next-line no-case-declarations
-    // const _project = await fetchProject(projectKey)
-    // if (!_project) return null
-    // return <DefaultProjectTemplate project={_project} />
+      switch (type) {
+        case 'ERC721':
+          return (
+            <ERC721Project
+              key={key}
+              project={project}
+            />
+          )
+        default:
+          return null
+      }
   }
 }

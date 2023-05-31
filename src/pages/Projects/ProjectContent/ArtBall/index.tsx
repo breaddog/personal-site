@@ -24,6 +24,7 @@ interface ArtBallProjectProps {
   key?: string
 }
 
+// for artball its more efficient to make it a custom one due to multi-project
 export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
   key,
 }) => {

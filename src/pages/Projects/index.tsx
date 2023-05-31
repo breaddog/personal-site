@@ -50,7 +50,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     const _project = await fetchProject(_projectKey)
     setProject(_project)
 
-    const _projectBody = await fetchProjectContent(_projectKey)
+    const _projectBody = await fetchProjectContent(_project)
     setProjectBody(_projectBody)
     setLoaded(true)
   }

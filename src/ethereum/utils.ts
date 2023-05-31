@@ -3,10 +3,11 @@ import { APP_ENV } from '../config'
 import { Web3Provider } from '@ethersproject/providers'
 
 export type NetworkType = 'ethereum' | 'polygon'
-export type ContractType = 'ERC721' | 'ERC1155'
+export type ContractType = 'ERC20' | 'ERC721' | 'ERC1155' | 'multi' | 'other'
 
 export interface GenericContractInterface {
   address: string
+  type?: ContractType
   abi: ethers.InterfaceAbi
   network: NetworkType
 }
