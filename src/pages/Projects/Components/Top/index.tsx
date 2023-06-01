@@ -75,7 +75,7 @@ export const TopProjectSection: React.FunctionComponent<
             className={styles.info}
             key={idx}
           >
-            <span className={styles.title}>{info.title}</span>
+            <span className={styles.title}>{info.title}:</span>
             {info?.isLink ? (
               <Hyperlink className={styles.value}>
                 <a

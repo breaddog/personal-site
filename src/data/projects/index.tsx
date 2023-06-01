@@ -3,11 +3,15 @@ import { CONSTANTS } from '../../shared'
 import { ContractType, NetworkType } from '../../ethereum/utils'
 import { BodyContentProps } from '../../pages/Projects/types'
 import { BODY_CONTENT_BINKINGZ } from '../../pages/Projects/ProjectContent/BinKingz'
-import { BINKINGZ_CONTRACT_ADDRESS } from '../../contracts'
+import {
+  BINKINGZ_CONTRACT_ADDRESS,
+  LAYERS_CONTRACT_ADDRESS
+} from '../../contracts'
 
 const { projectImageRoot } = CONSTANTS
 
 export type ProjectType = ContractType | string
+
 export interface ProjectObject {
   key: string
   pathname: string
@@ -60,9 +64,31 @@ export const PROJECTS: {
     asset: `${projectImageRoot}/artball/artball.jpg`,
     alt: 'artball',
   },
+  drp: {
+    key: 'drp',
+    pathname: 'drp',
+    title: 'DRP Gallery',
+    type: 'partnership',
+    year: '2021 - 2022',
+    scope: 'NFT Art Gallery',
+    role: ['Associate Developer', 'Lead Engineer'],
+    responsibilities: [
+      'Discuss Development Specificiations',
+      'Develop Bespoke Websites',
+      'Assemble and upload assets',
+      'Site Maintenance',
+      'Smart Contract Building',
+      'Infrastructure Maintenance',
+    ],
+    organisation: 'DRP / Pellar',
+    url: 'https://drp.io',
+    description: 'Melbourne\'s First NFT Art Gallery Organisation',
+    asset: `${projectImageRoot}/drp/drp.jpg`,
+    alt: 'drp main page',
+  },
   layers: {
-    key: 'vhils',
-    pathname: 'vhils',
+    key: 'layers',
+    pathname: 'layers',
     title: 'LAYERS by Vhils',
     type: 'multi',
     year: '2022 - 2023',
@@ -74,17 +100,22 @@ export const PROJECTS: {
       'Deployment',
     ],
     responsibilities: [
+      'Lead Engineer',
       'Asset Generation & Assembley',
       'Website Building',
       'Project Management',
       'Project Maintenance',
       'CI/CD',
     ],
-    organisation: 'DRP / Vhils',
+    organisation: 'Vhils / DRP / Pellar',
     url: 'https://drp.io/drops/vhils',
     description: 'Evolving Grafitti NFT Artwork',
-    asset: `${projectImageRoot}/vhils/vhils.jpg`,
-    alt: 'vhils',
+    asset: `${projectImageRoot}/layers/layers.png`,
+    alt: 'layers',
+    eth: {
+      address: LAYERS_CONTRACT_ADDRESS,
+      opensea: 'https://opensea.io/collection/drp-vhils',
+    },
   },
   shintaro: {
     key: 'shintaro',
@@ -103,7 +134,7 @@ export const PROJECTS: {
     organisation: 'Shintaro Kago / DRP / Pellar',
     url: 'https://drp.io/artists/shintaro_kago',
     description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
-    asset: `${projectImageRoot}/shintaro/shintarokago.jpg`,
+    asset: `${projectImageRoot}/shintaro/shintarokago.png`,
     alt: 'shintaro',
   },
   binkingz: {

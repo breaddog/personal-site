@@ -37,13 +37,12 @@
 
       padding-bottom: 1rem;
 
+      // EVALUATE: font size
+      font-size: var(--font-p);
+
       &:not(:nth-child(1)) {
         border-top: 1px solid rgba(184, 184, 184, 0.1);
         padding-top: 1rem;
-      }
-
-      span {
-        font-size: var(--font-h4);
       }
 
       .value {
@@ -69,12 +68,10 @@
 
       .title {
         font-weight: bold;
-        font-size: var(--font-h4);
         margin-bottom: 0.5rem;
       }
 
       .value {
-        font-size: var(--font-h4);
         margin-bottom: 0.5rem;
       }
     }

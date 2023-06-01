@@ -1,9 +1,11 @@
+import { ERC20Request } from './ERC20Request'
 import { ERC721Request } from './ERC721Request'
 import { ERC1155Request } from './ERC1155Request'
 
 const RequestMapping: {
   [key: string]: any
 } = {
+  ERC20Request,
   ERC721Request,
   ERC1155Request,
 }

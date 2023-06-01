@@ -52,7 +52,7 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
   // top extra information
   const extraWeb3Info: ExtraInfoInterface[] = [
     {
-      title: 'Opensea Collection:',
+      title: 'Opensea Collection',
       value: 'View Here',
       isLink: true,
       link: {
@@ -61,19 +61,19 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
       },
     },
     {
-      title: 'Total Sold \'22:',
+      title: 'Total Sold \'22',
       value: `${totalSupply22}`,
     },
     {
-      title: 'Total Sold \'23:',
+      title: 'Total Sold \'23',
       value: totalSupply23,
     },
     {
-      title: 'Owned \'22:',
+      title: 'Owned \'22',
       value: balance22 < 0 ? 'Connect Wallet to View' : balance22,
     },
     {
-      title: 'Owned \'23:',
+      title: 'Owned \'23',
       value: balance23 < 0 ? 'Connect Wallet to View' : balance23,
     },
   ]

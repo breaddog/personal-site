@@ -40,26 +40,34 @@ export class ERC1155Request extends ContractRequest {
   // by query
   async getBalanceOfBatch(wallet: string, tokenIds: number[]) {
     try {
-      const Interface = new ethers.Interface(ERC1155_INTERFACE)
-      const signatures = map(tokenIds, (number: string) => {
-        return {
-          contractAddress: this.ADDRESS,
-          bytesCaller: Interface.encodeFunctionData('balanceOf', [
-            wallet,
-            number,
-          ]),
-        }
-      })
+      // same wallet anyway
+      const balances = await this.CONTRACT.balanceOfBatch(
+        [...Array(tokenIds.length).fill(wallet)],
+        tokenIds
+      )
 
-      const res = await this.QUERY_CONTRACT.callsContractsWith(signatures)
+      return map(balances, (el: string | number) => Number(el))
 
-      return map(res[1], (el: any, idx: number) => {
-        const decoded = this.DECODER.decode(['uint256'], el)
-        return {
-          tokenId: tokenIds[idx],
-          amount: decoded[0],
-        }
-      })
+      // const Interface = new ethers.Interface(ERC1155_INTERFACE)
+      // const signatures = map(tokenIds, (number: string) => {
+      //   return {
+      //     contractAddress: this.ADDRESS,
+      //     bytesCaller: Interface.encodeFunctionData('balanceOf', [
+      //       wallet,
+      //       number,
+      //     ]),
+      //   }
+      // })
+
+      // const res = await this.QUERY_CONTRACT.callsContractsWith(signatures)
+
+      // return map(res[1], (el: any, idx: number) => {
+      //   const decoded = this.DECODER.decode(['uint256'], el)
+      //   return {
+      //     tokenId: tokenIds[idx],
+      //     amount: decoded[0],
+      //   }
+      // })
     } catch (err) {
       console.log('balanceOfBatch by query error', this.ADDRESS)
       return []
