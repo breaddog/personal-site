@@ -12,116 +12,133 @@ import { delay, disableScroll, enableScroll, getRandomInt } from '../../shared/'
 import { LoadingDots } from '../../shared/components'
 import { AppContext } from '../../App'
 
+export interface LoadingHandle {
+  active: boolean
+  loaded: boolean
+  amountLoaded: number
+  setActive: React.Dispatch<React.SetStateAction<boolean>>
+  setLoaded: React.Dispatch<React.SetStateAction<boolean>>
+  setAmountLoaded: React.Dispatch<React.SetStateAction<number>>
+  setLoadingActive: Function
+  setNewFlavourText: Function
+  resetLoadingPage: Function
+}
 interface LoadingSectionProps {
   className?: string
+  ref?: React.ForwardedRef<LoadingHandle>
 }
 
-export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
-  className,
-}) => {
-  // if changed, also change in scss
-  const ONIGIRI_AMOUNT = 14
-  // active or not (can be toggled)
-  const [active, setActive] = React.useState<boolean>(false)
-  const [amountLoaded, setAmountLoaded] = React.useState<number>(100)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
-  const [selectedFlavourIndex, setSelectedFlavourIndex] =
-    React.useState<number>(-1)
+export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
+  React.forwardRef<LoadingHandle, LoadingSectionProps>(({ className }, ref) => {
+    // if changed, also change in scss
+    const ONIGIRI_AMOUNT = 14
+    // active or not (can be toggled)
 
-  const { scrollEnabled, setScrollEnabled } = React.useContext(AppContext)
+    // TO DO: toggle this before prod
+    // TO DO: create image object to do onload for better performance
+    const [active, setActive] = React.useState<boolean>(false)
+    const [amountLoaded, setAmountLoaded] = React.useState<number>(100)
+    const [loaded, setLoaded] = React.useState<boolean>(false)
 
-  // toggle text
-  const setNewFlavourText = () => {
-    const _nText = LOADING_TEXT.length
-    const _randomIndex = getRandomInt(0, _nText)
-    setSelectedFlavourIndex(_randomIndex)
-  }
+    // flavour
+    const [selectedFlavourIndex, setSelectedFlavourIndex] =
+      React.useState<number>(-1)
 
-  // main toggle
-  const setLoadingActive = (_activeState: boolean) => {
-    setActive(_activeState)
-    // if new state is active (i.e. loading), disable scroll otherwise enable
-    if (_activeState) {
-      setScrollEnabled(false)
-      disableScroll()
-    } else {
-      setScrollEnabled(true)
-      enableScroll()
+    const { scrollEnabled, setScrollEnabled } = React.useContext(AppContext)
+
+    // toggle text
+    const setNewFlavourText = () => {
+      const _nText = LOADING_TEXT.length
+      const _randomIndex = getRandomInt(0, _nText)
+      setSelectedFlavourIndex(_randomIndex)
     }
-  }
 
-  // call to reset loading sequence
-  const resetLoadingPage = () => {
-    setLoadingActive(true)
-    setAmountLoaded(0)
-    setNewFlavourText()
-  }
-
-  // compelted sequence
-  const loadingCompletedSequence = async () => {
-    setLoadingActive(false)
-    await delay(1000)
-    // very important to call this
-    ScrollTrigger.refresh()
-  }
-
-  // initial load
-  React.useEffect(() => {
-    const initialLoad = () => {
-      if (0 > selectedFlavourIndex) {
-        setNewFlavourText()
-        setLoaded(true)
+    // main toggle
+    const setLoadingActive = (_activeState: boolean) => {
+      setActive(_activeState)
+      // if new state is active (i.e. loading), disable scroll otherwise enable
+      if (_activeState) {
+        setScrollEnabled(false)
+        disableScroll()
+      } else {
+        setScrollEnabled(true)
+        enableScroll()
       }
     }
-    active && disableScroll()
-    window.addEventListener('load', initialLoad)
-    return () => {
-      window.removeEventListener('load', initialLoad)
-    }
-  }, [selectedFlavourIndex, active])
 
-  // percentage check
-  React.useEffect(() => {
-    if (100 <= amountLoaded) {
-      loadingCompletedSequence()
+    // call to reset loading sequence
+    const resetLoadingPage = () => {
+      setLoadingActive(true)
+      setAmountLoaded(0)
+      setNewFlavourText()
     }
-  }, [active, amountLoaded])
 
-  // scroll toggle
-  React.useEffect(() => {
-    // if active and can still scroll, set to be in proper state
-    if (loaded) {
-      if (active && scrollEnabled) {
-        setLoadingActive(true)
+    // compelted sequence
+    const loadingCompletedSequence = async () => {
+      setLoadingActive(false)
+      await delay(1000)
+      // very important to call this
+      ScrollTrigger.refresh()
+    }
+
+    // initial load
+    React.useEffect(() => {
+      const initialLoad = () => {
+        if (0 > selectedFlavourIndex) {
+          setNewFlavourText()
+          setLoaded(true)
+        }
       }
-      // otherwise the vice versa is set
-      if (!active && !scrollEnabled) {
-        setLoadingActive(false)
+      active && disableScroll()
+      window.addEventListener('load', initialLoad)
+      return () => {
+        window.removeEventListener('load', initialLoad)
       }
-    }
-  }, [active, scrollEnabled, loaded])
+    }, [selectedFlavourIndex, active])
 
-  const classes = classNames(
-    'section__loading position--relative',
-    active && styles.active,
-    sectionStyles.section,
-    styles.loading,
-    className
-  )
+    // percentage check
+    React.useEffect(() => {
+      if (100 <= amountLoaded) {
+        loadingCompletedSequence()
+      }
+    }, [active, amountLoaded])
 
-  return (
-    <LoadingContext.Provider
-      value={{
-        active,
-        loaded,
-        amountLoaded,
-        setLoadingActive,
-        setLoaded,
-        setAmountLoaded,
-        setNewFlavourText,
-        resetLoadingPage,
-      }}
-    >
+    // scroll toggle
+    React.useEffect(() => {
+      // if active and can still scroll, set to be in proper state
+      if (loaded) {
+        if (active && scrollEnabled) {
+          setLoadingActive(true)
+        }
+        // otherwise the vice versa is set
+        if (!active && !scrollEnabled) {
+          setLoadingActive(false)
+        }
+      }
+    }, [active, scrollEnabled, loaded])
+
+    // access content
+    React.useImperativeHandle(ref, () => ({
+      active,
+      loaded,
+      amountLoaded,
+      setActive,
+      setLoaded,
+      setAmountLoaded,
+      setLoadingActive,
+      setNewFlavourText,
+      resetLoadingPage,
+    }))
+
+    const classes = classNames(
+      'section__loading position--relative',
+      active && styles.active,
+      sectionStyles.section,
+      styles.loading,
+      className
+    )
+
+    return (
       <section className={classes}>
         <div className={styles.body}>
           <div className={styles.carousel}>
@@ -167,28 +184,5 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> = ({
           </div>
         </div>
       </section>
-    </LoadingContext.Provider>
-  )
-}
-
-interface LoadingContextProps {
-  active: boolean
-  loaded: boolean
-  amountLoaded: number
-  setLoaded: React.Dispatch<React.SetStateAction<boolean>>
-  setAmountLoaded: React.Dispatch<React.SetStateAction<number>>
-  setLoadingActive: Function
-  setNewFlavourText: Function
-  resetLoadingPage: Function
-}
-
-export const LoadingContext = React.createContext<LoadingContextProps>({
-  active: true,
-  loaded: false,
-  amountLoaded: 0,
-  setLoaded: () => {},
-  setAmountLoaded: () => {},
-  setLoadingActive: () => {},
-  setNewFlavourText: () => {},
-  resetLoadingPage: () => {},
-})
+    )
+  })

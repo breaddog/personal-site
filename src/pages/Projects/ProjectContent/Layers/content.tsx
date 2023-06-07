@@ -31,22 +31,28 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             we live in.
           </p>
           <br />
-          <p>
+          {/* <p>
             His urban and regional inspired artwork can be seen all over Lisbon
             and some parts of the world, in various global exhibitions, and as
             of last year, the Ethereum Blockchain.
           </p>
-          <br />
+          <br /> */}
           <p>
-            In collaboration with DRP, a collection of interactive generative
-            NFT's (LAYERS) based on his billboard pieces was launched early
-            2022, where users are invited to be a part of the artistic process.
+            In collaboration with DRP, a collection of generative NFT's (LAYERS)
+            based on his billboard pieces was launched early 2022, where users
+            are invited to be a part of the artistic process.
           </p>
           <br />
           <p>
-            Each NFT is an interactive billboard, starting with a blank canvas,
+            Each NFT is an interactive billboard, starting fully covered,
             inviting the owner to optionally "tear" using one of two utility
-            tokens to reveal the final generative piece layer by layer.
+            tear tokens.
+          </p>
+          <br />
+          <p>
+            Various traits and glimpses of the artwork will be made visible with
+            each tear, with three tears required to fully reveal the billboard
+            artwork. Each LAYER and how it tears is unique and randomly set.
           </p>
           <br />
           <p>My roles as a part of the development of this collection are:</p>
@@ -71,51 +77,51 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       ),
     },
   },
-  {
-    type: 'header',
-    props: {
-      content: 'A Quickie on LAYERS',
-    },
-  },
-  {
-    type: 'text',
-    props: {
-      content: (
-        <>
-          <p>
-            Each LAYER has four states and starts off as an unrevealed
-            billboard, giving the user the option to use one of two types of
-            utility tear tokens (Alpha, Beta) a maximum of three times to fully
-            reveal it. Both tears are identical in use, with Alpha tears being
-            obtainable on initial mint or purchasable, and beta tears available
-            through a staking feature released early 2023.
-          </p>
-          <br />
-          <p>
-            With each tear applied, visual glimpses of the artwork and traits
-            will be revealed, providing more information about the final LAYER
-            piece until its full reveal. This means that each state of the LAYER
-            in itself, is an evolving piece of art. Each component of the final
-            LAYER and the way each tear is revealed is randomised, making both
-            revealing and owning a LAYER unique.
-          </p>
-          <br />
-          <p>
-            All functionality related to the project can be performed on the{' '}
-            <Hyperlink>
-              <a
-                href={LAYERS_LINKS.main}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                official site.
-              </a>
-            </Hyperlink>
-          </p>
-        </>
-      ),
-    },
-  },
+  // {
+  //   type: 'header',
+  //   props: {
+  //     content: 'A Quickie on LAYERS',
+  //   },
+  // },
+  // {
+  //   type: 'text',
+  //   props: {
+  //     content: (
+  //       <>
+  //         <p>
+  //           Each LAYER has four states and starts off as an unrevealed
+  //           billboard, giving the user the option to use one of two types of
+  //           utility tear tokens (Alpha, Beta) a maximum of three times to fully
+  //           reveal it. Both tears are identical in use, with Alpha tears being
+  //           obtainable on initial mint or purchasable, and beta tears available
+  //           through a staking feature released early 2023.
+  //         </p>
+  //         <br />
+  //         <p>
+  //           With each tear applied, visual glimpses of the artwork and traits
+  //           will be revealed, providing more information about the final LAYER
+  //           piece until its full reveal. This means that each state of the LAYER
+  //           in itself, is an evolving piece of art. Each component of the final
+  //           LAYER and the way each tear is revealed is randomised, making both
+  //           revealing and owning a LAYER unique.
+  //         </p>
+  //         <br />
+  //         <p>
+  //           All functionality related to the project can be performed on the{' '}
+  //           <Hyperlink>
+  //             <a
+  //               href={LAYERS_LINKS.main}
+  //               target='_blank'
+  //               rel='noopener noreferrer'
+  //             >
+  //               official site.
+  //             </a>
+  //           </Hyperlink>
+  //         </p>
+  //       </>
+  //     ),
+  //   },
+  // },
   {
     type: 'topdown',
     props: {

@@ -7,7 +7,7 @@ import { ROUTES } from './routes'
 
 import { ScrollDirection } from './shared/types'
 
-import { CSSHeader, LoadingContext, LoadingSection, Portfolio } from './pages'
+import { CSSHeader, LoadingHandle, LoadingSection, Portfolio } from './pages'
 import {
   BrowserRouter as Router,
   Route,
@@ -31,7 +31,10 @@ interface AppProps {
 
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
-  const { active } = React.useContext(LoadingContext)
+
+  // loading
+  const loadingRef = React.useRef<LoadingHandle>(null)
+  const loadingRefCurrent = loadingRef?.current
 
   // web3 stuff
   const { account, isActive } = useWeb3React()
@@ -60,7 +63,11 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const isMediumMatcher = window.matchMedia(mediumMediaQuery)
 
   // classes
-  const classes = classNames(styles.app, active && styles.active, className)
+  const classes = classNames(
+    styles.app,
+    loadingRefCurrent?.active && styles.active,
+    className
+  )
 
   // WEB 3
   // ETH BALANCES
@@ -195,6 +202,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
           scrollEnabled,
           scrollDirection,
           setScrollEnabled,
+          loadingRef,
           web3ModalActive,
           setWeb3ModalActive,
           connectionType,
@@ -207,7 +215,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         <div className={classes}>
           <CSSHeader />
           {/* TO DO: link this to load on first visit/if assets require to be loaded */}
-          <LoadingSection />
+          <LoadingSection ref={loadingRef} />
           <WalletConnectModal
             onRequestCloseActive={false}
             isOpen={web3ModalActive}
@@ -263,9 +271,15 @@ interface AppContextProps {
   scrollEnabled: boolean
   scrollDirection: ScrollDirection
   setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
+  // loading
+  loadingRef: React.RefObject<LoadingHandle> | null
+
+  // web3 stuff
+  // modal
   web3ModalActive: boolean
   setWeb3ModalActive: React.Dispatch<React.SetStateAction<boolean>>
-  // web3 stuff
+
+  // connection
   connectionType: ConnectionType | null
   ethBalance: number
   maticBalance: number
@@ -281,6 +295,7 @@ export const AppContext = React.createContext<AppContextProps>({
   scrollEnabled: true,
   scrollDirection: 'up',
   setScrollEnabled: () => {},
+  loadingRef: null,
   web3ModalActive: false,
   setWeb3ModalActive: () => {},
   connectionType: null,

@@ -83,7 +83,7 @@ export const WaveText: React.FunctionComponent<WaveTextProps> = ({
             }}
           >
             {/* edge case for spaces */}
-            {' ' === letter ? <>&nbsp;</> : letter}
+            {letter === ' ' ? <>&nbsp;</> : letter}
           </span>
         )
       })}

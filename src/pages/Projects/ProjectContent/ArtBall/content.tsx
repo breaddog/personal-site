@@ -175,7 +175,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
     },
   },
   {
-    type: 'imageMulti',
+    type: 'imagemulti',
     props: {
       image: {
         multi: [

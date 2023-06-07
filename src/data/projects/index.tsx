@@ -2,11 +2,16 @@ import React from 'react'
 import { CONSTANTS } from '../../shared'
 import { ContractType, NetworkType } from '../../ethereum/utils'
 import { BodyContentProps } from '../../pages/Projects/types'
-import { BODY_CONTENT_BINKINGZ } from '../../pages/Projects/ProjectContent/BinKingz'
 import {
   BINKINGZ_CONTRACT_ADDRESS,
   LAYERS_CONTRACT_ADDRESS
 } from '../../contracts'
+
+import {
+  BODY_CONTENT_BINKINGZ,
+  BODY_CONTENT_REDVILLAGE
+} from '../../pages/Projects/ProjectContent'
+import { REDVILLAGE_GENESIS_CONTRACT_ADDRESS } from '../../contracts/RedVillage'
 
 const { projectImageRoot } = CONSTANTS
 
@@ -109,33 +114,14 @@ export const PROJECTS: {
     ],
     organisation: 'Vhils / DRP / Pellar',
     url: 'https://drp.io/drops/vhils',
-    description: 'Evolving Grafitti NFT Artwork',
+    description:
+      'Interactive Billboard styled artwork by Portugese Street Artist Vhils',
     asset: `${projectImageRoot}/layers/layers.png`,
     alt: 'layers',
     eth: {
       address: LAYERS_CONTRACT_ADDRESS,
       opensea: 'https://opensea.io/collection/drp-vhils',
     },
-  },
-  shintaro: {
-    key: 'shintaro',
-    pathname: 'shintaro',
-    title: 'Shintaro Kago',
-    year: '2021 - 2023',
-    type: 'multi',
-    scope: 'NFT Art Project',
-    role: [
-      'Project Manager',
-      'Front-end Lead',
-      'Asset Management',
-      'Deployment',
-    ],
-    responsibilities: ['Asset Generation & Assembley'],
-    organisation: 'Shintaro Kago / DRP / Pellar',
-    url: 'https://drp.io/artists/shintaro_kago',
-    description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
-    asset: `${projectImageRoot}/shintaro/shintarokago.png`,
-    alt: 'shintaro',
   },
   binkingz: {
     key: 'binkingz',
@@ -158,6 +144,26 @@ export const PROJECTS: {
       opensea: 'https://opensea.io/collection/binkingz',
     },
   },
+  shintaro: {
+    key: 'shintaro',
+    pathname: 'shintaro',
+    title: 'Shintaro Kago',
+    year: '2021 - 2023',
+    type: 'multi',
+    scope: 'NFT Art Project',
+    role: [
+      'Project Manager',
+      'Front-end Lead',
+      'Asset Management',
+      'Deployment',
+    ],
+    responsibilities: ['Asset Generation & Assembley'],
+    organisation: 'Shintaro Kago / DRP / Pellar',
+    url: 'https://drp.io/artists/shintaro_kago',
+    description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
+    asset: `${projectImageRoot}/shintaro/shintarokago.png`,
+    alt: 'shintaro',
+  },
   redvillage: {
     key: 'redvillage',
     pathname: 'redvillage',
@@ -171,12 +177,27 @@ export const PROJECTS: {
       'Asset Handling',
       'Deployment',
     ],
-    responsibilities: [],
+    responsibilities: [
+      'Front-end Developer',
+      'Lead Engineer',
+      'Project Planning and Specifications',
+      'Quality Control',
+      'Game Integration',
+      'Project Management',
+      'Asset Deployment',
+      'CI/CD',
+    ],
     organisation: 'Big Kid Studios / Pellar',
     url: 'https://theredvillage.com/',
-    description: 'Turn Based Battle Arena Game with Unique Characters',
-    asset: `${projectImageRoot}//redvillage/redvillage.jpg`,
+    description:
+      'A revolutionary Play and Earn Turn Based Dark-Fantasy Battle Arena Game hosted on Polygon.',
+    asset: `${projectImageRoot}/redvillage/redvillage.jpg`,
     alt: 'redvillage',
+    body: BODY_CONTENT_REDVILLAGE,
+    eth: {
+      address: REDVILLAGE_GENESIS_CONTRACT_ADDRESS,
+      opensea: 'https://opensea.io/collection/theredvillagechampions',
+    },
   },
   adot: {
     key: 'adot',

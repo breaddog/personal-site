@@ -128,7 +128,7 @@ export const generateProjectBodyElement = ({
         />
       )
 
-    case 'imageMulti':
+    case 'imagemulti':
       return (
         <MultiProjectImageContainer
           className={className}

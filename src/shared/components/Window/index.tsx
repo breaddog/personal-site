@@ -109,7 +109,7 @@ export const Window: React.FC<WindowProps> = React.forwardRef<
     const handleFocus = () => {
       let _foundHighestZIndex
       // first one will always be a search, the rest will be O(1)
-      if (0 === highestZIndex) {
+      if (highestZIndex === 0) {
         const _windows = gsap.utils.toArray('.portfolio__window__dev') as any[]
         const _zIndexes = _windows.map((window: any) =>
           Number(window.style['z-index'])

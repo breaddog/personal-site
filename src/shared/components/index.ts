@@ -11,6 +11,7 @@ export * from './ModalBox'
 export * from './MagneticBox'
 export * from './OnClickAnimation'
 
+export * from './Image'
 export * from './Button'
 export * from './Hyperlink'
 export * from './ToggleSlider'

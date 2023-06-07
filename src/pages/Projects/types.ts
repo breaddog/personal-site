@@ -5,7 +5,7 @@ export type ProjectSectionType =
   | 'text'
   | 'header'
   | 'image'
-  | 'imageMulti'
+  | 'imagemulti'
   | 'top'
   | 'topdown'
   | 'leftright'
@@ -20,6 +20,7 @@ export type ProjectSectionContentType =
 export interface ExtraInfoInterface {
   title: string
   value: string | number | null
+  isHeader?: boolean
   isLink?: boolean
   link?: {
     url: string

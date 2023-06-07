@@ -33,6 +33,9 @@ export const TopProjectSection: React.FunctionComponent<
       </div>
 
       <div className={styles.right}>
+        <div className={classNames(styles.info, styles.infoheader)}>
+          <span className={styles.title}>INFORMATION</span>
+        </div>
         <div className={styles.info}>
           <span className={styles.title}>Role(s):</span>
           <div className={styles.roles}>
@@ -70,12 +73,35 @@ export const TopProjectSection: React.FunctionComponent<
           </Hyperlink>
         </div>
 
+        <div className={styles.responsibilities}>
+          <div className={styles.title}>Responsibilities</div>
+          <ul className={styles.body}>
+            {map(project.responsibilities, (el: string, idx: number) => {
+              return (
+                <li
+                  className={styles.value}
+                  key={idx}
+                >
+                  {el}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+
+        {/* extra info */}
         {map(extraInfo, (info: ExtraInfoInterface, idx: number) => (
           <div
-            className={styles.info}
+            className={classNames(
+              styles.info,
+              info?.isHeader && styles.infoheader
+            )}
             key={idx}
           >
-            <span className={styles.title}>{info.title}:</span>
+            <span className={styles.title}>
+              {info.title}
+              {!info?.isHeader && ':'}
+            </span>
             {info?.isLink ? (
               <Hyperlink className={styles.value}>
                 <a
@@ -92,22 +118,6 @@ export const TopProjectSection: React.FunctionComponent<
             )}
           </div>
         ))}
-
-        <div className={styles.responsibilities}>
-          <div className={styles.title}>Responsibilities</div>
-          <ul className={styles.body}>
-            {map(project.responsibilities, (el: string, idx: number) => {
-              return (
-                <li
-                  className={styles.value}
-                  key={idx}
-                >
-                  {el}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
       </div>
     </div>
   )

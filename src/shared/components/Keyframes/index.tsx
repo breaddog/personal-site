@@ -10,7 +10,7 @@ export const Keyframes: React.FunctionComponent<KeyframeProps> = ({
   animationProps,
 }) => {
   const toCss = (cssObject: React.CSSProperties | string) =>
-    'string' === typeof cssObject
+    typeof cssObject === 'string'
       ? cssObject
       : Object.keys(cssObject).reduce((accumulator, key) => {
           const cssKey = key.replace(/[A-Z]/g, (v) => `-${v.toLowerCase()}`)

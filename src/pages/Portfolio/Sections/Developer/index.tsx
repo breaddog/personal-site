@@ -271,7 +271,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                     alt={ORBIT_ITEMS[selectedItemIndex].alt || ''}
                     style={{
                       filter:
-                        'tien' === ORBIT_ITEMS[selectedItemIndex].alt
+                        ORBIT_ITEMS[selectedItemIndex].alt === 'tien'
                           ? 'brightness(0.2)'
                           : 'initial',
                     }}
@@ -462,6 +462,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                         original design into reality.
                       </p>
 
+                      {/* TO DO: add some more personal info */}
                       <h3 className={styles.text}>
                         <b>What I Bring to the Table</b>
                       </h3>

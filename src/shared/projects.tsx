@@ -2,7 +2,8 @@ import { PROJECTS, ProjectObject } from '../data/projects'
 import {
   ArtBallProject,
   ERC721Project,
-  LayersProject
+  LayersProject,
+  RedVillageProject
   // DefaultProjectTemplate
 } from '../pages/Projects/ProjectContent'
 
@@ -21,6 +22,8 @@ export const fetchProjectContent = async (project: ProjectObject | null) => {
       return <ArtBallProject />
     case 'layers':
       return <LayersProject />
+    case 'redvillage':
+      return <RedVillageProject />
 
     // SECOND: check if can be assigned to one of the templates
     default:

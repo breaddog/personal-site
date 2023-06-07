@@ -35,14 +35,26 @@
       flex-direction: row;
       justify-content: space-between;
 
+      padding-top: 1rem;
       padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(184, 184, 184, 0.1);
 
       // EVALUATE: font size
       font-size: var(--font-p);
 
-      &:not(:nth-child(1)) {
-        border-top: 1px solid rgba(184, 184, 184, 0.1);
-        padding-top: 1rem;
+      &:nth-child(1) {
+        padding-top: 0;
+      }
+
+      &:nth-last-child(1) {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      &.infoheader {
+        border-bottom: none;
+        padding-bottom: 0.25rem;
+        font-size: calc(var(--font-h4));
       }
 
       .value {
@@ -63,8 +75,9 @@
     }
 
     .responsibilities {
-      border-top: 1px solid rgba(184, 184, 184, 0.1);
+      border-bottom: 1px solid rgba(184, 184, 184, 0.1);
       padding-top: 1rem;
+      padding-bottom: 1rem;
 
       .title {
         font-weight: bold;
