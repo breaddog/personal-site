@@ -73,7 +73,7 @@ export const TopProjectSection: React.FunctionComponent<
           </Hyperlink>
         </div>
 
-        <div className={styles.responsibilities}>
+        <div className={classNames(styles.info, styles.responsibilities)}>
           <div className={styles.title}>Responsibilities</div>
           <ul className={styles.body}>
             {map(project.responsibilities, (el: string, idx: number) => {

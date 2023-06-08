@@ -104,7 +104,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
         single: {
           src: '/images/projects/artball/artball-opensea-v1.png',
           alt: 'artball opensea collection',
-          caption: 'OpenSea showcase of the ArtBall collection',
+          caption: 'Opensea showcase of the ArtBall collection',
         },
       },
     },

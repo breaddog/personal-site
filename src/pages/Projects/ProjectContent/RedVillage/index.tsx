@@ -49,21 +49,21 @@ export const RedVillageProject: React.FunctionComponent<
       value: null,
     },
     {
-      title: 'TRV Champions on OpenSea',
+      title: 'TRV Champions on Opensea',
       value: 'View Here',
       isLink: true,
       link: {
         url: project?.eth?.opensea ?? '',
-        title: 'Champions on OpenSea',
+        title: 'Champions on Opensea',
       },
     },
     {
-      title: 'TRV Summoned on OpenSea',
+      title: 'TRV Summoned on Opensea',
       value: 'View Here',
       isLink: true,
       link: {
         url: REDVILLAGE_LINKS.openseaSummon,
-        title: 'Summoned on OpenSea',
+        title: 'Summoned on Opensea',
       },
     },
     {

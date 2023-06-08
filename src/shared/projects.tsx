@@ -1,6 +1,7 @@
 import { PROJECTS, ProjectObject } from '../data/projects'
 import {
   ArtBallProject,
+  DefaultProject,
   ERC721Project,
   LayersProject,
   RedVillageProject
@@ -40,7 +41,13 @@ export const fetchProjectContent = async (project: ProjectObject | null) => {
             />
           )
         default:
-          return null
+          // return null
+          return (
+            <DefaultProject
+              componentkey={key}
+              project={project}
+            />
+          )
       }
   }
 }

@@ -9,7 +9,8 @@ import {
 
 import {
   BODY_CONTENT_BINKINGZ,
-  BODY_CONTENT_REDVILLAGE
+  BODY_CONTENT_REDVILLAGE,
+  BODY_CONTENT_DRP
 } from '../../pages/Projects/ProjectContent'
 import { REDVILLAGE_GENESIS_CONTRACT_ADDRESS } from '../../contracts/RedVillage'
 
@@ -74,10 +75,12 @@ export const PROJECTS: {
     pathname: 'drp',
     title: 'DRP Gallery',
     type: 'partnership',
-    year: '2021 - 2022',
+    year: '2021 - 2023',
     scope: 'NFT Art Gallery',
     role: ['Associate Developer', 'Lead Engineer'],
     responsibilities: [
+      'Lead Engineer and Developer',
+      'Project Manager',
       'Discuss Development Specificiations',
       'Develop Bespoke Websites',
       'Assemble and upload assets',
@@ -86,10 +89,11 @@ export const PROJECTS: {
       'Infrastructure Maintenance',
     ],
     organisation: 'DRP / Pellar',
-    url: 'https://drp.io',
-    description: 'Melbourne\'s First NFT Art Gallery Organisation',
+    url: 'https://drp.gallery',
+    description: 'Melbourne\'s First NFT focused Art Gallery Organisation',
     asset: `${projectImageRoot}/drp/drp.jpg`,
     alt: 'drp main page',
+    body: BODY_CONTENT_DRP,
   },
   layers: {
     key: 'layers',

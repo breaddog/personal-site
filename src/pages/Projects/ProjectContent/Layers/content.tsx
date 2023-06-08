@@ -10,6 +10,7 @@ export const LAYERS_LINKS: {
   main: 'https://drp.io/drops/vhils',
   opensea: 'https://opensea.io/collection/drp-vhils',
   openseaTears: 'https://opensea.io/collection/drp-vhils-layers-tears',
+  artistDRP: 'https://drp.io/artists/vhils',
   artist: 'https://vhils.com/',
 }
 

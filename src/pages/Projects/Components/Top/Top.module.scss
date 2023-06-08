@@ -18,7 +18,7 @@
 
   .right {
     width: 50%;
-    height: auto;
+    height: fit-content;
     background-color: var(--dark-grey);
     box-shadow: var(--box-shadow);
 
@@ -41,6 +41,24 @@
 
       // EVALUATE: font size
       font-size: var(--font-p);
+
+      &.responsibilities {
+        flex-direction: column;
+        justify-content: flex-start;
+        border-bottom: 1px solid rgba(184, 184, 184, 0.1);
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .title {
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+
+        .value {
+          margin-bottom: 0.5rem;
+          width: fit-content;
+        }
+      }
 
       &:nth-child(1) {
         padding-top: 0;
@@ -73,21 +91,6 @@
         }
       }
     }
-
-    .responsibilities {
-      border-bottom: 1px solid rgba(184, 184, 184, 0.1);
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-
-      .title {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-      }
-
-      .value {
-        margin-bottom: 0.5rem;
-      }
-    }
   }
 }
 
@@ -118,6 +121,7 @@
 
         .value {
           text-align: start;
+          width: fit-content;
         }
 
         .roles {

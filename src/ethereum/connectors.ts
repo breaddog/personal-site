@@ -157,9 +157,14 @@ export const checkIfProviderInstalled = async (
 export const tryActivateConnector = async (
   connector: Connector
 ): Promise<ConnectionType | undefined> => {
-  await connector.activate()
-  const connectionType = getConnection(connector).type
-  return connectionType
+  try {
+    await connector.activate()
+    const connectionType = getConnection(connector).type
+    return connectionType
+  } catch (err) {
+    console.log(err)
+    return
+  }
 }
 
 export const tryDeactivateConnector = async (
