@@ -10,6 +10,8 @@ export interface GenericContractInterface {
   type?: ContractType
   abi: ethers.InterfaceAbi
   network: NetworkType
+  decimals?: number
+  symbol?: string
 }
 
 export const chainIdToName = (chainId: number) => {

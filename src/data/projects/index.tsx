@@ -4,13 +4,17 @@ import { ContractType, NetworkType } from '../../ethereum/utils'
 import { BodyContentProps } from '../../pages/Projects/types'
 import {
   BINKINGZ_CONTRACT_ADDRESS,
+  CROWN_TOKEN_CONTRACT_ADDRESS,
+  CROWN_TOKEN_DECIMALS,
+  CROWN_TOKEN_SYMBOL,
   LAYERS_CONTRACT_ADDRESS
 } from '../../contracts'
 
 import {
   BODY_CONTENT_BINKINGZ,
   BODY_CONTENT_REDVILLAGE,
-  BODY_CONTENT_DRP
+  BODY_CONTENT_DRP,
+  BODY_CONTENT_ADOT
 } from '../../pages/Projects/ProjectContent'
 import { REDVILLAGE_GENESIS_CONTRACT_ADDRESS } from '../../contracts/RedVillage'
 
@@ -39,6 +43,8 @@ export interface ProjectObject {
     network?: NetworkType
     address: string
     opensea?: string
+    decimals?: number
+    symbol?: string
   }
 }
 
@@ -132,7 +138,7 @@ export const PROJECTS: {
     pathname: 'binkingz',
     title: 'BinKingz',
     type: 'ERC721',
-    year: '2022',
+    year: '2021 - 2022',
     scope: 'NFT Artwork',
     role: ['Project Manager', 'Front-end Lead'],
     responsibilities: ['Asset Engineer', 'Front-end Lead'],
@@ -148,32 +154,32 @@ export const PROJECTS: {
       opensea: 'https://opensea.io/collection/binkingz',
     },
   },
-  shintaro: {
-    key: 'shintaro',
-    pathname: 'shintaro',
-    title: 'Shintaro Kago',
-    year: '2021 - 2023',
-    type: 'multi',
-    scope: 'NFT Art Project',
-    role: [
-      'Project Manager',
-      'Front-end Lead',
-      'Asset Management',
-      'Deployment',
-    ],
-    responsibilities: ['Asset Generation & Assembley'],
-    organisation: 'Shintaro Kago / DRP / Pellar',
-    url: 'https://drp.io/artists/shintaro_kago',
-    description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
-    asset: `${projectImageRoot}/shintaro/shintarokago.png`,
-    alt: 'shintaro',
-  },
+  // shintaro: {
+  //   key: 'shintaro',
+  //   pathname: 'shintaro',
+  //   title: 'Shintaro Kago',
+  //   year: '2021 - 2023',
+  //   type: 'multi',
+  //   scope: 'NFT Art Project',
+  //   role: [
+  //     'Project Manager',
+  //     'Front-end Lead',
+  //     'Asset Management',
+  //     'Deployment',
+  //   ],
+  //   responsibilities: ['Asset Generation & Assembley'],
+  //   organisation: 'Shintaro Kago / DRP / Pellar',
+  //   url: 'https://drp.io/artists/shintaro_kago',
+  //   description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
+  //   asset: `${projectImageRoot}/shintaro/shintarokago.png`,
+  //   alt: 'shintaro',
+  // },
   redvillage: {
     key: 'redvillage',
     pathname: 'redvillage',
     title: 'The Red Village',
     type: 'ERC721',
-    year: '2022 - Present',
+    year: '2021 - 2023',
     scope: 'NFT Turn-Based Battle Arena',
     role: [
       'Front-end Developer',
@@ -206,33 +212,29 @@ export const PROJECTS: {
   adot: {
     key: 'adot',
     pathname: 'adot',
-    title: 'ADOTMarketplace',
-    year: '2022 - Present',
+    title: 'ADOT Marketplace',
+    year: '2022 - 2023',
     type: 'ERC20',
     scope: 'NFT Community Hub',
     role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
-    responsibilities: [],
-    organisation: 'T&B Global Media / Translucia / Pellar',
+    responsibilities: [
+      'Project and Team Management',
+      'Lead Engineer',
+      'Front-end Lead',
+      'Asset Deployment',
+      'Client Liaisoning',
+    ],
+    organisation: 'T&B Global Media / VUCA Digital / Pellar',
     url: 'https://adotmarketplace.io/',
     description:
       'NFT Community Hub that focuses around using Tokens to participate in activities like voting, staking and purchasing NFT\'s',
     asset: `${projectImageRoot}/adot/adotmarketplace.jpg`,
     alt: 'adot',
-  },
-  crown: {
-    key: 'crown',
-    pathname: 'crowntoken',
-    title: 'Crown Token',
-    type: 'ERC20',
-    year: '2022 - Present',
-    scope: 'NFT Community Hub',
-    role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
-    responsibilities: [],
-    organisation: 'T&B Global Media / Translucia / Pellar',
-    url: 'https://crowntoken.io/',
-    description:
-      'ERC20 Token created with utility in mind for the ADOTMarketplace community',
-    asset: `${projectImageRoot}/crown/crowntoken.jpg`,
-    alt: 'crown',
+    body: BODY_CONTENT_ADOT,
+    eth: {
+      address: CROWN_TOKEN_CONTRACT_ADDRESS,
+      decimals: CROWN_TOKEN_DECIMALS,
+      symbol: CROWN_TOKEN_SYMBOL,
+    },
   },
 }

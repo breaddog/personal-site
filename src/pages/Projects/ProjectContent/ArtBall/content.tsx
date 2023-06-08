@@ -25,7 +25,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             display cases that exist on the Ethereum Blockchain throughout the
             two-week event.
           </p>
-          <br />
+
           <p>
             Each ArtBall assigned randomly to 1 of 9230 unique plots on a
             virtual tennis court. Winning shots that land on a given plot each
@@ -34,7 +34,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             throughout the event, usually staggered by a day to account for data
             processing.
           </p>
-          <br />
+
           <p>My role in the two years of the ArtBall project was to:</p>
           <ul>
             <li>
@@ -74,14 +74,14 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             automated for all initial 6776 ArtBalls for the AO22, and 9230
             ArtBalls for AO23.
           </p>
-          <br />
+
           <p>
             This allowed for customisability and more importantly, a streamlined
             and extendable process of updating ArtBalls associated with winning
             plots by adding stickers or frame changes once the data is avaialble
             to be processed (see above image for examples).
           </p>
-          <br />
+
           <p>
             Metadata for each ArtBall is also enriched with information from
             each winning match point on each update, allowing for a correlation
@@ -121,7 +121,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             as the lead engineer and project manager, this was a big test
             towards my coding and management skills.
           </p>
-          <br />
+
           <p>For AO23 we had a few requirements which included websites to:</p>
           <ul>
             <li>Redeem groundpasses to the event for AO22 ArtBall Owners.</li>
@@ -130,7 +130,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
               Show all ArtBalls and their associated match data from the event.
             </li>
           </ul>
-          <br />
+
           <p>
             These all came with their own technical challenges and difficulties,
             with the most difficult being the Matchpoints site, as we had to
@@ -164,7 +164,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             evolving and enhancing proposals into a streamlined process that
             abided by the hard requirements set out by the client.
           </p>
-          <br />
+
           <p>
             Active care was given to ensuring the client and developers were
             kept on the same page through active updates and discussions,
@@ -209,7 +209,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             two AO ArtBall events with many new innovations and things learnt
             along the way.
           </p>
-          <br />
+
           <p>
             Personally this project will always be one that I am happy to
             discuss about as not only does it highlight the first marraige of

@@ -14,6 +14,7 @@ import {
   ExtraInfoWrapperProps
 } from '../../types'
 import { generateProjectBodyElement } from '../../helpers'
+import { TopProjectSection } from '../../Components'
 
 export interface DefaultProjectProps {
   className?: string

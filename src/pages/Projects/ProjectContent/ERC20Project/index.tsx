@@ -1,4 +1,4 @@
-import erc721Styles from './ERC721Project.module.scss'
+import erc20Styles from './ERC20Project.module.scss'
 import styles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
@@ -16,7 +16,7 @@ import {
 import { generateProjectBodyElement } from '../../helpers'
 import { TopProjectSection } from '../../Components'
 
-export interface ERC721ProjectProps {
+export interface ERC20ProjectProps {
   className?: string
   componentkey?: string
   project: ProjectObject
@@ -24,7 +24,7 @@ export interface ERC721ProjectProps {
   overrideExtraInfo?: boolean
 }
 
-export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
+export const ERC20Project: React.FunctionComponent<ERC20ProjectProps> = ({
   className,
   componentkey,
   project,
@@ -33,32 +33,29 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
 }) => {
   const { account } = useWeb3React()
 
-  const classes = classNames(erc721Styles.project, styles.container, className)
+  const classes = classNames(erc20Styles.project, styles.container, className)
 
-  const erc721Request = RequestFactory.getRequest('ERC721Request', {
+  const erc20Request = RequestFactory.getRequest('ERC20Request', {
     address: project.eth?.address ?? '',
+    decimals: project.eth?.decimals ?? 18,
+    symbol: project.eth?.symbol ?? '',
+    unique: true,
   })
 
   const [balance, setBalance] = React.useState<number>(-1)
-  const [totalSupply, setTotalSupply] = React.useState<number>(-1)
+  const [totalSupply, setTotalSupply] = React.useState<number>(0)
 
   const extraWeb3Info: ExtraInfoInterface[] = [
     {
-      title: 'Opensea Collection',
-      value: 'View Here',
-      isLink: true,
-      link: {
-        title: 'View Collection on Opensea',
-        url: project.eth?.opensea ?? '',
-      },
+      title: 'Total Supply',
+      value: `${totalSupply} ${project?.eth?.symbol}`,
     },
     {
-      title: 'Total Sold',
-      value: `${totalSupply}`,
-    },
-    {
-      title: 'Owned:',
-      value: balance < 0 ? 'Connect Wallet to View' : balance,
+      title: 'Owned',
+      value:
+        balance < 0
+          ? 'Connect Wallet to View'
+          : `${balance} ${project?.eth?.symbol}`,
     },
   ]
 
@@ -72,7 +69,7 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
 
   const getTotalSupply = async () => {
     try {
-      const _supply = await erc721Request.getTotalSupply()
+      const _supply = await erc20Request.getTotalSupply()
       setTotalSupply(_supply)
     } catch (err) {
       console.log(err)
@@ -82,7 +79,7 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
   const getBalance = async (account: string | null) => {
     if (!account) return
     try {
-      const _balance = await erc721Request.getBalanceOf(account)
+      const _balance = await erc20Request.getBalanceOf(account)
       setBalance(_balance)
     } catch (err) {
       console.log(err)
@@ -93,11 +90,11 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
     setBalance(-1)
   }
 
-  React.useEffect(() => {
-    getTotalSupply()
-  }, [])
+  // React.useEffect(() => {
+  //   getTotalSupply()
+  // }, [])
 
-  // BEFORE DEPLOY: reactive web3
+  // // BEFORE DEPLOY: reactive web3
   // React.useEffect(() => {
   //   if (account) {
   //     getBalance(account)

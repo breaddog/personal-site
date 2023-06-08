@@ -9,6 +9,7 @@ import { isUndefined } from 'lodash'
 
 interface ImageProps extends LazyLoadImageProps {}
 
+// TO DO: hook this up to load via toload and other components
 export const Image: React.FunctionComponent<ImageProps> = (props) => {
   const classes = classNames(styles.image, props.className)
 

@@ -23,20 +23,20 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
             pecking around your bins to now fabulously dressed out in the
             Metaverse and unapologetically Aussie.
           </p>
-          <br />
+
           <p>
             Syndey based grafitti artist Scott Marsh launched this project based
             around Australia's most known avian (outsite of KFC), giving each
             Bin Chicken or "Bin King" a unique randomly generated look with
             unique traits.
           </p>
-          <br />
+
           <p>
             The project also had a tie in with a local beer company to produce a
             limited run edition of a fruity-tasting beer dubbed, you guessed it.
             Bin Juice.
           </p>
-          <br />
+
           <p>The main roles I contributed towards the collection are:</p>
           <ul>
             <li>
@@ -96,14 +96,14 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       content: (
         <>
           <h3>Roadmap Section</h3>
-          <br />
+
           <p>
             At the same time, the most complex and time consuming yet the most
             satisfying section. The main challenges were mostly around the
             scroll triggered "red treasure path" and getting it to time with
             various milestones to give it the traversing effect.
           </p>
-          <br />
+
           <p>
             After some trial and error, thanks to the GSAP Animation package, a
             solution was crafted allowing for the intended smooth path tracing
@@ -121,7 +121,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       content: (
         <>
           <h3>Landing Section</h3>
-          <br />
+
           <p>
             Although one of the more simple looking ones, the parallax effect as
             you scroll where the bin chickens and their props "explode" apart as
@@ -129,14 +129,14 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
             provide some interesting flavour and personality to these lovable
             (subjective) chooks.
           </p>
-          <br />
+
           <p>
             They always say first-impressions are important, and with the GIF
             text-boxes and parallax it invites you to continue browsing.
           </p>
-          <br />
+
           <h3>About Artist Section</h3>
-          <br />
+
           <p>
             Personally, I like black as a colour, very neutral and classy which
             is what the artist section gives off. Basic at first glance but not
@@ -146,7 +146,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
               <i>glitch out.</i>
             </s>
           </p>
-          <br />
+
           <p>
             Really like the retro vibe and finding a solution to achieve that
             effect without eating up the browser's memory was a fun challenge.
@@ -178,13 +178,13 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
             the design team that conceptualised the designs and of course Scott
             Marsh himself for the awesome Aussie styled Chooks that are smokin'.
           </p>
-          <br />
+
           <p>
             These Bin Kingz are still availalble for grabs if you wish at just
             0.069ETH (nice) for one, mintable from the main site, or if you
             fancy getting an existing one for sale on Opensea.
           </p>
-          <br />
+
           <p>Links:</p>
           <ul>
             {map(BINKINGZ_LINKS, (link: string, key: string) => {

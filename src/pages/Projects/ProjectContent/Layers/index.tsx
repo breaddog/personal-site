@@ -54,9 +54,6 @@ export const LayersProject: React.FunctionComponent<LayersProjectProps> = ({
   // supply
   const [totalSupplyLayers, setTotalSupplyLayers] = React.useState<number>(-1)
 
-  // TO DO: finish layers section, include and do a unique showcase
-  // then hook up the requests
-
   // top extra information
   const extraWeb3Info: ExtraInfoInterface[] = [
     {

@@ -2,11 +2,22 @@ import { PROJECTS, ProjectObject } from '../data/projects'
 import {
   ArtBallProject,
   DefaultProject,
+  ERC20Project,
   ERC721Project,
   LayersProject,
   RedVillageProject
   // DefaultProjectTemplate
 } from '../pages/Projects/ProjectContent'
+import { BodyContentProps } from '../pages/Projects/types'
+
+export const DEFAULT_PROJECT_TOP: BodyContentProps[] = [
+  {
+    type: 'top',
+    props: {
+      content: 'Content currently under development!',
+    },
+  },
+]
 
 export const fetchProject = async (projectKey: string) => {
   const _projects = PROJECTS[projectKey.toLowerCase()]
@@ -29,10 +40,19 @@ export const fetchProjectContent = async (project: ProjectObject | null) => {
     // SECOND: check if can be assigned to one of the templates
     default:
       // nothing yet? use default template
-      if (!project?.body) return null
+      if (!project?.body) {
+        project.body = DEFAULT_PROJECT_TOP
+      }
 
       // otherwise check
       switch (type) {
+        case 'ERC20':
+          return (
+            <ERC20Project
+              componentkey={key}
+              project={project}
+            />
+          )
         case 'ERC721':
           return (
             <ERC721Project

@@ -11,6 +11,8 @@ export class ERC20Request extends ContractRequest {
   ADDRESS: string
   CONTRACT: ethers.Contract
   INTERFACE: ethers.Interface
+  DECIMALS: number
+  SYMBOL: string
 
   constructor(props: GenericContractInterface) {
     super(props.network)
@@ -20,13 +22,15 @@ export class ERC20Request extends ContractRequest {
     })
     this.ADDRESS = props.address
     this.INTERFACE = new ethers.Interface(ERC20_INTERFACE)
+    this.DECIMALS = props.decimals ?? 18
+    this.SYMBOL = props.symbol ?? ''
   }
 
   // balance
   async getBalanceOf(wallet: string) {
     try {
       const balance = await this.CONTRACT.balanceOf(wallet)
-      return Number(balance.toString())
+      return Number(ethers.formatEther(balance))
     } catch (err) {
       console.log(err)
       console.log('balance 20 error', this.ADDRESS)
@@ -37,10 +41,10 @@ export class ERC20Request extends ContractRequest {
   async getTotalSupply() {
     try {
       const totalSupply = await this.CONTRACT.totalSupply()
-      return Number(totalSupply)
+      return Number(ethers.formatEther(totalSupply))
     } catch (err) {
       console.log(err)
-      console.log('totalsupply 721 error', this.ADDRESS)
+      console.log('totalsupply 20 error', this.ADDRESS)
       return 0
     }
   }

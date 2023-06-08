@@ -151,7 +151,6 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                                 )}
                               >
                                 <div className={frameStyles.container}>
-                                  {/* TO DO: description, links... */}
                                   <p className={frameStyles.description}>
                                     {project.description}
                                   </p>
