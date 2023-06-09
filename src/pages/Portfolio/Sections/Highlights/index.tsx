@@ -122,7 +122,12 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                 <br />
                 Some projects are Web3 Enabled as well.
               </SectionSubHeader>
-              <Swiper {...swiperParams}>
+              <Swiper
+                {...swiperParams}
+                data-aos='zoom-in'
+                data-aos-delay='100'
+                data-aos-offset='200'
+              >
                 {map(PROJECTS, (project: ProjectObject, idx: number) => {
                   return (
                     <LazyLoadComponent key={idx + 100}>

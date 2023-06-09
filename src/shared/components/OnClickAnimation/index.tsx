@@ -3,6 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { delay } from 'lodash'
+import { GenericAOSInterface, filterAOSProps } from '../../AOS'
 
 interface OnClickAnimationProps {
   className?: string
@@ -19,11 +20,10 @@ interface OnClickAnimationProps {
 }
 
 // use for cosmetic purposes only
-export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
-  className,
-  animation,
-  children,
-}) => {
+export const OnClickAnimation: React.FC<OnClickAnimationProps> = (
+  props: React.PropsWithChildren<OnClickAnimationProps>
+) => {
+  const { className, animation, children } = props
   // animation props
   const [animating, setAnimating] = React.useState<boolean>(false)
 
@@ -36,6 +36,8 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
     onComplete = () => {},
     name = null,
   } = animation
+
+  const aos_props = filterAOSProps(props)
 
   const classes = classNames(
     styles.animation,
@@ -77,6 +79,7 @@ export const OnClickAnimation: React.FC<OnClickAnimationProps> = ({
       className={classes}
       onClick={() => handleToggleAnimation()}
       style={getStyles()}
+      {...aos_props}
     >
       {children}
     </div>

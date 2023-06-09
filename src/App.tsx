@@ -1,3 +1,4 @@
+import 'aos/dist/aos.css'
 import styles from './App.module.scss'
 import React from 'react'
 import AOS from 'aos'
@@ -185,12 +186,16 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
   // AOS
   React.useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      startEvent: 'DOMContentLoaded',
-      once: true,
-    })
-  }, [])
+    // only trigger animations after load
+    if (loadingRefCurrent?.loaded) {
+      AOS.init({
+        duration: 1000,
+        startEvent: 'DOMContentLoaded',
+        once: true,
+        delay: 100,
+      })
+    }
+  }, [loadingRefCurrent])
 
   return (
     <Router>

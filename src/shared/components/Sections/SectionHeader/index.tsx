@@ -36,7 +36,7 @@ export const SectionHeader: React.FunctionComponent<SectionHeaderProps> = ({
         className={styles.icon}
         src={src}
         alt={alt}
-        backgroundColor={backgroundColour}
+        backgroundColour={backgroundColour}
         onClick={onClick}
       />
     </div>

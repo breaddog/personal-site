@@ -128,13 +128,21 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
             <div className={styles.body}>
               <div className={styles.left}>
                 <div className={styles.top}>
-                  <h3 className={classNames(styles.subheader, styles.main)}>
+                  <h3
+                    className={classNames(styles.subheader, styles.main)}
+                    data-aos='fade-right'
+                    data-aos-delay='100'
+                  >
                     Buzzwords?
                   </h3>
-                  <div className={styles.text}>
+                  <div
+                    className={styles.text}
+                    data-aos='fade-right'
+                    data-aos-delay='200'
+                  >
                     <p>
                       Putting the hot buzzwords aside, certain parts of the site
-                      are Web3 enabled and engages with the{' '}
+                      are <b>Web3 enabled</b> and engages with the{' '}
                       <b>Ethereum Blockchain.</b>
                     </p>
                     <br />
@@ -173,7 +181,11 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                 </div>
 
                 <div className={styles.faq}>
-                  <h3 className={classNames(styles.subheader, styles.main)}>
+                  <h3
+                    className={classNames(styles.subheader, styles.main)}
+                    data-aos='fade-right'
+                    data-aos-delay='250'
+                  >
                     A Small FAQ!
                   </h3>
                   {map(WEB3_FAQ, (faq: Web3FaqProps, idx: number) => (
@@ -185,17 +197,21 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                         content: faq.title,
                       }}
                       bodyclassname={styles.faqContent}
+                      data-aos='fade-right'
+                      data-aos-delay={250 + 50 * idx}
                     >
                       {faq.content}
                     </CollapsibleFAQ>
                   ))}
-
+                  {/* separate due to some nested import bug */}
                   <CollapsibleFAQ
                     title={{
                       classname: styles.subheader,
                       content: 'Confusing? TL;DR? Check Here!',
                     }}
                     bodyclassname={styles.faqContent}
+                    data-aos='fade-right'
+                    data-aos-delay={250 + 50 * WEB3_FAQ.length}
                   >
                     <p>
                       For more information on Ethereum, how it functions and its
@@ -213,7 +229,12 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   </CollapsibleFAQ>
                 </div>
               </div>
-              <div className={classNames(styles.right, 'web3__right')}>
+              <div
+                className={classNames(styles.right, 'web3__right')}
+                data-aos='zoom-in-left'
+                data-aos-offset='400'
+                data-aos-delay={250 + 50 * WEB3_FAQ.length}
+              >
                 <Window
                   className={styles.window}
                   windowTitle='Ethereum Demonstrator'

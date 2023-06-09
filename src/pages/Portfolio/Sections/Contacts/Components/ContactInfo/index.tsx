@@ -1,8 +1,9 @@
 import styles from './ContactInfo.module.scss'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import classNames from 'classnames'
 import { MagneticBox, CircularText } from '../../../../../../shared/components'
 import { RotationDirection } from '../../../../../../shared/types/effects'
+import { filterAOSProps } from '../../../../../../shared/AOS'
 
 export interface ContactInfoProps {
   className?: string
@@ -23,15 +24,12 @@ export interface ContactInfoProps {
   hoverText?: string | React.ReactFragment | Element
 }
 
-export const ContactInfo: React.FunctionComponent<ContactInfoProps> = ({
-  className,
-  type,
-  link,
-  icon,
-  circularText,
-  hoverText,
-}) => {
+export const ContactInfo: React.FunctionComponent<ContactInfoProps> = (
+  props: PropsWithChildren<ContactInfoProps>
+) => {
+  const { className, type, link, icon, circularText, hoverText } = props
   const classes = classNames(styles.wrapper, styles[type], className)
+  const aos_props = filterAOSProps(props)
 
   // text
   const {
@@ -49,7 +47,10 @@ export const ContactInfo: React.FunctionComponent<ContactInfoProps> = ({
   }
 
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      {...aos_props}
+    >
       <MagneticBox
         className={styles.contactBox}
         innerBoxClassName={styles.contactBoxBody}

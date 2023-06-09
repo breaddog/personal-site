@@ -7,10 +7,12 @@ import { ScrollTrigger } from 'gsap/all'
 import { LOADING_TEXT } from './LoadingText'
 
 import { delay, map } from 'lodash'
-import onigiriSVG from '../../assets/icons/onigiri.svg'
 import { disableScroll, enableScroll, getRandomInt } from '../../shared/'
 import { Image, LoadingDots } from '../../shared/components'
 import { AppContext } from '../../App'
+
+import AOS from 'aos'
+import onigiriSVG from '../../assets/icons/onigiri.svg'
 
 export interface LoadingHandle {
   active: boolean
@@ -40,9 +42,10 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     // if changed, also change in scss
     const ONIGIRI_AMOUNT = 14
     // active or not (can be toggled)
-
+    // DEBUG: toggle all to false
     const [front, setFront] = React.useState<boolean>(true)
     const [active, setActive] = React.useState<boolean>(true)
+
     const [loaded, setLoaded] = React.useState<boolean>(false)
 
     // IF LOADING BAR USED
@@ -92,6 +95,7 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       // very important to call this
       delay(() => {
         ScrollTrigger.refresh()
+        AOS.refreshHard()
       }, 1000)
 
       // delay on this needed as well
@@ -175,10 +179,10 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
 
     const classes = classNames(
       'section__loading position--relative',
-      active && styles.active,
-      front && styles.front,
-      sectionStyles.section,
       styles.loading,
+      sectionStyles.section,
+      styles[active ? 'active' : 'default'],
+      front && styles.front,
       className
     )
 
@@ -186,7 +190,12 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       <section className={classes}>
         <div className={styles.body}>
           <div className={styles.carousel}>
-            <div className={styles.carouselTrack}>
+            <div
+              className={classNames(
+                styles.carouselTrack,
+                !active && styles.paused
+              )}
+            >
               {map([...Array(ONIGIRI_AMOUNT).keys()], (_, idx: number) => {
                 return (
                   <div

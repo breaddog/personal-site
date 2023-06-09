@@ -56,6 +56,8 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> =
                     jobData={job}
                     componentKey={idx}
                     key={idx}
+                    data-aos='fade-down'
+                    data-aos-delay={150 + 50 * idx}
                   />
                 )
               })}

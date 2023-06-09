@@ -63,11 +63,11 @@ export const WEB3_FAQ: Web3FaqProps[] = [
       <>
         <p>
           Ethereum works off a <b>Proof of Stake</b> network, meaning the more
-          you stake in the network when starting a{' '}
-          <b>validator node (independent person)</b>, the higher chance you have
-          of being <b>selected</b> as one of the validator nodes participating
-          in the <b>validation of a single block</b> and receiving a cut of fees
-          used in transactions from the block.
+          you stake in the network when starting a <b>validator node</b>, the
+          higher chance you have of being <b>selected</b> as one of the
+          validator nodes participating in the{' '}
+          <b>validation of a single block</b> and receiving a cut of fees used
+          in transactions from the block (you might even be tipped for it!).
         </p>
         <br />
         <p>

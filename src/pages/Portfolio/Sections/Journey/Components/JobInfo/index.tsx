@@ -12,6 +12,7 @@ import {
 // import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { AppContext } from '../../../../../../App'
 import { Image } from '../../../../../../shared/components'
+import { filterAOSProps } from '../../../../../../shared/AOS'
 
 interface JobInfoProps {
   className?: string
@@ -19,12 +20,13 @@ interface JobInfoProps {
   jobData?: JobPosition
 }
 
-export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
-  className,
-  componentKey,
-  jobData,
-}) => {
+export const JobInfo: React.FunctionComponent<JobInfoProps> = (
+  props: React.PropsWithChildren<JobInfoProps>
+) => {
+  const { className, componentKey, jobData } = props
+
   const classes = classNames(styles.box, className)
+  const aos_props = filterAOSProps(props)
 
   const { isMobile } = React.useContext(AppContext)
 
@@ -90,6 +92,7 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
       className={classes}
       key={componentKey}
       ref={boxRef}
+      {...aos_props}
     >
       <div
         className={classNames(

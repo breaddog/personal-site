@@ -44,7 +44,8 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   closeOnChange = true,
 }) => {
   const { flexActive = true, flexSize = 1080 } = mobile
-  const { web3ModalActive, setWeb3ModalActive } = React.useContext(AppContext)
+  const { web3ModalActive, setWeb3ModalActive, scrollDirection } =
+    React.useContext(AppContext)
 
   const mobileHeaderMatcher = window.matchMedia(`(max-width: ${flexSize}px)`)
 
@@ -53,8 +54,8 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   // mobile menu active
   const [mobileHeaderActive, setMobileHeaderActive] =
     React.useState<boolean>(false)
-  // const [desktopHeaderHover, setDesktopHeaderHover] =
-  //   React.useState<boolean>(false)
+  const [desktopHeaderHover, setDesktopHeaderHover] =
+    React.useState<boolean>(false)
 
   const headerRef = React.useRef<HTMLHeadElement>(null)
 
@@ -87,10 +88,11 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   // classes
   const regularClasses = classNames(
     styles.header,
-    // 'down' === scrollDirection && !desktopHeaderHover && styles.hidden,
+    'down' === scrollDirection && !desktopHeaderHover && styles.hidden,
     mobileHeaderActive && styles.disabled,
     className
   )
+
   const mobileClasses = classNames(
     styles.mobileHeader,
     active && styles.active,
@@ -99,37 +101,37 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   )
 
   // hover over effect
-  // const handleDesktopMouseHoverEnter = () => {
-  //   if (mobileHeaderActive) return
-  //   if ('down' === scrollDirection) {
-  //     setDesktopHeaderHover(true)
-  //   }
-  // }
-
-  // const handleDesktopMouseHoverLeave = () => {
-  //   if (mobileHeaderActive) return
-  //   setDesktopHeaderHover(false)
-  // }
-
-  // SCROLL HIDE
-  const handleScrollEnd = React.useMemo(
-    () =>
-      debounce(() => headerRef.current?.classList.remove(styles.hidden), 600),
-    []
-  )
-
-  // end scroll
-  const handleScroll = () => {
-    headerRef.current?.classList.add(styles.hidden)
-    handleScrollEnd()
+  const handleDesktopMouseHoverEnter = () => {
+    if (mobileHeaderActive) return
+    if ('down' === scrollDirection) {
+      setDesktopHeaderHover(true)
+    }
   }
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [headerRef])
+  const handleDesktopMouseHoverLeave = () => {
+    if (mobileHeaderActive) return
+    setDesktopHeaderHover(false)
+  }
+
+  // // UNCOMMENT FOR DEBOUNCE VERSION
+  // const handleScrollEnd = React.useMemo(
+  //   () =>
+  //     debounce(() => headerRef.current?.classList.remove(styles.hidden), 600),
+  //   []
+  // )
+
+  // // end scroll
+  // const handleScroll = () => {
+  //   headerRef.current?.classList.add(styles.hidden)
+  //   handleScrollEnd()
+  // }
+
+  // React.useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll)
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll)
+  //   }
+  // }, [headerRef])
 
   // section change
   const handleSectionChange = (sectionKey: string) => {
@@ -144,8 +146,8 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
       <header
         className={regularClasses}
         ref={headerRef}
-        // onMouseEnter={() => handleDesktopMouseHoverEnter()}
-        // onMouseLeave={() => handleDesktopMouseHoverLeave()}
+        onMouseEnter={() => handleDesktopMouseHoverEnter()}
+        onMouseLeave={() => handleDesktopMouseHoverLeave()}
       >
         <div className={styles.container}>
           <OnClickAnimation

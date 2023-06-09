@@ -145,6 +145,8 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                             props.className
                           )}
                           key={idx}
+                          data-aos='fade-down'
+                          data-aos-delay={200 + 200 * idx}
                         />
                       )
                     }

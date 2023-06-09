@@ -76,6 +76,7 @@ export const WalletConnectModal: React.FunctionComponent<
     }
   }, [provider])
 
+  // TO DO: change for majority of window.ethereum to use browser's
   return (
     <PopupModal {...walletProps}>
       <div className={styles.body}>
@@ -135,10 +136,11 @@ export const WalletConnectModal: React.FunctionComponent<
           </div>
         )}
         {/* 
-      <div className={styles.info}>
-        Text here will be used to display: errors, base information about eth wallets, etc...
-      </div> */}
-
+          <div className={styles.info}>
+            Text here will be used to display: errors, base information about eth wallets, etc...
+          </div> 
+        */}
+        {/* TO DO: change metamask injector */}
         <div className={styles.options}>
           <OptionWrapper
             className={classNames(styles.option, 'effect--hoverPop')}

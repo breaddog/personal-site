@@ -18,15 +18,21 @@ import {
 import { GenericForwardRefInterface } from '../../shared/interfaces'
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
 import { wrapForwardRefAsElementRef } from '../../shared'
+import { AppContext } from '../../App'
 
 interface PortfolioProps {
   className?: string
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
+  const { loadingRef } = React.useContext(AppContext)
+
+  const [loaded, setLoaded] = React.useState<boolean>(false)
+
   const classes = classNames(
     'section__portfolio position--relative',
     sectionStyles.section,
+    !loadingRef?.current?.loaded && sectionStyles.hidden,
     className
   )
 
@@ -78,30 +84,28 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   }
 
   return (
-    <>
-      <PortfolioContext.Provider
-        value={{
-          landingRef: wrapForwardRefAsElementRef(landingRef),
-          developerRef: wrapForwardRefAsElementRef(developerRef),
-          managerRef: wrapForwardRefAsElementRef(managerRef),
-          journeyRef: wrapForwardRefAsElementRef(journeyRef),
-          highlightsRef: wrapForwardRefAsElementRef(highlightsRef),
-          contactsRef: wrapForwardRefAsElementRef(contactsRef),
-          scrollToSection,
-        }}
-      >
-        <PortfolioHeader />
-        <div className={classes}>
-          <PortfolioLanding ref={landingRef} />
-          <PortfolioDeveloper ref={developerRef} />
-          <PortfolioManagerNew ref={managerRef} />
-          <PortfolioWeb3 ref={web3Ref} />
-          <PortfolioJourney ref={journeyRef} />
-          <PortfolioHighlights ref={highlightsRef} />
-          <PortfolioContacts ref={contactsRef} />
-        </div>
-      </PortfolioContext.Provider>
-    </>
+    <PortfolioContext.Provider
+      value={{
+        landingRef: wrapForwardRefAsElementRef(landingRef),
+        developerRef: wrapForwardRefAsElementRef(developerRef),
+        managerRef: wrapForwardRefAsElementRef(managerRef),
+        journeyRef: wrapForwardRefAsElementRef(journeyRef),
+        highlightsRef: wrapForwardRefAsElementRef(highlightsRef),
+        contactsRef: wrapForwardRefAsElementRef(contactsRef),
+        scrollToSection,
+      }}
+    >
+      <PortfolioHeader />
+      <div className={classes}>
+        <PortfolioLanding ref={landingRef} />
+        <PortfolioDeveloper ref={developerRef} />
+        <PortfolioManagerNew ref={managerRef} />
+        <PortfolioWeb3 ref={web3Ref} />
+        <PortfolioJourney ref={journeyRef} />
+        <PortfolioHighlights ref={highlightsRef} />
+        <PortfolioContacts ref={contactsRef} />
+      </div>
+    </PortfolioContext.Provider>
   )
 }
 

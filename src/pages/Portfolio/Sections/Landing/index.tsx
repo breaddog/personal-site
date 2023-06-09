@@ -84,11 +84,17 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
               <div className={styles.left}>
                 <div className={styles.header}>
                   <div className={styles.titleContainer}>
-                    <h1 className={classNames(styles.title, styles.uppercase)}>
+                    <h1
+                      data-aos='fade-down'
+                      className={classNames(styles.title, styles.uppercase)}
+                    >
                       <b>Tien</b> Foong
                     </h1>
                   </div>
-                  <h2 className={styles.subtitle}>
+                  <h2
+                    data-aos='fade-down'
+                    className={styles.subtitle}
+                  >
                     {/* Developing Websites with Personality */}
                     Web Development with Individuality in Mind
                   </h2>
@@ -98,26 +104,36 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                     className={styles.icon}
                     src={laptopSVG}
                     alt='laptop'
+                    data-aos='fade-down'
+                    data-aos-delay='250'
                   />
                   <CircleIcon
                     className={styles.icon}
                     src={boxSVG}
                     alt='box'
+                    data-aos='fade-down'
+                    data-aos-delay='300'
                   />
                   <CircleIcon
                     className={styles.icon}
                     src={reactSVG}
                     alt='react'
+                    data-aos='fade-down'
+                    data-aos-delay='350'
                   />
                   <CircleIcon
                     className={styles.icon}
                     src={bulbSVG}
                     alt='bulb'
+                    data-aos='fade-down'
+                    data-aos-delay='400'
                   />
                   <CircleIcon
                     className={styles.icon}
                     src={mailSVG}
                     alt='mail'
+                    data-aos='fade-down'
+                    data-aos-delay='450'
                   />
                 </div>
               </div>
@@ -148,6 +164,8 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                   <img
                     src={onigiriSVG}
                     alt='onigiri'
+                    data-aos='fade-down'
+                    data-aos-delay='650'
                   />
                 </OnClickAnimation>
               </div>

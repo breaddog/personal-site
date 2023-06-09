@@ -3,6 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { ArrowDown } from '../../../assets/svgs'
+import { filterAOSProps } from '../../AOS'
 
 export interface CollapsibleFAQProps {
   title: {
@@ -15,22 +16,23 @@ export interface CollapsibleFAQProps {
   children?: React.ReactNode
 }
 
-export const CollapsibleFAQ: React.FunctionComponent<CollapsibleFAQProps> = ({
-  title,
-  className,
-  bodyclassname,
-  componentkey,
-  children,
-}) => {
+export const CollapsibleFAQ: React.FunctionComponent<CollapsibleFAQProps> = (
+  props: React.PropsWithChildren<CollapsibleFAQProps>
+) => {
+  const { title, className, bodyclassname, componentkey, children } = props
   const [active, setActive] = React.useState<boolean>(false)
   const classes = classNames(styles.faq, className)
+  const aos_props = filterAOSProps(props)
 
   return (
     <div
       className={classes}
       key={componentkey}
     >
-      <div className={classNames(styles.title, title?.classname)}>
+      <div
+        className={classNames(styles.title, title?.classname)}
+        {...aos_props}
+      >
         <span className={styles.content}>{title?.content}</span>
         <ArrowDown
           className={classNames(styles.toggle, active && styles.active)}

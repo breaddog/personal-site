@@ -8,6 +8,15 @@
   // background by www.svgbackgrounds.com
   background-image: url('../assets/background/subtle-prism-black.svg');
   background-repeat: repeat-y;
+
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+
+  &.hidden {
+    opacity: 0;
+  }
 }
 
 .sub-section {

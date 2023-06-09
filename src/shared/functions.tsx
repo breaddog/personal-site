@@ -1,6 +1,7 @@
 import { ScrollTrigger } from 'gsap/all'
 import React from 'react'
 import { GenericForwardRefInterface } from './interfaces'
+import { filter, map } from 'lodash'
 
 // fonts
 export const capitaliseText = (string: string) => {
@@ -60,6 +61,23 @@ export const disableScroll = () => {
 // delay always in ms
 export const delay = async (duration: number = 1000) => {
   return await new Promise((resolve) => setTimeout(resolve, duration))
+}
+
+// others
+export const filterOtherProps = (
+  props: React.PropsWithChildren<any>,
+  types: string[]
+) => {
+  // find keys that arent in the types
+  const _keys = filter(Object.keys(props), (x) => !types.includes(x))
+  const _props: {
+    [key: string]: any
+  } = {}
+
+  // add to props
+  map(_keys, (key: string) => (_props[key] = props[key]))
+
+  return _props
 }
 
 // just in case

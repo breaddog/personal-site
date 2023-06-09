@@ -58,12 +58,12 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     const _projectBody = await fetchProjectContent(_project)
     setProjectBody(_projectBody)
     setLoaded(true)
-    // loadingRef?.current?.setLoadingActive(false)
   }
 
-  const handlePageLoad = () => {
-    // loadingRef?.current?.setLoadingActive(true)
-  }
+  // if needed this can be set
+  // const handlePageLoad = () => {
+  //   loadingRef?.current?.setLoadingActive(true)
+  // }
 
   // load content
   React.useEffect(() => {
@@ -73,17 +73,11 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     }
   }, [projectKey, project, loaded])
 
-  React.useEffect(() => {
-    window.addEventListener('load', handlePageLoad)
-    return () => {
-      window.removeEventListener('load', handlePageLoad)
-    }
-  }, [loadingRef])
   const renderProjectPageBody = () => {
     // non-loaded state
-    // if (!loaded) {
-    //   return <div>Not loaded</div>
-    // }
+    if (!loaded) {
+      return null
+    }
 
     // empty
     if (isNull(project) || isUndefined(project)) {

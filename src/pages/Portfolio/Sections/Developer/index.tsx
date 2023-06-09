@@ -429,7 +429,12 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                 windows...
               </SectionSubHeader>
               <div className={styles.body}>
-                <div className={styles.left}>
+                <div
+                  className={styles.left}
+                  data-aos='zoom-in-right'
+                  data-aos-delay='200'
+                  data-aos-duration='1200'
+                >
                   <Window
                     className={classNames(styles.window, styles.about)}
                     windowTitle='Tien Powershell'
@@ -462,36 +467,62 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                         original design into reality.
                       </p>
 
-                      {/* TO DO: add some more personal info */}
-                      <h3 className={styles.text}>
-                        <b>What I Bring to the Table</b>
-                      </h3>
+                      {/* MAYBE: add some more personal info */}
+                      <div className={styles.personalInfo}>
+                        <div className={styles.section}>
+                          <h3 className={styles.text}>
+                            <b>What I Bring to the Table</b>
+                          </h3>
 
-                      <p className={styles.listHeading}>Design</p>
-                      <ul className={styles.list}>
-                        <li>Conceptualisation</li>
-                        <li>UI/UX Specifications</li>
-                        <li>Technical Specifications</li>
-                      </ul>
+                          <p className={styles.listHeading}>Design</p>
+                          <ul className={styles.list}>
+                            <li>Conceptualisation</li>
+                            <li>UI/UX Specifications</li>
+                            <li>Technical Specifications</li>
+                          </ul>
 
-                      <p className={styles.listHeading}>Development</p>
-                      <ul className={styles.list}>
-                        <li>Mockup to Web Translations</li>
-                        <li>Bespoke Component Integration</li>
-                        <li>Stylings + Animations</li>
+                          <p className={styles.listHeading}>Development</p>
+                          <ul className={styles.list}>
+                            <li>System Design Planning</li>
+                            <li>Mockup to Web Translations</li>
+                            <li>Bespoke Component Integration</li>
+                            <li>Stylings + Animations</li>
+                            <li>CI/CD Pipelines</li>
+                          </ul>
 
-                        <li>Asset Optimisation + Hosting</li>
-                      </ul>
+                          <p className={styles.listHeading}>Management</p>
+                          <ul className={styles.list}>
+                            <li>Development Specification Planning</li>
+                            <li>Systems Mockup and Design</li>
+                            <li>High Level Integration Planning</li>
+                          </ul>
+                        </div>
 
-                      <p className={styles.listHeading}>Deployment</p>
-                      <ul className={styles.list}>
-                        <li>Prod/Dev Environments</li>
-                        <li>CI/CD</li>
-                      </ul>
+                        {/* 
+                        <div className={styles.section}>
+                          <h3 className={styles.text}>
+                            <b>Beyond the Table</b>
+                          </h3>
+
+                          <p className={styles.listHeading}>Hobbies</p>
+                          <ul className={styles.list}>
+                            <li>Anime</li>
+                            <li>Rythmn Games</li>
+                            <li>Coffee</li>
+                            <li>Foodie</li>
+                            <li>Music</li>
+                          </ul>
+                        </div> */}
+                      </div>
                     </div>
                   </Window>
                 </div>
-                <div className={styles.right}>
+                <div
+                  className={styles.right}
+                  data-aos='zoom-in-left'
+                  data-aos-delay='300'
+                  data-aos-duration='1200'
+                >
                   <Window
                     className={classNames(styles.window, styles.orbit)}
                     windowTitle='My Development Stack'
