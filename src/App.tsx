@@ -34,7 +34,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
   // loading
   const loadingRef = React.useRef<LoadingHandle>(null)
-  const loadingRefCurrent = loadingRef?.current
+  const loadingRefCurrent = loadingRef?.current as LoadingHandle
 
   // web3 stuff
   const { account, isActive } = useWeb3React()
@@ -52,7 +52,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   // misc
   const [scrollDirection, setScrollDirection] =
     React.useState<ScrollDirection>('up')
-  const [isScrolling, setScrolling] = React.useState<boolean>(false)
+  // const [isScrolling, setScrolling] = React.useState<boolean>(false)
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
 
   // web3 modal
@@ -214,7 +214,6 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       >
         <div className={classes}>
           <CSSHeader />
-          {/* TO DO: link this to load on first visit/if assets require to be loaded */}
           <LoadingSection ref={loadingRef} />
           <WalletConnectModal
             onRequestCloseActive={false}
@@ -288,6 +287,22 @@ interface AppContextProps {
   updateBalances: (account: string) => void
 }
 
+// export const AppLoadingContext = React.createContext<LoadingHandle>({
+//   active: true,
+//   loaded: false,
+//   amountLoaded: 0,
+//   assetsLoaded: 0,
+//   assetsToLoad: 0,
+//   setActive: () => { },
+//   setLoaded: () => { },
+//   setAmountLoaded: () => { },
+//   setLoadingActive: () => { },
+//   setNewFlavourText: () => { },
+//   resetLoadingPage: () => { },
+//   setAssetsLoaded: () => { },
+//   setAssetsToLoad: () => { }
+// })
+
 export const AppContext = React.createContext<AppContextProps>({
   isMobile: false,
   isMedium: false,
@@ -302,6 +317,6 @@ export const AppContext = React.createContext<AppContextProps>({
   ethBalance: 0,
   maticBalance: 0,
   resetBalances: () => {},
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line
   updateBalances: (account: string) => {},
 })

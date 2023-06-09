@@ -9,8 +9,9 @@ import {
   JobPosition,
   JobPositionData
 } from '../../../../../../shared/interfaces'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+// import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { AppContext } from '../../../../../../App'
+import { Image } from '../../../../../../shared/components'
 
 interface JobInfoProps {
   className?: string
@@ -123,10 +124,9 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = ({
           </div>
 
           <div className={styles.logo}>
-            <LazyLoadImage
+            <Image
               src={jobData?.logo}
               alt={jobData?.logoAlt}
-              effect='blur'
             />
           </div>
         </div>

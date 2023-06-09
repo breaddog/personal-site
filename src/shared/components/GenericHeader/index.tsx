@@ -2,8 +2,6 @@ import styles from './GenericHeader.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-
 import { debounce, map } from 'lodash'
 import { SectionNavInterface } from '../../types/nav'
 import { OnClickAnimation } from '..'
@@ -158,7 +156,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
             }}
           >
             <Link to={ROUTES.home.pathname}>
-              <LazyLoadImage
+              <img
                 src={icon.src}
                 alt={icon.alt}
               />
@@ -227,7 +225,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                 duration: 1000,
               }}
             >
-              <LazyLoadImage
+              <img
                 src={icon.src}
                 alt={icon.alt}
               />

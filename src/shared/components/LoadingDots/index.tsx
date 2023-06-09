@@ -8,6 +8,7 @@ interface LoadingDotsProps {
   delay?: number
   text?: string
   color?: string
+  active?: boolean
 }
 
 export const LoadingDots: React.FC<LoadingDotsProps> = ({
@@ -16,24 +17,27 @@ export const LoadingDots: React.FC<LoadingDotsProps> = ({
   delay = 1000,
   text = '',
   color = 'white', // hex or string
+  active = true,
 }) => {
   const classes = classNames(styles.loadingDots, className)
   const dotsRef = React.useRef<any>(null)
 
   React.useEffect(() => {
     let interval = setInterval(() => {
-      const dots = dotsRef.current.innerHTML
-      if (dots.length < nDots) {
-        dotsRef.current.innerHTML += '.'
-      } else {
-        dotsRef.current.innerHTML = ''
+      if (active) {
+        const dots = dotsRef.current.innerHTML
+        if (dots.length < nDots) {
+          dotsRef.current.innerHTML += '.'
+        } else {
+          dotsRef.current.innerHTML = ''
+        }
       }
     }, delay)
 
     return () => {
       interval && clearInterval(interval)
     }
-  }, [dotsRef])
+  }, [dotsRef, active])
 
   return (
     <span className={classes}>

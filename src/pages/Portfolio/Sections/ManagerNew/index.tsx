@@ -14,7 +14,7 @@ import {
 } from '../../../../shared/components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
-import { map, reverse } from 'lodash'
+import { map } from 'lodash'
 import {
   GenericSubSectionForwardInterface,
   GenericForwardRefInterface
@@ -150,7 +150,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
         const scrollTrigger = {
           trigger: sectionRef.current,
           start: `${isMobile ? 'top' : isMedium ? '-2%' : '-4%'} top`,
-          end: '+=5000px',
+          end: '+=4800px',
           scrub: 0.5,
           pin: true,
         }

@@ -1,11 +1,8 @@
 import styles from './Image.module.scss'
-import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
-import {
-  LazyLoadImage,
-  LazyLoadImageProps
-} from 'react-lazy-load-image-component'
+import { LazyLoadImageProps } from 'react-lazy-load-image-component'
+import { Image } from '../../../../shared/components'
 
 export interface ImageProjectSectionProps extends LazyLoadImageProps {
   className?: string
@@ -42,7 +39,16 @@ export const ImageProjectSection: React.FunctionComponent<
       key={componentKey}
       style={containerstyle}
     >
-      <LazyLoadImage
+      {/* <LazyLoadImage
+        {...props}
+        className={imageClasses}
+        src={src}
+        alt={alt}
+        effect={effect}
+        width={width}
+        height={height}
+      /> */}
+      <Image
         {...props}
         className={imageClasses}
         src={src}

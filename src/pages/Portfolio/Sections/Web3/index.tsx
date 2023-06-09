@@ -178,11 +178,12 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   </h3>
                   {map(WEB3_FAQ, (faq: Web3FaqProps, idx: number) => (
                     <CollapsibleFAQ
+                      key={idx}
+                      componentkey={idx}
                       title={{
                         classname: styles.subheader,
                         content: faq.title,
                       }}
-                      componentkey={idx}
                       bodyclassname={styles.faqContent}
                     >
                       {faq.content}

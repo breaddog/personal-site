@@ -6,23 +6,30 @@ import { ScrollTrigger } from 'gsap/all'
 
 import { LOADING_TEXT } from './LoadingText'
 
-import { map } from 'lodash'
+import { delay, map } from 'lodash'
 import onigiriSVG from '../../assets/icons/onigiri.svg'
-import { delay, disableScroll, enableScroll, getRandomInt } from '../../shared/'
-import { LoadingDots } from '../../shared/components'
+import { disableScroll, enableScroll, getRandomInt } from '../../shared/'
+import { Image, LoadingDots } from '../../shared/components'
 import { AppContext } from '../../App'
 
 export interface LoadingHandle {
   active: boolean
   loaded: boolean
   amountLoaded: number
-  setActive: React.Dispatch<React.SetStateAction<boolean>>
-  setLoaded: React.Dispatch<React.SetStateAction<boolean>>
-  setAmountLoaded: React.Dispatch<React.SetStateAction<number>>
+  assetsToLoad: number
+  assetsLoaded: number
+  setActive: React.Dispatch<React.SetStateAction<boolean>> | Function
+  setLoaded: React.Dispatch<React.SetStateAction<boolean>> | Function
+  setAmountLoaded: React.Dispatch<React.SetStateAction<number>> | Function
+  setAssetsToLoad: React.Dispatch<React.SetStateAction<number>> | Function
+  setAssetsLoaded: React.Dispatch<React.SetStateAction<number>> | Function
   setLoadingActive: Function
   setNewFlavourText: Function
   resetLoadingPage: Function
+  incrementAssetsToLoad: Function
+  incrementAssetsLoaded: Function
 }
+
 interface LoadingSectionProps {
   className?: string
   ref?: React.ForwardedRef<LoadingHandle>
@@ -34,11 +41,14 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     const ONIGIRI_AMOUNT = 14
     // active or not (can be toggled)
 
-    // TO DO: toggle this before prod
-    // TO DO: create image object to do onload for better performance
-    const [active, setActive] = React.useState<boolean>(false)
-    const [amountLoaded, setAmountLoaded] = React.useState<number>(100)
+    const [front, setFront] = React.useState<boolean>(true)
+    const [active, setActive] = React.useState<boolean>(true)
     const [loaded, setLoaded] = React.useState<boolean>(false)
+
+    // IF LOADING BAR USED
+    const [amountLoaded, setAmountLoaded] = React.useState<number>(0)
+    const [assetsToLoad, setAssetsToLoad] = React.useState<number>(0)
+    const [assetsLoaded, setAssetsLoaded] = React.useState<number>(0)
 
     // flavour
     const [selectedFlavourIndex, setSelectedFlavourIndex] =
@@ -58,11 +68,14 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       setActive(_activeState)
       // if new state is active (i.e. loading), disable scroll otherwise enable
       if (_activeState) {
+        setFront(true)
         setScrollEnabled(false)
         disableScroll()
       } else {
-        setScrollEnabled(true)
-        enableScroll()
+        delay(() => {
+          setScrollEnabled(true)
+          enableScroll()
+        }, 700)
       }
     }
 
@@ -76,9 +89,25 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     // compelted sequence
     const loadingCompletedSequence = async () => {
       setLoadingActive(false)
-      await delay(1000)
       // very important to call this
-      ScrollTrigger.refresh()
+      delay(() => {
+        ScrollTrigger.refresh()
+      }, 1000)
+
+      // delay on this needed as well
+      delay(() => {
+        setFront(false)
+      }, 1500)
+    }
+
+    // FUTURE
+    // generic incrementers for assets that require loading
+    const incrementAssetsToLoad = () => {
+      setAssetsToLoad(assetsToLoad + 1)
+    }
+
+    const incrementAssetsLoaded = () => {
+      setAssetsLoaded(assetsLoaded + 1)
     }
 
     // initial load
@@ -96,12 +125,20 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       }
     }, [selectedFlavourIndex, active])
 
-    // percentage check
+    // IF PERCENTAGE BAR USED
+    // // percentage check
+    // React.useEffect(() => {
+    //   if (100 <= amountLoaded) {
+    //     loadingCompletedSequence()
+    //   }
+    // }, [active, amountLoaded])
+
+    // if active, then set timer to countdown
     React.useEffect(() => {
-      if (100 <= amountLoaded) {
-        loadingCompletedSequence()
+      if (active) {
+        delay(() => loadingCompletedSequence(), 4000)
       }
-    }, [active, amountLoaded])
+    }, [active])
 
     // scroll toggle
     React.useEffect(() => {
@@ -122,17 +159,24 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       active,
       loaded,
       amountLoaded,
+      assetsLoaded,
+      assetsToLoad,
       setActive,
       setLoaded,
       setAmountLoaded,
       setLoadingActive,
+      setAssetsLoaded,
+      setAssetsToLoad,
       setNewFlavourText,
       resetLoadingPage,
+      incrementAssetsLoaded,
+      incrementAssetsToLoad,
     }))
 
     const classes = classNames(
       'section__loading position--relative',
       active && styles.active,
+      front && styles.front,
       sectionStyles.section,
       styles.loading,
       className
@@ -149,7 +193,7 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
                     className={styles.carouselSlide}
                     key={idx}
                   >
-                    <img
+                    <Image
                       className={styles.onigiri}
                       src={onigiriSVG}
                       alt='onigiri'
@@ -160,7 +204,8 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
             </div>
           </div>
           <div className={styles.bottom}>
-            <div className={classNames(styles.text, styles.percentage)}>
+            {/* LOADING BAR START */}
+            {/* <div className={classNames(styles.text, styles.percentage)}>
               {String(amountLoaded).padStart(3, '0')}
             </div>
             <div className={styles.loadingBar}>
@@ -170,17 +215,18 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
                   width: `${amountLoaded}%`,
                 }}
               ></div>
-            </div>
-            {active && (
-              <LoadingDots
-                className={classNames(styles.text, styles.loadingDots)}
-                text={
-                  0 <= selectedFlavourIndex
-                    ? LOADING_TEXT[selectedFlavourIndex]
-                    : 'Loading'
-                }
-              />
-            )}
+            </div> */}
+            {/* LOADING BAR END */}
+            <LoadingDots
+              className={classNames(styles.text, styles.loadingDots)}
+              text={
+                0 <= selectedFlavourIndex
+                  ? LOADING_TEXT[selectedFlavourIndex]
+                  : 'Loading'
+              }
+              delay={800}
+              active={active}
+            />
           </div>
         </div>
       </section>

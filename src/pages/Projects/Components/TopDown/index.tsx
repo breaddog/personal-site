@@ -33,7 +33,7 @@ export const TopDownProjectSection: React.FunctionComponent<
   const classes = classNames(projectStyles.section, styles.topdown, className)
 
   const textClasses = classNames(projectStyles.text, styles.text)
-  console.log('test', headerText)
+
   return (
     <div className={classes}>
       {headerText && (

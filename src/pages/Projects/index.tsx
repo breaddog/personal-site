@@ -15,9 +15,9 @@ import {
 import { BannerProjectSection, TopProjectSection } from './Components'
 import { GenericHeader } from '../../shared/components'
 import { isNull, isUndefined } from 'lodash'
+import { AppContext } from '../../App'
 
 import onigiriSVG from '../../assets/icons/onigiri.svg'
-import { AppContext } from '../../App'
 
 interface ProjectPageProps {
   className?: string
@@ -79,8 +79,6 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
       window.removeEventListener('load', handlePageLoad)
     }
   }, [loadingRef])
-
-  // TO DO: trigger loading for min 1-2 seconds
   const renderProjectPageBody = () => {
     // non-loaded state
     // if (!loaded) {

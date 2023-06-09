@@ -3,7 +3,7 @@ import projectStyles from '../../Project.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { Image } from '../../../../shared/components'
 
 interface BannerProjectSectionProps {
   className?: string
@@ -23,7 +23,7 @@ export const BannerProjectSection: React.FunctionComponent<
 
   return (
     <div className={classes}>
-      <LazyLoadImage
+      <Image
         className={projectStyles.img}
         alt={alt}
         src={src}
