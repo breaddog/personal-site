@@ -75,10 +75,8 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
         setScrollEnabled(false)
         disableScroll()
       } else {
-        delay(() => {
-          setScrollEnabled(true)
-          enableScroll()
-        }, 700)
+        setScrollEnabled(true)
+        enableScroll()
       }
     }
 
@@ -91,8 +89,9 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
 
     // compelted sequence
     const loadingCompletedSequence = async () => {
-      setLoadingActive(false)
       // very important to call this
+      setActive(false)
+
       delay(() => {
         ScrollTrigger.refresh()
         AOS.refreshHard()
@@ -101,6 +100,8 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       // delay on this needed as well
       delay(() => {
         setFront(false)
+        setScrollEnabled(true)
+        enableScroll()
       }, 1500)
     }
 

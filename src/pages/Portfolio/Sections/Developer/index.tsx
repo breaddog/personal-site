@@ -432,7 +432,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                 <div
                   className={styles.left}
                   data-aos='zoom-in-right'
-                  data-aos-delay='200'
+                  data-aos-delay='100'
                   data-aos-duration='1200'
                 >
                   <Window
@@ -520,7 +520,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                 <div
                   className={styles.right}
                   data-aos='zoom-in-left'
-                  data-aos-delay='300'
+                  data-aos-delay='200'
                   data-aos-duration='1200'
                 >
                   <Window
