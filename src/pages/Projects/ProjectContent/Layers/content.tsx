@@ -130,7 +130,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: '/images/projects/layers/layers-opensea-narrow-v2.png',
+          src: '/images/projects/layers/layers-opensea-narrow-v2.jpg',
           alt: 'LAYERS Opensea',
           caption: 'Various LAYERS at different stages of tearing',
         },
@@ -183,7 +183,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/layers/layers-staking.png',
+          src: '/images/projects/layers/layers-staking.jpg',
           alt: 'revealling page',
           caption: 'Exerpt of the staking section',
         },
@@ -222,7 +222,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: '/images/projects/layers/layers-jose.png',
+          src: '/images/projects/layers/layers-jose.jpg',
           alt: 'layer individual view',
           caption: 'Exerpt of a section from the main site\'s artist section',
         },

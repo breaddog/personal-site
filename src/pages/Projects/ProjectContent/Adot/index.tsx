@@ -61,7 +61,7 @@ export const BODY_CONTENT_ADOT: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: '/images/projects/adot/adot-roadmap.png',
+          src: '/images/projects/adot/adot-roadmap.jpg',
           alt: 'adot roadmap',
           caption: 'Roadmap taken from the Adot Marketplace site',
         },
@@ -120,12 +120,12 @@ export const BODY_CONTENT_ADOT: BodyContentProps[] = [
       image: {
         multi: [
           {
-            src: '/images/projects/adot/adot-staking.png',
+            src: '/images/projects/adot/adot-staking.jpg',
             alt: 'adot staking',
             caption: 'Staking section of the ADOT Marketplace site',
           },
           {
-            src: '/images/projects/adot/adot-voting.png',
+            src: '/images/projects/adot/adot-voting.jpg',
             alt: 'adot voting',
             caption:
               'Voting section where users can vote on topics related to anything',

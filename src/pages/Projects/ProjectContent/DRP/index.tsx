@@ -80,7 +80,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/drp/drp-shintaro.png',
+          src: '/images/projects/drp/drp-shintaro.jpg',
           alt: 'shintaro kago page',
           caption: 'Artist page of Shintaro Kago',
         },
@@ -172,7 +172,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'left',
         single: {
-          src: '/images/projects/layers/layers.png',
+          src: '/images/projects/layers/layers.jpg',
           alt: 'layers',
           caption: 'LAYERS by Vhils, released in partnership with DRP',
         },
@@ -364,7 +364,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/drp/drp-profile.png',
+          src: '/images/projects/drp/drp-profile.jpg',
           alt: 'drp profile page',
           caption:
             'Profile page on DRP showing collections released in collaboration',

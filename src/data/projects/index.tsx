@@ -126,7 +126,7 @@ export const PROJECTS: {
     url: 'https://drp.io/drops/vhils',
     description:
       'Interactive Billboard styled artwork by Portugese Street Artist Vhils',
-    asset: `${projectImageRoot}/layers/layers.png`,
+    asset: `${projectImageRoot}/layers/layers.jpg`,
     alt: 'layers',
     eth: {
       address: LAYERS_CONTRACT_ADDRESS,
@@ -154,26 +154,6 @@ export const PROJECTS: {
       opensea: 'https://opensea.io/collection/binkingz',
     },
   },
-  // shintaro: {
-  //   key: 'shintaro',
-  //   pathname: 'shintaro',
-  //   title: 'Shintaro Kago',
-  //   year: '2021 - 2023',
-  //   type: 'multi',
-  //   scope: 'NFT Art Project',
-  //   role: [
-  //     'Project Manager',
-  //     'Front-end Lead',
-  //     'Asset Management',
-  //     'Deployment',
-  //   ],
-  //   responsibilities: ['Asset Generation & Assembley'],
-  //   organisation: 'Shintaro Kago / DRP / Pellar',
-  //   url: 'https://drp.io/artists/shintaro_kago',
-  //   description: 'NFT Art Project with Ero-guro legend Shintaro Kago',
-  //   asset: `${projectImageRoot}/shintaro/shintarokago.png`,
-  //   alt: 'shintaro',
-  // },
   redvillage: {
     key: 'redvillage',
     pathname: 'redvillage',
