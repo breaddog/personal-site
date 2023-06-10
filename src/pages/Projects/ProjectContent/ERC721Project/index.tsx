@@ -14,7 +14,6 @@ import {
   ExtraInfoWrapperProps
 } from '../../types'
 import { generateProjectBodyElement } from '../../helpers'
-import { TopProjectSection } from '../../Components'
 
 export interface ERC721ProjectProps {
   className?: string
@@ -97,14 +96,13 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
     getTotalSupply()
   }, [])
 
-  // BEFORE DEPLOY: reactive web3
-  // React.useEffect(() => {
-  //   if (account) {
-  //     getBalance(account)
-  //   } else {
-  //     resetWalletState()
-  //   }
-  // }, [account])
+  React.useEffect(() => {
+    if (account) {
+      getBalance(account)
+    } else {
+      resetWalletState()
+    }
+  }, [account])
 
   return (
     <div

@@ -1,6 +1,3 @@
-import { EXTERNAL_LINKS } from '../../../../shared'
-import { Hyperlink } from '../../../../shared/components'
-
 export interface Web3FaqProps {
   title: string
   content: JSX.Element | Element | string

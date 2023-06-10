@@ -1,5 +1,4 @@
 import { ethers } from 'ethers'
-import { APP_ENV } from '../config'
 import { Web3Provider } from '@ethersproject/providers'
 import { getRandomInt } from '../shared'
 import { ETH_NODES, POLYGON_NODES } from './constants'

@@ -4,7 +4,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { ImageProjectSection, ImageProjectSectionProps } from '../Image'
 import { map } from 'lodash'
-import { handleDesktopListener, roundToNearestUnit } from '../../../../shared'
+import { roundToNearestUnit } from '../../../../shared'
 import { AppContext } from '../../../../App'
 
 interface MultiProjectImageContainerProps {
@@ -27,11 +27,6 @@ export const MultiProjectImageContainer: React.FunctionComponent<
   }
 
   const handleCalculationListener = () => {
-    // handleDesktopListener(
-    //   flexMatcher,
-    //   useCalculation,
-    //   setUseCalculation
-    // )
     if (isMobile && useCalculation) {
       setUseCalculation(false)
     }

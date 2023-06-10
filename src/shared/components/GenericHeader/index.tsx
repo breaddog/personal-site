@@ -2,7 +2,7 @@ import styles from './GenericHeader.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { debounce, map } from 'lodash'
+import { map } from 'lodash'
 import { SectionNavInterface } from '../../types/nav'
 import { OnClickAnimation } from '..'
 

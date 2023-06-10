@@ -1,4 +1,3 @@
-import styles from '../../Project.module.scss'
 import textStyles from '../../Components/Text/Text.module.scss'
 import { BodyContentProps } from '../../types'
 import { Hyperlink } from '../../../../shared/components'

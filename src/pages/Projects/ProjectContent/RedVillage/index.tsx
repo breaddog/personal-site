@@ -15,6 +15,11 @@ import {
   ExtraInfoInterface
 } from '../../types'
 import { generateProjectBodyElement } from '../../helpers'
+import {
+  REDVILLAGE_GENESIS_CONTRACT_ADDRESS,
+  REDVILLAGE_MYSTICS_CONTRACT_ADDRESS,
+  REDVILLAGE_SUMMONING_CONTRACT_ADDRESS
+} from '../../../../contracts/RedVillage'
 
 interface RedVillageProjectProps {
   key?: string
@@ -28,6 +33,22 @@ export const RedVillageProject: React.FunctionComponent<
 
   // classes
   const classes = classNames(redvillageStyles.artball, styles.container)
+
+  const genesisRequest = RequestFactory.getRequest('ERC721Request', {
+    address: REDVILLAGE_GENESIS_CONTRACT_ADDRESS,
+    network: 'polygon',
+    unique: true,
+  })
+  const mysticsRequest = RequestFactory.getRequest('ERC721Request', {
+    address: REDVILLAGE_MYSTICS_CONTRACT_ADDRESS,
+    network: 'polygon',
+    unique: true,
+  })
+  const summonRequest = RequestFactory.getRequest('ERC721Request', {
+    address: REDVILLAGE_SUMMONING_CONTRACT_ADDRESS,
+    network: 'polygon',
+    unique: true,
+  })
 
   // web3
   const { account } = useWeb3React()
@@ -68,27 +89,33 @@ export const RedVillageProject: React.FunctionComponent<
     },
     {
       title: 'Total Supply Genesis',
-      value: 'amount',
+      value: `${totalSupplyGenesis}`,
     },
     {
       title: 'Total Supply Mystics',
-      value: 'amount',
+      value: `${totalSupplyMystics}`,
     },
     {
       title: 'Total Amount Summoned',
-      value: 'amount',
+      value: `${totalSupplySummoned}`,
     },
     {
       title: 'Owned Genesis Champions',
-      value: 'amount',
+      value: `${
+        balanceGenesis < 0 ? 'Connect Wallet To View' : balanceGenesis
+      }`,
     },
     {
       title: 'Owned Mystics Champions',
-      value: 'amount',
+      value: `${
+        balanceMystics < 0 ? 'Connect Wallet To View' : balanceMystics
+      }`,
     },
     {
       title: 'Owned Summoned Champions',
-      value: 'amount',
+      value: `${
+        balanceSummoned < 0 ? 'Connect Wallet To View' : balanceSummoned
+      }`,
     },
   ]
 
@@ -101,19 +128,48 @@ export const RedVillageProject: React.FunctionComponent<
   ]
 
   // WEB3 GETTERS
+  const getTRVBalances = async (_account: string) => {
+    try {
+      if (!_account) return
+      const _genesis = await genesisRequest.getBalanceOf(_account)
+      const _mystics = await mysticsRequest.getBalanceOf(_account)
+      const _summon = await summonRequest.getBalanceOf(_account)
 
-  // BEFORE DEPLOY: reactive web3
-  // React.useEffect(() => {
-  //   getArtballTotalSupplies()
-  // }, [])
+      setBalanceGenesis(_genesis)
+      setBalanceMystics(_mystics)
+      setBalanceSummoned(_summon)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-  // React.useEffect(() => {
-  //   if (account) {
-  //     getArtballBalances(account)
-  //   } else {
-  //     resetWalletState()
-  //   }
-  // }, [account])
+  const getTRVTotalSupplies = async () => {
+    const _genesis = await genesisRequest.getTotalSupply()
+    const _mystics = await mysticsRequest.getTotalSupply()
+    const _summon = await summonRequest.getTotalSupply()
+
+    setTotalSupplyGenesis(_genesis)
+    setTotalSupplyMystics(_mystics)
+    setTotalSupplyummoned(_summon)
+  }
+
+  const resetWalletState = () => {
+    setBalanceGenesis(-1)
+    setBalanceMystics(-1)
+    setBalanceSummoned(-1)
+  }
+
+  React.useEffect(() => {
+    getTRVTotalSupplies()
+  }, [])
+
+  React.useEffect(() => {
+    if (account) {
+      getTRVBalances(account)
+    } else {
+      resetWalletState()
+    }
+  }, [account])
 
   // main
   return (

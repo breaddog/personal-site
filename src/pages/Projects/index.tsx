@@ -7,15 +7,10 @@ import { useParams } from 'react-router-dom'
 
 import { ProjectObject } from '../../data/projects'
 import { fetchProject, fetchProjectContent } from '../../shared'
-import {
-  // eslint-disable-next-line
-  DefaultProjectTemplate,
-  ErrorProjectTemplate
-} from './ProjectContent'
+import { ErrorProjectTemplate } from './ProjectContent'
 import { BannerProjectSection, TopProjectSection } from './Components'
 import { GenericHeader } from '../../shared/components'
 import { isNull, isUndefined } from 'lodash'
-import { AppContext } from '../../App'
 
 import onigiriSVG from '../../assets/icons/onigiri.svg'
 
@@ -40,9 +35,6 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
   const { projectKey } = useParams<{ projectKey: string }>()
   // loaded
   const [loaded, setLoaded] = React.useState<boolean>(false)
-
-  // loading page
-  const { loadingRef } = React.useContext(AppContext)
 
   // project
   const [projectBody, setProjectBody] = React.useState<

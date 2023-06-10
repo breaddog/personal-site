@@ -4,17 +4,10 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { ProjectObject } from '../../../../data/projects'
-import { RequestFactory } from '../../../../requests'
-import { useWeb3React } from '@web3-react/core'
 
 import { map } from 'lodash'
-import {
-  BodyContentProps,
-  ExtraInfoInterface,
-  ExtraInfoWrapperProps
-} from '../../types'
+import { BodyContentProps, ExtraInfoWrapperProps } from '../../types'
 import { generateProjectBodyElement } from '../../helpers'
-import { TopProjectSection } from '../../Components'
 
 export interface DefaultProjectProps {
   className?: string
@@ -29,7 +22,6 @@ export const DefaultProject: React.FunctionComponent<DefaultProjectProps> = ({
   componentkey,
   project,
   extraInfo = [],
-  overrideExtraInfo = false,
 }) => {
   const classes = classNames(
     defaultProjectStyles.project,

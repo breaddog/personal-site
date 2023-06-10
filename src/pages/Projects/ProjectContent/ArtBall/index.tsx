@@ -116,17 +116,17 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
   }
 
   // BEFORE DEPLOY: reactive web3
-  // React.useEffect(() => {
-  //   getArtballTotalSupplies()
-  // }, [])
+  React.useEffect(() => {
+    getArtballTotalSupplies()
+  }, [])
 
-  // React.useEffect(() => {
-  //   if (account) {
-  //     getArtballBalances(account)
-  //   } else {
-  //     resetWalletState()
-  //   }
-  // }, [account])
+  React.useEffect(() => {
+    if (account) {
+      getArtballBalances(account)
+    } else {
+      resetWalletState()
+    }
+  }, [account])
 
   // main
   return (

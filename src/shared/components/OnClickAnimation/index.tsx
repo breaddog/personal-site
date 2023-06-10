@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { delay } from 'lodash'
-import { GenericAOSInterface, filterAOSProps } from '../../AOS'
+import { filterAOSProps } from '../../AOS'
 
 interface OnClickAnimationProps {
   className?: string

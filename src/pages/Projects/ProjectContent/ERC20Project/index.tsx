@@ -14,7 +14,6 @@ import {
   ExtraInfoWrapperProps
 } from '../../types'
 import { generateProjectBodyElement } from '../../helpers'
-import { TopProjectSection } from '../../Components'
 
 export interface ERC20ProjectProps {
   className?: string
@@ -90,18 +89,17 @@ export const ERC20Project: React.FunctionComponent<ERC20ProjectProps> = ({
     setBalance(-1)
   }
 
-  // React.useEffect(() => {
-  //   getTotalSupply()
-  // }, [])
+  React.useEffect(() => {
+    getTotalSupply()
+  }, [])
 
-  // // BEFORE DEPLOY: reactive web3
-  // React.useEffect(() => {
-  //   if (account) {
-  //     getBalance(account)
-  //   } else {
-  //     resetWalletState()
-  //   }
-  // }, [account])
+  React.useEffect(() => {
+    if (account) {
+      getBalance(account)
+    } else {
+      resetWalletState()
+    }
+  }, [account])
 
   return (
     <div

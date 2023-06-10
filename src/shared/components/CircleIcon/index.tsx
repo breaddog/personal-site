@@ -1,8 +1,7 @@
 import styles from './CircleIcon.module.scss'
 import React from 'react'
 import classNames from 'classnames'
-import { filter, map } from 'lodash'
-import { GenericAOSInterface, filterAOSProps } from '../../AOS'
+import { filterAOSProps } from '../../AOS'
 
 interface CircleIconProps {
   className?: string

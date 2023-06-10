@@ -145,28 +145,23 @@ export const LayersProject: React.FunctionComponent<LayersProjectProps> = ({
     }
   }
 
-  // BEFORE DEPLOY: reactive web3
-  // React.useEffect(() => {
-  //   getArtballTotalSupplies()
-  // }, [])
-
-  // React.useEffect(() => {
-  //   if (account) {
-  //     getArtballBalances(account)
-  //   } else {
-  //     resetWalletState()
-  //   }
-  // }, [account])
+  const resetWalletState = () => {
+    setBalanceAlphaTears(-1)
+    setBalanceBetaTears(-1)
+    setBalanceLayers(-1)
+  }
 
   React.useEffect(() => {
     getLayersTotalSupply()
   }, [])
 
   React.useEffect(() => {
-    // if (account) {
-    //   getLayersBalance(account)
-    //   getTearsBalance(account)
-    // }
+    if (account) {
+      getLayersBalance(account)
+      getTearsBalance(account)
+    } else {
+      resetWalletState()
+    }
   }, [account])
 
   // main
