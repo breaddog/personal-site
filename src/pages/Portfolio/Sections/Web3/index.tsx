@@ -138,7 +138,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   <div
                     className={styles.text}
                     data-aos='fade-right'
-                    data-aos-delay='200'
+                    data-aos-delay='150'
                   >
                     <p>
                       Putting the hot buzzwords aside, certain parts of the site
@@ -184,7 +184,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   <h3
                     className={classNames(styles.subheader, styles.main)}
                     data-aos='fade-right'
-                    data-aos-delay='250'
+                    data-aos-delay='200'
                   >
                     A Small FAQ!
                   </h3>
@@ -198,7 +198,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       }}
                       bodyclassname={styles.faqContent}
                       data-aos='fade-right'
-                      data-aos-delay={250 + 50 * idx}
+                      data-aos-delay={200 + 50 * idx}
                     >
                       {faq.content}
                     </CollapsibleFAQ>
@@ -211,7 +211,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     }}
                     bodyclassname={styles.faqContent}
                     data-aos='fade-right'
-                    data-aos-delay={250 + 50 * WEB3_FAQ.length}
+                    data-aos-delay={200 + 50 * WEB3_FAQ.length}
                   >
                     <p>
                       For more information on Ethereum, how it functions and its
@@ -232,8 +232,8 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
               <div
                 className={classNames(styles.right, 'web3__right')}
                 data-aos='zoom-in-left'
-                data-aos-offset='400'
-                data-aos-delay={250 + 50 * WEB3_FAQ.length}
+                data-aos-offset='200'
+                data-aos-delay={200 + 50 * WEB3_FAQ.length}
               >
                 <Window
                   className={styles.window}
