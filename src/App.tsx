@@ -195,7 +195,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         duration: 1000,
         startEvent: 'DOMContentLoaded',
         once: true,
-        delay: 0,
+        delay: 100,
       })
     }
   }, [loadingRef, loadingRefCurrent])

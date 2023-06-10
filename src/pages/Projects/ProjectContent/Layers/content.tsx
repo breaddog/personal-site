@@ -21,38 +21,38 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             Artwork that evolves, is interactive and expresses itself, all
             revealed layer by layer.
           </p>
-          <br />
+
           <p>
             Portugese street artist Alexander Farto (Vhils) expresses his
             artistic language through portraits carved into walls and surfaces,
             revealing a story etched into the urban canvas of the mordern cities
             we live in.
           </p>
-          <br />
+
           {/* <p>
             His urban and regional inspired artwork can be seen all over Lisbon
             and some parts of the world, in various global exhibitions, and as
             of last year, the Ethereum Blockchain.
           </p>
-          <br /> */}
+           */}
           <p>
             In collaboration with DRP, a collection of generative NFT's (LAYERS)
             based on his billboard pieces was launched early 2022, where users
             are invited to be a part of the artistic process.
           </p>
-          <br />
+
           <p>
             Each NFT is an interactive billboard, starting fully covered,
             inviting the owner to optionally "tear" using one of two utility
             tear tokens.
           </p>
-          <br />
+
           <p>
             Various traits and glimpses of the artwork will be made visible with
             each tear, with three tears required to fully reveal the billboard
             artwork. Each LAYER and how it tears is unique and randomly set.
           </p>
-          <br />
+
           <p>My roles as a part of the development of this collection are:</p>
           <ul>
             <li>
@@ -94,7 +94,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
   //           obtainable on initial mint or purchasable, and beta tears available
   //           through a staking feature released early 2023.
   //         </p>
-  //         <br />
+  //
   //         <p>
   //           With each tear applied, visual glimpses of the artwork and traits
   //           will be revealed, providing more information about the final LAYER
@@ -103,7 +103,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
   //           LAYER and the way each tear is revealed is randomised, making both
   //           revealing and owning a LAYER unique.
   //         </p>
-  //         <br />
+  //
   //         <p>
   //           All functionality related to the project can be performed on the{' '}
   //           <Hyperlink>
@@ -141,7 +141,6 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             decision by the design team and the client to provide more realism
             and texture for each LAYER to be executed on Photoshop.
           </p>
-          <br />
 
           <p>
             Photoshop scripting does exist and runs on ExtendScript, based on
@@ -153,7 +152,6 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             innovated on the fly.
           </p>
 
-          <br />
           <p>
             In the end I developed a script that after setup, could run the
             assembley on Photoshop of multiple unique LAYERS with tweakable
@@ -162,7 +160,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             such as scaling, rotation, translation and colour changes, which is
             also applied to the patterns of the tears as well.
           </p>
-          <br />
+
           <p>
             The randomisation resulted in some very interesting outputs which
             coupled with the amazing and intricate assets and design choices,
@@ -193,7 +191,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             hard technical requirements in the form of concepts, logic rules or
             actual pseudo-code and helping out when needed.
           </p>
-          <br />
+
           <p>
             This was applied during the development of various utilities related
             to LAYERS such as Revealling and Staking, where it was cruicial to
@@ -201,7 +199,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             Contract logic related ones. As once deployed on-chain, it cannot be
             fixed unless redeployed due to the nature of the Blockchain.
           </p>
-          <br />
+
           <p>
             The flexibility and high level knowledge as a result of management
             helped me to identify tweaks, issues and imporvements that could be
@@ -235,7 +233,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             conceptualisation, many fond memories have been shared and will
             remain.
           </p>
-          <br />
+
           <p></p>
           <p>
             With innovations such as discovering further ways to bring and
@@ -245,7 +243,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             conceptualisation. With best wishes personally to the project's
             ongoing developments and community.
           </p>
-          <br />
+
           <p>
             If you are interested in finding out more about the collection, you
             can visit these links below:

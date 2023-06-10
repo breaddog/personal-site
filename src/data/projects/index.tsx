@@ -96,7 +96,8 @@ export const PROJECTS: {
     ],
     organisation: 'DRP / Pellar',
     url: 'https://drp.gallery',
-    description: 'Melbourne\'s First NFT focused Art Gallery Organisation',
+    description:
+      'Melbourne\'s first community driven art gallery that blends technology with contemporary artwork.',
     asset: `${projectImageRoot}/drp/drp.jpg`,
     alt: 'drp main page',
     body: BODY_CONTENT_DRP,

@@ -56,7 +56,7 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
       value: `${totalSupply}`,
     },
     {
-      title: 'Owned:',
+      title: 'Owned',
       value: balance < 0 ? 'Connect Wallet to View' : balance,
     },
   ]

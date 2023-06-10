@@ -151,11 +151,11 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
     },
   },
   {
-    type: 'topdown',
+    type: 'leftright',
     props: {
       title: 'Building the Main Platform',
       image: {
-        placement: 'top',
+        placement: 'right',
         single: {
           src: '/images/projects/redvillage/redvillage-barracks.jpg',
           alt: 'redvillage hawku',
