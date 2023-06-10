@@ -73,6 +73,7 @@
     "winStart": "set \"GENERATE_SOURCEMAP=false\" && react-scripts start",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
+    "winDeploy": "gh-pages -d winBuild",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
