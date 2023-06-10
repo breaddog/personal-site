@@ -113,7 +113,10 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
   // on load
   React.useEffect(() => {
-    tryAutoReconnect(setConnectionType)
+    window.addEventListener('load', () => tryAutoReconnect(setConnectionType))
+    return () => {
+      window.addEventListener('load', () => tryAutoReconnect(setConnectionType))
+    }
   }, [])
 
   // LISTENERS
@@ -195,7 +198,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         delay: 100,
       })
     }
-  }, [loadingRefCurrent])
+  }, [loadingRef, loadingRefCurrent])
 
   return (
     <Router>

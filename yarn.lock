@@ -3603,10 +3603,10 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-aos@^2.3.4:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/aos/-/aos-2.3.4.tgz#eb1c29f5c1806a197cf6323080747547edd3db8e"
-  integrity sha512-zh/ahtR2yME4I51z8IttIt4lC1Nw0ktsFtmeDzID1m9naJnWXhCoARaCgNOGXb5CLy3zm+wqmRAEgMYB5E2HUw==
+aos@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/aos/-/aos-2.3.1.tgz#7f42d6bc683f9ddc4ecf336b6977216d1d384375"
+  integrity sha512-gpZyFAzqLUaAI414NmHkTPL+hjkMlFpZE0kyYqgQzwrnm5D3/lxaqIfBEnarnz0v7buo2JsxEw/k/73fsuRjYQ==
   dependencies:
     classlist-polyfill "^1.0.3"
     lodash.debounce "^4.0.6"

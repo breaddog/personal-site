@@ -25,14 +25,14 @@ interface PortfolioProps {
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
-  const { loadingRef } = React.useContext(AppContext)
+  // const { loadingRef } = React.useContext(AppContext)
 
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+  // const [loaded, setLoaded] = React.useState<boolean>(false)
 
   const classes = classNames(
     'section__portfolio position--relative',
     sectionStyles.section,
-    !loadingRef?.current?.loaded && sectionStyles.hidden,
+    // !loadingRef?.current?.loaded ? sectionStyles.hidden : '',
     className
   )
 

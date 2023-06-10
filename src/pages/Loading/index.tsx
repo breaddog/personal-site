@@ -91,6 +91,7 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     const loadingCompletedSequence = async () => {
       // very important to call this
       setActive(false)
+      setLoaded(true)
 
       delay(() => {
         ScrollTrigger.refresh()
@@ -115,15 +116,13 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
       setAssetsLoaded(assetsLoaded + 1)
     }
 
+    const initialLoad = () => {
+      setNewFlavourText()
+    }
     // initial load
     React.useEffect(() => {
-      const initialLoad = () => {
-        if (0 > selectedFlavourIndex) {
-          setNewFlavourText()
-          setLoaded(true)
-        }
-      }
       active && disableScroll()
+      setNewFlavourText()
       window.addEventListener('load', initialLoad)
       return () => {
         window.removeEventListener('load', initialLoad)

@@ -22,6 +22,7 @@ import metamaskSVG from '../../../assets/logos/metamask.svg'
 import coinbaseSVG from '../../../assets/logos/coinbase.svg'
 
 import logoutSVG from '../../../assets/icons/logout.svg'
+import { Hyperlink } from '../../../shared/components'
 
 interface WalletConnectModalProps extends PopupModalProps {
   activeConnectionType: ConnectionType | null
@@ -127,12 +128,17 @@ export const WalletConnectModal: React.FunctionComponent<
           </div> */}
         </div>
 
-        {window.ethereum && (
+        {!window.ethereum && (
           <div className={classNames(styles.info)}>
             <b>NOTE:&nbsp;</b>An Ethereum supported wallet widget is required to
             continue, here are widgets currently supported by this site:{' '}
-            <a href={EXTERNAL_LINKS.metamask.download}>Metamask</a>,{' '}
-            <a href={EXTERNAL_LINKS.coinbase.download}>Coinbase.</a>
+            <Hyperlink>
+              <a href={EXTERNAL_LINKS.metamask.download}>Metamask</a>
+            </Hyperlink>
+            ,{' '}
+            <Hyperlink>
+              <a href={EXTERNAL_LINKS.coinbase.download}>Coinbase.</a>
+            </Hyperlink>
           </div>
         )}
         {/* 

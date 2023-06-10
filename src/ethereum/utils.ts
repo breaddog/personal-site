@@ -1,6 +1,8 @@
 import { ethers } from 'ethers'
 import { APP_ENV } from '../config'
 import { Web3Provider } from '@ethersproject/providers'
+import { getRandomInt } from '../shared'
+import { ETH_NODES, POLYGON_NODES } from './constants'
 
 export type NetworkType = 'ethereum' | 'polygon'
 export type ContractType = 'ERC20' | 'ERC721' | 'ERC1155' | 'multi' | 'other'
@@ -45,14 +47,18 @@ export const getNetworkNameFromProvider = async (
 
 // network provider mapping
 export const getNetworkProvider = (network: NetworkType) => {
+  let _randomNode
   switch (network) {
     case 'ethereum':
-      return APP_ENV.ETHEREUM_PROVIDER
+      _randomNode = getRandomInt(0, ETH_NODES.length)
+      return ETH_NODES[_randomNode]
     case 'polygon':
-      return APP_ENV.POLYGON_PROVIDER
+      _randomNode = getRandomInt(0, POLYGON_NODES.length)
+      return POLYGON_NODES[_randomNode]
     // default to eth network if not specified
     default:
-      return APP_ENV.ETHEREUM_PROVIDER
+      _randomNode = getRandomInt(0, ETH_NODES.length)
+      return ETH_NODES[_randomNode]
   }
 }
 
@@ -63,7 +69,8 @@ export const getAccountEthBalance = async (
 ) => {
   if (!account) return 0
   try {
-    const provider = ethers.getDefaultProvider(APP_ENV.ETHEREUM_PROVIDER)
+    const rpc = getNetworkProvider('ethereum')
+    const provider = ethers.getDefaultProvider(rpc)
     const balance = await provider.getBalance(account)
     return Number(Number(ethers.formatEther(balance)).toFixed(decimals))
   } catch (err) {
@@ -76,7 +83,8 @@ export const getAccountMaticBalance = async (
   decimals: number = 4
 ) => {
   try {
-    const provider = ethers.getDefaultProvider(APP_ENV.POLYGON_PROVIDER)
+    const rpc = getNetworkProvider('polygon')
+    const provider = ethers.getDefaultProvider(rpc)
     const balance = await provider.getBalance(account)
     return Number(Number(ethers.formatEther(balance)).toFixed(decimals))
   } catch (err) {
