@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/all'
 
 import { map } from 'lodash'
 
-import { CircleIcon, ModalBox } from '../../../../shared/components'
+import { CircleIcon, ModalBox } from '../../../../../shared/components'
 import { BridgeSection, Cloud } from './Components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
