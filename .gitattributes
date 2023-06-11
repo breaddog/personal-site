@@ -1,2 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# code related files must be crlf
+*.jsx text eol=crlf
+*.js text eol=crlf
+*.tsx text eol=crlf
+*.ts text eol=crlf
+*.html text eol=crlf
+*.scss text eol=crlf
+*.css text eol=crlf
