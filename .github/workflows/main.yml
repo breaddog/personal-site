@@ -16,5 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+          user.name: 'breaddog'
+          password: ${{secrets.GITHUB_TOKEN}}
       - run: yarn --frozen-lockfile
       - run: yarn deploy
