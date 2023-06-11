@@ -9,8 +9,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/keyboard'
 
-interface CSSHeaderProps {
-}
+interface CSSHeaderProps {}
 
 export const CSSHeader: React.FC<CSSHeaderProps> = () => {
   const classes = classNames('css-header')

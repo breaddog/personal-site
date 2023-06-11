@@ -65,7 +65,7 @@
       }
     ],
     "eqeqeq": "error",
-    "linebreak-style": ["warn", "windows"],
+    "linebreak-style": ["error", "windows"],
     "no-case-declarations": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
