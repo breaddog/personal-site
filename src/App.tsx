@@ -203,7 +203,6 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     }
   }, [loadingRef, loadingRefCurrent])
 
-  console.log(document.querySelector('base')?.getAttribute('href'))
   return (
     <Router basename={basename}>
       <AppContext.Provider
