@@ -33,6 +33,9 @@ interface AppProps {
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
 
+  // basename
+  const basename = document.querySelector('base')?.getAttribute('href') ?? '/'
+
   // loading
   const loadingRef = React.useRef<LoadingHandle>(null)
   const loadingRefCurrent = loadingRef?.current as LoadingHandle
@@ -192,16 +195,17 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     // only trigger animations after load
     if (loadingRefCurrent?.loaded) {
       AOS.init({
-        duration: 1000,
+        duration: 800,
         startEvent: 'DOMContentLoaded',
         once: true,
-        delay: 100,
+        delay: 50,
       })
     }
   }, [loadingRef, loadingRefCurrent])
 
+  console.log(document.querySelector('base')?.getAttribute('href'))
   return (
-    <Router>
+    <Router basename={basename}>
       <AppContext.Provider
         value={{
           isMobile,
