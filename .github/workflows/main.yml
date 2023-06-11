@@ -1,0 +1,22 @@
+name: gh-pages ci
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: node.js setup for deploy
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: run gh-pages deploy routine
+      - run: npm run deploy
