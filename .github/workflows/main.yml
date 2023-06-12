@@ -11,12 +11,24 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
-      - name: node.js setup for deploy
+      - name: setup credentials for gh-pages
+        uses: de-vri-es/setup-git-credentials@v2
+        with:
+         credentials: ${{secrets.GIT_CREDENTIALS}}
+        
+      - name: set user.name
+        run: git config --global user.name "${{github.actor}}"
+
+      - name: fetch files from repo
+        uses: actions/checkout@v3
+          
+      - name: setup node
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-          user.name: 'breaddog'
-          password: ${{secrets.GITHUB_TOKEN}}
-      - run: yarn --frozen-lockfile
-      - run: yarn deploy
+      
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+      
+      - name: deploy gh-pages
+        run: yarn deploy
