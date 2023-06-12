@@ -127,19 +127,11 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
       }
 
       const _modalTimeline = (duration: number = 5) => {
-        return gsap
-          .timeline()
-          .from('#manager-box', {
-            y: '-=400%',
-            ease: 'sine.inOut',
-            duration,
-          })
-          .from(
-            {},
-            {
-              duration: 1,
-            }
-          )
+        return gsap.timeline().from('#manager-box', {
+          y: '-=400%',
+          ease: 'sine.inOut',
+          duration,
+        })
       }
 
       // entrance effect
@@ -175,8 +167,8 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
         // modal should be next
         _timeline.add(_modalTimeline(20))
 
-        // padding
-        _timeline.add(gsap.from({}, { duration: 20 }))
+        // // padding
+        // _timeline.add(gsap.from({}, { duration: 20 }))
       }
 
       React.useEffect(() => {

@@ -192,26 +192,28 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     <CollapsibleFAQ
                       key={idx}
                       componentkey={idx}
+                      className={styles.faqObject}
                       title={{
-                        classname: styles.subheader,
+                        classname: classNames(styles.subheader),
                         content: faq.title,
                       }}
                       bodyclassname={styles.faqContent}
                       data-aos='fade-right'
-                      data-aos-delay={200 + 50 * idx}
+                      data-aos-delay={200 + 25 * idx}
                     >
                       {faq.content}
                     </CollapsibleFAQ>
                   ))}
                   {/* separate due to some nested import bug */}
                   <CollapsibleFAQ
+                    className={styles.faqObject}
                     title={{
-                      classname: styles.subheader,
+                      classname: classNames(styles.subheader),
                       content: 'Confusing? TL;DR? Check Here!',
                     }}
                     bodyclassname={styles.faqContent}
                     data-aos='fade-right'
-                    data-aos-delay={200 + 50 * WEB3_FAQ.length}
+                    data-aos-delay={200 + 25 * WEB3_FAQ.length}
                   >
                     <p>
                       For more information on Ethereum, how it functions and its
@@ -232,8 +234,8 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
               <div
                 className={classNames(styles.right, 'web3__right')}
                 data-aos='zoom-in-left'
-                data-aos-offset='200'
-                data-aos-delay={200 + 50 * WEB3_FAQ.length}
+                data-aos-offset='125'
+                data-aos-delay={200 + 25 * WEB3_FAQ.length}
               >
                 <Window
                   className={styles.window}

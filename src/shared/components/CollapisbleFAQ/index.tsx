@@ -42,7 +42,7 @@ export const CollapsibleFAQ: React.FunctionComponent<CollapsibleFAQProps> = (
       <div
         className={classNames(
           styles.body,
-          active && styles.active,
+          styles[active ? 'active' : 'inactive'],
           bodyclassname
         )}
       >

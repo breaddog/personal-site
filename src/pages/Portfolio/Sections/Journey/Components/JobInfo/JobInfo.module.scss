@@ -148,7 +148,7 @@
           margin-bottom: 0.5rem;
           text-align: start;
           white-space: break-spaces;
-          line-height: calc(var(--font-p) * 1.325);
+          line-height: calc(var(--font-p) * 1.5);
           font-size: var(--font-p);
 
           .infoText {
@@ -223,7 +223,8 @@
 
       .section {
         width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
+        margin-right: unset;
 
         &:nth-child(1) {
           width: fit-content;
@@ -257,6 +258,7 @@
           margin: 0 auto;
 
           .info {
+            margin-bottom: 1rem;
             text-align: center;
 
             &:before {
@@ -267,6 +269,7 @@
             .infoText {
               max-width: unset;
               text-align: center;
+              line-height: calc(var(--font-p) * 1.5);
             }
           }
         }

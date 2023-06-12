@@ -26,10 +26,10 @@
 }
 
 .body {
-  --carousel-slide-desktop: 15vw;
-  --carousel-image-desktop: 12vw;
-  --slide-amount: 14;
-  --carousel-duration: 18s;
+  --carousel-slide-desktop: 10vw;
+  --carousel-image-desktop: 8vw;
+  --slide-amount: 20;
+  --carousel-duration: 22s;
 
   display: flex;
   flex-direction: column;
@@ -58,9 +58,11 @@
 
       .carouselSlide {
         width: var(--carousel-slide-desktop);
+        min-width: 180px;
 
         .onigiri {
           width: var(--carousel-image-desktop);
+          min-width: 160px;
           margin: 0 auto;
         }
       }
@@ -73,7 +75,7 @@
     justify-content: center;
     text-align: center;
 
-    width: 35vw;
+    width: 60vw;
     margin: 0 auto;
 
     .loadingBar {
@@ -92,12 +94,20 @@
 
     .text {
       font-family: 'Silkscreen';
-      font-size: 1.625vw;
+      font-size: 2.25rem;
     }
 
     .loadingDots {
       white-space: pre-line;
       margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .body {
+    .bottom {
+      width: 100%;
     }
   }
 }
@@ -137,7 +147,7 @@
       }
 
       .text {
-        font-size: 1rem;
+        font-size: 2rem;
       }
     }
   }

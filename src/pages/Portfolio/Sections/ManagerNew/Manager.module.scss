@@ -46,7 +46,7 @@
 
         cursor: pointer;
 
-        font-size: var(--font-h1);
+        font-size: calc(var(--font-h1) * 1.175);
         margin: auto 0;
 
         &:nth-child(1) {
@@ -143,7 +143,7 @@
           width: fit-content;
           margin: 0 auto;
           margin-bottom: 2.5rem;
-          font-size: calc(var(--font-h1) * 0.8);
+          // font-size: calc(var(--font-h1) * 0.8);
         }
       }
 

@@ -180,10 +180,22 @@
   .footer {
     width: fit-content;
   }
+
+  .overlay {
+    .container {
+      width: 80%;
+    }
+  }
 }
 
 @media screen and (max-width: 540px) {
   .body {
     width: 95%;
+  }
+
+  .overlay {
+    .container {
+      width: 90%;
+    }
   }
 }

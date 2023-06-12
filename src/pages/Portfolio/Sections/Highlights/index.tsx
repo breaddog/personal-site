@@ -125,7 +125,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
               <Swiper
                 {...swiperParams}
                 data-aos='zoom-in'
-                data-aos-delay='100'
+                data-aos-delay='200'
                 data-aos-offset='200'
               >
                 {map(PROJECTS, (project: ProjectObject, idx: number) => {

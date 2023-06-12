@@ -40,13 +40,13 @@ interface LoadingSectionProps {
 export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
   React.forwardRef<LoadingHandle, LoadingSectionProps>(({ className }, ref) => {
     // if changed, also change in scss
-    const ONIGIRI_AMOUNT = 14
+    const ONIGIRI_AMOUNT = 20
     // active or not (can be toggled)
     // DEBUG: toggle all to false
-    const [front, setFront] = React.useState<boolean>(true)
-    const [active, setActive] = React.useState<boolean>(true)
+    const [front, setFront] = React.useState<boolean>(false)
+    const [active, setActive] = React.useState<boolean>(false)
 
-    const [loaded, setLoaded] = React.useState<boolean>(false)
+    const [loaded, setLoaded] = React.useState<boolean>(true)
 
     // IF LOADING BAR USED
     const [amountLoaded, setAmountLoaded] = React.useState<number>(0)

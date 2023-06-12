@@ -337,8 +337,57 @@
       }
 
       .window {
+        &.develop {
+          text-align: center;
+        }
+
         &.orbit {
           max-height: unset;
+        }
+
+        h3 {
+          text-align: center;
+        }
+
+        .text {
+          text-align: center;
+        }
+
+        .personalInfo {
+          flex-direction: column;
+
+          .section {
+            margin: 0 auto;
+
+            &:not(:nth-last-child(1)) {
+              margin-bottom: 1rem;
+            }
+
+            .listHeading {
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .list {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        // text-align: center;
+        padding-left: unset;
+
+        li {
+          margin: 0 auto;
+          margin-bottom: 0.5rem;
+          width: fit-content;
+          text-align: center;
+
+          &:before {
+            content: '';
+            text-indent: initial;
+            position: relative;
+          }
         }
       }
     }

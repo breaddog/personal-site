@@ -144,7 +144,7 @@ export const JOB_POSITIONS: JobPosition[] = [
       {
         title: 'Objectives',
         info: [
-          'Aim to teach beginners basic coding principles (e.g. Loops, Site Building...)',
+          'Aim to teach beginners basic coding principles (e.g. Foundations, Site Building...)',
           'Strive for students to learn to think programatically',
           'Teach students how to use basic HTML and CSS to build and style a simple website',
           'Provide unique and personalised examples to assist and further a students understanding',
