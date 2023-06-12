@@ -5,4 +5,3 @@ export * from './BinKingz'
 export * from './Adot'
 
 export * from './Interfaces'
-export * from './Query'

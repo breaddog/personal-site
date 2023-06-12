@@ -6,6 +6,7 @@ import {
 
 import { ethers } from 'ethers'
 import { ContractRequest } from '../ContractRequest'
+import { map } from 'lodash'
 
 // generalised erc721 request, can be extended from for custom ones
 // meant for a contract by contract basis
@@ -40,9 +41,11 @@ export class ERC721Request extends ContractRequest {
   // owned tokens
   async getOwnedTokens(wallet: string) {
     try {
-      const ownedTokens = await this.QUERY_CONTRACT.getTokensByAccount(
-        this.ADDRESS,
-        wallet
+      const _balance = await this.getBalanceOf(wallet)
+      const ownedTokens = await Promise.all(
+        map([...Array(_balance).keys()], (idx: number) =>
+          this.CONTRACT.tokenOfOwnerByIndex(wallet, idx)
+        )
       )
       return ownedTokens
     } catch (err) {
