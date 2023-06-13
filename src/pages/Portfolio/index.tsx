@@ -85,7 +85,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
       ref: highlightsRef,
       key: PORTFOLIO_SECTIONS.highlights.key,
     },
-    contacts: {
+    contact: {
       ref: contactsRef,
       key: PORTFOLIO_SECTIONS.contacts.key,
     },
@@ -96,6 +96,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     const _scrollToSection = (
       sectionRef: React.RefObject<GenericForwardRefInterface>
     ) => {
+      console.log(key)
       dispatch(setPortfolioCurrentSection(key))
       sectionRef.current?.element?.scrollIntoView({
         behavior: 'smooth',

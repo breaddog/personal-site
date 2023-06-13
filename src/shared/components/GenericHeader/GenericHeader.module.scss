@@ -32,7 +32,7 @@
   opacity: 1;
 
   &.hidden {
-    top: calc(var(--header-height) * -1 * 0.65);
+    top: calc(var(--header-height) * -1 * 0.5);
     opacity: 0;
   }
 
@@ -119,6 +119,9 @@
   height: 52px;
 
   animation-name: toggleAnti;
+
+  background: rgba(#282b2d, 0.5);
+  border-radius: 1rem;
 
   &.active {
     animation-name: toggle;
@@ -210,7 +213,7 @@
       .sections {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         height: 80%;
         width: 100%;
 

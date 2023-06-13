@@ -136,7 +136,8 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
           alt: 'onigiri',
         }}
         mobile={{
-          flexActive: false,
+          flexActive: true,
+          flexSize: 876,
         }}
         className={styles.projectHeader}
         sections={BACK_SECTION}

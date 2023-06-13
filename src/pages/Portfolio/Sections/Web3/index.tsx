@@ -19,7 +19,7 @@ import {
 import ethereumSVG from '../../../../assets/icons/ethereum-bold.svg'
 import { EXTERNAL_LINKS } from '../../../../shared'
 import { useWeb3React } from '@web3-react/core'
-import { chainIdToName } from '../../../../ethereum/utils'
+import { chainIdToName, shortenAddress } from '../../../../ethereum/utils'
 import { AppContext } from '../../../../App'
 import {
   WalletConnectButton,
@@ -279,7 +279,15 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     >
                       <div className={styles.row}>
                         <span className={styles.key}>Account:</span>
-                        <span className={styles.value}>{account ?? '--'}</span>
+                        <span className={styles.value}>
+                          {account
+                            ? shortenAddress({
+                                address: account,
+                                length: 6,
+                                tail: true,
+                              })
+                            : '--'}
+                        </span>
                       </div>
                       <div className={styles.row}>
                         <span className={styles.key}>Network:</span>

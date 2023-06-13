@@ -132,10 +132,11 @@
               transition-property: background-color;
               transition-duration: 0.4s;
               transition-timing-function: ease-in-out;
+              background-color: var(--purple-40);
 
-              &.connect {
-                background-color: var(--purple-40);
-              }
+              // &.connect {
+              //   background-color: var(--purple-40);
+              // }
             }
           }
         }

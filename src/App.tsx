@@ -114,7 +114,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       return
     }
     localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, String(connectionType))
-    // handleUpdateBalances(account)
+    handleUpdateBalances(account)
   }, [account, connectionType])
 
   // on load

@@ -127,6 +127,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                 data-aos='zoom-in'
                 data-aos-delay='200'
                 data-aos-offset='200'
+                data-aos-duration='1200'
               >
                 {map(PROJECTS, (project: ProjectObject, idx: number) => {
                   return (

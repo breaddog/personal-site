@@ -168,8 +168,8 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
         // modal should be next
         _timeline.add(_modalTimeline(20))
 
-        // // padding
-        // _timeline.add(gsap.from({}, { duration: 20 }))
+        // padding
+        _timeline.add(gsap.from({}, { duration: 12 }))
       }
 
       React.useEffect(() => {
