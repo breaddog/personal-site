@@ -79,9 +79,9 @@
   --header-height: 80px;
 
   // font size
-  --font-h1: 46px;
+  --font-h1: 42px;
   --font-h2: 30px;
-  --font-h3: 24px;
+  --font-h3: 22px;
   --font-h4: 20px;
   --font-p: 16px;
   --font-caption: 14px;
@@ -94,10 +94,10 @@
   --screen-break-tablet: 876px;
 
   @media screen and (max-width: 768px) {
-    --font-h1: 38px;
+    --font-h1: 36px;
     --font-h2: 26px;
-    --font-h3: 22px;
-    --font-h4: 20px;
+    --font-h3: 20px;
+    --font-h4: 18px;
     --font-p: 16px;
     --font-caption: 14px;
   }

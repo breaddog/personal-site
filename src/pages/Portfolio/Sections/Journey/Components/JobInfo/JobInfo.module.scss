@@ -85,7 +85,6 @@
       width: 25%;
       margin: auto 1.5rem;
       margin-top: 0;
-      margin-right: 2rem;
 
       .nameContainer {
         display: flex;
@@ -172,6 +171,18 @@
         margin-right: 0;
       }
     }
+
+    .divider {
+      width: 0px;
+      height: auto;
+
+      display: flex;
+      border: 1px solid var(--grey-10);
+      border-radius: 2px;
+
+      opacity: 0.5;
+      margin-right: 0.5rem;
+    }
   }
 }
 
@@ -207,6 +218,13 @@
           margin-bottom: 2rem;
         }
       }
+
+      .divider {
+        &:nth-child(1),
+        &:nth-child(2) {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -223,7 +241,7 @@
 
       .section {
         width: 100%;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
         margin-right: unset;
 
         &:nth-child(1) {
@@ -272,6 +290,18 @@
               line-height: calc(var(--font-p) * 1.5);
             }
           }
+        }
+      }
+
+      .divider {
+        width: 100%;
+        height: 0;
+        margin-right: unset;
+        margin-bottom: 2rem;
+
+        &:nth-child(1),
+        &:nth-child(2) {
+          display: initial;
         }
       }
     }
