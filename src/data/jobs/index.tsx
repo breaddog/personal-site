@@ -2,8 +2,6 @@ import { JobPosition } from '../../shared/interfaces'
 import unimelbSVG from '../../assets/logos/unimelb.svg'
 import onigiriSVG from '../../assets/icons/onigiri.svg'
 
-import { CONSTANTS } from '../../shared'
-
 export const JOB_POSITIONS: JobPosition[] = [
   {
     company: 'University Of Melbourne',

@@ -1,5 +1,3 @@
-import { CONSTANTS } from './constants'
-
 export const EXTERNAL_LINKS = {
   linkedin: 'https://www.linkedin.com/in/tien-foong-leong-627808177/',
   github: 'https://github.com/breaddog/',
