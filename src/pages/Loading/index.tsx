@@ -117,10 +117,8 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     }
 
     const initialLoad = () => {
-      if (0 > selectedFlavourIndex) {
-        setNewFlavourText()
-        setLoaded(true)
-      }
+      setNewFlavourText()
+      setLoaded(true)
     }
     // initial load
     React.useEffect(() => {
