@@ -53,6 +53,7 @@ export const isWithinRefBoundary = ({
   usePinParent = false,
   extraHeight = 0,
   offsetHeightPercentage = 0.9,
+  // eslint-disable-next-line
   key = '',
 }: {
   ref: HTMLDivElement | undefined
