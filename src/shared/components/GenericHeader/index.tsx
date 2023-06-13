@@ -134,11 +134,15 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   // }, [headerRef])
 
   // section change
-  const handleSectionChange = (sectionKey: string) => {
+  const handleSectionChange = (_section: SectionNavInterface) => {
     if (closeOnChange) {
       setActive(false)
     }
-    onSectionChange(sectionKey)
+    const { key, customNavigate } = _section
+    if (customNavigate) {
+      return customNavigate()
+    }
+    return onSectionChange(key)
   }
 
   return (
@@ -174,7 +178,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                     'effects--hoverPop',
                     currentSection === section.key && styles.highlight
                   )}
-                  onClick={() => handleSectionChange(section.key)}
+                  onClick={() => handleSectionChange(section)}
                   key={idx}
                 >
                   {section.title}
@@ -242,7 +246,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                       'effects--hoverPop',
                       currentSection === section.key && styles.highlight
                     )}
-                    onClick={() => handleSectionChange(section.key)}
+                    onClick={() => handleSectionChange(section)}
                     key={idx}
                   >
                     {section.title}

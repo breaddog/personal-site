@@ -15,13 +15,13 @@ export const PORTFOLIO_SECTIONS: {
     title: 'manager',
     key: 'manager',
   },
-  journey: {
-    title: 'journey',
-    key: 'journey',
-  },
   web3: {
     title: 'web3',
     key: 'web3',
+  },
+  journey: {
+    title: 'journey',
+    key: 'journey',
   },
   highlights: {
     title: 'highlights',

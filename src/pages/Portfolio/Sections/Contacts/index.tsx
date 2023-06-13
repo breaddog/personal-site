@@ -107,7 +107,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
       )
 
       React.useImperativeHandle(ref, () => ({
-        element: contactsRef.current as Element,
+        element: contactsRef.current as HTMLDivElement,
       }))
 
       return (

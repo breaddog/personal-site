@@ -11,7 +11,7 @@ import {
 
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
 
-const { landing, developer, manager, journey, highlights, contacts } =
+const { landing, developer, manager, web3, journey, highlights, contacts } =
   PORTFOLIO_SECTIONS
 
 interface PortfolioSectionState {
@@ -48,6 +48,9 @@ export default createReducer(
               break
             case journey.key:
               state.section = journey.key
+              break
+            case web3.key:
+              state.section = web3.key
               break
             case highlights.key:
               state.section = highlights.key

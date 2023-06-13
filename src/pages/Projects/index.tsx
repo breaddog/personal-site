@@ -3,7 +3,7 @@ import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { ProjectObject } from '../../data/projects'
 import { fetchProject, fetchProjectContent } from '../../shared'
@@ -13,6 +13,9 @@ import { GenericHeader } from '../../shared/components'
 import { isNull, isUndefined } from 'lodash'
 
 import onigiriSVG from '../../assets/icons/onigiri.svg'
+import { SectionNavInterface } from '../../shared/types'
+import { PORTFOLIO_SECTIONS } from '../../shared/sections'
+import { ROUTES } from '../../routes'
 
 interface ProjectPageProps {
   className?: string
@@ -25,6 +28,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
   key,
   children,
 }) => {
+  const navigate = useNavigate()
   const classes = classNames(
     styles.projectPage,
     sectionStyles.section,
@@ -107,6 +111,22 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     )
   }
 
+  const BACK_SECTION: {
+    [key: string]: SectionNavInterface
+  } = {
+    portfolio: {
+      title: 'Portfolio Page',
+      key: ROUTES.portfolio.key,
+      customNavigate: () => navigate(ROUTES.portfolio.pathname),
+    },
+    highlights: {
+      title: 'Back To Highlights',
+      key: PORTFOLIO_SECTIONS.highlights.key,
+      customNavigate: () =>
+        navigate(`/?section=${PORTFOLIO_SECTIONS.highlights.key}`),
+    },
+  }
+
   // TO DO: add back to project section
   return (
     <div className={sectionStyles.section}>
@@ -119,6 +139,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
           flexActive: false,
         }}
         className={styles.projectHeader}
+        sections={BACK_SECTION}
       />
       {renderProjectPageBody()}
     </div>

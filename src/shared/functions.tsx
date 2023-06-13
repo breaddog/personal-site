@@ -1,7 +1,7 @@
 import { ScrollTrigger } from 'gsap/all'
 import React from 'react'
 import { GenericForwardRefInterface } from './interfaces'
-import { filter, map } from 'lodash'
+import { filter, isUndefined, map } from 'lodash'
 
 // fonts
 export const capitaliseText = (string: string) => {
@@ -45,6 +45,50 @@ export const handleDesktopListener = (
     secondCheckSetter(false)
     ScrollTrigger.refresh()
   }
+}
+
+export const isWithinRefBoundary = ({
+  ref,
+  scrollY,
+  usePinParent = false,
+  extraHeight = 0,
+  offsetHeightPercentage = 1,
+}: {
+  ref: HTMLDivElement | undefined
+  scrollY: number
+  // for padding etc
+  usePinParent?: boolean
+  extraHeight?: number
+  offsetHeightPercentage?: number
+}) => {
+  // handle undefined case
+  if (!ref || isUndefined(scrollY)) return false
+
+  let upper
+  let height
+  let bottom
+
+  // do we use a pin parent?
+  if (usePinParent) {
+    const _pinParent = ref.parentElement
+    if (!_pinParent) return false
+    upper = _pinParent?.offsetTop
+    height = _pinParent?.getBoundingClientRect().height * offsetHeightPercentage
+  } else {
+    // else reference offset and client height
+    upper = ref?.offsetTop
+    height =
+      (ref?.getBoundingClientRect().height + extraHeight) *
+      offsetHeightPercentage
+  }
+  // determine bottom boundary
+  bottom = upper + height
+
+  // if within boundaries (exclusive max)
+  if (scrollY >= upper && scrollY < bottom) {
+    return true
+  }
+  return false
 }
 
 // utility

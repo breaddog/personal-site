@@ -1,9 +1,7 @@
 import projectStyles from '../../Project.module.scss'
 import textStyles from '../../Components/Text/Text.module.scss'
-import { map } from 'lodash'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
-import { capitaliseText } from '../../../../shared'
 
 export const BINKINGZ_LINKS: {
   [key: string]: string

@@ -3,6 +3,7 @@ import styles from './App.module.scss'
 import React from 'react'
 import AOS from 'aos'
 import classNames from 'classnames'
+import queryString from 'query-string'
 
 import { ROUTES } from './routes'
 
@@ -25,12 +26,14 @@ import {
 } from './ethereum'
 import { APP_ENV } from './config'
 import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'
+import { delay } from 'lodash'
 
 interface AppProps {
   className?: string
 }
 
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
+  const { section } = queryString.parse(location.search)
   const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
 
   // basename
@@ -175,6 +178,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     let prevScrollY = window.scrollY
 
     const updateScrollDirectionHandler = () => {
+      // scroll related stuff otherwise
       const scrollY = window.scrollY
       const isBigger = scrollY > prevScrollY
       // no difference (default to up)
@@ -192,6 +196,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
   // AOS
   React.useEffect(() => {
+    let activated = false
     // only trigger animations after load
     if (loadingRefCurrent?.loaded) {
       AOS.init({
@@ -200,8 +205,16 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         once: true,
         delay: 50,
       })
+      activated = true
     }
-  }, [loadingRef, loadingRefCurrent])
+
+    if (activated) {
+      delay(() => {
+        AOS.refreshHard()
+        AOS.refresh()
+      }, 1000)
+    }
+  }, [loadingRef, loadingRefCurrent, section])
 
   return (
     <Router basename={basename}>

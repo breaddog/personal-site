@@ -32,7 +32,7 @@ export const PortfolioJourney: React.FC<PortfolioJourneyProps> =
       )
 
       React.useImperativeHandle(ref, () => ({
-        element: journeyRef.current as Element,
+        element: journeyRef.current as HTMLDivElement,
       }))
 
       return (

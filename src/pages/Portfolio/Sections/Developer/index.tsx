@@ -400,7 +400,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
       }, [isColumnRef, flexMediaMatcher])
 
       React.useImperativeHandle(ref, () => ({
-        element: devSectionRef.current as Element,
+        element: devSectionRef.current as HTMLDivElement,
       }))
 
       return (

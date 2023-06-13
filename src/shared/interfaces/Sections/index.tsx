@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface GenericForwardRefInterface {
-  element?: Element
+  element?: HTMLDivElement
 }
 
 export interface GenericSubSectionForwardInterface {

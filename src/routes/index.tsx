@@ -40,10 +40,6 @@ export const ROUTES: Path = {
     key: 'redvillage',
     pathname: 'redvillage',
   },
-  lushsux: {
-    key: 'lushsux',
-    pathname: 'lushsux',
-  },
   adot: {
     key: 'adot',
     pathname: 'adot',

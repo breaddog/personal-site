@@ -1,8 +1,6 @@
 import textStyles from '../../Components/Text/Text.module.scss'
-import { map } from 'lodash'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
-import { capitaliseText } from '../../../../shared'
 
 export const ARTBALL_LINKS: {
   [key: string]: string

@@ -2,7 +2,9 @@ import './index.scss'
 import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
+import AOS from 'aos'
 
+import queryString from 'query-string'
 import { PortfolioHeader } from './Header'
 
 import {
@@ -17,15 +19,23 @@ import {
 
 import { GenericForwardRefInterface } from '../../shared/interfaces'
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
-import { wrapForwardRefAsElementRef } from '../../shared'
+import { isWithinRefBoundary, wrapForwardRefAsElementRef } from '../../shared'
 import { AppContext } from '../../App'
+import { delay } from 'lodash'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPortfolioCurrentSection } from '../../store/portfolio/action'
+import { getPortfolioSectionSelector } from '../../store/portfolio/selectors'
+import { SectionNavRefInterface } from '../../shared/types'
 
 interface PortfolioProps {
   className?: string
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
-  const { loadingRef } = React.useContext(AppContext)
+  const dispatch = useDispatch()
+  const currentSection = useSelector(getPortfolioSectionSelector)
+  const { section } = queryString.parse(location.search)
+  const { loadingRef, scrollEnabled } = React.useContext(AppContext)
 
   // const [loaded, setLoaded] = React.useState<boolean>(false)
 
@@ -45,43 +55,119 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const highlightsRef = React.useRef<GenericForwardRefInterface>(null)
   const contactsRef = React.useRef<GenericForwardRefInterface>(null)
 
+  const MAP_SECTION_REFS_TO_KEYS: {
+    [key: string]: SectionNavRefInterface
+  } = {
+    landing: {
+      ref: landingRef,
+      key: PORTFOLIO_SECTIONS.landing.key,
+    },
+    developer: {
+      ref: developerRef,
+      key: PORTFOLIO_SECTIONS.developer.key,
+    },
+    manager: {
+      ref: managerRef,
+      key: PORTFOLIO_SECTIONS.manager.key,
+      usePinParent: true,
+      heightOffsetPercentage: 0.95,
+    },
+    web3: {
+      ref: web3Ref,
+      key: PORTFOLIO_SECTIONS.web3.key,
+    },
+    journey: {
+      ref: journeyRef,
+      key: PORTFOLIO_SECTIONS.journey.key,
+    },
+
+    highlights: {
+      ref: highlightsRef,
+      key: PORTFOLIO_SECTIONS.highlights.key,
+    },
+    contacts: {
+      ref: contactsRef,
+      key: PORTFOLIO_SECTIONS.contacts.key,
+    },
+  }
+
   // for scrolling
   const scrollToSection = (key: string) => {
     const _scrollToSection = (
       sectionRef: React.RefObject<GenericForwardRefInterface>
     ) => {
+      dispatch(setPortfolioCurrentSection(key))
       sectionRef.current?.element?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
       })
     }
-    // TO DO: find better way to generalise this for any section
-    switch (key) {
-      case PORTFOLIO_SECTIONS.landing.key:
-        _scrollToSection(landingRef)
+    // FUTURE: find better way to generalise this for any section
+    for (const _sectionKey of Object.keys(MAP_SECTION_REFS_TO_KEYS)) {
+      const _section = MAP_SECTION_REFS_TO_KEYS[_sectionKey]
+      if (_sectionKey === key) {
+        _scrollToSection(_section.ref)
         break
-      case PORTFOLIO_SECTIONS.developer.key:
-        _scrollToSection(developerRef)
-        break
-      case PORTFOLIO_SECTIONS.manager.key:
-        _scrollToSection(managerRef)
-        break
-      case PORTFOLIO_SECTIONS.journey.key:
-        _scrollToSection(journeyRef)
-        break
-      case PORTFOLIO_SECTIONS.web3.key:
-        _scrollToSection(web3Ref)
-        break
-      case PORTFOLIO_SECTIONS.highlights.key:
-        _scrollToSection(highlightsRef)
-        break
-      case PORTFOLIO_SECTIONS.contacts.key:
-        _scrollToSection(contactsRef)
-        break
-      default:
-        break
+      }
     }
   }
+
+  // SCROLL
+  // TO DO: adjust header to change depending on which section youre at
+  const checkScrollBoundaries = () => {
+    let scrollY = window.scrollY
+
+    for (const _sectionKey of Object.keys(MAP_SECTION_REFS_TO_KEYS)) {
+      const _section = MAP_SECTION_REFS_TO_KEYS[_sectionKey]
+
+      // if within boundary and not set
+      // we also determine if pin parent is needed based on stuff
+      if (
+        isWithinRefBoundary({
+          ref: _section.ref.current?.element,
+          scrollY,
+          usePinParent: _section.usePinParent,
+          extraHeight: _section.extraHeight,
+          offsetHeightPercentage: _section.heightOffsetPercentage,
+        }) &&
+        currentSection !== _section.key
+      ) {
+        dispatch(setPortfolioCurrentSection(_section.key))
+        break
+      }
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', checkScrollBoundaries)
+    return () => {
+      window.removeEventListener('scroll', checkScrollBoundaries)
+    }
+  }, [
+    landingRef,
+    developerRef,
+    managerRef,
+    journeyRef,
+    web3Ref,
+    highlightsRef,
+    contactsRef,
+  ])
+
+  // if it was a navigation related thing
+  React.useEffect(() => {
+    if (section && !loadingRef?.current?.active && scrollEnabled) {
+      typeof section === 'string' && delay(() => scrollToSection(section), 100)
+    }
+
+    // to fix the weird AOS not loading thing
+    // will not trigger if no specific scroll
+    if (!section) {
+      AOS.refreshHard()
+      let scrollY = window.scrollY
+      window.scrollTo({ top: scrollY + 1 })
+      window.scrollTo({ top: scrollY })
+    }
+  }, [section, loadingRef, scrollEnabled])
 
   return (
     <PortfolioContext.Provider

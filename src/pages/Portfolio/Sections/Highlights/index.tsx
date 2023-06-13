@@ -98,7 +98,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
       )
 
       React.useImperativeHandle(ref, () => ({
-        element: highlightsRef.current as Element,
+        element: highlightsRef.current as HTMLDivElement,
       }))
 
       return (

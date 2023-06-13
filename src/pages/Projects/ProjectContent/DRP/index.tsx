@@ -1,5 +1,4 @@
 import textStyles from '../../Components/Text/Text.module.scss'
-import projectStyles from '../../Project.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
@@ -212,34 +211,33 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             Vhils. I contributed towards the development of the site, planning
             of the functional component of the artwork, R&D and script building
             for the artwork, team management and client liasoning.
-            <br />
-            <ul>
-              <li>
-                <Hyperlink>
-                  <Link to={`${ROUTES.projects.parentPath}/vhils`}>
-                    Project Article on this site
-                  </Link>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <Link to={LAYERS_LINKS.main}>Official LAYERS Site</Link>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <Link to={LAYERS_LINKS.artistDRP}>
-                    Project Article on this site
-                  </Link>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <Link to={LAYERS_LINKS.opensea}>LAYERS on Opensea</Link>
-                </Hyperlink>
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li>
+              <Hyperlink>
+                <Link to={`${ROUTES.projects.parentPath}/vhils`}>
+                  Project Article on this site
+                </Link>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <Link to={LAYERS_LINKS.main}>Official LAYERS Site</Link>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <Link to={LAYERS_LINKS.artistDRP}>
+                  Project Article on this site
+                </Link>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <Link to={LAYERS_LINKS.opensea}>LAYERS on Opensea</Link>
+              </Hyperlink>
+            </li>
+          </ul>
         </>
       ),
     },
@@ -267,34 +265,33 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             Vhils. I contributed towards the development of the site, planning
             of the functional component of the artwork, R&D and script building
             for the artwork, team management and client liasoning.
-            <br />
-            <ul>
-              <li>
-                <Hyperlink>
-                  <Link to={`${ROUTES.projects.parentPath}/vhils`}>
-                    Project Article on this site
-                  </Link>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <Link to={LAYERS_LINKS.main}>Official LAYERS Site</Link>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <Link to={LAYERS_LINKS.artistDRP}>
-                    Project Article on this site
-                  </Link>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <Link to={LAYERS_LINKS.opensea}>LAYERS on Opensea</Link>
-                </Hyperlink>
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li>
+              <Hyperlink>
+                <Link to={`${ROUTES.projects.parentPath}/vhils`}>
+                  Project Article on this site
+                </Link>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <Link to={LAYERS_LINKS.main}>Official LAYERS Site</Link>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <Link to={LAYERS_LINKS.artistDRP}>
+                  Project Article on this site
+                </Link>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <Link to={LAYERS_LINKS.opensea}>LAYERS on Opensea</Link>
+              </Hyperlink>
+            </li>
+          </ul>
         </>
       ),
     },
@@ -323,54 +320,53 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             of her capabilities and provide exclusive benefits and early access
             to holders and partners. I was involved in the asset generation,
             site building, web3 integration and deployment of the project.
-            <br />
-            <ul>
-              <li>
-                <Hyperlink>
-                  <a
-                    href={'https://drp.io/drops/synthia'}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    Mint Page
-                  </a>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <a
-                    href={'https://discord.com/invite/meetsynthia'}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    Synthia's Discord Server: Synthetic Playground
-                  </a>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <a
-                    href={'https://opensea.io/collection/synthia'}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    Founders Edition on Opensea
-                  </a>
-                </Hyperlink>
-              </li>
-              <li>
-                <Hyperlink>
-                  <a
-                    href={'https://opensea.io/collection/synthia-society'}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    Synthia Society on Opensea
-                  </a>
-                </Hyperlink>
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li>
+              <Hyperlink>
+                <a
+                  href={'https://drp.io/drops/synthia'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Mint Page
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <a
+                  href={'https://discord.com/invite/meetsynthia'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Synthia's Discord Server: Synthetic Playground
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <a
+                  href={'https://opensea.io/collection/synthia'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Founders Edition on Opensea
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink>
+                <a
+                  href={'https://opensea.io/collection/synthia-society'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Synthia Society on Opensea
+                </a>
+              </Hyperlink>
+            </li>
+          </ul>
         </>
       ),
     },

@@ -108,7 +108,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
       }, [isColumnRef, flexMediaMatcher])
 
       React.useImperativeHandle(ref, () => ({
-        element: sectionRef.current as Element,
+        element: sectionRef.current as HTMLDivElement,
       }))
 
       return (
@@ -150,8 +150,8 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       Some of my experience derrives from various NFT and DeFi
                       (Decentralised Finance) projects with clients such as
                       Tennis Australia, T&B Media Global, and artists like
-                      Shintaro Kago, Vhils, Scott Marsh and Lushux to name a
-                      few.
+                      Shintaro Kago, Vhils and Scott Marsh under development
+                      partnerships to name a few.
                     </p>
                     <br />
 
@@ -199,7 +199,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       }}
                       bodyclassname={styles.faqContent}
                       data-aos='fade-right'
-                      data-aos-delay={200 + 25 * idx}
+                      data-aos-delay={200 + 10 * idx}
                     >
                       {faq.content}
                     </CollapsibleFAQ>
@@ -213,7 +213,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     }}
                     bodyclassname={styles.faqContent}
                     data-aos='fade-right'
-                    data-aos-delay={200 + 25 * WEB3_FAQ.length}
+                    data-aos-delay={200 + 10 * WEB3_FAQ.length}
                   >
                     <p>
                       For more information on Ethereum, how it functions and its
@@ -231,6 +231,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   </CollapsibleFAQ>
                 </div>
               </div>
+
               <div
                 className={classNames(styles.right, 'web3__right')}
                 data-aos='zoom-in-left'

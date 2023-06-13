@@ -64,7 +64,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
 
       // pass up ref
       React.useImperativeHandle(ref, () => ({
-        element: landingRef.current as Element,
+        element: landingRef.current as HTMLDivElement,
       }))
 
       React.useEffect(() => {
