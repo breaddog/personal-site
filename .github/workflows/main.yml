@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  REACT_APP_IS_PROD: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
