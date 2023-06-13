@@ -1,11 +1,10 @@
 import { CONSTANTS } from './constants'
-const { projectFileRoot } = CONSTANTS
 
 export const EXTERNAL_LINKS = {
   linkedin: 'https://www.linkedin.com/in/tien-foong-leong-627808177/',
   github: 'https://github.com/breaddog/',
   email: 'tienfoong@gmail.com',
-  resume: `${projectFileRoot}/documents/resume.pdf`,
+  resume: '/documents/resume.pdf',
   metamask: {
     download: 'https://metamask.io/download/',
     main: 'https://metamask.io/',

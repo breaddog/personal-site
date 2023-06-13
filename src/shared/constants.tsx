@@ -2,8 +2,7 @@ import { APP_ENV } from '../config'
 
 const { IS_PROD } = APP_ENV
 export const CONSTANTS = {
-  projectFileRoot: `${IS_PROD ? '/personal-site' : ''}`,
-  projectImageRoot: `${IS_PROD ? '/personal-site' : ''}/images/projects`,
+  projectImageRoot: '/images/projects',
   mobileMediaQuery: '(max-width: 876px)',
   mediumMediaQuery: '(max-width: 1280px)',
 }

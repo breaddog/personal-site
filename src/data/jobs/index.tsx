@@ -3,7 +3,6 @@ import unimelbSVG from '../../assets/logos/unimelb.svg'
 import onigiriSVG from '../../assets/icons/onigiri.svg'
 
 import { CONSTANTS } from '../../shared'
-const { projectFileRoot } = CONSTANTS
 
 export const JOB_POSITIONS: JobPosition[] = [
   {
@@ -57,7 +56,7 @@ export const JOB_POSITIONS: JobPosition[] = [
   {
     company: 'Pellar Technology',
     title: 'Associate Engineer',
-    logo: `${projectFileRoot}/images/logos/pellar.jpg`,
+    logo: 'images/logos/pellar.jpg',
     logoAlt: 'pellar',
     start: 'August 2021',
     end: 'February 2023',
