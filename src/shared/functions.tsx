@@ -52,7 +52,8 @@ export const isWithinRefBoundary = ({
   scrollY,
   usePinParent = false,
   extraHeight = 0,
-  offsetHeightPercentage = 1,
+  offsetHeightPercentage = 0.9,
+  key = '',
 }: {
   ref: HTMLDivElement | undefined
   scrollY: number
@@ -60,6 +61,8 @@ export const isWithinRefBoundary = ({
   usePinParent?: boolean
   extraHeight?: number
   offsetHeightPercentage?: number
+  // debug
+  key?: string
 }) => {
   // handle undefined case
   if (!ref || isUndefined(scrollY)) return false
@@ -84,11 +87,12 @@ export const isWithinRefBoundary = ({
   // determine bottom boundary
   bottom = upper + height
 
+  // DEBUG
+  // console.log(upper, bottom, scrollY)
+  // console.log(scrollY >= upper && scrollY <= bottom)
+
   // if within boundaries (exclusive max)
-  if (scrollY >= upper && scrollY < bottom) {
-    return true
-  }
-  return false
+  return scrollY >= upper && scrollY < bottom
 }
 
 // utility

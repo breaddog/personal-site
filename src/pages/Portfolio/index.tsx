@@ -96,7 +96,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     const _scrollToSection = (
       sectionRef: React.RefObject<GenericForwardRefInterface>
     ) => {
-      console.log(key)
       dispatch(setPortfolioCurrentSection(key))
       sectionRef.current?.element?.scrollIntoView({
         behavior: 'smooth',
@@ -114,7 +113,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   }
 
   // SCROLL
-  // TO DO: adjust header to change depending on which section youre at
   const checkScrollBoundaries = () => {
     let scrollY = window.scrollY
 
@@ -140,6 +138,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   }
 
   React.useEffect(() => {
+    checkScrollBoundaries()
     window.addEventListener('scroll', checkScrollBoundaries)
     return () => {
       window.removeEventListener('scroll', checkScrollBoundaries)
@@ -152,6 +151,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     web3Ref,
     highlightsRef,
     contactsRef,
+    currentSection,
   ])
 
   // if it was a navigation related thing

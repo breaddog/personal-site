@@ -117,17 +117,21 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     portfolio: {
       title: 'Portfolio Page',
       key: ROUTES.portfolio.key,
-      customNavigate: () => navigate(ROUTES.portfolio.pathname),
+      customNavigate: () => {
+        navigate(ROUTES.portfolio.pathname)
+        window.scrollTo({ top: 0 })
+      },
     },
     highlights: {
       title: 'Back To Highlights',
       key: PORTFOLIO_SECTIONS.highlights.key,
-      customNavigate: () =>
+      customNavigate: () => {
         navigate(`/?section=${PORTFOLIO_SECTIONS.highlights.key}`),
+          window.scrollTo({ top: 0 })
+      },
     },
   }
 
-  // TO DO: add back to project section
   return (
     <div className={sectionStyles.section}>
       <GenericHeader

@@ -146,7 +146,6 @@ export const WalletConnectModal: React.FunctionComponent<
             Text here will be used to display: errors, base information about eth wallets, etc...
           </div> 
         */}
-        {/* TO DO: change metamask injector */}
         <div className={styles.options}>
           <OptionWrapper
             className={classNames(styles.option, 'effect--hoverPop')}

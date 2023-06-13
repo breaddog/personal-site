@@ -44,7 +44,7 @@ export const TopDownProjectSection: React.FunctionComponent<
       <div className={classNames(styles.body, styles[String(placement)])}>
         <ImageProjectSection
           className={classNames(projectStyles.banner, styles.banner)}
-          imageclassname={classNames(projectStyles.img, projectStyles.contain)}
+          imageclassname={classNames(projectStyles.img)}
           src={src}
           alt={alt}
           caption={caption}

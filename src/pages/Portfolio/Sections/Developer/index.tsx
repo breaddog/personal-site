@@ -456,23 +456,25 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                       About Me
                     </h3>
                     <div className={styles.windowBody}>
-                      <p className={styles.text}>
-                        The name is{' '}
-                        <b className={styles.textHighlight}>Tien.</b> I'm a Web
-                        Developer that specialises in the{' '}
-                        <b className={styles.textHighlight}>"end-to-end"</b>{' '}
-                        integration and development lifecycle.
-                      </p>
+                      <div className={styles.intro}>
+                        <p className={styles.text}>
+                          The name is{' '}
+                          <b className={styles.textHighlight}>Tien.</b> I'm a
+                          Web Developer that specialises in the{' '}
+                          <b className={styles.textHighlight}>"end-to-end"</b>{' '}
+                          integration and development lifecycle.
+                        </p>
 
-                      <p className={styles.text}>
-                        I seek to achieve an{' '}
-                        <b className={styles.textHighlight}>intimate</b> and{' '}
-                        <b className={styles.textHighlight}>personal</b>{' '}
-                        understanding of the overall{' '}
-                        <b className={styles.textHighlight}>vision</b> of any
-                        project, bringing the concepts and wishes of it's
-                        original design into reality.
-                      </p>
+                        <p className={styles.text}>
+                          I seek to achieve an{' '}
+                          <b className={styles.textHighlight}>intimate</b> and{' '}
+                          <b className={styles.textHighlight}>personal</b>{' '}
+                          understanding of the overall{' '}
+                          <b className={styles.textHighlight}>vision</b> of any
+                          project, bringing the concepts and wishes of it's
+                          original design into reality.
+                        </p>
+                      </div>
 
                       {/* MAYBE: add some more personal info */}
                       <div className={styles.personalInfo}>

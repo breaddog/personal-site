@@ -7,6 +7,10 @@
 
   .banner {
     margin-bottom: 1.5rem;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   &.top {
@@ -25,5 +29,3 @@
     }
   }
 }
-
-// TO DO: fix images on mobile
