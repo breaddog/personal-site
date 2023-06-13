@@ -45,13 +45,29 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             with Shintaro Kago to fund a movie fully funded by the sales of his
             NFT artworks.
           </p>
-
           <p>
             During my tenure at Pellar, under a partnership with DRP I had
             worked in collaboration on many projects since 2021 assuming
             multiple roles and responsibilities.
           </p>
-
+        </>
+      ),
+    },
+  },
+  {
+    type: 'leftright',
+    props: {
+      image: {
+        placement: 'right',
+        single: {
+          src: '/images/projects/drp/drp-koan.jpg',
+          alt: 'koan artist page',
+          caption:
+            'Alex (KOAN) is also an artist who releases innovative projects on DRP as well',
+        },
+      },
+      content: (
+        <>
           <p className={textStyles.nomargin}>
             Some of those roles are as follows:
           </p>
@@ -101,7 +117,15 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             team members in the form of either pseudo-code, logic diagrams or
             concisely written documentation.
           </p>
-
+        </>
+      ),
+    },
+  },
+  {
+    type: 'text',
+    props: {
+      content: (
+        <>
           <p>
             An example would be going through with the client on sale
             requiements such as whitelists, sales prices, quantity and sales
@@ -384,7 +408,15 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             through UI/UX inspired by the main artwork(s) and being able to
             convey that through the medium of code.
           </p>
-
+        </>
+      ),
+    },
+  },
+  {
+    type: 'text',
+    props: {
+      content: (
+        <>
           <p>
             Through the requirements, specifications and feedback provided, much
             appreciated insight was provided allowing for a more personalised
@@ -419,22 +451,42 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
             collaborative collections that pioneered in the art and web3 spheres
             of influence. Wishing nothing but the best you guys!
           </p>
-          <p>To view more about DRP, there are a few links below:</p>
+          <p className={textStyles.nomargin}>
+            To view more about DRP, there are a few links below:
+          </p>
           <ul>
             <li>
-              <span>Main Site:</span>
-              &nbsp;
-              <Hyperlink>{DRP_LINKS.main}</Hyperlink>
+              <Hyperlink>
+                <a
+                  href={DRP_LINKS.main}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  Main Site
+                </a>
+              </Hyperlink>
             </li>
             <li>
-              <span>Opensea Profile:</span>
-              &nbsp;
-              <Hyperlink>{DRP_LINKS.opensea}</Hyperlink>
+              <Hyperlink>
+                <a
+                  href={DRP_LINKS.opensea}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  Opensea Profile
+                </a>
+              </Hyperlink>
             </li>
             <li>
-              <span>The Halls of Skeleton Kings by KOAN:</span>
-              &nbsp;
-              <Hyperlink>{DRP_LINKS.skeleton}</Hyperlink>
+              <Hyperlink>
+                <a
+                  href={DRP_LINKS.skeleton}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  The Halls of Skeleton Kings by KOAN
+                </a>
+              </Hyperlink>
             </li>
           </ul>
         </>

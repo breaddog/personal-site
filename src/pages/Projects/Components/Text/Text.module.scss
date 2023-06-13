@@ -11,5 +11,9 @@
     &:not(:nth-last-child(1)) {
       margin-bottom: 1.5rem;
     }
+
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
   }
 }

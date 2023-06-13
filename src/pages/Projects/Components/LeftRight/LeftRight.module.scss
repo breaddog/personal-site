@@ -15,14 +15,12 @@
   }
 
   .imageContainer {
-    // background-color: var(--black-10);
     object-fit: contain;
-    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    max-height: 520px;
-    // margin: auto 0;
+    text-align: center;
+    margin: auto 0;
   }
 }
 
