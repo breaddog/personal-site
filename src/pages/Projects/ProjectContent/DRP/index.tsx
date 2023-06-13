@@ -60,7 +60,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/drp/drp-koan.jpg',
+          src: 'images/projects/drp/drp-koan.jpg',
           alt: 'koan artist page',
           caption:
             'Alex (KOAN) is also an artist who releases innovative projects on DRP as well',
@@ -94,7 +94,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/drp/drp-shintaro.jpg',
+          src: 'images/projects/drp/drp-shintaro.jpg',
           alt: 'shintaro kago page',
           caption: 'Artist page of Shintaro Kago',
         },
@@ -194,7 +194,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'left',
         single: {
-          src: '/images/projects/layers/layers.jpg',
+          src: 'images/projects/layers/layers.jpg',
           alt: 'layers',
           caption: 'LAYERS by Vhils, released in partnership with DRP',
         },
@@ -248,7 +248,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'left',
         single: {
-          src: '/images/projects/shintaro/shintaro-eroguro.jpg',
+          src: 'images/projects/shintaro/shintaro-eroguro.jpg',
           alt: 'shintaro kago',
           caption: 'Various drops under the Ero Guro artist Shintaro Kago',
         },
@@ -302,7 +302,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'left',
         single: {
-          src: '/images/projects/drp/drp-synthia.jpg',
+          src: 'images/projects/drp/drp-synthia.jpg',
           alt: 'synthia',
           caption:
             'An NFT Collection revolving around a stable diffusion art bot on Discord called Synthia',
@@ -383,7 +383,7 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/drp/drp-profile.jpg',
+          src: 'images/projects/drp/drp-profile.jpg',
           alt: 'drp profile page',
           caption:
             'Profile page on DRP showing collections released in collaboration',

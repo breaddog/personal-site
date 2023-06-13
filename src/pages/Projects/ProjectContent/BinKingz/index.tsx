@@ -81,7 +81,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       image: {
         placement: 'bottom',
         single: {
-          src: '/images/projects/binkingz/binkingz-map.jpg',
+          src: 'images/projects/binkingz/binkingz-map.jpg',
           alt: 'binkingz mint page',
           caption: 'My personal favourite section, the Roadmap section.',
         },
@@ -139,7 +139,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/binkingz/binkingz-mint.jpg',
+          src: 'images/projects/binkingz/binkingz-mint.jpg',
           alt: 'binkingz mint page',
           caption:
             'Honourable mention to the mint section with the infinite vertical scrollers',
@@ -243,7 +243,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: '/images/projects/binkingz/binkingz-opensea.jpg',
+          src: 'images/projects/binkingz/binkingz-opensea.jpg',
           alt: 'binkingz opensea collection',
           caption: 'All the chooks you can view on Opensea...',
         },

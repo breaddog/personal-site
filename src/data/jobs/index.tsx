@@ -55,7 +55,7 @@ export const JOB_POSITIONS: JobPosition[] = [
   {
     company: 'Pellar Technology',
     title: 'Associate Engineer',
-    logo: './images/logos/pellar.jpg',
+    logo: 'images/logos/pellar.jpg',
     logoAlt: 'pellar',
     start: 'August 2021',
     end: 'February 2023',

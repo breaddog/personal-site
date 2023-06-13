@@ -105,7 +105,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: '/images/projects/artball/artball-opensea-v1.jpg',
+          src: 'images/projects/artball/artball-opensea-v1.jpg',
           alt: 'artball opensea collection',
           caption: 'Opensea showcase of the ArtBall collection',
         },
@@ -140,7 +140,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/artball/artball-matchpoints.jpg',
+          src: 'images/projects/artball/artball-matchpoints.jpg',
           alt: 'artball opensea collection',
           caption: 'Sample screenshot of the MatchPoints site',
         },
@@ -184,12 +184,12 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       image: {
         multi: [
           {
-            src: '/images/projects/artball/artball-groundpass.jpg',
+            src: 'images/projects/artball/artball-groundpass.jpg',
             alt: 'artball groundpass site',
             caption: 'Ground Pass Redemption Site',
           },
           {
-            src: '/images/projects/artball/artball-main-3.jpg',
+            src: 'images/projects/artball/artball-main-3.jpg',
             alt: 'artball main site ticket',
             caption: 'AO23 ArtBall main site section',
           },

@@ -76,7 +76,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/redvillage/redvillage-classes.jpg',
+          src: 'images/projects/redvillage/redvillage-classes.jpg',
           alt: 'redvillage champion classes',
           caption:
             'Champions can either be a Wizard, Paladin, Barbarian, Ranger or Druid',
@@ -118,7 +118,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/redvillage/redvillage-tournament.jpg',
+          src: 'images/projects/redvillage/redvillage-tournament.jpg',
           alt: 'redvillage tournament classes',
           caption: 'A screenshot showing gameplay via the tournaments page',
         },
@@ -157,7 +157,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: '/images/projects/redvillage/redvillage-barracks.jpg',
+          src: 'images/projects/redvillage/redvillage-barracks.jpg',
           alt: 'redvillage hawku',
           caption: 'Example page showing one Player\'s Barracks',
         },
@@ -199,12 +199,12 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
       image: {
         multi: [
           {
-            src: '/images/projects/redvillage/redvillage-hawku.jpg',
+            src: 'images/projects/redvillage/redvillage-hawku.jpg',
             alt: 'redvillage hawku',
             caption: 'The official TRV Marketplace on Hawku',
           },
           {
-            src: '/images/projects/redvillage/redvillage-champion.jpg',
+            src: 'images/projects/redvillage/redvillage-champion.jpg',
             alt: 'champion preview',
             caption:
               'Statistics for the Champion "Swiftfury" on the champion preview page',
