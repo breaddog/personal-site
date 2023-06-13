@@ -2,6 +2,9 @@ import textStyles from '../../Components/Text/Text.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
+import { CONSTANTS } from '../../../../shared'
+const { projectImageRoot } = CONSTANTS
+
 export const ARTBALL_LINKS: {
   [key: string]: string
 } = {
@@ -105,7 +108,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: 'images/projects/artball/artball-opensea-v1.jpg',
+          src: `${projectImageRoot}/artball/artball-opensea-v1.jpg`,
           alt: 'artball opensea collection',
           caption: 'Opensea showcase of the ArtBall collection',
         },
@@ -140,7 +143,7 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: 'images/projects/artball/artball-matchpoints.jpg',
+          src: `${projectImageRoot}/artball/artball-matchpoints.jpg`,
           alt: 'artball opensea collection',
           caption: 'Sample screenshot of the MatchPoints site',
         },
@@ -184,12 +187,12 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
       image: {
         multi: [
           {
-            src: 'images/projects/artball/artball-groundpass.jpg',
+            src: `${projectImageRoot}/artball/artball-groundpass.jpg`,
             alt: 'artball groundpass site',
             caption: 'Ground Pass Redemption Site',
           },
           {
-            src: 'images/projects/artball/artball-main-3.jpg',
+            src: `${projectImageRoot}/artball/artball-main-3.jpg`,
             alt: 'artball main site ticket',
             caption: 'AO23 ArtBall main site section',
           },

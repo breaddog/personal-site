@@ -3,6 +3,9 @@ import textStyles from '../../Components/Text/Text.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
+import { CONSTANTS } from '../../../../shared'
+const { projectImageRoot } = CONSTANTS
+
 export const BINKINGZ_LINKS: {
   [key: string]: string
 } = {
@@ -81,7 +84,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       image: {
         placement: 'bottom',
         single: {
-          src: 'images/projects/binkingz/binkingz-map.jpg',
+          src: `${projectImageRoot}/binkingz/binkingz-map.jpg`,
           alt: 'binkingz mint page',
           caption: 'My personal favourite section, the Roadmap section.',
         },
@@ -139,7 +142,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: 'images/projects/binkingz/binkingz-mint.jpg',
+          src: `${projectImageRoot}/binkingz/binkingz-mint.jpg`,
           alt: 'binkingz mint page',
           caption:
             'Honourable mention to the mint section with the infinite vertical scrollers',
@@ -243,7 +246,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: 'images/projects/binkingz/binkingz-opensea.jpg',
+          src: `${projectImageRoot}/binkingz/binkingz-opensea.jpg`,
           alt: 'binkingz opensea collection',
           caption: 'All the chooks you can view on Opensea...',
         },

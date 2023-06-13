@@ -147,7 +147,7 @@ export const PROJECTS: {
     url: 'https://binkingz.com/',
     description:
       'NFT Grafitti Artwork Project by Sydney based grafitti artist Scott Marsh',
-    asset: `${projectImageRoot}//binkingz/binkingz.jpg`,
+    asset: `${projectImageRoot}/binkingz/binkingz.jpg`,
     alt: 'binkingz',
     body: BODY_CONTENT_BINKINGZ,
     eth: {

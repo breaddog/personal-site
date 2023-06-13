@@ -3,6 +3,9 @@ import projectStyles from '../../Project.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
+import { CONSTANTS } from '../../../../shared'
+const { projectImageRoot } = CONSTANTS
+
 export const LAYERS_LINKS: {
   [key: string]: string
 } = {
@@ -86,7 +89,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: 'images/projects/layers/layers-opensea-narrow-v2.jpg',
+          src: `${projectImageRoot}/layers/layers-opensea-narrow-v2.jpg`,
           alt: 'LAYERS Opensea',
           caption: 'Various LAYERS at different stages of tearing',
         },
@@ -138,7 +141,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       image: {
         placement: 'right',
         single: {
-          src: 'images/projects/layers/layers-staking.jpg',
+          src: `${projectImageRoot}/layers/layers-staking.jpg`,
           alt: 'revealling page',
           caption: 'Exerpt of the staking section',
         },
@@ -185,7 +188,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
       image: {
         placement: 'top',
         single: {
-          src: 'images/projects/layers/layers-jose.jpg',
+          src: `${projectImageRoot}/layers/layers-jose.jpg`,
           alt: 'layer individual view',
           caption: 'Exerpt of a section from the main site\'s artist section',
         },
