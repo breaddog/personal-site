@@ -13,6 +13,14 @@
   }
 }
 
+.nomargin {
+  margin-bottom: initial !important;
+}
+
+.smallmargin {
+  margin-bottom: 1rem !important;
+}
+
 // sections
 .container {
   width: 65%;
@@ -84,6 +92,10 @@
   &:nth-last-child(1) {
     margin-bottom: 0;
   }
+}
+
+.link {
+  color: var(--purple-10);
 }
 
 @media screen and (max-width: 1400px) {

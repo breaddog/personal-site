@@ -1,4 +1,5 @@
 import projectStyles from '../../Project.module.scss'
+import textStyles from '../../Components/Text/Text.module.scss'
 import { map } from 'lodash'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
@@ -118,6 +119,7 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
   {
     type: 'leftright',
     props: {
+      className: projectStyles.nomargin,
       content: (
         <>
           <h3>Landing Section</h3>
@@ -134,7 +136,24 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
             They always say first-impressions are important, and with the GIF
             text-boxes and parallax it invites you to continue browsing.
           </p>
-
+        </>
+      ),
+      image: {
+        placement: 'right',
+        single: {
+          src: '/images/projects/binkingz/binkingz-mint.jpg',
+          alt: 'binkingz mint page',
+          caption:
+            'Honourable mention to the mint section with the infinite vertical scrollers',
+        },
+      },
+    },
+  },
+  {
+    type: 'text',
+    props: {
+      content: (
+        <>
           <h3>About Artist Section</h3>
 
           <p>
@@ -155,15 +174,6 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
           </p>
         </>
       ),
-      image: {
-        placement: 'right',
-        single: {
-          src: '/images/projects/binkingz/binkingz-mint.jpg',
-          alt: 'binkingz mint page',
-          caption:
-            'Honourable mention to the mint section with the infinite vertical scrollers',
-        },
-      },
     },
   },
   {
@@ -185,19 +195,50 @@ export const BODY_CONTENT_BINKINGZ: BodyContentProps[] = [
             fancy getting an existing one for sale on Opensea.
           </p>
 
-          <p>Links:</p>
+          <p className={textStyles.nomargin}>Links:</p>
           <ul>
-            {map(BINKINGZ_LINKS, (link: string, key: string) => {
-              return (
-                <li key={key}>
-                  <span>
-                    {key === 'main' ? 'Main Site' : capitaliseText(key)}:
-                  </span>
-                  &nbsp;
-                  <Hyperlink>{link}</Hyperlink>
-                </li>
-              )
-            })}
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={BINKINGZ_LINKS.main}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Main Site
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={BINKINGZ_LINKS.opensea}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Opensea Page
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={BINKINGZ_LINKS.opensea}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Scott Marsh's Site
+                </a>
+              </Hyperlink>
+            </li>
           </ul>
         </>
       ),

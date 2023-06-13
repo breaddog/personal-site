@@ -7,6 +7,7 @@ interface HyperlinkProps {
   children?: React.ReactNode
   colour?: string
   highlightColour?: string
+  visitedColour?: string
   thickness?: string
   underline?: boolean
 }
@@ -14,7 +15,7 @@ interface HyperlinkProps {
 export const Hyperlink: React.FunctionComponent<HyperlinkProps> = ({
   className = '',
   children,
-  colour = 'var(--grey)',
+  colour = '',
   highlightColour = 'var(--purple-10)',
   thickness = '1px',
   underline = true,

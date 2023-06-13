@@ -1,3 +1,4 @@
+import textStyles from '../../Components/Text/Text.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
@@ -18,7 +19,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
       content: (
         <>
           <p>Blood is Coming.</p>
-          <br />
+
           <p>
             The Red Village (TRV) is a dark-fantasy themed turn-based battle
             arena game on Polygon where characters (champions) battle until a
@@ -26,7 +27,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             randomly generated, categorised by five different classes as of the
             time this article is written.
           </p>
-          <br />
+
           <p>
             The game is play and earn, revolving around building one's barracks
             to be the strongest with champions to participate in tournaments
@@ -35,20 +36,14 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             portion of the prize pool, participate in a free tournament or a 1v1
             "To The Death" challenge.
           </p>
-          <br />
-          {/* <p>
-          By entering tournaments, a champion's battle class and win rate can be increased, allowing them to enter higher tiered tournaments with higher prize pools
-          and other tournaments with specific entry requirements. In the case of 1v1's this would affect a champion's ranking ELO.
-        </p>
-        <br /> */}
           <p>
             There is also a champion breeding system called summoning where
             champions breed during a "summoning cycle" to produce a summoned
             champion. Allowing for the summoning of a new champion with
             desirable battle traits and statistics.
           </p>
-          <br />
-          <p>
+
+          <p className={textStyles.nomargin}>
             My roles as a part of the development of the game from initial
             stages until Summoning are:
           </p>
@@ -72,32 +67,21 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
   {
     type: 'header',
     props: {
-      content: 'Devloping a Strong Rubust Platform',
+      content: 'Devloping a Strong and Robust Platform',
     },
   },
   {
-    type: 'imagemulti',
+    type: 'leftright',
     props: {
       image: {
-        multi: [
-          {
-            src: '/images/projects/redvillage/redvillage-classes.jpg',
-            alt: 'redvillage champion classes',
-            caption:
-              'Champions can either be a Wizard, Paladin, Barbarian, Ranger or Druid',
-          },
-          {
-            src: '/images/projects/redvillage/redvillage-tournament.jpg',
-            alt: 'redvillage tournament classes',
-            caption: 'A screenshot showing gameplay via the tournaments page',
-          },
-        ],
+        placement: 'right',
+        single: {
+          src: '/images/projects/redvillage/redvillage-classes.jpg',
+          alt: 'redvillage champion classes',
+          caption:
+            'Champions can either be a Wizard, Paladin, Barbarian, Ranger or Druid',
+        },
       },
-    },
-  },
-  {
-    type: 'text',
-    props: {
       content: (
         <>
           <p>
@@ -111,7 +95,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             with clear information and support available overtime in the event
             of downtimes or network issues.
           </p>
-          <br />
+
           <p>
             A part I played was team manager, helping with extrapolation and
             transposing of the client's specifications into hard development
@@ -124,7 +108,23 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             to present to and provide solutions to the clients, ensuring a
             transparent and accurate development cycle.
           </p>
-          <br />
+        </>
+      ),
+    },
+  },
+  {
+    type: 'leftright',
+    props: {
+      image: {
+        placement: 'right',
+        single: {
+          src: '/images/projects/redvillage/redvillage-tournament.jpg',
+          alt: 'redvillage tournament classes',
+          caption: 'A screenshot showing gameplay via the tournaments page',
+        },
+      },
+      content: (
+        <>
           <p>
             This was cruicial during the development of the "Summoning" feature
             of the game, where an entirely new system with multiple working
@@ -137,7 +137,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             iron out all details and logic on all fronts and work towards a well
             recieved launch.
           </p>
-          <br />
+
           <p>
             Another notable challenge core to the platform was the integration
             of the game client, website and web3 components. To simply put it
@@ -170,7 +170,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             platform, without an interface, the game of course could not be
             played and blood will not be shed.
           </p>
-          <br />
+
           <p>
             We took key wireframes and translated them into functional
             components, providing suggestions and tweaks that improve on UI/UX
@@ -228,7 +228,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             straightforward" philosophy which I strive to carry forward in any
             development project I participate in.
           </p>
-          <br />
+
           <p>
             Besides also honing my developer skills, it also taught me valuable
             lessons in team, client and community management, mostly on the
@@ -239,7 +239,7 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             been possible without the higher level understanding, knowledge and
             input from the team.
           </p>
-          <br />
+
           <p>
             Even though the game is about 1 year in, I believe that TRV will
             become one of the faces of blockchain gaming not only innovation
@@ -247,62 +247,68 @@ export const BODY_CONTENT_REDVILLAGE: BodyContentProps[] = [
             gaming community out there, promoting competitiveness, achievements
             and outreach to foster a healthy and strong environment.
           </p>
-          <br />
+
           <p>
             A massive shoutout to Lucien, Matan and Brendo and wishing the TRV
             team all the best with future updates and endeavours.
           </p>
-          <p>More information related to The Red Village can be found below:</p>
+          <p className={textStyles.nomargin}>
+            More information related to The Red Village can be found below:
+          </p>
           <ul>
             <li>
-              <span>Main Site:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={REDVILLAGE_LINKS.main}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {REDVILLAGE_LINKS.main}
+                  Main Site
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>The Red Village Champions on Opensea:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={REDVILLAGE_LINKS.opensea}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {REDVILLAGE_LINKS.opensea}
+                  The Red Village Champions on Opensea
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>The Red Village Summoned Champions on Opensea:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={REDVILLAGE_LINKS.openseaSummon}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {REDVILLAGE_LINKS.openseaSummon}
+                  The Red Village Summoned Champions on Opensea
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>Official Marketplace:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={REDVILLAGE_LINKS.hawku}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {REDVILLAGE_LINKS.hawku}
+                  Official Marketplace
                 </a>
               </Hyperlink>
             </li>

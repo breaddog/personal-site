@@ -107,6 +107,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     )
   }
 
+  // TO DO: add back to project section
   return (
     <div className={sectionStyles.section}>
       <GenericHeader

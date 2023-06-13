@@ -1,3 +1,5 @@
+import textStyles from '../../Components/Text/Text.module.scss'
+import projectStyles from '../../Project.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
@@ -53,7 +55,9 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             artwork. Each LAYER and how it tears is unique and randomly set.
           </p>
 
-          <p>My roles as a part of the development of this collection are:</p>
+          <p className={textStyles.nomargin}>
+            My roles as a part of the development of this collection are:
+          </p>
           <ul>
             <li>
               Lead Engineer from Project Conceptualisation up until the launch
@@ -68,58 +72,13 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
               requirements are met
             </li>
             <li>
-              Collaborating on website building and integrating web3 features
+              Collaborating on website building and integrating Web3 features
             </li>
           </ul>
         </>
       ),
     },
   },
-  // {
-  //   type: 'header',
-  //   props: {
-  //     content: 'A Quickie on LAYERS',
-  //   },
-  // },
-  // {
-  //   type: 'text',
-  //   props: {
-  //     content: (
-  //       <>
-  //         <p>
-  //           Each LAYER has four states and starts off as an unrevealed
-  //           billboard, giving the user the option to use one of two types of
-  //           utility tear tokens (Alpha, Beta) a maximum of three times to fully
-  //           reveal it. Both tears are identical in use, with Alpha tears being
-  //           obtainable on initial mint or purchasable, and beta tears available
-  //           through a staking feature released early 2023.
-  //         </p>
-  //
-  //         <p>
-  //           With each tear applied, visual glimpses of the artwork and traits
-  //           will be revealed, providing more information about the final LAYER
-  //           piece until its full reveal. This means that each state of the LAYER
-  //           in itself, is an evolving piece of art. Each component of the final
-  //           LAYER and the way each tear is revealed is randomised, making both
-  //           revealing and owning a LAYER unique.
-  //         </p>
-  //
-  //         <p>
-  //           All functionality related to the project can be performed on the{' '}
-  //           <Hyperlink>
-  //             <a
-  //               href={LAYERS_LINKS.main}
-  //               target='_blank'
-  //               rel='noopener noreferrer'
-  //             >
-  //               official site.
-  //             </a>
-  //           </Hyperlink>
-  //         </p>
-  //       </>
-  //     ),
-  //   },
-  // },
   {
     type: 'topdown',
     props: {
@@ -174,6 +133,7 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
   {
     type: 'leftright',
     props: {
+      className: projectStyles.smallmargin,
       title: 'Leadership, Management, Development',
       image: {
         placement: 'right',
@@ -199,7 +159,15 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             Contract logic related ones. As once deployed on-chain, it cannot be
             fixed unless redeployed due to the nature of the Blockchain.
           </p>
-
+        </>
+      ),
+    },
+  },
+  {
+    type: 'text',
+    props: {
+      content: (
+        <>
           <p>
             The flexibility and high level knowledge as a result of management
             helped me to identify tweaks, issues and imporvements that could be
@@ -244,60 +212,64 @@ export const BODY_CONTENT_LAYERS: BodyContentProps[] = [
             ongoing developments and community.
           </p>
 
-          <p>
+          <p className={textStyles.nomargin}>
             If you are interested in finding out more about the collection, you
             can visit these links below:
           </p>
           <ul>
             <li>
-              <span>Main Site:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={LAYERS_LINKS.main}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {LAYERS_LINKS.main}
+                  Main Site
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>LAYERS on Opensea:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={LAYERS_LINKS.opensea}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {LAYERS_LINKS.opensea}
+                  LAYERS on Opensea
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>Tears on Opensea:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={LAYERS_LINKS.openseaTears}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {LAYERS_LINKS.openseaTears}
+                  Tears on Opensea
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>Vhils:</span>
-              &nbsp;
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={LAYERS_LINKS.artist}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {LAYERS_LINKS.artist}
+                  Vhils' Artist Page
                 </a>
               </Hyperlink>
             </li>

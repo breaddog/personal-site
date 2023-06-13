@@ -1,4 +1,5 @@
 import textStyles from '../../Components/Text/Text.module.scss'
+import projectStyles from '../../Project.module.scss'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
 
@@ -456,7 +457,10 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
           </p>
           <ul>
             <li>
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={DRP_LINKS.main}
                   rel='noopener noreferrer'
@@ -467,7 +471,10 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
               </Hyperlink>
             </li>
             <li>
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={DRP_LINKS.opensea}
                   rel='noopener noreferrer'
@@ -478,7 +485,10 @@ export const BODY_CONTENT_DRP: BodyContentProps[] = [
               </Hyperlink>
             </li>
             <li>
-              <Hyperlink>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
                 <a
                   href={DRP_LINKS.skeleton}
                   rel='noopener noreferrer'

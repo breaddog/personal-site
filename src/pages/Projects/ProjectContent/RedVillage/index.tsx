@@ -100,19 +100,19 @@ export const RedVillageProject: React.FunctionComponent<
       value: `${totalSupplySummoned}`,
     },
     {
-      title: 'Owned Genesis Champions',
+      title: 'Genesis Champions Owned',
       value: `${
         balanceGenesis < 0 ? 'Connect Wallet To View' : balanceGenesis
       }`,
     },
     {
-      title: 'Owned Mystics Champions',
+      title: 'Mystics Champions Owned',
       value: `${
         balanceMystics < 0 ? 'Connect Wallet To View' : balanceMystics
       }`,
     },
     {
-      title: 'Owned Summoned Champions',
+      title: 'Summoned Champions Owned',
       value: `${
         balanceSummoned < 0 ? 'Connect Wallet To View' : balanceSummoned
       }`,

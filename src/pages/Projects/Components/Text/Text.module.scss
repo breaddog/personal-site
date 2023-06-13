@@ -3,6 +3,10 @@
     margin-bottom: initial !important;
   }
 
+  .margin {
+    margin-bottom: var(--section-margin);
+  }
+
   h3 {
     margin-bottom: 0.5rem;
   }

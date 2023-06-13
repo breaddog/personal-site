@@ -155,31 +155,29 @@ export const BODY_CONTENT_ADOT: BodyContentProps[] = [
             the platform, show-casing the engineering prowess we had on our
             side.
           </p>
-          <p>Links to the relevant sites and pages can be found below:</p>
+          <p className={textStyles.nomargin}>
+            Links to the relevant sites and pages can be found below:
+          </p>
           <ul>
             <li>
-              <span>ADOT Marketplace:</span>
-              &nbsp;
               <Hyperlink>
                 <a
                   href={ADOT_LINKS.main}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {ADOT_LINKS.main}
+                  ADOT Marketplace
                 </a>
               </Hyperlink>
             </li>
             <li>
-              <span>LAYERS on Opensea:</span>
-              &nbsp;
               <Hyperlink>
                 <a
                   href={ADOT_LINKS.crown}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {ADOT_LINKS.crown}
+                  Crown Token Site
                 </a>
               </Hyperlink>
             </li>

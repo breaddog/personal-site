@@ -1,3 +1,4 @@
+import textStyles from '../../Components/Text/Text.module.scss'
 import { map } from 'lodash'
 import { Hyperlink } from '../../../../shared/components'
 import { BodyContentProps } from '../../types'
@@ -87,7 +88,10 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             each winning match point on each update, allowing for a correlation
             between each ArtBall/Plot and a live match played during the event.
             Such information can be correlated/queried on the{' '}
-            <Hyperlink>
+            <Hyperlink
+              colour='var(--purple-10)'
+              highlightColour='var(--purple-30)'
+            >
               <a
                 href={ARTBALL_LINKS.matchpoints}
                 rel='noopener noreferrer'
@@ -122,23 +126,16 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             towards my coding and management skills.
           </p>
 
-          <p>For AO23 we had a few requirements which included websites to:</p>
-          <ul>
+          <p className={textStyles.nomargin}>
+            For AO23 we had a few requirements which included websites to:
+          </p>
+          <ul className={textStyles.margin}>
             <li>Redeem groundpasses to the event for AO22 ArtBall Owners.</li>
             <li>Serve as the main event/minting page for the AO23.</li>
             <li>
               Show all ArtBalls and their associated match data from the event.
             </li>
           </ul>
-
-          <p>
-            These all came with their own technical challenges and difficulties,
-            with the most difficult being the Matchpoints site, as we had to
-            integrate the site with both Web3 data and a unity plugin. This had
-            to be done to allow for a unique experience to view the trajectory
-            of the winning shot taken from HawkEye data and its corresponding
-            ArtBall with match information.
-          </p>
         </>
       ),
       image: {
@@ -156,6 +153,14 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
     props: {
       content: (
         <>
+          <p>
+            These all came with their own technical challenges and difficulties,
+            with the most difficult being the Matchpoints site, as we had to
+            integrate the site with both Web3 data and a unity plugin. This had
+            to be done to allow for a unique experience to view the trajectory
+            of the winning shot taken from HawkEye data and its corresponding
+            ArtBall with match information.
+          </p>
           <p>
             Besides that technical hurdle which we had to solve, we also had the
             privilleage of working on the aformentioned redemption page and main
@@ -219,28 +224,66 @@ export const BODY_CONTENT_ARTBALL: BodyContentProps[] = [
             opportunity to work alongside great inviduals as a part of one of
             the four Grand Slams in the tennis world.
           </p>
-        </>
-      ),
-    },
-  },
-  {
-    type: 'text',
-    props: {
-      content: (
-        <>
-          <p>You can find the links to each of the sites below:</p>
+          <p className={textStyles.nomargin}>
+            You can find the links to each of the sites below:
+          </p>
           <ul>
-            {map(ARTBALL_LINKS, (link: string, key: string) => {
-              return (
-                <li key={key}>
-                  <span>
-                    {key === 'main' ? 'Main Site' : capitaliseText(key)}:
-                  </span>
-                  &nbsp;
-                  <Hyperlink>{link}</Hyperlink>
-                </li>
-              )
-            })}
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={ARTBALL_LINKS.main}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Main Site
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={ARTBALL_LINKS.opensea}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Opensea Page
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={ARTBALL_LINKS.matchpoints}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Matchpoints Site
+                </a>
+              </Hyperlink>
+            </li>
+            <li>
+              <Hyperlink
+                colour='var(--purple-10)'
+                highlightColour='var(--purple-30)'
+              >
+                <a
+                  href={ARTBALL_LINKS.groundpass}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Ground Pass Site
+                </a>
+              </Hyperlink>
+            </li>
           </ul>
         </>
       ),

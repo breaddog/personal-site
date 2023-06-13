@@ -69,11 +69,11 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
       value: totalSupply23,
     },
     {
-      title: 'Owned \'22',
+      title: '\'22 ArtBalls Owned',
       value: balance22 < 0 ? 'Connect Wallet to View' : balance22,
     },
     {
-      title: 'Owned \'23',
+      title: '\'23 ArtBalls Owned',
       value: balance23 < 0 ? 'Connect Wallet to View' : balance23,
     },
   ]
