@@ -8,9 +8,6 @@ export const APP_ENV = {
   ),
   MAINNET_CHAIN_ID: Number(process.env.REACT_APP_MAINNET_CHAIN_ID || 1),
   POLYGON_CHAIN_ID: Number(process.env.REACT_APP_POLYGON_CHAIN_ID || 137),
-  METAMASK_URL: String(
-    process.env.REACT_APP_METAMASK_URL || 'https://metamask.io/'
-  ),
   CONNECTOR_TYPE_STORAGE: String(
     process.env.REACT_APP_CONNECTOR_TYPE_STORAGE || 'CONNECTOR_TYPE'
   ),
