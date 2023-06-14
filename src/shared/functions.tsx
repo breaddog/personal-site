@@ -52,7 +52,7 @@ export const isWithinRefBoundary = ({
   scrollY,
   usePinParent = false,
   extraHeight = 0,
-  offsetHeightPercentage = 0.9,
+  offsetHeightPercentage = 0.875,
   // eslint-disable-next-line
   key = '',
 }: {
@@ -77,15 +77,16 @@ export const isWithinRefBoundary = ({
     const _pinParent = ref.parentElement
     if (!_pinParent) return false
     upper = _pinParent?.offsetTop
-    height = _pinParent?.getBoundingClientRect().height * offsetHeightPercentage
+    height = _pinParent?.getBoundingClientRect().height
   } else {
     // else reference offset and client height
     upper = ref?.offsetTop
-    height =
-      (ref?.getBoundingClientRect().height + extraHeight) *
-      offsetHeightPercentage
+    height = ref?.getBoundingClientRect().height + extraHeight
   }
   // determine bottom boundary
+  // account for offset
+  upper = upper > 0 ? upper * 0.9 : 0
+  height *= offsetHeightPercentage
   bottom = upper + height
 
   // DEBUG

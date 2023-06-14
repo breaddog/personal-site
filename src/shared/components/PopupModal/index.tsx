@@ -10,7 +10,7 @@ const REACT_MODAL_STYLES = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
     display: 'flex',
-    zIndex: 1000,
+    zIndex: 256883,
   },
 }
 
