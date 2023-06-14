@@ -21,13 +21,22 @@ export interface ContactInfoProps {
     duration?: number
     fontSize?: string
   }
+  disable?: boolean
   hoverText?: string | React.ReactFragment | Element
 }
 
 export const ContactInfo: React.FunctionComponent<ContactInfoProps> = (
   props: PropsWithChildren<ContactInfoProps>
 ) => {
-  const { className, type, link, icon, circularText, hoverText } = props
+  const {
+    className,
+    type,
+    link,
+    icon,
+    circularText,
+    disable = false,
+    hoverText,
+  } = props
   const classes = classNames(styles.wrapper, styles[type], className)
   const aos_props = filterAOSProps(props)
 
@@ -52,8 +61,9 @@ export const ContactInfo: React.FunctionComponent<ContactInfoProps> = (
       {...aos_props}
     >
       <MagneticBox
-        className={styles.contactBox}
+        className={classNames(styles.contactBox, disable && styles.show)}
         innerBoxClassName={styles.contactBoxBody}
+        disable={disable}
       >
         <a
           href={link}

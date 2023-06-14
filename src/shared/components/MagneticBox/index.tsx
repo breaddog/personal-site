@@ -3,12 +3,14 @@ import React from 'react'
 import classNames from 'classnames'
 
 import gsap from 'gsap'
+import { AppContext } from '../../../App'
 
 interface MagneticBoxProps {
   className?: string
   innerBoxClassName?: string
   children?: React.ReactNode
   duration?: number
+  disable?: boolean
 }
 
 export const MagneticBox: React.FC<MagneticBoxProps> = ({
@@ -16,14 +18,16 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
   innerBoxClassName,
   children,
   duration = 0.8,
+  disable = false,
 }) => {
   const classes = classNames('magnetic-box', styles.box, className)
-
   const magneticAreaRef = React.useRef<HTMLDivElement | null>(null)
   const magneticBodyRef = React.useRef<HTMLDivElement | null>(null)
+  const { isMobile } = React.useContext(AppContext)
 
   // handle movement within boundaries
   const magneticMouseEnterEffect = (e: any, movement: number = 1) => {
+    if (isMobile || disable) return
     if (!magneticBodyRef.current || !magneticAreaRef.current) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop
     const boundingRect = magneticAreaRef.current.getBoundingClientRect()
@@ -41,6 +45,7 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
 
   // handle on leave (reset)
   const magneticMouseLeaveEffect = () => {
+    if (isMobile || disable) return
     if (!magneticBodyRef.current) return
     gsap.to(magneticBodyRef.current, {
       scale: 1,
@@ -51,8 +56,9 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
     })
   }
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     let _ctx = gsap.context(() => {
+      if (isMobile || disable) return
       if (!magneticBodyRef.current || !magneticAreaRef.current) return
       magneticAreaRef.current.addEventListener('mousemove', (e: MouseEvent) =>
         magneticMouseEnterEffect(e)
@@ -60,7 +66,7 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
       magneticAreaRef.current.addEventListener('mouseleave', () =>
         magneticMouseLeaveEffect()
       )
-    }, magneticAreaRef)
+    }, [magneticAreaRef])
 
     return () => {
       if (!magneticAreaRef.current) return
@@ -73,7 +79,7 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
       )
       _ctx.kill()
     }
-  }, [magneticAreaRef, magneticBodyRef])
+  }, [magneticAreaRef, magneticBodyRef, disable, isMobile])
 
   return (
     <div className={classes}>

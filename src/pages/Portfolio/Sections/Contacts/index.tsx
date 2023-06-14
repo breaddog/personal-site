@@ -17,6 +17,7 @@ import mailSVG from '../../../../assets/icons/mail.svg'
 import resumeSVG from '../../../../assets/icons/resume.svg'
 import githubSVG from '../../../../assets/logos/github.svg'
 import linkedinSVG from '../../../../assets/logos/linkedin.svg'
+import { AppContext } from '../../../../App'
 
 interface PortfolioContactsProps extends GenericSubSectionForwardInterface {}
 
@@ -68,13 +69,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
             repetitions: 3,
             direction: 'clockwise',
           },
-          hoverText: (
-            <>
-              Get in contact with me
-              <br />
-              <span>tienfoong@gmail.com</span>
-            </>
-          ),
+          hoverText: <>Get in contact with me</>,
         },
         {
           type: 'resume',
@@ -97,6 +92,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
       const CIRCULAR_ANIMATION_DURATION = 8000
       const CIRCULAR_ANIMATION_FONT_SIZE = '0.875rem'
 
+      const { isMedium } = React.useContext(AppContext)
       const contactsRef = React.useRef<HTMLDivElement | null>(null)
 
       const classes = classNames(
@@ -136,7 +132,6 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                         fontSize: CIRCULAR_ANIMATION_FONT_SIZE,
                       }
                       props.circularText = _circularText
-
                       return (
                         <ContactInfo
                           {...props}
@@ -144,6 +139,8 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                             styles.contactBox,
                             props.className
                           )}
+                          // disable on medium to be safe
+                          disable={isMedium}
                           key={idx}
                           data-aos='fade-down'
                           data-aos-delay={200 + 200 * idx}
@@ -152,13 +149,6 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
                     }
                   )}
                 </div>
-
-                {/* submission form */}
-                {/* <div className={styles.form}>
-              <div className={styles.formHeader}>
-                Alternatively you can fill this up.
-              </div>
-            </div> */}
               </div>
             </SectionContainer>
           </section>

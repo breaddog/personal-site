@@ -4,7 +4,7 @@
   border-radius: 50%;
 
   // debug
-  border: 2px dashed var(--grey-10);
+  // border: 2px dashed var(--grey-10);
 
   position: relative;
 
@@ -56,6 +56,16 @@
     &:hover {
       &::before {
         opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .box {
+    .body {
+      &::before {
+        box-shadow: none;
       }
     }
   }

@@ -204,6 +204,12 @@
         text-align: center;
 
         .window {
+          min-width: unset;
+          max-width: unset;
+          min-height: unset;
+          max-height: unset;
+          height: fit-content;
+
           .windowContainer {
             .row {
               justify-content: space-between;
@@ -232,9 +238,31 @@
             .status {
               .row {
                 flex-direction: column;
+                margin-bottom: 1.25rem;
 
                 .key {
                   margin-bottom: 0.25rem;
+                }
+
+                .value {
+                  width: 100%;
+                  text-align: center;
+                }
+              }
+            }
+
+            .info {
+              .row {
+                flex-direction: column;
+                margin-bottom: 1.25rem;
+
+                .key {
+                  margin-bottom: 0.25rem;
+                }
+
+                .value {
+                  width: 100%;
+                  text-align: center;
                 }
               }
             }

@@ -109,7 +109,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
         return gsap
           .timeline()
           .from(el, {
-            x: '-100vw',
+            x: '-150vw',
             ease: 'power2.inOut',
             duration,
             onStart: () => {

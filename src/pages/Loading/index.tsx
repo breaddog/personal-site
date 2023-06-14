@@ -117,7 +117,6 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     }
 
     const initialLoad = () => {
-      setNewFlavourText()
       setLoaded(true)
     }
     // initial load
@@ -129,6 +128,10 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
         window.removeEventListener('load', initialLoad)
       }
     }, [selectedFlavourIndex, active])
+
+    React.useEffect(() => {
+      setNewFlavourText()
+    }, [])
 
     // IF PERCENTAGE BAR USED
     // // percentage check

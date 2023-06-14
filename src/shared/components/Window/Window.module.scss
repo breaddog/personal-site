@@ -158,6 +158,8 @@
   .window {
     min-width: 200px;
     min-height: 400px;
+    max-height: unset;
+    max-width: unset;
 
     .header {
       height: fit-content;

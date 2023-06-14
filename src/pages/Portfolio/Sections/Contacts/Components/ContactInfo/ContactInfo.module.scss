@@ -88,6 +88,9 @@
         opacity: 0;
 
         transition: opacity var(--hover-transition-time) ease-in-out;
+        border-radius: 1rem;
+
+        padding: 0.5rem;
 
         span {
           text-transform: lowercase;
@@ -116,6 +119,28 @@
 
         .info {
           opacity: 1;
+        }
+      }
+    }
+
+    &.show {
+      .contactBoxBody {
+        .circularText {
+          display: none;
+        }
+
+        .iconBg {
+          width: 65%;
+          height: 65%;
+
+          .icon {
+            width: 82%;
+          }
+        }
+
+        .info {
+          opacity: 1;
+          bottom: -4vh;
         }
       }
     }
@@ -156,14 +181,22 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .wrapper {
-    .contactBox {
-      .contactBoxBody {
-        .info {
-          bottom: -50%;
-        }
-      }
-    }
-  }
-}
+// @media screen and (max-width: 876px) {
+//   .wrapper {
+//     .contactBox {
+//       border: none;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .wrapper {
+//     .contactBox {
+//       .contactBoxBody {
+//         .info {
+//           bottom: -50%;
+//         }
+//       }
+//     }
+//   }
+// }

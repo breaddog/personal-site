@@ -158,7 +158,7 @@ Supported Ethereum Wallets
       $ yarn --frozen-lockfile
     ```
 
-3. Optionally create a `.env` file that follows the template of `template.env`
+3. Optionally create a `.env` file that follows the template of `template.env`, you can leave out some or all variables if you wish
 4. Depending on your operating system, run the site on a local machine via:
     ```
     windows
