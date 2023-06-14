@@ -74,7 +74,7 @@
   </ol>
 </details>
 
----
+
 ## About the Site
 
 ### Preamble
@@ -144,7 +144,7 @@ Supported Ethereum Wallets
   <li>Future support for other wallets coming soon</li>
 </ul>
 
----
+
 ## Setting Up
 
 ### Installation
@@ -167,7 +167,7 @@ Supported Ethereum Wallets
     mac, linux, wsl
     $ yarn start
     ```
----
+
 ## Contents
 
 ### Routing
@@ -183,7 +183,7 @@ Here is a routing tree to illustrate the url hierarchy
 └── /                       # Error handling will redirect to root
 ```
 
---- 
+ 
 
 ## License
 
@@ -218,7 +218,7 @@ Brand Images
 
 All rights reserved by their respective owners.
 
---- 
+ 
 ## Contact
 
 Code done wholey by [breaddog](https://github.com/breaddog)
