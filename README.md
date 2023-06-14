@@ -201,6 +201,8 @@ For more information, please view the `LICENSE` file included in the repository.
 ### Assets
 Acknowledgements have been provided below for the use of assets which have been used per their own licensing rules.
 
+Images shown in the preview sections of the "Highlights" section and used in said project articles are sourced from screenshots. All attribution and links to the relevant websites are recognised by reference to the main site the article references.
+
 SVGS
 
 - [SVG Repo](https://svgrepo.com)
