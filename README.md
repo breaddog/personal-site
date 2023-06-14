@@ -79,7 +79,7 @@
 
 ### Preamble
 
-This site is wholy built as a sake of personal expression of myself as an individual via design and code in both professional and personal capacities.
+This site is wholy built for the sake of personal expression as an individual via design and code in both professional and personal capacities.
 
 Initially conceived as a portfolio site to showcase my development skills, I have future plans to expand on it to cover more personal stuff.
 
@@ -88,7 +88,7 @@ The site also interacts with the ethereum blockchain in a read capacity for now 
 - [Coinbase](https://www.coinbase.com)
 - Future support for other wallets coming soon
 
-Also if you're wondering why the onigiri, i'll point you to this fellow [cool gamer cat.]("https://hololive.hololivepro.com/en/talents/nekomata-okayu/")
+Also if you're wondering why the onigiri, i'll point you to this fellow [cool gamer cat.](https://hololive.hololivepro.com/en/talents/nekomata-okayu/)
 
 
 ### Languages
