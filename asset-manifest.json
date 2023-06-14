@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.fc5fc938.css",
-    "main.js": "/static/js/main.3ada1ad2.js",
+    "main.js": "/static/js/main.b1c16090.js",
     "static/js/27.886f7caf.chunk.js": "/static/js/27.886f7caf.chunk.js",
     "static/media/NotoSansJP-Regular.ttf": "/static/media/NotoSansJP-Regular.7fe6a82a354a821c38c5.ttf",
     "static/media/NotoSansJP-Bold.ttf": "/static/media/NotoSansJP-Bold.506ef228295fea37987f.ttf",
@@ -44,6 +44,6 @@
   },
   "entrypoints": [
     "static/css/main.fc5fc938.css",
-    "static/js/main.3ada1ad2.js"
+    "static/js/main.b1c16090.js"
   ]
 }
