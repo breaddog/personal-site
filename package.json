@@ -73,7 +73,7 @@
     "start": "PUBLIC_URL=/ GENERATE_SOURCEMAP=false react-scripts start",
     "winStart": "set \"PUBLIC_URL=/\" && set \"GENERATE_SOURCEMAP=false\" && react-scripts start",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+    "deploy": "echo tienfoong.com > ./build/CNAME && gh-pages -d build",
     "build": "PUBLIC_URL=/ GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

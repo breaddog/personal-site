@@ -85,7 +85,7 @@ export const isWithinRefBoundary = ({
   }
   // determine bottom boundary
   // account for offset
-  upper = upper > 0 ? upper * 0.9 : 0
+  upper = upper > 0 ? upper * 0.95 : upper
   height *= offsetHeightPercentage
   bottom = upper + height
 
