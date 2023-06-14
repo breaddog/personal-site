@@ -156,7 +156,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
           .to(
             {},
             {
-              duration: 10,
+              duration: 4,
             }
           )
 
