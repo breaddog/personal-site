@@ -194,7 +194,7 @@ This site is distributed under the MIT License, which means you can create a for
 
 Generally a direct reference link to my github page would be most appreciated!
 
-For more information, please view the [LICENSE] file included in the repository.
+For more information, please view the `LICENSE` file included in the repository.
 
 ### Ackowledgements
 
