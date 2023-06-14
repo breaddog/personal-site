@@ -131,12 +131,13 @@
 @media screen and (max-width: 1048px) {
   .container {
     .body {
-      height: auto;
+      height: 80%;
       flex-direction: column;
+      position: relative;
 
       .left {
         width: 100%;
-        height: 100%;
+        height: 75%;
         margin-bottom: 2rem;
 
         .emphasis {
@@ -149,13 +150,18 @@
 
       .right {
         width: 100%;
-        height: 80%;
+        height: 75%;
+        position: absolute;
 
         .box {
           &__main {
-            margin-right: unset;
-            margin: 0 auto;
             width: 75%;
+            height: 90%;
+
+            position: relative;
+
+            margin-right: unset;
+            margin: auto;
           }
 
           &__body {
@@ -173,7 +179,7 @@
       .left {
         .emphasis {
           margin-bottom: 4rem;
-          font-size: calc(var(--font-h1) * 0.85);
+          font-size: calc(var(--font-h1));
         }
       }
 
@@ -181,6 +187,30 @@
         .box {
           &__main {
             width: 90%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .container {
+    .body {
+      .left {
+        .emphasis {
+          margin-bottom: 4rem;
+          font-size: calc(var(--font-h1) * 0.85);
+        }
+      }
+
+      .right {
+        height: 90%;
+
+        .box {
+          &__main {
+            height: fit-content;
           }
         }
       }
