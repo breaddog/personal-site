@@ -218,7 +218,7 @@ Brand Images
 - [Pellar Technology](https://pellar.io)
 
 
-All rights reserved by their respective owners.
+All rights reserved and images are owned by their respective owners.
 
  
 ## Contact

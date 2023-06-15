@@ -471,7 +471,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                           <b className={styles.textHighlight}>personal</b>{' '}
                           understanding of the overall{' '}
                           <b className={styles.textHighlight}>vision</b> of any
-                          project, bringing the concepts and wishes of it's
+                          project, bringing the concepts and intentions of its
                           original design into reality.
                         </p>
                       </div>
@@ -492,7 +492,7 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
 
                           <p className={styles.listHeading}>Development</p>
                           <ul className={styles.list}>
-                            <li>Stylings + Animations</li>
+                            <li>Styling + Animation</li>
                             <li>Mockup to Web Translations</li>
                             <li>Bespoke Component Integration</li>
                             <li>API and Widget Integration</li>
