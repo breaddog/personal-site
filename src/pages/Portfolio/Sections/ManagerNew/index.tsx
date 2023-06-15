@@ -252,13 +252,13 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
                     <p className={styles.text}>
                       Increasing visibility for the client on technical progress
                       and feasibilities, whilst providing developers a platform
-                      to engage and suggest.
+                      to engage and provide feedback.
                     </p>
 
                     <p className={styles.text}>
                       I am in the end a developer by heart and seek to{' '}
                       <b>take inspiration and learn from all</b> to contribute
-                      towards a cohesive team in the end.
+                      towards a cohesive team.
                     </p>
 
                     <p className={styles.text}>
