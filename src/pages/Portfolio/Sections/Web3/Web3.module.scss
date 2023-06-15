@@ -179,6 +179,14 @@
             width: fit-content;
             margin: 0 auto;
             margin-top: 0.5rem;
+
+            li {
+              &:before {
+                content: '';
+                text-indent: initial;
+                position: relative;
+              }
+            }
           }
         }
 

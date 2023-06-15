@@ -492,10 +492,11 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
 
                           <p className={styles.listHeading}>Development</p>
                           <ul className={styles.list}>
-                            <li>System Design Planning</li>
+                            <li>Stylings + Animations</li>
                             <li>Mockup to Web Translations</li>
                             <li>Bespoke Component Integration</li>
-                            <li>Stylings + Animations</li>
+                            <li>API and Widget Integration</li>
+                            <li>System Design Planning</li>
                             <li>CI/CD Pipelines</li>
                           </ul>
 
