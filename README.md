@@ -37,7 +37,7 @@
           <a href="#preamble">Preamble</a>
         </li>
         <li>
-          <a href="#languages">Preamble</a>
+          <a href="#languages">Languages</a>
         </li>
         <li>
           <a href="#technologies">Technologies</a>
