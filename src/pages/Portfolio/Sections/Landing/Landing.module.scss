@@ -62,32 +62,76 @@
 
       margin-top: 4vmin;
 
-      .icon {
+      .iconContainer {
+        position: relative;
         flex-shrink: 0.5;
 
         &:nth-child(1) {
-          background-color: var(--purple);
-          margin-left: 0;
+          .icon {
+            background-color: var(--purple);
+            margin-left: 0;
+          }
         }
 
         &:nth-child(2) {
-          background-color: var(--blue);
+          .icon {
+            background-color: var(--blue);
+          }
         }
 
         &:nth-child(3) {
-          background-color: var(--purple-10);
+          .icon {
+            background-color: var(--purple-10);
+          }
         }
 
         &:nth-child(4) {
-          background-color: var(--blue-10);
+          .icon {
+            background-color: var(--blue-10);
+          }
         }
 
         &:nth-child(5) {
-          background-color: var(--purple-20);
+          .icon {
+            background-color: var(--purple-20);
+          }
         }
 
         &:nth-last-child(1) {
-          margin-right: 0;
+          .icon {
+            margin-right: 0;
+          }
+        }
+
+        .icon {
+          position: relative;
+          z-index: 1;
+        }
+
+        .circularText {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          transition: scale, width, height;
+          transition-duration: 0.5s;
+          transition-timing-function: ease-in-out;
+
+          scale: 0.8;
+
+          textPath {
+            stroke: var(--grey);
+            fill: var(--grey);
+            text-transform: uppercase;
+          }
+        }
+
+        &:hover {
+          .circularText {
+            scale: 1.75;
+          }
         }
       }
     }
@@ -174,8 +218,20 @@
         margin-top: 6vmin;
         justify-content: space-evenly;
 
-        .icon {
-          scale: 0.8;
+        .iconContainer {
+          .icon {
+            scale: 0.8;
+          }
+
+          .circularText {
+            scale: 0.25;
+          }
+
+          &:hover {
+            .circularText {
+              scale: 1.375;
+            }
+          }
         }
       }
     }

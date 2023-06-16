@@ -148,7 +148,7 @@ export const WalletConnectModal: React.FunctionComponent<
         */}
         <div className={styles.options}>
           <OptionWrapper
-            className={classNames(styles.option, 'effect--hoverPop')}
+            className={classNames(styles.option, 'effects--hoverPop')}
             disabledClass={styles.disabled}
             isEnabled={
               isNoOptionActive ||
@@ -183,7 +183,7 @@ export const WalletConnectModal: React.FunctionComponent<
         </div> */}
 
           <OptionWrapper
-            className={classNames(styles.option, 'effect--hoverPop')}
+            className={classNames(styles.option, 'effects--hoverPop')}
             disabledClass={styles.disabled}
             ethereumInstalled={ethereumInstalled}
             isEnabled={
@@ -209,7 +209,7 @@ export const WalletConnectModal: React.FunctionComponent<
           </OptionWrapper>
 
           <OptionWrapper
-            className={classNames(styles.option, 'effect--hoverPop')}
+            className={classNames(styles.option, 'effects--hoverPop')}
             disabledClass={styles.disabled}
             ethereumInstalled={ethereumInstalled}
             isEnabled={activeConnectionType !== undefined}

@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { MagneticBox, CircularText } from '../../../../../../shared/components'
 import { RotationDirection } from '../../../../../../shared/types/effects'
 import { filterAOSProps } from '../../../../../../shared/AOS'
+import { generateCircularText } from '../../../../../../shared/components/CircularText/helpers'
 
 export interface ContactInfoProps {
   className?: string
@@ -50,11 +51,6 @@ export const ContactInfo: React.FunctionComponent<ContactInfoProps> = (
     fontSize = '1rem',
   } = circularText
 
-  // spacing is by nbsp
-  const generateCircularText = () => {
-    return Array(repetitions).fill(text).join('\u00A0'.repeat(spacing))
-  }
-
   return (
     <div
       className={classes}
@@ -79,7 +75,7 @@ export const ContactInfo: React.FunctionComponent<ContactInfoProps> = (
             </div>
             <CircularText
               className={styles.circularText}
-              text={generateCircularText()}
+              text={generateCircularText(text, repetitions, spacing)}
               fontSize={fontSize}
               direction={direction}
               duration={duration}

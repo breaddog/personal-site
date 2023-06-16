@@ -6,7 +6,7 @@ import { RotationDirection } from '../../types/effects'
 
 export interface CircularTextProps {
   className?: string
-  text?: string | React.ReactFragment
+  text?: string | React.ReactFragment | Element
   duration?: number
   direction?: RotationDirection
   fontSize?: string

@@ -15,6 +15,7 @@ import {
 } from '../../../../shared/interfaces'
 import {
   CircleIcon,
+  CircularText,
   Keyframes,
   OnClickAnimation,
   SectionContainer
@@ -25,9 +26,83 @@ import onigiriSVG from '../../../../assets/icons/onigiri.svg'
 import { DoubleArrowDown } from '../../../../assets/svgs'
 import { PortfolioContext } from '../..'
 import { PORTFOLIO_SECTIONS } from '../../../../shared/sections'
-import { random } from 'lodash'
+import { map, random } from 'lodash'
+import { generateCircularText } from '../../../../shared/components/CircularText/helpers'
 
 interface PortfolioLandingProps extends GenericSubSectionForwardInterface {}
+
+export interface LandingCircleIconProps {
+  className?: string
+  circularText?: {
+    text: string
+    repetitions?: number
+    spacing?: number
+  }
+  key: string
+  src: string
+  alt: string
+  dataAos?: string
+  dataAosDelay?: string | number
+}
+
+const LANDING_CIRCLE_ICONS: LandingCircleIconProps[] = [
+  {
+    src: laptopSVG,
+    alt: 'laptop',
+    circularText: {
+      text: 'Developer',
+      spacing: 14,
+    },
+    dataAos: 'fade-down',
+    dataAosDelay: 250,
+    key: PORTFOLIO_SECTIONS.developer.key,
+  },
+  {
+    src: boxSVG,
+    alt: 'box',
+    circularText: {
+      text: 'Management',
+      repetitions: 2,
+      spacing: 9,
+    },
+    dataAos: 'fade-down',
+    dataAosDelay: 300,
+    key: PORTFOLIO_SECTIONS.manager.key,
+  },
+  {
+    src: reactSVG,
+    alt: 'react',
+    circularText: {
+      text: 'Journey',
+      spacing: 19,
+    },
+    dataAos: 'fade-down',
+    dataAosDelay: 350,
+    key: PORTFOLIO_SECTIONS.journey.key,
+  },
+  {
+    src: bulbSVG,
+    alt: 'bulb',
+    circularText: {
+      text: 'Highlights',
+      spacing: 13,
+    },
+    dataAos: 'fade-down',
+    dataAosDelay: 400,
+    key: PORTFOLIO_SECTIONS.highlights.key,
+  },
+  {
+    src: mailSVG,
+    alt: 'mail',
+    circularText: {
+      text: 'Contacts',
+      spacing: 17,
+    },
+    dataAos: 'fade-down',
+    dataAosDelay: 450,
+    key: PORTFOLIO_SECTIONS.contacts.key,
+  },
+]
 
 export const PortfolioLanding: React.FC<PortfolioLandingProps> =
   React.forwardRef<GenericForwardRefInterface, PortfolioLandingProps>(
@@ -95,46 +170,41 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                   data-aos='fade-down'
                   className={styles.subtitle}
                 >
-                  {/* Developing Websites with Personality */}
-                  Web Development with Individuality in Mind
+                  {/* Web Development with Individuality in Mind */}
+                  {/* TO DO: think of better slogan */}
+                  Full-Stack Development, Interactive and Bespoke
                 </h2>
               </div>
               <div className={styles.content}>
-                <CircleIcon
-                  className={styles.icon}
-                  src={laptopSVG}
-                  alt='laptop'
-                  data-aos='fade-down'
-                  data-aos-delay='250'
-                />
-                <CircleIcon
-                  className={styles.icon}
-                  src={boxSVG}
-                  alt='box'
-                  data-aos='fade-down'
-                  data-aos-delay='300'
-                />
-                <CircleIcon
-                  className={styles.icon}
-                  src={reactSVG}
-                  alt='react'
-                  data-aos='fade-down'
-                  data-aos-delay='350'
-                />
-                <CircleIcon
-                  className={styles.icon}
-                  src={bulbSVG}
-                  alt='bulb'
-                  data-aos='fade-down'
-                  data-aos-delay='400'
-                />
-                <CircleIcon
-                  className={styles.icon}
-                  src={mailSVG}
-                  alt='mail'
-                  data-aos='fade-down'
-                  data-aos-delay='450'
-                />
+                {/* developer */}
+                {map(
+                  LANDING_CIRCLE_ICONS,
+                  (el: LandingCircleIconProps, idx: number) => (
+                    <div
+                      className={styles.iconContainer}
+                      key={idx}
+                      data-aos={el.dataAos}
+                      data-aos-delay={el.dataAosDelay}
+                    >
+                      <CircleIcon
+                        className={classNames(styles.icon, 'effects--hoverPop')}
+                        src={el.src}
+                        alt={el.alt}
+                        onClick={() => scrollToSection(el.key)}
+                      />
+                      <CircularText
+                        className={classNames(styles.circularText)}
+                        text={generateCircularText(
+                          el.circularText?.text,
+                          el.circularText?.repetitions ?? 2,
+                          el.circularText?.spacing ?? 12
+                        )}
+                        duration={6000}
+                        fontSize='0.825rem'
+                      />
+                    </div>
+                  )
+                )}
               </div>
             </div>
             <div className={styles.right}>

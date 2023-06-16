@@ -9,7 +9,7 @@ import { OnClickAnimation } from '..'
 import menuSVG from '../../../assets/icons/menu-slanted.svg'
 import crossSVG from '../../../assets/icons/cross.svg'
 import { AppContext } from '../../../App'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../../routes'
 import { WalletConnectButton } from '../../../ethereum'
 
@@ -58,6 +58,10 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
     React.useState<boolean>(false)
 
   const headerRef = React.useRef<HTMLHeadElement>(null)
+
+  // routing stuff
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   // resize if mobile size is required
   const headerResizeHandler = () => {
@@ -145,6 +149,14 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
     return onSectionChange(key)
   }
 
+  const handleHomeNavigation = () => {
+    if (pathname === ROUTES.home.pathname) {
+      window.location.reload()
+    } else {
+      navigate(ROUTES.home.pathname)
+    }
+  }
+
   return (
     <>
       <header
@@ -154,20 +166,12 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
         onMouseLeave={() => handleDesktopMouseHoverLeave()}
       >
         <div className={styles.container}>
-          <OnClickAnimation
-            className={styles.icon}
-            animation={{
-              animatingClass: styles.animating,
-              duration: 800,
-            }}
-          >
-            <Link to={ROUTES.home.pathname}>
-              <img
-                src={icon.src}
-                alt={icon.alt}
-              />
-            </Link>
-          </OnClickAnimation>
+          <img
+            className='effects--hoverPop'
+            onClick={() => handleHomeNavigation()}
+            src={icon.src}
+            alt={icon.alt}
+          />
           <div className={styles.sections}>
             {map(sections, (section: SectionNavInterface, idx: number) => {
               return (
