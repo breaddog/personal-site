@@ -10,15 +10,17 @@ interface HyperlinkProps {
   visitedColour?: string
   thickness?: string
   underline?: boolean
+  onClick?: Function
 }
 
 export const Hyperlink: React.FunctionComponent<HyperlinkProps> = ({
   className = '',
   children,
-  colour = '',
+  colour = 'var(--grey)',
   highlightColour = 'var(--purple-10)',
   thickness = '1px',
   underline = true,
+  onClick = () => {},
 }) => {
   const [hover, setHover] = React.useState<boolean>(false)
   const [visited, setVisited] = React.useState<boolean>(false)
@@ -63,6 +65,7 @@ export const Hyperlink: React.FunctionComponent<HyperlinkProps> = ({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={() => {
+        onClick()
         if (visited) return
         setVisited(true)
       }}

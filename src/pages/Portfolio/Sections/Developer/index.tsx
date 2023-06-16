@@ -425,15 +425,28 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                 backgroundColour='var(--purple)'
               />
               <SectionSubHeader className={styles.subheading}>
-                <b>Hint:</b> On Desktop, try dragging and re-sizing the windows.{' '}
-                {!isMobile && (
-                  <span
-                    className='cursor__pointer'
-                    onClick={() => invalidateAllWindowProps()}
-                  >
-                    <b>Click here to reset.</b>
-                  </span>
-                )}
+                <div>
+                  <b>Hint:</b> On Desktop, try dragging and re-sizing the
+                  windows below in this section.{' '}
+                </div>
+                <div>
+                  <b>Feature:</b>{' '}
+                  {!isMobile ? (
+                    <>
+                      <span className={styles.enabled}>
+                        Enabled,{' '}
+                        <span
+                          className='cursor__pointer'
+                          onClick={() => invalidateAllWindowProps()}
+                        >
+                          <b>click here to reset.</b>
+                        </span>
+                      </span>
+                    </>
+                  ) : (
+                    <span className={styles.disabled}>Disabled</span>
+                  )}
+                </div>
               </SectionSubHeader>
               <div className={styles.body}>
                 <div
