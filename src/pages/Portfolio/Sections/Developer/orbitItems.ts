@@ -9,7 +9,7 @@ import s3SVG from '../../../../assets/logos/s3.svg'
 import codebuildSVG from '../../../../assets/logos/codebuild.svg'
 import codepipelineSVG from '../../../../assets/logos/codepipeline.svg'
 import ethSVG from '../../../../assets/logos/eth.svg'
-import githubSVG from '../../../../assets/logos/github.svg'
+import githubSVG from '../../../../assets/logos/github-white.svg'
 import userSVG from '../../../../assets/icons/user.svg'
 
 export interface OrbitItemProps {

@@ -177,12 +177,30 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
       }
 
       // invalidate all windows
-      const invalidateAllWindowProps = () => {
+      const invalidateAllWindowProps = ({
+        orbit,
+        text,
+      }: {
+        orbit?:
+          | {
+              width?: string
+              height?: string
+            }
+          | null
+          | undefined
+        text?:
+          | {
+              width?: string
+              height?: string
+            }
+          | null
+          | undefined
+      } = {}) => {
         if (!textWindowRef.current || !orbitWindowRef.current) return
         textWindowRef.current?.invalidateWindow()
         orbitWindowRef.current?.invalidateWindow()
-        textWindowRef.current?.resetWindow()
-        orbitWindowRef.current?.resetWindow()
+        textWindowRef.current?.resetWindow(text)
+        orbitWindowRef.current?.resetWindow(orbit)
       }
 
       // for mobile to improve eprforamnce
@@ -206,7 +224,11 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
       const flexDetectionHandler = () => {
         if (flexMediaMatcher.matches && !isColumnRef.current) {
           isColumnRef.current = true
-          invalidateAllWindowProps()
+          invalidateAllWindowProps({
+            orbit: {
+              height: '95%',
+            },
+          })
         }
 
         if (!flexMediaMatcher.matches && isColumnRef.current) {
@@ -473,19 +495,26 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                         <p className={styles.text}>
                           The name is{' '}
                           <b className={styles.textHighlight}>Tien.</b> I'm a
-                          Web Developer that specialises in the{' '}
-                          <b className={styles.textHighlight}>"end-to-end"</b>{' '}
-                          integration and development lifecycle.
+                          Full-stack Web Developer with{' '}
+                          <b className={styles.textHighlight}>
+                            end-to-end experience
+                          </b>{' '}
+                          in the{' '}
+                          <b className={styles.textHighlight}>
+                            development lifecycle
+                          </b>{' '}
+                          from UI/UX Design, website building, API integrations,
+                          testing and quality control.
                         </p>
 
                         <p className={styles.text}>
-                          I seek to achieve an{' '}
-                          <b className={styles.textHighlight}>intimate</b> and{' '}
-                          <b className={styles.textHighlight}>personal</b>{' '}
-                          understanding of the overall{' '}
-                          <b className={styles.textHighlight}>vision</b> of any
-                          project, bringing the concepts and intentions of its
-                          original design into reality.
+                          I aim to gain a detailed and thorough understanding of
+                          each project and enjoy{' '}
+                          <b className={styles.textHighlight}>
+                            working with clients
+                          </b>{' '}
+                          to translate concepts, intentions and designs into
+                          reality.
                         </p>
                       </div>
 
@@ -493,10 +522,10 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                       <div className={styles.personalInfo}>
                         <div className={styles.section}>
                           <h3 className={styles.text}>
-                            <b>What I Bring to the Table</b>
+                            <b>Skills</b>
                           </h3>
 
-                          <p className={styles.listHeading}>Design</p>
+                          <p className={styles.listHeading}>UI Design</p>
                           <ul className={styles.list}>
                             <li>Conceptualisation</li>
                             <li>UI/UX Specifications</li>
@@ -513,7 +542,9 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                             <li>CI/CD Pipelines</li>
                           </ul>
 
-                          <p className={styles.listHeading}>Management</p>
+                          <p className={styles.listHeading}>
+                            Project Management
+                          </p>
                           <ul className={styles.list}>
                             <li>Development Specification Planning</li>
                             <li>Systems Mockup and Design</li>

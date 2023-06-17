@@ -8,6 +8,14 @@
 
 .textHighlight {
   color: var(--purple-10);
+
+  transition-property: font-size, color;
+  transition-duration: 0.275s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    font-size: calc(var(--font-p) * 1.075);
+  }
 }
 
 .container {
@@ -64,7 +72,7 @@
         font-size: var(--font-p);
 
         &:before {
-          content: '>';
+          content: '-';
         }
       }
     }
@@ -267,7 +275,7 @@
 
 @media screen and (max-width: 1200px) {
   .dev {
-    height: 1800px;
+    height: 200vh;
   }
 
   .container {
@@ -304,6 +312,7 @@
         height: 100%;
         max-width: 100%;
         max-height: unset;
+        margin-bottom: 4rem;
 
         &.about {
           height: fit-content;
