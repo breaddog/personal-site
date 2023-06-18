@@ -143,7 +143,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
           trigger: sectionRef.current,
           start: `${isMobile ? 'top' : isMedium ? '-2%' : '-4%'} top`,
           // reference this for boundary
-          end: '+=4800px',
+          end: '+=3000px',
           scrub: 0.5,
           pin: true,
         }
@@ -194,6 +194,8 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
       React.useImperativeHandle(ref, () => ({
         element: sectionRef.current as HTMLDivElement,
       }))
+
+      console.log(window.scrollY)
 
       return (
         <section

@@ -7,7 +7,7 @@ import queryString from 'query-string'
 
 import { ROUTES } from './routes'
 
-import { ScrollDirection } from './shared/types'
+import { PageOrientation, ScrollDirection } from './shared/types'
 
 import { CSSHeader, LoadingHandle, LoadingSection, Portfolio } from './pages'
 import {
@@ -27,6 +27,7 @@ import {
 import { APP_ENV } from './config'
 import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'
 import { delay } from 'lodash'
+import { ScrollTrigger } from 'gsap/all'
 
 interface AppProps {
   className?: string
@@ -61,6 +62,10 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     React.useState<ScrollDirection>('up')
   // const [isScrolling, setScrolling] = React.useState<boolean>(false)
   const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(false)
+
+  // rotation
+  const [orientation, setOrientation] =
+    React.useState<PageOrientation>('landscape')
 
   // web3 modal
   const [web3ModalActive, setWeb3ModalActive] = React.useState<boolean>(false)
@@ -146,6 +151,24 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     handleDesktopListener(isMobileMatcher, isMobile, setIsMobile)
   }
 
+  // orientation
+  const handleSetOrientation = () => {
+    const _width = window.innerWidth
+    const _height = window.innerHeight
+
+    if (_width > _height && orientation !== 'landscape') {
+      setOrientation('landscape')
+      ScrollTrigger.refresh()
+      window.scrollTo(window.scrollX, window.scrollY)
+    }
+
+    if (_width < _height && orientation !== 'portrait') {
+      setOrientation('portrait')
+      ScrollTrigger.refresh()
+      window.scrollTo(window.scrollX, window.scrollY)
+    }
+  }
+
   // desktop
   React.useEffect(() => {
     window.addEventListener('resize', desktopSizeListenerHandlers)
@@ -172,6 +195,15 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       window.removeEventListener('resize', mobileSizeListenerHandler)
     }
   }, [isMobile, isMobileMatcher])
+
+  // orientation
+  React.useEffect(() => {
+    handleSetOrientation()
+    window.addEventListener('resize', handleSetOrientation)
+    return () => {
+      window.removeEventListener('resize', handleSetOrientation)
+    }
+  }, [orientation])
 
   // scroll handler
   React.useEffect(() => {
