@@ -4,54 +4,6 @@ import onigiriSVG from '../../assets/icons/onigiri.svg'
 
 export const JOB_POSITIONS: JobPosition[] = [
   {
-    company: 'University Of Melbourne',
-    title: 'Bachelor of Science',
-    logo: unimelbSVG,
-    logoAlt: 'unimelb',
-    start: 'July 2018',
-    end: 'December 2021',
-    sections: [
-      {
-        title: 'Major',
-        info: ['Computing and Software Systems'],
-        isText: true,
-      },
-      {
-        title: 'Concepts Learnt',
-        info: [
-          'Full Stack Web Development',
-          'SCRUM/AGILE Planning',
-          'Algorithms and Data Structures',
-          'Object Oriented Programming',
-          'Source Control (Git/Github)',
-          'JavaScript, HTML, CSS',
-          'Python, C, Haskell',
-          'Japanese Language Studies',
-        ],
-      },
-      {
-        title: 'More Info',
-        info: [
-          <>
-            Pivoted towards a web - development focus, with my capstone project
-            being a Client-Resource Management app and having built a food -
-            truck ordering platform for another subject.
-            <br />
-            <br />
-            Sparked my interest in UI/ UX and aiming to be engagive in designing
-            and developing bespoke websites tailored towards a given client's
-            needs.
-            <br />
-            <br />
-            Also took 5 semesters of Japanese Language Studies based on my
-            interest in Japanese culture and anime.
-          </>,
-        ],
-        isText: true,
-      },
-    ],
-  },
-  {
     company: 'Pellar Technology',
     title: 'Associate Engineer',
     logo: 'images/logos/pellar.jpg',
@@ -165,6 +117,54 @@ export const JOB_POSITIONS: JobPosition[] = [
             All sessions are workshop styled, with custom tailored examples
             provided to further understanding in a correct and unique way suited
             to the students learning style.
+          </>,
+        ],
+        isText: true,
+      },
+    ],
+  },
+  {
+    company: 'University Of Melbourne',
+    title: 'Bachelor of Science',
+    logo: unimelbSVG,
+    logoAlt: 'unimelb',
+    start: 'July 2018',
+    end: 'December 2021',
+    sections: [
+      {
+        title: 'Major',
+        info: ['Computing and Software Systems'],
+        isText: true,
+      },
+      {
+        title: 'Concepts Learnt',
+        info: [
+          'Full Stack Web Development',
+          'SCRUM/AGILE Planning',
+          'Algorithms and Data Structures',
+          'Object Oriented Programming',
+          'Source Control (Git/Github)',
+          'JavaScript, HTML, CSS',
+          'Python, C, Haskell',
+          'Japanese Language Studies',
+        ],
+      },
+      {
+        title: 'More Info',
+        info: [
+          <>
+            Pivoted towards a web - development focus, with my capstone project
+            being a Client-Resource Management app and having built a food -
+            truck ordering platform for another subject.
+            <br />
+            <br />
+            Sparked my interest in UI/ UX and aiming to be engagive in designing
+            and developing bespoke websites tailored towards a given client's
+            needs.
+            <br />
+            <br />
+            Also took 5 semesters of Japanese Language Studies based on my
+            interest in Japanese culture and anime.
           </>,
         ],
         isText: true,

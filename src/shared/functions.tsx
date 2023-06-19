@@ -1,7 +1,8 @@
 import { ScrollTrigger } from 'gsap/all'
 import React from 'react'
 import { GenericForwardRefInterface } from './interfaces'
-import { filter, isUndefined, map } from 'lodash'
+import { filter, isNull, isUndefined, map } from 'lodash'
+import { APP_ENV } from '../config'
 
 // fonts
 export const capitaliseText = (string: string) => {
@@ -111,6 +112,51 @@ export const disableScroll = () => {
 // delay always in ms
 export const delay = async (duration: number = 1000) => {
   return await new Promise((resolve) => setTimeout(resolve, duration))
+}
+
+export const formatLocalStorageValue = (value: Object | string | number) => {
+  return typeof value === 'object' ? JSON.stringify(value) : String(value)
+}
+
+export const getScrollPositionFromLocalStorage = () => {
+  const positionsStorage: string | null = localStorage.getItem(
+    APP_ENV.SCROLL_POSITION_STORAGE
+  )
+  let positionsObject: { [key: string]: string | number | object }
+
+  // fetch object
+  if (!isNull(positionsStorage) && !isUndefined(positionsStorage)) {
+    positionsObject = JSON.parse(positionsStorage)
+    if (!positionsObject) {
+      positionsObject = {}
+    }
+  } else {
+    positionsObject = {}
+  }
+
+  return positionsObject
+}
+
+// localstorage
+export const getScrollPositionForSection = (sectionKey: string) => {
+  const positionsObject: { [key: string]: string | number | object } =
+    getScrollPositionFromLocalStorage()
+
+  return Number(positionsObject[String(sectionKey)]) ?? 0
+}
+
+export const setScrollPositionForSection = (
+  sectionKey: string,
+  value: object | string | number
+) => {
+  const positionsObject: { [key: string]: string | number | object } =
+    getScrollPositionFromLocalStorage()
+  // set (even if override)
+  positionsObject[String(sectionKey)] = formatLocalStorageValue(value)
+
+  // set for storage
+  localStorage[APP_ENV.SCROLL_POSITION_STORAGE] =
+    JSON.stringify(positionsObject)
 }
 
 // others

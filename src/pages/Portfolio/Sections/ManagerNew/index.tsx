@@ -143,7 +143,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
           trigger: sectionRef.current,
           start: `${isMobile ? 'top' : isMedium ? '-2%' : '-4%'} top`,
           // reference this for boundary
-          end: '+=4800px',
+          end: '+=200%',
           scrub: 0.5,
           pin: true,
         }
