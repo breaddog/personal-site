@@ -199,7 +199,7 @@ export const tryAutoReconnect = async (onActivate: Function) => {
         String(connectionType)
       )}!`
     )
-    localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, connectionType)
+    localStorage[APP_ENV.CONNECTOR_TYPE_STORAGE] = connectionType
   } catch (err: any) {
     // console.log('auto connection error', err.name)
     return localStorage.removeItem(APP_ENV.CONNECTOR_TYPE_STORAGE)

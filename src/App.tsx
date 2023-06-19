@@ -5,19 +5,32 @@ import AOS from 'aos'
 import classNames from 'classnames'
 import queryString from 'query-string'
 
-import { ROUTES } from './routes'
-
 import { PageOrientation, ScrollDirection } from './shared/types'
 
-import { CSSHeader, LoadingHandle, LoadingSection, Portfolio } from './pages'
 import {
-  BrowserRouter as Router,
+  CSSHeader,
+  LoadingHandle,
+  LoadingSection,
+  Portfolio,
+  ProjectPage
+} from './pages'
+import CustomHistoryRouter from './router'
+import {
+  // RouterProvider,
+  // createBrowserRouter,
+  // useNavigate,
+  // useLocation,
+  // BrowserRouter as Router,
   Route,
   Routes,
   Navigate
 } from 'react-router-dom'
-import { ProjectPage } from './pages/Projects'
-import { CONSTANTS, handleDesktopListener } from './shared'
+
+import {
+  CONSTANTS,
+  getScrollPositionForSection,
+  handleDesktopListener
+} from './shared'
 import { useWeb3React } from '@web3-react/core'
 import {
   WalletConnectModal,
@@ -28,6 +41,7 @@ import { APP_ENV } from './config'
 import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'
 import { delay } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
+import { ROUTES } from './routes'
 
 interface AppProps {
   className?: string
@@ -118,7 +132,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       resetBalances()
       return
     }
-    localStorage.setItem(APP_ENV.CONNECTOR_TYPE_STORAGE, String(connectionType))
+    localStorage[APP_ENV.CONNECTOR_TYPE_STORAGE] = String(connectionType)
     handleUpdateBalances(account)
   }, [account, connectionType])
 
@@ -248,38 +262,46 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     }
   }, [loadingRef, loadingRefCurrent, section])
 
+  // HISTORY SECTION
+  // fetch position from localstorage
+  React.useEffect(() => {
+    const _position = getScrollPositionForSection(location.pathname)
+    window.scrollTo({ top: _position })
+  }, [])
+
   return (
-    <Router basename={basename}>
-      <AppContext.Provider
-        value={{
-          isMobile,
-          isMedium,
-          isDesktop,
-          scrollEnabled,
-          scrollDirection,
-          setScrollEnabled,
-          loadingRef,
-          web3ModalActive,
-          setWeb3ModalActive,
-          connectionType,
-          ethBalance,
-          maticBalance,
-          resetBalances,
-          updateBalances: handleUpdateBalances,
-        }}
-      >
-        <div className={classes}>
-          <CSSHeader />
-          <LoadingSection ref={loadingRef} />
-          <WalletConnectModal
-            onRequestCloseActive={false}
-            isOpen={web3ModalActive}
-            onClose={() => setWeb3ModalActive(false)}
-            activeConnectionType={connectionType}
-            connectionActive={isActive}
-            onActivate={setConnectionType}
-            onDeactivate={setConnectionType}
-          />
+    // <Router basename={basename}>
+    <AppContext.Provider
+      value={{
+        isMobile,
+        isMedium,
+        isDesktop,
+        scrollEnabled,
+        scrollDirection,
+        setScrollEnabled,
+        loadingRef,
+        web3ModalActive,
+        setWeb3ModalActive,
+        connectionType,
+        ethBalance,
+        maticBalance,
+        resetBalances,
+        updateBalances: handleUpdateBalances,
+      }}
+    >
+      <div className={classes}>
+        <CSSHeader />
+        <LoadingSection ref={loadingRef} />
+        <WalletConnectModal
+          onRequestCloseActive={false}
+          isOpen={web3ModalActive}
+          onClose={() => setWeb3ModalActive(false)}
+          activeConnectionType={connectionType}
+          connectionActive={isActive}
+          onActivate={setConnectionType}
+          onDeactivate={setConnectionType}
+        />
+        <CustomHistoryRouter basename={basename}>
           <Routes>
             {/* all the import components will go here */}
             <Route
@@ -313,9 +335,13 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
               }
             ></Route>
           </Routes>
-        </div>
-      </AppContext.Provider>
-    </Router>
+        </CustomHistoryRouter>
+        {/* <RouterProvider
+          router={createBrowserRouter(APP_ROUTER, { basename })}
+        /> */}
+      </div>
+    </AppContext.Provider>
+    // </Router>
   )
 }
 
