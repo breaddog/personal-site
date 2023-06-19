@@ -508,8 +508,11 @@ export const PortfolioDeveloper: React.FC<PortfolioDeveloperProps> =
                         </p>
 
                         <p className={styles.text}>
-                          I aim to gain a detailed and thorough understanding of
-                          each project and enjoy{' '}
+                          I aim to gain a{' '}
+                          <b className={styles.textHighlight}>
+                            detailed and thorough understanding
+                          </b>{' '}
+                          of each project and enjoy{' '}
                           <b className={styles.textHighlight}>
                             working with clients
                           </b>{' '}
