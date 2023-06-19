@@ -27,6 +27,8 @@ import { setPortfolioCurrentSection } from '../../store/portfolio/action'
 import { getPortfolioSectionSelector } from '../../store/portfolio/selectors'
 import { SectionNavRefInterface } from '../../shared/types'
 
+import { ScrollTrigger } from 'gsap/all'
+
 interface PortfolioProps {
   className?: string
 }
@@ -137,11 +139,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     }
   }
 
+  // boundaries
   React.useEffect(() => {
     checkScrollBoundaries()
     window.addEventListener('scroll', checkScrollBoundaries)
+    window.addEventListener('load', checkScrollBoundaries)
     return () => {
       window.removeEventListener('scroll', checkScrollBoundaries)
+      window.addEventListener('remove', checkScrollBoundaries)
     }
   }, [
     landingRef,
@@ -169,6 +174,11 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
       window.scrollTo({ top: scrollY })
     }
   }, [section, loadingRef, scrollEnabled])
+
+  // FIXES SITE REVISIT ISSUE
+  React.useEffect(() => {
+    ScrollTrigger.refresh()
+  }, [])
 
   return (
     <PortfolioContext.Provider

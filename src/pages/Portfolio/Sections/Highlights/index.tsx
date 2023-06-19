@@ -166,6 +166,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                                       frameStyles.link,
                                       isActive && frameStyles.active
                                     )}
+                                    state={{ test: window.scrollY }}
                                   >
                                     Read More
                                   </Link>

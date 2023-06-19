@@ -159,7 +159,7 @@
         .box {
           &__main {
             width: 75%;
-            height: 95%;
+            height: auto;
 
             position: relative;
             margin: auto;
@@ -206,7 +206,7 @@
 
 @media screen and (max-width: 580px) {
   .manager {
-    min-height: 135vh;
+    min-height: 120vh;
     height: fit-content;
   }
 
@@ -234,7 +234,7 @@
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 480px) {
   .container {
     .body {
       .right {
@@ -248,14 +248,15 @@
   }
 }
 
-@media screen and (max-width: 480px) {
-  .container {
-    .body {
-      .right {
-        .box {
-          &__main {
-            width: 100%;
-          }
+// height
+@media screen and (max-height: 540px) {
+  .manager {
+    min-height: 130vh;
+
+    .container {
+      .body {
+        .left {
+          justify-content: flex-start;
         }
       }
     }
