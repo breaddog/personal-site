@@ -31,12 +31,12 @@ export const CollapsibleFAQ: React.FunctionComponent<CollapsibleFAQProps> = (
     >
       <div
         className={classNames(styles.title, title?.classname)}
+        onClick={() => setActive(!active)}
         {...aos_props}
       >
         <span className={styles.content}>{title?.content}</span>
         <ArrowDown
           className={classNames(styles.toggle, active && styles.active)}
-          onClick={() => setActive(!active)}
         />
       </div>
       <div

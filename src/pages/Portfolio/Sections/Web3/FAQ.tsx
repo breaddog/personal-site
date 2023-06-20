@@ -5,20 +5,38 @@ export interface Web3FaqProps {
 
 export const WEB3_FAQ: Web3FaqProps[] = [
   {
-    title: 'Web3 Explained Like I\'m Five',
+    title: 'Web3 Simplified (ELI5)',
     content: (
       <>
         <p>
-          You can treat it as a platform where compared to a{' '}
-          <b>single person</b> confirming something, like a bank showing how
-          much you have.
+          For context, the internet is a <b>connection of networks</b>, with
+          each network having it's own content hosted on servers,{' '}
+          <b>owned by individuals</b>. All content retrieval requests are done
+          by querying network nodes on{' '}
+          <b>finding the fixed location of where its hosted</b> amongst the web
+          of connections.
         </p>
         <br />
         <p>
-          Web3 works by having <b>multiple independent people</b> confirming
-          that same amount along with many other amounts, transactions and
-          actions in a single <b>block</b>, hence decentralised as there is no
-          main person.
+          This <b>centralised hosting and ownership</b> of content means that
+          events such as blacklisting, server/network downtime will render the
+          content inacessible as the location where it's stored cannot be
+          accesed.
+        </p>
+        <br />
+        <p>
+          Web3 works by having <b>direct content retreival</b>, where identical
+          copies are hosted simultaneously across multiple nodes Any change to
+          it will be reflected across all of them allowing for{' '}
+          <b>decentralised distribution and hosting</b> with guaranteed data
+          integrity and uptime.
+        </p>
+        <br />
+        <p>
+          We can expand on this by integrating <b>blockchain technology</b>,
+          having an overall state of content available which all nodes must
+          match and replicate, creating a transparent, tamper-proof and reliable
+          network that is <b>user control oriented</b>.
         </p>
       </>
     ),
@@ -30,7 +48,8 @@ export const WEB3_FAQ: Web3FaqProps[] = [
         <p>
           Blocks can be treated as a <b>group of proofs</b> that confirm events
           in the form of <b>transactions.</b> Transactions could be anything
-          from interactions, transfers or creations to name a few.
+          form of interaction such as updates, transfers or creations to name a
+          few.
         </p>
         <br />
         <p>

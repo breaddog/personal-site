@@ -157,9 +157,17 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
 
                     <p>
                       A number of projects on this site have Web3 features,
-                      indicated by the <b>Connect Wallet to View</b> prompt and
-                      the obvious <b>Connect Eth Wallet</b> button in the
-                      header. Supported wallet providers are listed below:
+                      indicated by a <b>Connect Wallet to View</b> prompt and
+                      the{' '}
+                      <Hyperlink
+                        colour='var(--purple-10)'
+                        onClick={() => setWeb3ModalActive(!web3ModalActive)}
+                      >
+                        <b>Connect Eth Wallet</b>
+                      </Hyperlink>{' '}
+                      button in the header or in the{' '}
+                      <b>"Ethereum Demonstrator"</b> window in this section.
+                      Supported wallet providers are listed below:
                     </p>
                     <ul className={styles.wallets}>
                       <li>
@@ -215,6 +223,19 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     data-aos='fade-right'
                     data-aos-delay={200 + 10 * WEB3_FAQ.length}
                   >
+                    <p>
+                      If you'd like to read up more on Web3, you can read{' '}
+                      <Hyperlink>
+                        <a
+                          href='https://www.investopedia.com/web-20-web-30-5208698'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          this short article.
+                        </a>
+                      </Hyperlink>
+                    </p>
+                    <br />
                     <p>
                       For more information on Ethereum, how it functions and its
                       uses, you can read more from{' '}
