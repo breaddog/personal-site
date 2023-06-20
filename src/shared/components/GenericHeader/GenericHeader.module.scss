@@ -32,7 +32,7 @@
   opacity: 1;
 
   &.hidden {
-    top: calc(var(--header-height) * -1 * 0.5);
+    // top: calc(var(--header-height) * -1 * 0.825);
     opacity: 0;
   }
 
@@ -167,7 +167,7 @@
   z-index: 100;
 
   background-color: var(--black);
-  background-image: url('../../../assets//background/subtle-prism-black.svg');
+  background-image: url('../../../assets/background/subtle-prism-black.svg');
   background-repeat: repeat-y;
   background-position: center;
   background-size: cover;
@@ -214,7 +214,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        height: 80%;
+        height: 90%;
         width: 100%;
 
         overflow-y: scroll;

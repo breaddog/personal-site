@@ -9,9 +9,10 @@ import { OnClickAnimation } from '..'
 import menuSVG from '../../../assets/icons/menu-slanted.svg'
 import crossSVG from '../../../assets/icons/cross.svg'
 import { AppContext } from '../../../App'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../../routes'
 import { WalletConnectButton } from '../../../ethereum'
+import { toggleScroll } from '../../functions'
 
 interface GenericHeaderProps {
   className?: string
@@ -69,12 +70,12 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
     if (!flexActive) return
     if (mobileHeaderMatcher.matches && !mobileHeaderActive) {
       setMobileHeaderActive(true)
-      setActive(false)
+      handleToggleMobileMenu(false)
     }
     // resize inactive
     if (!mobileHeaderMatcher.matches && mobileHeaderActive) {
       setMobileHeaderActive(false)
-      setActive(false)
+      handleToggleMobileMenu(false)
     }
   }
 
@@ -140,7 +141,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   // section change
   const handleSectionChange = (_section: SectionNavInterface) => {
     if (closeOnChange) {
-      setActive(false)
+      handleToggleMobileMenu(false)
     }
     const { key, customNavigate } = _section
     if (customNavigate) {
@@ -155,6 +156,11 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
     } else {
       navigate(ROUTES.home.pathname)
     }
+  }
+
+  const handleToggleMobileMenu = (_state: boolean) => {
+    setActive(_state)
+    toggleScroll(!_state)
   }
 
   return (
@@ -209,7 +215,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
         animation={{
           animatingClass: styles.animating,
           duration: 400,
-          onStart: () => setActive(!active),
+          onStart: () => handleToggleMobileMenu(!active),
         }}
       >
         <img

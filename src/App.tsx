@@ -28,6 +28,8 @@ import {
 
 import {
   CONSTANTS,
+  disableScroll,
+  enableScroll,
   getScrollPositionForSection,
   handleDesktopListener
 } from './shared'
@@ -123,6 +125,12 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const handleUpdateBalances = (account: string) => {
     handleGetEthBalance(account)
     handleGetMaticBalance(account)
+  }
+
+  // scroll
+  const handleScrollToggle = (enabled: boolean) => {
+    setScrollEnabled(enabled)
+    enabled ? enableScroll() : disableScroll()
   }
 
   // auto reconnect and account dependencies
@@ -278,7 +286,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         isDesktop,
         scrollEnabled,
         scrollDirection,
-        setScrollEnabled,
+        setScrollEnabled: handleScrollToggle,
         loadingRef,
         web3ModalActive,
         setWeb3ModalActive,
@@ -351,7 +359,7 @@ interface AppContextProps {
   isDesktop: boolean
   scrollEnabled: boolean
   scrollDirection: ScrollDirection
-  setScrollEnabled: React.Dispatch<React.SetStateAction<boolean>>
+  setScrollEnabled: Function
   // loading
   loadingRef: React.RefObject<LoadingHandle> | null
 

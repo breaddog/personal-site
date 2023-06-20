@@ -109,6 +109,14 @@ export const disableScroll = () => {
   _body.style.overflowY = 'hidden'
 }
 
+export const toggleScroll = (enable: boolean) => {
+  if (enable) {
+    enableScroll()
+  } else {
+    disableScroll()
+  }
+}
+
 // delay always in ms
 export const delay = async (duration: number = 1000) => {
   return await new Promise((resolve) => setTimeout(resolve, duration))
