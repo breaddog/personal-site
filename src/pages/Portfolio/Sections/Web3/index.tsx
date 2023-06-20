@@ -147,7 +147,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     </p>
                     <br />
                     <p>
-                      Some of my experience derrives from various NFT and DeFi
+                      Some of my experience derives from various NFT and DeFi
                       (Decentralised Finance) projects with clients such as
                       Tennis Australia, T&B Media Global, and artists like
                       Shintaro Kago, Vhils and Scott Marsh under development
