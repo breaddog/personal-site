@@ -2,15 +2,9 @@ import styles from './Error.module.scss'
 import React from 'react'
 import classNames from 'classnames'
 
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import satelliteSVG from '../../../../assets/icons/satellite.svg'
-import {
-  Button,
-  SectionContainer,
-  SectionSubHeader
-} from '../../../../shared/components'
-import { ROUTES } from '../../../../routes'
 import { ErrorPage } from '../../../Error'
 
 interface ErrorProjectTemplateProps {

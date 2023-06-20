@@ -11,7 +11,7 @@ import {
 } from '../../../../../../shared/interfaces'
 // import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { AppContext } from '../../../../../../App'
-import { Image } from '../../../../../../shared/components'
+import { CollapsibleSection, Image } from '../../../../../../shared/components'
 import { filterAOSProps } from '../../../../../../shared/AOS'
 
 interface JobInfoProps {
@@ -136,14 +136,19 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = (
         <div className={styles.divider}></div>
         {map(jobData?.sections, (data: JobPositionData, idx: number) => (
           <React.Fragment key={idx}>
-            <div
+            <CollapsibleSection
+              initialOpen={true}
+              title={{
+                classname: styles.title,
+                content: data.title,
+              }}
               className={classNames(
                 styles.section,
                 styles.duration,
                 styles.opacityCustom
               )}
             >
-              <div className={styles.title}>{data.title}</div>
+              {/* <div className={styles.title}>{data.title}</div> */}
               <div className={classNames(styles.content, jobData?.className)}>
                 {map(
                   data?.info,
@@ -164,7 +169,7 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = (
                   }
                 )}
               </div>
-            </div>
+            </CollapsibleSection>
             {jobData?.sections?.length &&
               idx < jobData?.sections.length - 1 && (
                 <div className={styles.divider}></div>

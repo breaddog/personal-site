@@ -5,24 +5,38 @@ import classNames from 'classnames'
 import { ArrowDown } from '../../../assets/svgs'
 import { filterAOSProps } from '../../AOS'
 
-export interface CollapsibleFAQProps {
+export interface CollapsibleSectionProps {
   title: {
     classname?: string
     content: string
   }
+  initialOpen?: boolean
   className?: string
   bodyclassname?: string
   componentkey?: string | number
   children?: React.ReactNode
 }
 
-export const CollapsibleFAQ: React.FunctionComponent<CollapsibleFAQProps> = (
-  props: React.PropsWithChildren<CollapsibleFAQProps>
-) => {
-  const { title, className, bodyclassname, componentkey, children } = props
+export const CollapsibleSection: React.FunctionComponent<
+  CollapsibleSectionProps
+> = (props: React.PropsWithChildren<CollapsibleSectionProps>) => {
+  const {
+    title,
+    className,
+    bodyclassname,
+    initialOpen,
+    componentkey,
+    children,
+  } = props
   const [active, setActive] = React.useState<boolean>(false)
   const classes = classNames(styles.faq, className)
   const aos_props = filterAOSProps(props)
+
+  React.useEffect(() => {
+    if (initialOpen) {
+      setActive(true)
+    }
+  }, [initialOpen])
 
   return (
     <div

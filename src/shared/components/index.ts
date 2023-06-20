@@ -16,7 +16,7 @@ export * from './Image'
 export * from './Button'
 export * from './Hyperlink'
 export * from './ToggleSlider'
-export * from './CollapisbleFAQ'
+export * from './CollapsibleSection'
 
 export * from './Keyframes'
 

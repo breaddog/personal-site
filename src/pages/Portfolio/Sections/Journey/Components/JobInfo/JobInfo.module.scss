@@ -105,6 +105,7 @@
 
         .title {
           margin-bottom: 1rem;
+          width: fit-content;
         }
 
         .date {
@@ -129,6 +130,7 @@
         text-align: start;
         margin-bottom: 1.25rem;
         white-space: pre-line;
+        width: fit-content;
       }
 
       // sub sections
@@ -257,8 +259,8 @@
           width: 100%;
         }
 
-        .nameContainer {
-          // text-align: center;
+        &.mainInfo {
+          width: 100%;
         }
 
         .logo {
@@ -268,7 +270,7 @@
         }
 
         .title {
-          width: 100%;
+          // width: 100%;
           // text-align: center;
           margin-bottom: 0.75rem;
         }

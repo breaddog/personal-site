@@ -8,7 +8,7 @@ import {
   GenericForwardRefInterface
 } from '../../../../shared/interfaces'
 import {
-  CollapsibleFAQ,
+  CollapsibleSection,
   Hyperlink,
   SectionContainer,
   SectionHeader,
@@ -197,7 +197,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                     A Small FAQ!
                   </h3>
                   {map(WEB3_FAQ, (faq: Web3FaqProps, idx: number) => (
-                    <CollapsibleFAQ
+                    <CollapsibleSection
                       key={idx}
                       componentkey={idx}
                       className={styles.faqObject}
@@ -210,10 +210,10 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                       data-aos-delay={200 + 10 * idx}
                     >
                       {faq.content}
-                    </CollapsibleFAQ>
+                    </CollapsibleSection>
                   ))}
                   {/* separate due to some nested import bug */}
-                  <CollapsibleFAQ
+                  <CollapsibleSection
                     className={styles.faqObject}
                     title={{
                       classname: classNames(styles.subheader),
@@ -249,7 +249,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                         </a>
                       </Hyperlink>
                     </p>
-                  </CollapsibleFAQ>
+                  </CollapsibleSection>
                 </div>
               </div>
 
