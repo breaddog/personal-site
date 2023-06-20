@@ -42,7 +42,7 @@ export const JOB_POSITIONS: JobPosition[] = [
         ],
       },
       {
-        title: 'More Info',
+        title: 'Other Duties',
         info: [
           <>
             Assisted with the company's daily operations by overseeing project
@@ -77,7 +77,7 @@ export const JOB_POSITIONS: JobPosition[] = [
     title: 'Programming & Coding Tutor',
     logo: onigiriSVG,
     logoAlt: 'onigiri',
-    start: 'February 2023',
+    start: 'December 2021',
     end: 'Present',
     sections: [
       {
@@ -102,7 +102,7 @@ export const JOB_POSITIONS: JobPosition[] = [
         ],
       },
       {
-        title: 'More Info',
+        title: 'Other Duties',
         info: [
           <>
             Took up opportunity to assist people in their efforts to make a
@@ -150,7 +150,7 @@ export const JOB_POSITIONS: JobPosition[] = [
         ],
       },
       {
-        title: 'More Info',
+        title: 'Other Learnings',
         info: [
           <>
             Pivoted towards a web - development focus, with my capstone project

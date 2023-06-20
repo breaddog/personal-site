@@ -147,7 +147,7 @@
           margin-bottom: 0.5rem;
           text-align: start;
           white-space: break-spaces;
-          line-height: calc(var(--font-p) * 1.5);
+          line-height: calc(var(--font-p) * 1.625);
           font-size: var(--font-p);
 
           .infoText {
@@ -156,6 +156,10 @@
             width: 100%;
             white-space: break-spaces;
           }
+        }
+
+        b {
+          color: var(--blue-10);
         }
       }
 
@@ -246,9 +250,6 @@
 
         &:nth-child(1) {
           width: fit-content;
-          // margin: auto;
-          margin-left: auto;
-          margin-right: auto;
           flex-direction: column-reverse;
         }
 
@@ -257,27 +258,40 @@
         }
 
         .nameContainer {
-          text-align: center;
+          // text-align: center;
         }
 
         .logo {
-          margin: 0 auto;
+          // margin: 0 auto;
+          margin-left: 0;
           margin-bottom: 1rem;
         }
 
         .title {
           width: 100%;
-          text-align: center;
+          // text-align: center;
           margin-bottom: 0.75rem;
         }
 
         .content {
-          width: fit-content;
-          margin: 0 auto;
+          // width: fit-content;
+          // margin: 0 auto;
 
           .info {
+            width: fit-content;
             margin-bottom: 1rem;
-            text-align: center;
+
+            // margin-left: auto;
+            // margin-right: auto;
+
+            // text-align: center;
+
+            &.align {
+              &__center {
+                text-align: center;
+                text-align-last: center;
+              }
+            }
 
             &:before {
               content: '';
@@ -286,8 +300,8 @@
 
             .infoText {
               max-width: unset;
-              text-align: center;
-              line-height: calc(var(--font-p) * 1.5);
+              // text-align: center;
+              line-height: calc(var(--font-p) * 1.625);
             }
           }
         }
