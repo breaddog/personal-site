@@ -72,6 +72,8 @@
     }
 
     .body {
+      margin-top: initial;
+
       .contacts {
         flex-direction: column;
         justify-content: space-evenly;

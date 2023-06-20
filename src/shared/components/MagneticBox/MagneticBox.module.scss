@@ -35,6 +35,10 @@
 
     position: relative;
 
+    transition-property: scale;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+
     &::before {
       content: '';
       width: 100%;
@@ -54,6 +58,8 @@
     }
 
     &:hover {
+      scale: 1.05;
+
       &::before {
         opacity: 1;
       }
@@ -64,9 +70,9 @@
 @media screen and (max-width: 876px) {
   .box {
     .body {
-      &::before {
-        box-shadow: none;
-      }
+      // &::before {
+      //   box-shadow: none;
+      // }
     }
   }
 }

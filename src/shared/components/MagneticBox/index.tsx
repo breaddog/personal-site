@@ -27,6 +27,8 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
 
   // handle movement within boundaries
   const magneticMouseEnterEffect = (e: any, movement: number = 1) => {
+    console.log('inside', isMobile, disable)
+
     if (isMobile || disable) return
     if (!magneticBodyRef.current || !magneticAreaRef.current) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop
@@ -56,36 +58,13 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
     })
   }
 
-  React.useLayoutEffect(() => {
-    let _ctx = gsap.context(() => {
-      if (isMobile || disable) return
-      if (!magneticBodyRef.current || !magneticAreaRef.current) return
-      magneticAreaRef.current.addEventListener('mousemove', (e: MouseEvent) =>
-        magneticMouseEnterEffect(e)
-      )
-      magneticAreaRef.current.addEventListener('mouseleave', () =>
-        magneticMouseLeaveEffect()
-      )
-    }, [magneticAreaRef])
-
-    return () => {
-      if (!magneticAreaRef.current) return
-      magneticAreaRef.current.removeEventListener(
-        'mousemove',
-        (e: MouseEvent) => magneticMouseEnterEffect(e)
-      )
-      magneticAreaRef.current.removeEventListener('mouseleave', () =>
-        magneticMouseLeaveEffect()
-      )
-      _ctx.kill()
-    }
-  }, [magneticAreaRef, magneticBodyRef, disable, isMobile])
-
   return (
     <div className={classes}>
       <div
         className={classNames('magnetic-area', styles.area)}
         ref={magneticAreaRef}
+        onMouseMove={(e) => magneticMouseEnterEffect(e)}
+        onMouseLeave={() => magneticMouseLeaveEffect()}
       >
         <div
           className={classNames(

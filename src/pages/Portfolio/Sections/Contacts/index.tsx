@@ -54,7 +54,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
             repetitions: 3,
             direction: 'clockwise',
           },
-          hoverText: 'Projects and Stuff on Github',
+          hoverText: 'Projects on Github',
         },
         {
           type: 'email',
@@ -115,7 +115,7 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
             <SectionContainer className={styles.container}>
               <SectionHeader
                 className={styles.header}
-                title='Contact Me'
+                title='Contacts'
                 src={mailSVG}
                 alt='mail'
                 backgroundColour='var(--purple-20)'
