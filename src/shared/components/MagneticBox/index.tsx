@@ -27,8 +27,6 @@ export const MagneticBox: React.FC<MagneticBoxProps> = ({
 
   // handle movement within boundaries
   const magneticMouseEnterEffect = (e: any, movement: number = 1) => {
-    console.log('inside', isMobile, disable)
-
     if (isMobile || disable) return
     if (!magneticBodyRef.current || !magneticAreaRef.current) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop

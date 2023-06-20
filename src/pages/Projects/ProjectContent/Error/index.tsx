@@ -5,8 +5,13 @@ import classNames from 'classnames'
 import { Link, useParams } from 'react-router-dom'
 
 import satelliteSVG from '../../../../assets/icons/satellite.svg'
-import { Button } from '../../../../shared/components'
+import {
+  Button,
+  SectionContainer,
+  SectionSubHeader
+} from '../../../../shared/components'
 import { ROUTES } from '../../../../routes'
+import { ErrorPage } from '../../../Error'
 
 interface ErrorProjectTemplateProps {
   className?: string
@@ -19,35 +24,61 @@ export const ErrorProjectTemplate: React.FunctionComponent<
 
   const classes = classNames(styles.error, className)
   return (
-    <div className={classes}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <img
-            className={styles.svg}
-            src={satelliteSVG}
-            alt='satellite'
-          />
-        </div>
-        <div className={styles.text}>
+    <ErrorPage
+      hidePageHeader={true}
+      className={classes}
+      header='Project Not Found'
+      text={
+        <>
           Seems that <b>{projectKey}</b> doesn't exist yet.{' '}
           {projectKey ? (
             <>
-              Fancy suggesting <b>{projectKey}</b> as an idea to me or want to
-              get back?
+              You can suggest <b>{projectKey}</b> as an idea to me or want to
+              get back to the homepage?
             </>
           ) : (
             'Want to get back to the homepage?'
           )}
-        </div>
-        <Link to={ROUTES.home.pathname}>
-          <Button
-            className={styles.link}
-            buttonStyle='gradient'
-          >
-            Click here to return to the main page.
-          </Button>
-        </Link>
-      </div>
-    </div>
+        </>
+      }
+      icon={{
+        className: styles.logo,
+        src: satelliteSVG,
+        alt: 'satellite',
+      }}
+    />
+    // <div className={classes}>
+    //   <SectionContainer className={styles.container}>
+    //     <div className={styles.logo}>
+    //       <img
+    //         className={styles.svg}
+    //         src={satelliteSVG}
+    //         alt='satellite'
+    //       />
+    //     </div>
+    //     <SectionSubHeader className={styles.subheader}>
+    //       Project Not Found
+    //     </SectionSubHeader>
+    //     <div className={styles.text}>
+    //       Seems that <b>{projectKey}</b> doesn't exist yet.{' '}
+    //       {projectKey ? (
+    //         <>
+    //           Fancy suggesting <b>{projectKey}</b> as an idea to me or want to
+    //           get back?
+    //         </>
+    //       ) : (
+    //         'Want to get back to the homepage?'
+    //       )}
+    //     </div>
+    //     <Link to={ROUTES.home.pathname}>
+    //       <Button
+    //         className={styles.link}
+    //       // buttonStyle='gradient'
+    //       >
+    //         Click here to return to the main page.
+    //       </Button>
+    //     </Link>
+    //   </SectionContainer>
+    // </div>
   )
 }

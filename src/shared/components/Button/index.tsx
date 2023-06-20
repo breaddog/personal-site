@@ -21,6 +21,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
     styles.button,
     buttonStyle && styles[String(buttonStyle)],
     disabled ? styles.disabled : styles.enabled,
+    'effects--hoverPop',
     className
   )
 

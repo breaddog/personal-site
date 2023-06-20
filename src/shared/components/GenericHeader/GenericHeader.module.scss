@@ -220,6 +220,8 @@
         overflow-y: scroll;
 
         .section {
+          justify-content: center;
+          text-align: center;
           text-transform: uppercase;
           font-size: var(--font-h3);
           font-family: 'Silkscreen';

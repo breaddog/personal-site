@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom'
-import { Portfolio } from '../pages'
+import { ErrorPage, Portfolio } from '../pages'
 import { ROUTES } from '../routes'
 import { ProjectPage } from '../pages/Projects'
 
@@ -20,6 +20,10 @@ export const APP_ROUTER = [
   {
     path: ROUTES.projects.pathname,
     element: <ProjectPage />,
+  },
+  {
+    path: ROUTES.error.pathname,
+    element: <ErrorPage />,
   },
   {
     path: '*',

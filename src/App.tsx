@@ -9,6 +9,7 @@ import { PageOrientation, ScrollDirection } from './shared/types'
 
 import {
   CSSHeader,
+  ErrorPage,
   LoadingHandle,
   LoadingSection,
   Portfolio,
@@ -334,11 +335,32 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
 
             {/* error */}
             <Route
+              path={ROUTES.error.pathname}
+              element={<ErrorPage />}
+            />
+
+            <Route
+              path={ROUTES['404'].pathname}
+              element={
+                <ErrorPage
+                  header='Page Not Found'
+                  text={
+                    <>
+                      Seems like the page you want to visit either doesn't exist
+                      or is unavailable. You can go back to the homepage by
+                      clicking on the button below.
+                    </>
+                  }
+                />
+              }
+            />
+
+            <Route
               path='*'
               element={
                 <Navigate
                   replace
-                  to={ROUTES.home.pathname}
+                  to={ROUTES['404'].pathname}
                 />
               }
             ></Route>

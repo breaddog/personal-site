@@ -11,6 +11,14 @@ export const ROUTES: Path = {
     key: 'portfolio',
     pathname: '/',
   },
+  error: {
+    key: 'error',
+    pathname: '/error',
+  },
+  '404': {
+    key: '404',
+    pathname: '/404',
+  },
   projects: {
     key: 'projects',
     pathname: '/project/:projectKey/*',

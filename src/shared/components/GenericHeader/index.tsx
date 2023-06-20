@@ -244,6 +244,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
               <img
                 src={icon.src}
                 alt={icon.alt}
+                onClick={() => handleHomeNavigation()}
               />
             </OnClickAnimation>
             <div className={styles.sections}>

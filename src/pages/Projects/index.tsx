@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { ProjectObject } from '../../data/projects'
+import { PROJECTS, ProjectObject } from '../../data/projects'
 import { fetchProject, fetchProjectContent } from '../../shared'
 import { ErrorProjectTemplate } from './ProjectContent'
 import { BannerProjectSection, TopProjectSection } from './Components'
@@ -16,6 +16,7 @@ import onigiriSVG from '../../assets/icons/onigiri.svg'
 import { SectionNavInterface } from '../../shared/types'
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
 import { ROUTES } from '../../routes'
+import { toast } from 'react-toastify'
 
 interface ProjectPageProps {
   className?: string
@@ -34,13 +35,13 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     sectionStyles.section,
     className
   )
-
   // project key
   const { projectKey } = useParams<{ projectKey: string }>()
   // loaded
   const [loaded, setLoaded] = React.useState<boolean>(false)
 
   // project
+  const [projectIndex, setProjectIndex] = React.useState<number>(-1)
   const [projectBody, setProjectBody] = React.useState<
     React.ReactNode | React.ReactFragment | null
   >(null)
@@ -50,6 +51,13 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
   const retreiveProject = async (_projectKey: string) => {
     const _project = await fetchProject(_projectKey)
     setProject(_project)
+
+    // set key for navigation
+    setProjectIndex(
+      Object.keys(PROJECTS).includes(_projectKey)
+        ? Object.keys(PROJECTS).indexOf(_projectKey)
+        : -1
+    )
 
     const _projectBody = await fetchProjectContent(_project)
     setProjectBody(_projectBody)
@@ -111,25 +119,67 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
     )
   }
 
-  const BACK_SECTION: {
-    [key: string]: SectionNavInterface
-  } = {
-    portfolio: {
-      title: 'Portfolio Page',
-      key: ROUTES.portfolio.key,
-      customNavigate: () => {
-        navigate(ROUTES.portfolio.pathname)
-        window.scrollTo({ top: 0 })
-      },
-    },
-    highlights: {
+  // const BACK_SECTION: {
+  //   [key: string]: SectionNavInterface
+  // } = {
+  //   highlights: {
+  //     title: 'Back To Highlights',
+  //     key: PORTFOLIO_SECTIONS.highlights.key,
+  //     customNavigate: () => {
+  //       navigate(`/?section=${PORTFOLIO_SECTIONS.highlights.key}`)
+  //     },
+  //   },
+  // }
+
+  const generateProjectSections = () => {
+    const menu: {
+      [key: string]: SectionNavInterface
+    } = {}
+
+    const projectKeys = Object.keys(PROJECTS)
+    // determine previous and next
+    // if project exists
+    if (projectIndex >= 0 && projectKey) {
+      const _nextProject = PROJECTS[projectKeys[projectIndex + 1]]
+      const _prevProject = PROJECTS[projectKeys[projectIndex - 1]]
+
+      // not 0 index
+      if (projectIndex > 0) {
+        menu.prev = {
+          title: 'Prev Project',
+          key: _prevProject.key,
+          customNavigate: () => {
+            retreiveProject(_prevProject.key)
+            navigate(`${ROUTES.projects.parentPath}/${_prevProject.key}`)
+            toast.info('Navigated to the previous project')
+          },
+        }
+      }
+
+      // not last index
+      if (projectIndex < projectKeys.length - 1) {
+        menu.next = {
+          title: 'Next Project',
+          key: _nextProject.key,
+          customNavigate: () => {
+            retreiveProject(_nextProject.key)
+            navigate(`${ROUTES.projects.parentPath}/${_nextProject.key}`)
+            toast.info('Navigated to the next project')
+          },
+        }
+      }
+    }
+
+    // always last
+    menu.highlights = {
       title: 'Back To Highlights',
       key: PORTFOLIO_SECTIONS.highlights.key,
       customNavigate: () => {
-        navigate(`/?section=${PORTFOLIO_SECTIONS.highlights.key}`),
-          window.scrollTo({ top: 0 })
+        navigate(`/?section=${PORTFOLIO_SECTIONS.highlights.key}`)
       },
-    },
+    }
+
+    return menu
   }
 
   return (
@@ -144,7 +194,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
           flexSize: 876,
         }}
         className={styles.projectHeader}
-        sections={BACK_SECTION}
+        sections={generateProjectSections()}
       />
       {renderProjectPageBody()}
     </div>
