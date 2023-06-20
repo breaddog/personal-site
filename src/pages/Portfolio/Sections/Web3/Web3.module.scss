@@ -209,8 +209,6 @@
       }
 
       .right {
-        text-align: center;
-
         .window {
           min-width: unset;
           max-width: unset;
@@ -219,6 +217,8 @@
           height: fit-content;
 
           .windowContainer {
+            text-align: center;
+
             .row {
               justify-content: space-between;
 
