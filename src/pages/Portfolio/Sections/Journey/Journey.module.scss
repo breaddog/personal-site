@@ -27,3 +27,42 @@
     }
   }
 }
+
+// @media screen and (max-width: 876px) {
+//   .container {
+//     .header {
+//       width: fit-content;
+//       flex-direction: row;
+//       flex-wrap: wrap-reverse;
+//     }
+
+//     .header > h2 {
+//       margin-right: 2rem;
+//     }
+
+//     .header > div {
+//       margin: auto;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 480px) {
+//   .container {
+//     .header {
+//       flex-direction: column-reverse;
+//       margin-left: auto;
+//       margin-right: auto;
+//       width: 100%;
+//     }
+
+//     .header > h2 {
+//       margin-right: initial;
+//       text-align: start;
+//     }
+
+//     .header > div {
+//       margin-bottom: 1rem;
+//       margin-left: 0;
+//     }
+//   }
+// }
