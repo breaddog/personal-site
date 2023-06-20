@@ -10,6 +10,7 @@ export * from './ModalBox'
 
 export * from './MagneticBox'
 export * from './OnClickAnimation'
+export * from './ProgressBar'
 
 export * from './Image'
 export * from './Button'

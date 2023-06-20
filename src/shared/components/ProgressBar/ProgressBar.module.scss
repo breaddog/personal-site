@@ -1,0 +1,17 @@
+.parent {
+  height: 100%;
+  background-color: var(--black-10);
+
+  // default
+  height: 1rem;
+  width: 300px;
+  border: 2px solid white;
+
+  .bar {
+    height: 100%;
+
+    transition-property: background-color;
+    transition-duration: 0.325s;
+    transition-timing-function: ease-in-out;
+  }
+}

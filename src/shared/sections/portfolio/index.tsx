@@ -12,7 +12,7 @@ export const PORTFOLIO_SECTIONS: {
     key: 'developer',
   },
   manager: {
-    title: 'manager',
+    title: 'management',
     key: 'manager',
   },
   web3: {

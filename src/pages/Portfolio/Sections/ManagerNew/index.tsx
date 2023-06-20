@@ -8,8 +8,10 @@ import { ScrollTrigger } from 'gsap/all'
 
 import {
   ModalBox,
+  ProgressBar,
   SectionContainer,
   SectionHeader,
+  SectionSubHeader,
   WaveText
 } from '../../../../shared/components'
 
@@ -60,49 +62,8 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
 
       const { isMobile, isMedium } = React.useContext(AppContext)
 
-      // gsap version of on hover wave effect for entrance animation
-      // const sineWaveTextEffect = ({
-      //   parent,
-      //   duration = 1,
-      //   height = '1.5rem',
-      // }: {
-      //   parent: Element
-      //   duration?: number
-      //   height?: string
-      // }) => {
-      //   const children = gsap.utils
-      //     .toArray(parent.children)
-      //     .slice(1) as Element[]
-
-      //   const _masterTimeline = gsap.timeline()
-
-      //   // gsap reads it in reverse so need to realign
-      //   reverse(children).forEach((el: Element, idx: number) => {
-      //     const _childTimeline = gsap
-      //       .timeline({
-      //         delay: idx * 0.15,
-      //         duration,
-      //       })
-      //       .to(el, {
-      //         y: `-${height}`,
-      //         ease: 'sine.inOut',
-      //       })
-      //       .to(el, {
-      //         y: height,
-      //         ease: 'sine.inOut',
-      //       })
-      //       .to(el, {
-      //         y: 0,
-      //         ease: 'sine.inOut',
-      //         onComplete: () => {
-      //           parent.classList.remove('disabled')
-      //         },
-      //       })
-      //     _masterTimeline.add(_childTimeline, `-${duration}`)
-      //   })
-
-      //   return _masterTimeline
-      // }
+      const [percentageScrolled, setPercentageScrolled] =
+        React.useState<number>(0)
 
       // wave timeline
       const _waveTimeline = (el: Element, duration: number = 4) => {
@@ -117,10 +78,6 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
             },
             onComplete: () => {
               el.classList.remove('disabled')
-              // sineWaveTextEffect({
-              //   parent: el,
-              //   duration: 0,
-              // })
             },
           })
           .to({}, { duration })
@@ -143,7 +100,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
           trigger: sectionRef.current,
           start: `${isMobile ? 'top' : isMedium ? '-2%' : '-4%'} top`,
           // reference this for boundary
-          end: '+=200%',
+          end: '+=3000px',
           scrub: 0.5,
           pin: true,
         }
@@ -160,16 +117,33 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
             }
           )
 
+        const _masterWaveTimeline = gsap.timeline({
+          onStart: function () {
+            setPercentageScrolled(0)
+          },
+          onUpdate: function () {
+            const progress = this.progress()
+            setPercentageScrolled(progress)
+          },
+          onComplete: function () {
+            setPercentageScrolled(1)
+          },
+        })
+
         // add wave elemtns
         _elements.forEach((el: Element) => {
-          _timeline.add(_waveTimeline(el, 10))
+          _masterWaveTimeline.add(_waveTimeline(el, 10))
         })
+
+        _timeline.add(_masterWaveTimeline)
 
         // modal should be next
         _timeline.add(_modalTimeline(20))
 
         // padding
         _timeline.add(gsap.from({}, { duration: 12 }))
+
+        _timeline.addPause(5)
       }
 
       React.useEffect(() => {
@@ -200,6 +174,7 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
           className={classes}
           ref={sectionRef}
         >
+          {/* TO DO: find a way to make scrolling obvious here */}
           <SectionContainer className={styles.container}>
             <SectionHeader
               className={styles.header}
@@ -208,21 +183,62 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
               alt='box'
               backgroundColour='var(--blue)'
             />
+            <SectionSubHeader
+              className={classNames(styles.subheader, styles.mobile)}
+            >
+              <span className={styles.subheadingText}>
+                <span>Team Building Progress&nbsp;</span>
+                <span>(Scroll To Fill)</span>
+              </span>
+              <ProgressBar
+                className={styles.progress}
+                progress={percentageScrolled}
+                // link colours to text
+                progressColours={{
+                  0: 'var(--blue)',
+                  40: 'var(--yellow-10)',
+                  75: 'var(--purple-10)',
+                }}
+              />
+            </SectionSubHeader>
             <div className={styles.body}>
               <div className={styles.left}>
-                {map(KEY_WORDS, (el: KeyWordProps, idx: number) => {
-                  return (
-                    <WaveText
-                      key={idx}
-                      componentKey={idx}
-                      className={classNames(styles.emphasis, WAVE_TEXT_CLASS)}
-                      text={el.text}
-                      animationDuration={1500}
-                      animationHeight='1.5rem'
-                      animationDelay={100}
-                    />
-                  )
-                })}
+                <SectionSubHeader
+                  className={classNames(styles.subheader, styles.desktop)}
+                >
+                  <span className={styles.subheadingText}>
+                    Team Building Progress (Scroll To Fill):
+                  </span>
+                  <ProgressBar
+                    className={styles.progress}
+                    progress={percentageScrolled}
+                    // link colours to text
+                    progressColours={{
+                      0: 'var(--blue)',
+                      40: 'var(--yellow-10)',
+                      75: 'var(--purple-10)',
+                    }}
+                  />
+                </SectionSubHeader>
+                <div className={styles.emphasisContainer}>
+                  {map(KEY_WORDS, (el: KeyWordProps, idx: number) => {
+                    return (
+                      <WaveText
+                        key={idx}
+                        componentKey={idx}
+                        className={classNames(
+                          styles.emphasis,
+                          WAVE_TEXT_CLASS,
+                          styles[el.key]
+                        )}
+                        text={el.text}
+                        animationDuration={1500}
+                        animationHeight='1.5rem'
+                        animationDelay={100}
+                      />
+                    )
+                  })}
+                </div>
               </div>
 
               <div className={styles.right}>
