@@ -174,7 +174,6 @@ export const PortfolioManagerNew: React.FC<PortfolioManagerProps> =
           className={classes}
           ref={sectionRef}
         >
-          {/* TO DO: find a way to make scrolling obvious here */}
           <SectionContainer className={styles.container}>
             <SectionHeader
               className={styles.header}

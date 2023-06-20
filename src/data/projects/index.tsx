@@ -83,7 +83,7 @@ export const PROJECTS: {
     type: 'partnership',
     year: '2021 - 2023',
     scope: 'NFT Art Gallery',
-    role: ['Associate Developer', 'Lead Engineer'],
+    role: ['Lead Developer', 'Lead Engineer'],
     responsibilities: [
       'Lead Engineer and Developer',
       'Project Manager',
@@ -197,7 +197,7 @@ export const PROJECTS: {
     year: '2022 - 2023',
     type: 'ERC20',
     scope: 'NFT Community Hub',
-    role: ['Associate Project Manager', 'Associate Developer', 'Deployment'],
+    role: ['Project Manager', 'Full-stack Developer', 'Deployment'],
     responsibilities: [
       'Project and Team Management',
       'Lead Engineer',

@@ -169,9 +169,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     // will not trigger if no specific scroll
     if (!section) {
       AOS.refreshHard()
-      let scrollY = window.scrollY
-      window.scrollTo({ top: scrollY + 1 })
-      window.scrollTo({ top: scrollY })
+      window.scrollTo({ top: window.scrollY })
+      // window.scrollTo({ top: scrollY })
     }
   }, [section, loadingRef, scrollEnabled])
 

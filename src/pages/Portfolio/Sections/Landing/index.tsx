@@ -172,7 +172,7 @@ export const PortfolioLanding: React.FC<PortfolioLandingProps> =
                 >
                   {/* Web Development with Individuality in Mind */}
                   {/* TO DO: think of better slogan */}
-                  Full-Stack Development, Interactive and Bespoke
+                  Full-Stack Development Done Interactive
                 </h2>
               </div>
               <div className={styles.content}>
