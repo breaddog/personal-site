@@ -43,10 +43,10 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     const ONIGIRI_AMOUNT = 20
     // active or not (can be toggled)
     // DEBUG: toggle all to false
-    const [front, setFront] = React.useState<boolean>(false)
-    const [active, setActive] = React.useState<boolean>(false)
+    const [front, setFront] = React.useState<boolean>(true)
+    const [active, setActive] = React.useState<boolean>(true)
 
-    const [loaded, setLoaded] = React.useState<boolean>(true)
+    const [loaded, setLoaded] = React.useState<boolean>(false)
 
     // IF LOADING BAR USED
     const [amountLoaded, setAmountLoaded] = React.useState<number>(0)
