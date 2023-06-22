@@ -15,13 +15,13 @@ import {
   Portfolio,
   ProjectPage
 } from './pages'
-import CustomHistoryRouter from './router'
+// import CustomHistoryRouter from './router'
 import {
   // RouterProvider,
   // createBrowserRouter,
   // useNavigate,
   // useLocation,
-  // BrowserRouter as Router,
+  BrowserRouter as Router,
   Route,
   Routes,
   Navigate
@@ -279,38 +279,38 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   }, [])
 
   return (
-    // <Router basename={basename}>
-    <AppContext.Provider
-      value={{
-        isMobile,
-        isMedium,
-        isDesktop,
-        scrollEnabled,
-        scrollDirection,
-        setScrollEnabled: handleScrollToggle,
-        loadingRef,
-        web3ModalActive,
-        setWeb3ModalActive,
-        connectionType,
-        ethBalance,
-        maticBalance,
-        resetBalances,
-        updateBalances: handleUpdateBalances,
-      }}
-    >
-      <div className={classes}>
-        <CSSHeader />
-        <LoadingSection ref={loadingRef} />
-        <WalletConnectModal
-          onRequestCloseActive={false}
-          isOpen={web3ModalActive}
-          onClose={() => setWeb3ModalActive(false)}
-          activeConnectionType={connectionType}
-          connectionActive={isActive}
-          onActivate={setConnectionType}
-          onDeactivate={setConnectionType}
-        />
-        <CustomHistoryRouter basename={basename}>
+    // <CustomHistoryRouter basename={basename}>
+    <Router basename={basename}>
+      <AppContext.Provider
+        value={{
+          isMobile,
+          isMedium,
+          isDesktop,
+          scrollEnabled,
+          scrollDirection,
+          setScrollEnabled: handleScrollToggle,
+          loadingRef,
+          web3ModalActive,
+          setWeb3ModalActive,
+          connectionType,
+          ethBalance,
+          maticBalance,
+          resetBalances,
+          updateBalances: handleUpdateBalances,
+        }}
+      >
+        <div className={classes}>
+          <CSSHeader />
+          <LoadingSection ref={loadingRef} />
+          <WalletConnectModal
+            onRequestCloseActive={false}
+            isOpen={web3ModalActive}
+            onClose={() => setWeb3ModalActive(false)}
+            activeConnectionType={connectionType}
+            connectionActive={isActive}
+            onActivate={setConnectionType}
+            onDeactivate={setConnectionType}
+          />
           <Routes>
             {/* all the import components will go here */}
             <Route
@@ -359,13 +359,13 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
               }
             ></Route>
           </Routes>
-        </CustomHistoryRouter>
-        {/* <RouterProvider
+          {/* <RouterProvider
           router={createBrowserRouter(APP_ROUTER, { basename })}
         /> */}
-      </div>
-    </AppContext.Provider>
-    // </Router>
+        </div>
+      </AppContext.Provider>
+    </Router>
+    // </CustomHistoryRouter>
   )
 }
 
