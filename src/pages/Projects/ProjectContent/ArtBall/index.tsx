@@ -115,8 +115,14 @@ export const ArtBallProject: React.FunctionComponent<ArtBallProjectProps> = ({
     setBalance23(-1)
   }
 
+  const reinstantiateContract = async () => {
+    await artball22Request.reinstantiateContract()
+    await artball23Request.reinstantiateContract()
+  }
+
   // BEFORE DEPLOY: reactive web3
   React.useEffect(() => {
+    reinstantiateContract()
     getArtballTotalSupplies()
   }, [])
 

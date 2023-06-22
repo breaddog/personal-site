@@ -11,19 +11,26 @@ import { ContractRequest } from '../ContractRequest'
 // generalised erc1155 request, can be extended
 // meant for a contract by contract basis
 export class ERC1155Request extends ContractRequest {
-  ADDRESS: string
   CONTRACT: ethers.Contract
   INTERFACE: ethers.Interface
 
   // infers network from props and appends query methods
   constructor(props: GenericContractInterface) {
-    super(props.network)
+    super(props)
     this.CONTRACT = createContractObject({
       ...props,
       abi: props.abi ?? ERC1155_INTERFACE,
     })
-    this.ADDRESS = props.address
     this.INTERFACE = new ethers.Interface(ERC1155_INTERFACE)
+  }
+
+  // refresh contract
+  reinstantiateContract() {
+    if (!this.CONTRACT) return
+    this.CONTRACT = createContractObject({
+      ...this.CONTRACT_PROPS,
+      abi: this.CONTRACT_PROPS.abi ?? ERC1155Request,
+    })
   }
 
   // balance

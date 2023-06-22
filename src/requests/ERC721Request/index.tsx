@@ -11,19 +11,26 @@ import { map } from 'lodash'
 // generalised erc721 request, can be extended from for custom ones
 // meant for a contract by contract basis
 export class ERC721Request extends ContractRequest {
-  ADDRESS: string
   CONTRACT: ethers.Contract
   INTERFACE: ethers.Interface
 
   // infers network from props and appends query methods
   constructor(props: GenericContractInterface) {
-    super(props.network)
+    super(props)
     this.CONTRACT = createContractObject({
       ...props,
       abi: props.abi ?? ERC721_INTERFACE,
     })
-    this.ADDRESS = props.address
     this.INTERFACE = new ethers.Interface(ERC721_INTERFACE)
+  }
+
+  // refresh contract
+  reinstantiateContract() {
+    if (!this.CONTRACT) return
+    this.CONTRACT = createContractObject({
+      ...this.CONTRACT_PROPS,
+      abi: this.CONTRACT_PROPS.abi ?? ERC721_INTERFACE,
+    })
   }
 
   // balance

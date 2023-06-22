@@ -6,20 +6,21 @@ const history = createBrowserHistory({ window })
 
 interface CustomHistoryRouterProps {
   className?: string
-  children?: React.ReactNode
   basename?: string
+  children?: React.ReactNode
 }
 
 export const customNavigate = (pathname: string) => history.push(pathname)
 
 export const CustomHistoryRouter: React.FunctionComponent<
   CustomHistoryRouterProps
-> = ({ children, ...props }) => {
+> = ({ children, basename = '/', ...props }) => {
   return (
     <HistoryRouter
       {...props}
       // @ts-expect-error
       history={history}
+      basename={basename}
     >
       <HistoryRouterContext.Provider
         value={{

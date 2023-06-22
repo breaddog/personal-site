@@ -8,22 +8,29 @@ import { ethers } from 'ethers'
 import { ContractRequest } from '../ContractRequest'
 
 export class ERC20Request extends ContractRequest {
-  ADDRESS: string
   CONTRACT: ethers.Contract
   INTERFACE: ethers.Interface
   DECIMALS: number
   SYMBOL: string
 
   constructor(props: GenericContractInterface) {
-    super(props.network)
+    super(props)
     this.CONTRACT = createContractObject({
       ...props,
       abi: props.abi ?? ERC20_INTERFACE,
     })
-    this.ADDRESS = props.address
     this.INTERFACE = new ethers.Interface(ERC20_INTERFACE)
     this.DECIMALS = props.decimals ?? 18
     this.SYMBOL = props.symbol ?? ''
+  }
+
+  // refresh contract
+  reinstantiateContract() {
+    if (!this.CONTRACT) return
+    this.CONTRACT = createContractObject({
+      ...this.CONTRACT_PROPS,
+      abi: this.CONTRACT_PROPS.abi ?? ERC20Request,
+    })
   }
 
   // balance

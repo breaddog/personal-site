@@ -333,12 +333,6 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
               element={<ProjectPage />}
             />
 
-            {/* error */}
-            <Route
-              path={ROUTES.error.pathname}
-              element={<ErrorPage />}
-            />
-
             <Route
               path={ROUTES['404'].pathname}
               element={
