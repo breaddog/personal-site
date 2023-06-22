@@ -21,7 +21,7 @@ import {
   // createBrowserRouter,
   // useNavigate,
   // useLocation,
-  BrowserRouter as Router,
+  HashRouter,
   Route,
   Routes,
   Navigate
@@ -279,8 +279,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   }, [])
 
   return (
-    // <CustomHistoryRouter basename={basename}>
-    <Router basename={basename}>
+    <HashRouter basename={basename.length ? basename : '/'}>
       <AppContext.Provider
         value={{
           isMobile,
@@ -357,15 +356,11 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
                   to={ROUTES['404'].pathname}
                 />
               }
-            ></Route>
+            />
           </Routes>
-          {/* <RouterProvider
-          router={createBrowserRouter(APP_ROUTER, { basename })}
-        /> */}
         </div>
       </AppContext.Provider>
-    </Router>
-    // </CustomHistoryRouter>
+    </HashRouter>
   )
 }
 
