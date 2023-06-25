@@ -129,7 +129,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   // scroll
   const handleScrollToggle = (enabled: boolean) => {
     setScrollEnabled(enabled)
-    // enabled ? enableScroll() : disableScroll()
+    enabled ? enableScroll() : disableScroll()
   }
 
   // auto reconnect and account dependencies
