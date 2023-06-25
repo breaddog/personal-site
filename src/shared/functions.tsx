@@ -101,12 +101,16 @@ export const isWithinRefBoundary = ({
 // utility
 export const enableScroll = () => {
   const _body = document.getElementsByTagName('BODY')[0] as HTMLElement
-  _body.style.overflowY = 'unset'
+  const _html = document.getElementsByTagName('HTML')[0] as HTMLElement
+  _html.style.setProperty('overflow-y', 'unset')
+  _body.style.setProperty('overflow-y', 'unset')
 }
 
 export const disableScroll = () => {
   const _body = document.getElementsByTagName('BODY')[0] as HTMLElement
-  _body.style.overflowY = 'hidden'
+  const _html = document.getElementsByTagName('HTML')[0] as HTMLElement
+  _html.style.setProperty('overflow-y', 'hidden', 'important')
+  _body.style.setProperty('overflow-y', 'hidden', 'important')
 }
 
 export const toggleScroll = (enable: boolean) => {

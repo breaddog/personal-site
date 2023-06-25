@@ -3,7 +3,6 @@ import styles from './App.module.scss'
 import React from 'react'
 import AOS from 'aos'
 import classNames from 'classnames'
-import queryString from 'query-string'
 
 import { PageOrientation, ScrollDirection } from './shared/types'
 
@@ -51,7 +50,6 @@ interface AppProps {
 }
 
 export const App: React.FunctionComponent<AppProps> = ({ className }) => {
-  const { section } = queryString.parse(location.search)
   const { mobileMediaQuery, mediumMediaQuery } = CONSTANTS
 
   // basename
@@ -131,7 +129,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   // scroll
   const handleScrollToggle = (enabled: boolean) => {
     setScrollEnabled(enabled)
-    enabled ? enableScroll() : disableScroll()
+    // enabled ? enableScroll() : disableScroll()
   }
 
   // auto reconnect and account dependencies
@@ -269,7 +267,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
         AOS.refresh()
       }, 1000)
     }
-  }, [loadingRef, loadingRefCurrent, section])
+  }, [loadingRef, loadingRefCurrent])
 
   // HISTORY SECTION
   // fetch position from localstorage

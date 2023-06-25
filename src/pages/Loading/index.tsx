@@ -144,7 +144,8 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     // if active, then set timer to countdown
     React.useEffect(() => {
       if (active) {
-        delay(() => loadingCompletedSequence(), 4000)
+        setScrollEnabled(false)
+        delay(() => loadingCompletedSequence(), 2800)
       }
     }, [active])
 

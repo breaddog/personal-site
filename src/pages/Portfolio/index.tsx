@@ -28,6 +28,7 @@ import { getPortfolioSectionSelector } from '../../store/portfolio/selectors'
 import { SectionNavRefInterface } from '../../shared/types'
 
 import { ScrollTrigger } from 'gsap/all'
+import { useLocation } from 'react-router-dom'
 
 interface PortfolioProps {
   className?: string
@@ -36,7 +37,10 @@ interface PortfolioProps {
 export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const dispatch = useDispatch()
   const currentSection = useSelector(getPortfolioSectionSelector)
-  const { section } = queryString.parse(location.search)
+  const routerLocation = useLocation()
+  const { section } = queryString.parse(
+    routerLocation.search || location.search
+  )
   const { loadingRef, scrollEnabled } = React.useContext(AppContext)
 
   // const [loaded, setLoaded] = React.useState<boolean>(false)
