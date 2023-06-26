@@ -1,35 +1,18 @@
 import { ERC721_INTERFACE } from '../../contracts'
-import {
-  GenericContractInterface,
-  createContractObject
-} from '../../ethereum/utils'
+import { GenericContractInterface } from '../../ethereum/utils'
 
-import { ethers } from 'ethers'
 import { ContractRequest } from '../ContractRequest'
 import { map } from 'lodash'
 
 // generalised erc721 request, can be extended from for custom ones
 // meant for a contract by contract basis
 export class ERC721Request extends ContractRequest {
-  CONTRACT: ethers.Contract
-  INTERFACE: ethers.Interface
-
   // infers network from props and appends query methods
   constructor(props: GenericContractInterface) {
-    super(props)
-    this.CONTRACT = createContractObject({
+    super({
       ...props,
       abi: props.abi ?? ERC721_INTERFACE,
-    })
-    this.INTERFACE = new ethers.Interface(ERC721_INTERFACE)
-  }
-
-  // refresh contract
-  reinstantiateContract() {
-    if (!this.CONTRACT) return
-    this.CONTRACT = createContractObject({
-      ...this.CONTRACT_PROPS,
-      abi: this.CONTRACT_PROPS.abi ?? ERC721_INTERFACE,
+      defaultAbi: ERC721_INTERFACE,
     })
   }
 

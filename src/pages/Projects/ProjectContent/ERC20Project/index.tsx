@@ -38,6 +38,7 @@ export const ERC20Project: React.FunctionComponent<ERC20ProjectProps> = ({
     address: project.eth?.address ?? '',
     decimals: project.eth?.decimals ?? 18,
     symbol: project.eth?.symbol ?? '',
+    network: project.eth?.network ?? 'ethereum',
     unique: true,
   })
 
@@ -89,9 +90,20 @@ export const ERC20Project: React.FunctionComponent<ERC20ProjectProps> = ({
     setBalance(-1)
   }
 
+  const reinstantiateContract = async () => {
+    await erc20Request.reinstantiateContract({
+      address: project.eth?.address ?? '',
+      decimals: project.eth?.decimals ?? 18,
+      symbol: project.eth?.symbol ?? '',
+      network: project.eth?.network ?? 'ethereum',
+      unique: true,
+    })
+  }
+
   React.useEffect(() => {
+    reinstantiateContract()
     getTotalSupply()
-  }, [])
+  }, [project])
 
   React.useEffect(() => {
     if (account) {

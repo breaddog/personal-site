@@ -132,6 +132,7 @@ export const PROJECTS: {
     eth: {
       address: LAYERS_CONTRACT_ADDRESS,
       opensea: 'https://opensea.io/collection/drp-vhils',
+      network: 'ethereum',
     },
   },
   binkingz: {
@@ -153,6 +154,7 @@ export const PROJECTS: {
     eth: {
       address: BINKINGZ_CONTRACT_ADDRESS,
       opensea: 'https://opensea.io/collection/binkingz',
+      network: 'ethereum',
     },
   },
   redvillage: {
@@ -188,6 +190,7 @@ export const PROJECTS: {
     eth: {
       address: REDVILLAGE_GENESIS_CONTRACT_ADDRESS,
       opensea: 'https://opensea.io/collection/theredvillagechampions',
+      network: 'polygon',
     },
   },
   adot: {
@@ -216,6 +219,7 @@ export const PROJECTS: {
       address: CROWN_TOKEN_CONTRACT_ADDRESS,
       decimals: CROWN_TOKEN_DECIMALS,
       symbol: CROWN_TOKEN_SYMBOL,
+      network: 'ethereum',
     },
   },
 }

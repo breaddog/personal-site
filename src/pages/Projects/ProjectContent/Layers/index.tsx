@@ -21,7 +21,6 @@ import {
   LAYERS_CONTRACT_ADDRESS,
   TEARS_CONTRACT_ADDRESS
 } from '../../../../contracts'
-
 interface LayersProjectProps {
   key?: string
 }
@@ -34,10 +33,12 @@ export const LayersProject: React.FunctionComponent<LayersProjectProps> = ({
   const layersRequest = RequestFactory.getRequest('ERC721Request', {
     address: LAYERS_CONTRACT_ADDRESS,
     unique: true,
+    network: 'ethereum',
   })
   const tearsRequest = RequestFactory.getRequest('ERC1155Request', {
     address: TEARS_CONTRACT_ADDRESS,
     unique: true,
+    network: 'ethereum',
   })
 
   const TEARS_TOKEN_IDS = [ALPHA_TEAR_TOKEN_ID, BETA_TEAR_TOKEN_ID]
@@ -151,7 +152,13 @@ export const LayersProject: React.FunctionComponent<LayersProjectProps> = ({
     setBalanceLayers(-1)
   }
 
+  const reinstantiateContract = async () => {
+    await layersRequest.reinstantiateContract()
+    await tearsRequest.reinstantiateContract()
+  }
+
   React.useEffect(() => {
+    reinstantiateContract()
     getLayersTotalSupply()
   }, [])
 

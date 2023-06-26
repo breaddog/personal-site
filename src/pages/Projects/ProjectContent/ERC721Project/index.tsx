@@ -36,6 +36,8 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
 
   const erc721Request = RequestFactory.getRequest('ERC721Request', {
     address: project.eth?.address ?? '',
+    network: project.eth?.network ?? 'ethereum',
+    unique: true,
   })
 
   const [balance, setBalance] = React.useState<number>(-1)
@@ -92,9 +94,19 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
     setBalance(-1)
   }
 
+  const reinstantiateContract = async () => {
+    await erc721Request.reinstantiateContract({
+      address: project.eth?.address ?? '',
+      network: project.eth?.network ?? 'ethereum',
+      unique: true,
+    })
+  }
+
+  // if project changes, change
   React.useEffect(() => {
+    reinstantiateContract()
     getTotalSupply()
-  }, [])
+  }, [project])
 
   React.useEffect(() => {
     if (account) {

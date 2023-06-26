@@ -159,8 +159,15 @@ export const RedVillageProject: React.FunctionComponent<
     setBalanceSummoned(-1)
   }
 
+  const reinstantiateContract = async () => {
+    await genesisRequest.reinstantiateContract()
+    await mysticsRequest.reinstantiateContract()
+    await summonRequest.reinstantiateContract()
+  }
+
   React.useEffect(() => {
     getTRVTotalSupplies()
+    reinstantiateContract()
   }, [])
 
   React.useEffect(() => {
