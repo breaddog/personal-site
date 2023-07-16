@@ -12,37 +12,7 @@ export const JOB_POSITIONS: JobPosition[] = [
     end: 'February 2023',
     sections: [
       {
-        title: 'Job Scope',
-        info: [
-          'Web Development',
-          'Web Design (UI/UX)',
-          'Project Management and Planning',
-          'Client Serivce and Liaising',
-          'Software Development R&D',
-          'Development Operations',
-          'Blockchain (Ethereum) R&D',
-          'Cryptocurrency R&D',
-        ],
-      },
-      {
         title: 'Responsibilities',
-        info: [
-          'Creating Bespoke Sites with React (JS, TS)',
-          'Conceptualising Development Specifications (Site, Server)',
-          'Managing a team of international developers to align with project expectations',
-          'Bridging communications between clients and developers',
-          'Project Quality Control Assurance',
-          'Building Smart Contracts (Solidity)',
-          'API & Database Development (Express, MongoDB)',
-          'Setting up Automated CI/CD Deployments (CodePipeline, CodeBuild)',
-          'Site Deployment and Post Deployment Service',
-          'Bespoke Script Development (JS, TS, ExtendScript [Adobe])',
-          'Asset Hosting/Distribution (S3, IPFS)',
-          'Internal Project Documentation and Organisation',
-        ],
-      },
-      {
-        title: 'Other Duties',
         info: [
           <>
             Assisted with the company's daily operations by overseeing project
@@ -81,28 +51,7 @@ export const JOB_POSITIONS: JobPosition[] = [
     end: 'Present',
     sections: [
       {
-        title: 'Teaching Scope',
-        info: [
-          'Basic Coding Principles',
-          'Simple Web Development',
-          'Programming Logic',
-          'Programmatic Thinking',
-          'Language and Syntax',
-          'Translating Logic to Code',
-          'HTML, CSS, JavaScript, Python',
-        ],
-      },
-      {
-        title: 'Objectives',
-        info: [
-          'Aim to teach beginners basic coding principles (e.g. Foundations, Site Building...)',
-          'Strive for students to learn to think programatically',
-          'Teach students how to use basic HTML and CSS to build and style a simple website',
-          'Provide unique and personalised examples to assist and further a students understanding',
-        ],
-      },
-      {
-        title: 'Other Duties',
+        title: 'Responsibilities',
         info: [
           <>
             Took up opportunity to assist people in their efforts to make a
@@ -131,24 +80,6 @@ export const JOB_POSITIONS: JobPosition[] = [
     start: 'July 2018',
     end: 'December 2021',
     sections: [
-      {
-        title: 'Major',
-        info: ['Computing and Software Systems'],
-        isText: true,
-      },
-      {
-        title: 'Concepts Learnt',
-        info: [
-          'Full Stack Web Development',
-          'SCRUM/AGILE Planning',
-          'Algorithms and Data Structures',
-          'Object Oriented Programming',
-          'Source Control (Git/Github)',
-          'JavaScript, HTML, CSS',
-          'Python, C, Haskell',
-          'Japanese Language Studies',
-        ],
-      },
       {
         title: 'Other Learnings',
         info: [

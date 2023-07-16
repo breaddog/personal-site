@@ -134,9 +134,39 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = (
           </div>
         </div>
         <div className={styles.divider}></div>
-        {map(jobData?.sections, (data: JobPositionData, idx: number) => (
-          <React.Fragment key={idx}>
-            <CollapsibleSection
+
+        {/* content */}
+        {map(
+          jobData?.sections.slice(-1),
+          (data: JobPositionData, idx: number) => (
+            <React.Fragment key={idx}>
+              <div
+                className={classNames(
+                  styles.section,
+                  styles.content,
+                  jobData?.className
+                )}
+              >
+                {map(
+                  data?.info,
+                  (line: string | React.ReactFragment, _idx: number) => {
+                    return (
+                      <p
+                        className={classNames(
+                          styles.info,
+                          data?.isText ? styles.infoText : 'bullet-point',
+                          data?.className && styles[data?.className]
+                        )}
+                        key={_idx}
+                      >
+                        {line}
+                        {Number(_idx) < data?.info.length - 1 && <br />}
+                      </p>
+                    )
+                  }
+                )}
+              </div>
+              {/* <CollapsibleSection
               initialOpen={true}
               title={{
                 classname: styles.title,
@@ -148,7 +178,6 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = (
                 styles.opacityCustom
               )}
             >
-              {/* <div className={styles.title}>{data.title}</div> */}
               <div className={classNames(styles.content, jobData?.className)}>
                 {map(
                   data?.info,
@@ -169,13 +198,14 @@ export const JobInfo: React.FunctionComponent<JobInfoProps> = (
                   }
                 )}
               </div>
-            </CollapsibleSection>
-            {jobData?.sections?.length &&
-              idx < jobData?.sections.length - 1 && (
-                <div className={styles.divider}></div>
-              )}
-          </React.Fragment>
-        ))}
+            </CollapsibleSection> */}
+              {jobData?.sections?.length &&
+                idx < jobData?.sections.length - 1 && (
+                  <div className={styles.divider}></div>
+                )}
+            </React.Fragment>
+          )
+        )}
       </div>
     </div>
   )

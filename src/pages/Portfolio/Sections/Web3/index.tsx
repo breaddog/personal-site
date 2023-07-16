@@ -192,7 +192,7 @@ export const PortfolioWeb3: React.FunctionComponent<PortfolioWeb3Props> =
                   <h3
                     className={classNames(styles.subheader, styles.main)}
                     data-aos='fade-right'
-                    data-aos-delay='200'
+                    data-aos-delay='250'
                   >
                     A Small FAQ!
                   </h3>
