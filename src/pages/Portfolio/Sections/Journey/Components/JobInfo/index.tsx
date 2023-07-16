@@ -9,9 +9,9 @@ import {
   JobPosition,
   JobPositionData
 } from '../../../../../../shared/interfaces'
-// import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import { AppContext } from '../../../../../../App'
-import { CollapsibleSection, Image } from '../../../../../../shared/components'
+import { Image } from '../../../../../../shared/components'
 import { filterAOSProps } from '../../../../../../shared/AOS'
 
 interface JobInfoProps {

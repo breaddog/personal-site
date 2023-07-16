@@ -10,7 +10,7 @@ import {
   CSSHeader,
   ErrorPage,
   LoadingHandle,
-  LoadingSection,
+  // LoadingSection,
   Portfolio,
   ProjectPage
 } from './pages'
@@ -41,7 +41,7 @@ import {
 } from './ethereum'
 import { APP_ENV } from './config'
 import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'
-import { delay } from 'lodash'
+// import { delay } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
 import { ROUTES } from './routes'
 
