@@ -48,7 +48,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const classes = classNames(
     'section__portfolio position--relative',
     sectionStyles.section,
-    !loadingRef?.current?.loaded ? sectionStyles.hidden : '',
+    // !loadingRef?.current?.loaded ? sectionStyles.hidden : '',
     className
   )
 

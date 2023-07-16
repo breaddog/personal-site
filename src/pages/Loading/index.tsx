@@ -2,6 +2,7 @@ import styles from './Loading.module.scss'
 import sectionStyles from '../../styles/section.module.scss'
 import React from 'react'
 import classNames from 'classnames'
+import { APP_ENV } from '../../config'
 import { ScrollTrigger } from 'gsap/all'
 
 import { LOADING_TEXT } from './LoadingText'
@@ -13,6 +14,8 @@ import { AppContext } from '../../App'
 
 import AOS from 'aos'
 import onigiriSVG from '../../assets/icons/onigiri.svg'
+
+const { PAGE_LOAD_CHECK_STORAGE } = APP_ENV
 
 export interface LoadingHandle {
   active: boolean
@@ -41,6 +44,7 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
   React.forwardRef<LoadingHandle, LoadingSectionProps>(({ className }, ref) => {
     // if changed, also change in scss
     const ONIGIRI_AMOUNT = 20
+    const DEFAULT_LOADING_VALUE = 2800
     // active or not (can be toggled)
     // DEBUG: toggle all to false
     const [front, setFront] = React.useState<boolean>(true)
@@ -141,12 +145,37 @@ export const LoadingSection: React.FunctionComponent<LoadingSectionProps> =
     //   }
     // }, [active, amountLoaded])
 
+    // loading for local storage (reset after a day)
+    const pageLoadDelayValue = () => {
+      const _token = localStorage.getItem(PAGE_LOAD_CHECK_STORAGE)
+      const DAY_IN_SECONDS = 60 * 60 * 24
+      // if nothing then continue and set token
+      if (!_token) {
+        localStorage.setItem(
+          PAGE_LOAD_CHECK_STORAGE,
+          (Date.now() + DAY_IN_SECONDS).toString()
+        )
+        return DEFAULT_LOADING_VALUE
+      } else {
+        // has it been a day?
+        if (Date.now() >= Number(_token)) {
+          localStorage.setItem(
+            PAGE_LOAD_CHECK_STORAGE,
+            (Date.now() + DAY_IN_SECONDS).toString()
+          )
+          return DEFAULT_LOADING_VALUE
+        }
+        return 200
+      }
+    }
+
     // if active, then set timer to countdown
     React.useEffect(() => {
       if (active) {
         setScrollEnabled(false)
-        delay(() => loadingCompletedSequence(), 2800)
+        delay(() => loadingCompletedSequence(), pageLoadDelayValue())
       }
+      // console.log()
     }, [active])
 
     // scroll toggle

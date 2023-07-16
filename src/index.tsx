@@ -14,7 +14,8 @@ import 'react-toastify/dist/ReactToastify.css'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <Web3ContextProvider>
       <Provider store={store}>
         <App />
@@ -33,7 +34,8 @@ root.render(
       draggable
       pauseOnHover={true}
     />
-  </React.StrictMode>
+  </>
+  // </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function

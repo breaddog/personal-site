@@ -251,15 +251,15 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   React.useEffect(() => {
     let activated = false
     // only trigger animations after load
-    if (loadingRefCurrent?.loaded) {
-      AOS.init({
-        duration: 800,
-        startEvent: 'DOMContentLoaded',
-        once: true,
-        delay: 50,
-      })
-      activated = true
-    }
+    // if (loadingRefCurrent?.loaded) {
+    AOS.init({
+      duration: 800,
+      startEvent: 'DOMContentLoaded',
+      once: true,
+      delay: 50,
+    })
+    activated = true
+    // }
 
     if (activated) {
       delay(() => {
@@ -298,7 +298,7 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
       >
         <div className={classes}>
           <CSSHeader />
-          <LoadingSection ref={loadingRef} />
+          {/* <LoadingSection ref={loadingRef} /> */}
           <WalletConnectModal
             onRequestCloseActive={false}
             isOpen={web3ModalActive}
