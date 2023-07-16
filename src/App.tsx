@@ -248,26 +248,31 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   }, [scrollDirection])
 
   // AOS
-  React.useEffect(() => {
-    let activated = false
-    // only trigger animations after load
-    // if (loadingRefCurrent?.loaded) {
-    AOS.init({
-      duration: 800,
-      startEvent: 'DOMContentLoaded',
-      once: true,
-      delay: 50,
-    })
-    activated = true
-    // }
+  React.useEffect(
+    () => {
+      // let activated = false
+      // only trigger animations after load
+      // if (loadingRefCurrent?.loaded) {
+      AOS.init({
+        duration: 800,
+        startEvent: 'DOMContentLoaded',
+        once: true,
+        delay: 50,
+      })
+      // activated = true
+      // }
 
-    if (activated) {
-      delay(() => {
-        AOS.refreshHard()
-        AOS.refresh()
-      }, 1000)
-    }
-  }, [loadingRef, loadingRefCurrent])
+      // if (activated) {
+      //   delay(() => {
+      //     AOS.refreshHard()
+      //     AOS.refresh()
+      //   }, 1000)
+      // }
+    },
+    [
+      // loadingRef, loadingRefCurrent
+    ]
+  )
 
   // HISTORY SECTION
   // fetch position from localstorage
