@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 import {
   PopupModal,
-  PopupModalProps
+  PopupModalProps,
 } from '../../../shared/components/PopupModal'
 
 import { ConnectionType, connectionTypeToNetworkName } from '../../connectors'
@@ -15,7 +15,7 @@ import { EXTERNAL_LINKS } from '../../../shared'
 import {
   chainIdToName,
   getNetworkNameFromProvider,
-  shortenAddress
+  shortenAddress,
 } from '../../utils'
 
 import metamaskSVG from '../../../assets/logos/metamask.svg'

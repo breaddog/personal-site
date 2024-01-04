@@ -10,7 +10,7 @@ import { EXTERNAL_LINKS } from '../../../../shared'
 import { ContactInfo, ContactInfoProps } from './Components'
 import {
   GenericForwardRefInterface,
-  GenericSubSectionForwardInterface
+  GenericSubSectionForwardInterface,
 } from '../../../../shared/interfaces'
 
 import mailSVG from '../../../../assets/icons/mail.svg'

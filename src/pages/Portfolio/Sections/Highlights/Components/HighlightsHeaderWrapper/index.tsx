@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 import {
   SectionHeader,
-  SectionHeaderProps
+  SectionHeaderProps,
 } from '../../../../../../shared/components'
 
 interface HighlightsHeaderWrapperProps extends SectionHeaderProps {}

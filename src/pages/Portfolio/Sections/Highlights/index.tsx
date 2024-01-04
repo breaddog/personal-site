@@ -12,7 +12,7 @@ import { map } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
 import {
   SectionContainer,
-  SectionSubHeader
+  SectionSubHeader,
 } from '../../../../shared/components'
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
@@ -23,7 +23,7 @@ import { AppContext } from '../../../../App'
 import { HighlightsHeaderWrapper } from './Components'
 import {
   GenericForwardRefInterface,
-  GenericSubSectionForwardInterface
+  GenericSubSectionForwardInterface,
 } from '../../../../shared/interfaces'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../../../routes'

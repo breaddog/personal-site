@@ -2,7 +2,7 @@ import {
   BodyContentProps,
   ExtraInfoWrapperProps,
   ProjectSectionContentType,
-  ProjectSectionGenericProps
+  ProjectSectionGenericProps,
 } from './types'
 import {
   HeaderProjectSection,
@@ -16,7 +16,7 @@ import {
   TopDownImagePlacement,
   TopDownImageProps,
   TopDownProjectSection,
-  TopProjectSection
+  TopProjectSection,
 } from './Components'
 import { ProjectObject } from '../../data/projects'
 

@@ -11,14 +11,14 @@ import mailSVG from '../../../../assets/icons/mail.svg'
 
 import {
   GenericForwardRefInterface,
-  GenericSubSectionForwardInterface
+  GenericSubSectionForwardInterface,
 } from '../../../../shared/interfaces'
 import {
   CircleIcon,
   CircularText,
   Keyframes,
   OnClickAnimation,
-  SectionContainer
+  SectionContainer,
 } from '../../../../shared/components'
 
 // import doubleArrowDownSVG from '../../../../assets/icons/double-arrow-down.svg'

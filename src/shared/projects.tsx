@@ -5,7 +5,7 @@ import {
   ERC20Project,
   ERC721Project,
   LayersProject,
-  RedVillageProject
+  RedVillageProject,
   // DefaultProjectTemplate
 } from '../pages/Projects/ProjectContent'
 import { BodyContentProps } from '../pages/Projects/types'

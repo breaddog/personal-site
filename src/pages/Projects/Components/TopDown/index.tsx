@@ -7,7 +7,7 @@ import { TextProject } from '../Text'
 import { HeaderProjectSection } from '../Header'
 import {
   ProjectSectionGenericProps,
-  ProjectSectionImagePlacement
+  ProjectSectionImagePlacement,
 } from '../../types'
 import { ImageProjectSection, ImageProjectSectionProps } from '../Image'
 

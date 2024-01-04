@@ -6,7 +6,7 @@ import {
   connectionTypeToNetworkName,
   getConnection,
   tryActivateConnector,
-  tryDeactivateConnector
+  tryDeactivateConnector,
 } from '../../connectors'
 import classNames from 'classnames'
 import { toast } from 'react-toastify'

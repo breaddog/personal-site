@@ -12,14 +12,14 @@ import {
   SectionContainer,
   SectionHeader,
   SectionSubHeader,
-  WaveText
+  WaveText,
 } from '../../../../shared/components'
 
 import boxSVG from '../../../../assets/icons/box.svg'
 import { map } from 'lodash'
 import {
   GenericSubSectionForwardInterface,
-  GenericForwardRefInterface
+  GenericForwardRefInterface,
 } from '../../../../shared/interfaces'
 import { AppContext } from '../../../../App'
 

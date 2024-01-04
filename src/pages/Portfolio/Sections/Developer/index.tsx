@@ -9,7 +9,7 @@ import { map } from 'lodash'
 
 import {
   GenericForwardRefInterface,
-  GenericSubSectionForwardInterface
+  GenericSubSectionForwardInterface,
 } from '../../../../shared/interfaces'
 import {
   SectionHeader,
@@ -17,7 +17,7 @@ import {
   Window,
   SectionSubHeader,
   WindowHandle,
-  ToggleSlider
+  ToggleSlider,
 } from '../../../../shared/components'
 
 import { AppContext } from '../../../../App'

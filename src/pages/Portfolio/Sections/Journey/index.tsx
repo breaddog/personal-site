@@ -14,7 +14,7 @@ import { JOB_POSITIONS } from '../../../../data/jobs'
 import {
   GenericSubSectionForwardInterface,
   GenericForwardRefInterface,
-  JobPosition
+  JobPosition,
 } from '../../../../shared/interfaces'
 
 interface PortfolioJourneyProps extends GenericSubSectionForwardInterface {}

@@ -1,7 +1,7 @@
 import { ERC20_INTERFACE } from '../../contracts'
 import {
   GenericContractInterface,
-  createContractObject
+  createContractObject,
 } from '../../ethereum/utils'
 
 import { ethers } from 'ethers'

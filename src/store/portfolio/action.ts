@@ -3,7 +3,7 @@ import { createAction } from '@reduxjs/toolkit'
 import {
   SET_CURR_PORTFOLIO_SECTION,
   LEAVE_CURR_PORTFOLIO_SECTION,
-  SET_PORTFOLIO_LANDING_REF
+  SET_PORTFOLIO_LANDING_REF,
 } from './action.types'
 
 // refs

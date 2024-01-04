@@ -7,14 +7,14 @@ import {
   CROWN_TOKEN_CONTRACT_ADDRESS,
   CROWN_TOKEN_DECIMALS,
   CROWN_TOKEN_SYMBOL,
-  LAYERS_CONTRACT_ADDRESS
+  LAYERS_CONTRACT_ADDRESS,
 } from '../../contracts'
 
 import {
   BODY_CONTENT_BINKINGZ,
   BODY_CONTENT_REDVILLAGE,
   BODY_CONTENT_DRP,
-  BODY_CONTENT_ADOT
+  BODY_CONTENT_ADOT,
 } from '../../pages/Projects/ProjectContent'
 import { REDVILLAGE_GENESIS_CONTRACT_ADDRESS } from '../../contracts/RedVillage'
 
@@ -97,7 +97,7 @@ export const PROJECTS: {
     organisation: 'DRP / Pellar',
     url: 'https://drp.gallery',
     description:
-      'Melbourne\'s first community driven art gallery that blends technology with contemporary artwork.',
+      "Melbourne's first community driven art gallery that blends technology with contemporary artwork.",
     asset: `${projectImageRoot}/drp/drp.jpg`,
     alt: 'drp main page',
     body: BODY_CONTENT_DRP,
@@ -211,7 +211,7 @@ export const PROJECTS: {
     organisation: 'T&B Global Media / VUCA Digital / Pellar',
     url: 'https://adotmarketplace.io/',
     description:
-      'NFT Community Hub that focuses around using Tokens to participate in activities like voting, staking and purchasing NFT\'s',
+      "NFT Community Hub that focuses around using Tokens to participate in activities like voting, staking and purchasing NFT's",
     asset: `${projectImageRoot}/adot/adotmarketplace.jpg`,
     alt: 'adot',
     body: BODY_CONTENT_ADOT,

@@ -2,7 +2,7 @@ import styles from './Image.module.scss'
 import React from 'react'
 import {
   LazyLoadImage,
-  LazyLoadImageProps
+  LazyLoadImageProps,
 } from 'react-lazy-load-image-component'
 import classNames from 'classnames'
 // import { delay, isNull, isUndefined } from 'lodash'

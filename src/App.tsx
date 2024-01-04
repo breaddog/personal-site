@@ -12,7 +12,7 @@ import {
   LoadingHandle,
   // LoadingSection,
   Portfolio,
-  ProjectPage
+  ProjectPage,
 } from './pages'
 // import CustomHistoryRouter from './router'
 import {
@@ -23,7 +23,7 @@ import {
   HashRouter,
   Route,
   Routes,
-  Navigate
+  Navigate,
 } from 'react-router-dom'
 
 import {
@@ -31,13 +31,13 @@ import {
   disableScroll,
   enableScroll,
   getScrollPositionForSection,
-  handleDesktopListener
+  handleDesktopListener,
 } from './shared'
 import { useWeb3React } from '@web3-react/core'
 import {
   WalletConnectModal,
   ConnectionType,
-  tryAutoReconnect
+  tryAutoReconnect,
 } from './ethereum'
 import { APP_ENV } from './config'
 import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'

@@ -7,7 +7,7 @@ import {
   GenericHeader,
   SectionContainer,
   SectionSubHeader,
-  Button
+  Button,
 } from '../../shared/components'
 
 import { Link } from 'react-router-dom'

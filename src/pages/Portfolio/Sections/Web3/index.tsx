@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import {
   GenericSubSectionForwardInterface,
-  GenericForwardRefInterface
+  GenericForwardRefInterface,
 } from '../../../../shared/interfaces'
 import {
   CollapsibleSection,
@@ -13,7 +13,7 @@ import {
   SectionContainer,
   SectionHeader,
   Window,
-  WindowHandle
+  WindowHandle,
 } from '../../../../shared/components'
 
 import ethereumSVG from '../../../../assets/icons/ethereum-bold.svg'
@@ -23,7 +23,7 @@ import { chainIdToName, shortenAddress } from '../../../../ethereum/utils'
 import { AppContext } from '../../../../App'
 import {
   WalletConnectButton,
-  connectionTypeToNetworkName
+  connectionTypeToNetworkName,
 } from '../../../../ethereum'
 import { map } from 'lodash'
 import { WEB3_FAQ, Web3FaqProps } from './FAQ'

@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 import {
   GenericContractInterface,
   NetworkType,
-  createContractObject
+  createContractObject,
 } from '../ethereum/utils'
 import { BaseRequest } from './BaseRequest'
 

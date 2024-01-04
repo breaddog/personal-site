@@ -7,7 +7,7 @@ import { map } from 'lodash'
 
 import {
   JobPosition,
-  JobPositionData
+  JobPositionData,
 } from '../../../../../../shared/interfaces'
 
 import { AppContext } from '../../../../../../App'
