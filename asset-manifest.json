@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.79675d97.css",
-    "main.js": "/static/js/main.09941704.js",
-    "static/js/27.886f7caf.chunk.js": "/static/js/27.886f7caf.chunk.js",
+    "main.css": "/static/css/main.6ae83904.css",
+    "main.js": "/static/js/main.98993115.js",
+    "static/js/27.fc958009.chunk.js": "/static/js/27.fc958009.chunk.js",
     "static/media/NotoSansJP-Regular.ttf": "/static/media/NotoSansJP-Regular.7fe6a82a354a821c38c5.ttf",
     "static/media/NotoSansJP-Bold.ttf": "/static/media/NotoSansJP-Bold.506ef228295fea37987f.ttf",
     "static/media/Ubuntu-Regular.ttf": "/static/media/Ubuntu-Regular.d89eda6750f6960a7456.ttf",
@@ -45,7 +45,7 @@
     "static/media/mail.svg": "/static/media/mail.68fe718326afbea638b5e8694c5fc657.svg"
   },
   "entrypoints": [
-    "static/css/main.79675d97.css",
-    "static/js/main.09941704.js"
+    "static/css/main.6ae83904.css",
+    "static/js/main.98993115.js"
   ]
 }
