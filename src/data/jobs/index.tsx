@@ -4,8 +4,39 @@ import onigiriSVG from '../../assets/icons/onigiri.svg'
 
 export const JOB_POSITIONS: JobPosition[] = [
   {
+    company: 'Pliny Services',
+    title: 'Developer',
+    logo: 'images/logos/pliny.jpg',
+    logoAlt: 'pliny',
+    start: 'September 2023',
+    end: 'Present',
+    sections: [
+      {
+        title: 'Responsibilities',
+        info: [
+          <>
+            Involved in developing bespoke software and solutions for
+            eye-clinics such as Patient Management Software (PMS) and Electronic
+            Resource Management (ERM) Software on a full-stack capacity.
+            <br />
+            <br />
+            Roles include project management, software architecture design &
+            planning and client liaising on a regular basis, translating
+            business requirements into features.
+            <br />
+            <br />
+            Responsible for general upkeep, maintenance and improvement of
+            software and keeping up to date with latest requirements and
+            developments in the healthcare field and software.
+          </>,
+        ],
+        isText: true,
+      },
+    ],
+  },
+  {
     company: 'Pellar Technology',
-    title: 'Associate Engineer',
+    title: 'Full-Stack + Web3 Developer',
     logo: 'images/logos/pellar.jpg',
     logoAlt: 'pellar',
     start: 'August 2021',
