@@ -1,9 +1,9 @@
 # Personal Site
+
 [![Site Status][site-status-shield]][site-url]
 [![Actions Status][site-build-shield]][site-build-url]
 [![Stars][stars-shield]][stars-url]
 [![Languages][languages-shield]][repo-url]
-
 
 <p align="center">
   <a href="https://tienfoong.com">
@@ -25,7 +25,6 @@
   <p align="center">  
     <a href="https://tienfoong.com">Click here to visit</a>
   </p>
-
 
 <details open="open">
   <summary><h2 style="display: inline-block">Contents</h2></summary>
@@ -74,7 +73,6 @@
   </ol>
 </details>
 
-
 ## About the Site
 
 ### Preamble
@@ -84,16 +82,17 @@ This site is wholy built for the sake of personal expression as an individual vi
 Initially conceived as a portfolio site to showcase my development skills, I have future plans to expand on it to cover more personal stuff.
 
 The site also interacts with the ethereum blockchain in a read capacity for now and supports the following wallets:
+
 - [Metamask](https://metamask.io/)
 - [Coinbase](https://www.coinbase.com)
 - Future support for other wallets coming soon
 
 Also if you're wondering why the onigiri, i'll point you to this fellow [cool gamer cat.](https://hololive.hololivepro.com/en/talents/nekomata-okayu/)
 
-
 ### Languages
 
 Website was fully built using typescript and css using React and Sass.
+
 <ul>
   <li>
     <a href="https://typescript.org">Typescript</a>
@@ -105,11 +104,13 @@ Website was fully built using typescript and css using React and Sass.
 </ul>
 
 ### Technologies
+
 Some packages are required to be installed with `yarn` to run the website, here are some of the notable ones.
 
 For installation instructions please view [the setting up section.](#setting-up)
 
-Front-End 
+Front-End
+
 <ul>
   <li><a href="https://react.org">React</a></li>
   <li><a href="https://sass-lang">Sass</a></li>
@@ -123,6 +124,7 @@ Front-End
 </ul>
 
 Linting and Deployment
+
 <ul>
   <li><a href="https://typicode.github.io/husky/">Husky</a></li>
   <li><a href="https://eslint.org">Eslint</a></li>
@@ -130,20 +132,20 @@ Linting and Deployment
   <li><a href="https://github.com/features/actions">Github Actions</a></li>
 </ul>
 
-
 Web3
+
 <ul>
   <li><a href="https://ethers.org">Ethers</a></li>
   <li><a href="https://github.com/Uniswap/web3-react#readme">web3-react</a></li>
 </ul>
 
 Supported Ethereum Wallets
+
 <ul>
   <li><a href="https://metamask.io/">Metamask</a></li>
   <li><a href="https://www.coinbase.com">Coinbase</a></li>
   <li>Future support for other wallets coming soon</li>
 </ul>
-
 
 ## Setting Up
 
@@ -153,20 +155,27 @@ Supported Ethereum Wallets
    ```
     $ git clone https://github.com/breaddog/personal-site
    ```
-2. Install dependencies
-    ```
-      $ yarn --frozen-lockfile
-    ```
+2. Ensure these versions of node and npm are used
+   ```
+     $ node: v18.19.0
+     $ npm: 10.2.3
+   ```
+3. Install dependencies
 
-3. Optionally create a `.env` file that follows the template of `template.env`, you can leave out some or all variables if you wish
-4. Depending on your operating system, run the site on a local machine via:
-    ```
-    windows
-    $ yarn winStart
+   ```
+     $ yarn
+   ```
 
-    mac, linux, wsl
-    $ yarn start
-    ```
+4. Optionally create a `.env` file that follows the template of `template.env`, you can leave out some or all variables if you wish
+5. Depending on your operating system, run the site on a local machine via:
+
+   ```
+   windows
+   $ yarn winStart
+
+   mac, linux, wsl
+   $ yarn start
+   ```
 
 ## Contents
 
@@ -183,11 +192,10 @@ Here is a routing tree to illustrate the url hierarchy
 └── /                       # Error handling will redirect to root
 ```
 
- 
-
 ## License
 
 ### Open Sourcing
+
 [![License: MIT][mit-license-shield]][mit-license-shield]
 
 This site is distributed under the MIT License, which means you can create a fork of this repository and make a derrivative provided **full and proper author credit** has been given.
@@ -199,6 +207,7 @@ For more information, please view the `LICENSE` file included in the repository.
 ### Ackowledgements
 
 ### Assets
+
 Acknowledgements have been provided below for the use of assets which have been used per their own licensing rules.
 
 Images shown in the preview sections of the "Highlights" section and used in said project articles are sourced from screenshots. All attribution and links to the relevant websites are recognised by reference to the main site the article references.
@@ -208,35 +217,33 @@ SVGS
 - [SVG Repo](https://svgrepo.com)
 - [Wikimedia Commons](https://https://commons.wikimedia.org/wiki/Main_Page)
 
-
 Background
+
 - [SVG Backgrounds](https://www.svgbackgrounds.com/)
 
-
 Brand Images
+
 - [University of Melbourne](https://unimelb.edu.au)
 - [Pellar Technology](https://pellar.io)
 
-
 All rights reserved and images are owned by their respective owners.
 
- 
 ## Contact
 
 Code done wholey by [breaddog](https://github.com/breaddog)
 
 You can contact me by [opening an issue here.](https://github.com/breaddog/personal-site/issues)
 
-
 <!-- sheilds -->
+
 [mit-license-shield]: https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge
 [site-status-shield]: https://img.shields.io/website?down_color=red&down_message=offline&up_color=brightgreen&up_message=online&url=https%3A%2F%2Ftienfoong.com&style=for-the-badge
 [site-build-shield]: https://img.shields.io/github/actions/workflow/status/breaddog/personal-site/.github/workflows/main.yml?style=for-the-badge
-
 [stars-shield]: https://img.shields.io/github/stars/breaddog/personal-site?style=for-the-badge
 [languages-shield]: https://img.shields.io/github/languages/count/breaddog/personal-site?style=for-the-badge
 
 <!-- urls -->
+
 [site-url]: https://tienfoong.com
 [site-build-url]: https://github.com/breaddog/personal-site/actions
 [mit-license-url]: https://opensource.org/licenses/MIT
