@@ -607,7 +607,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-private-property-in-object@npm:^7.16.0":
+"@babel/plugin-proposal-private-property-in-object@npm:^7.16.0, @babel/plugin-proposal-private-property-in-object@npm:^7.21.11":
   version: 7.21.11
   resolution: "@babel/plugin-proposal-private-property-in-object@npm:7.21.11"
   dependencies:
@@ -11911,6 +11911,7 @@ __metadata:
   resolution: "personal-site@workspace:."
   dependencies:
     "@babel/eslint-parser": "npm:^7.21.3"
+    "@babel/plugin-proposal-private-property-in-object": "npm:^7.21.11"
     "@ethersproject/contracts": "npm:^5.7.0"
     "@ethersproject/providers": "npm:^5.7.2"
     "@reduxjs/toolkit": "npm:^1.9.1"

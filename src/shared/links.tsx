@@ -1,7 +1,7 @@
 export const EXTERNAL_LINKS = {
-  linkedin: 'https://www.linkedin.com/in/tien-foong-leong-627808177/',
+  linkedin: 'https://www.linkedin.com/in/tienfoong/',
   github: 'https://github.com/breaddog/',
-  email: 'tienfoong@gmail.com',
+  email: 'me@tienfoong.com',
   resume: '/documents/resume.pdf',
   metamask: {
     download: 'https://metamask.io/download/',
