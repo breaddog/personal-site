@@ -1,5 +1,6 @@
 import { SectionNavInterface } from '../../types/nav'
 
+// SECTIONS: handle adding key/values here
 export const PORTFOLIO_SECTIONS: {
   [key: string]: SectionNavInterface
 } = {
@@ -15,10 +16,10 @@ export const PORTFOLIO_SECTIONS: {
     title: 'management',
     key: 'manager',
   },
-  web3: {
-    title: 'web3',
-    key: 'web3',
-  },
+  // web3: {
+  //   title: 'web3',
+  //   key: 'web3',
+  // },
   journey: {
     title: 'journey',
     key: 'journey',

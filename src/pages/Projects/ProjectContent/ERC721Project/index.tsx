@@ -5,13 +5,13 @@ import classNames from 'classnames'
 
 import { ProjectObject } from '../../../../data/projects'
 import { RequestFactory } from '../../../../requests'
-import { useWeb3React } from '@web3-react/core'
+// import { useWeb3React } from '@web3-react/core'
 
 import { map } from 'lodash'
 import {
   BodyContentProps,
   ExtraInfoInterface,
-  ExtraInfoWrapperProps
+  ExtraInfoWrapperProps,
 } from '../../types'
 import { generateProjectBodyElement } from '../../helpers'
 
@@ -30,7 +30,7 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
   extraInfo = [],
   overrideExtraInfo = false,
 }) => {
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
 
   const classes = classNames(erc721Styles.project, styles.container, className)
 
@@ -40,7 +40,7 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
     unique: true,
   })
 
-  const [balance, setBalance] = React.useState<number>(-1)
+  // const [balance, setBalance] = React.useState<number>(-1)
   const [totalSupply, setTotalSupply] = React.useState<number>(-1)
 
   const extraWeb3Info: ExtraInfoInterface[] = [
@@ -57,10 +57,10 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
       title: 'Total Sold',
       value: `${totalSupply}`,
     },
-    {
-      title: 'Owned',
-      value: balance < 0 ? 'Connect Wallet to View' : balance,
-    },
+    // {
+    //   title: 'Owned',
+    //   value: balance < 0 ? 'Connect Wallet to View' : balance,
+    // },
   ]
 
   const extraInfoCombined: ExtraInfoWrapperProps[] = [
@@ -80,19 +80,19 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
     }
   }
 
-  const getBalance = async (account: string | null) => {
-    if (!account) return
-    try {
-      const _balance = await erc721Request.getBalanceOf(account)
-      setBalance(_balance)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const getBalance = async (account: string | null) => {
+  //   if (!account) return
+  //   try {
+  //     const _balance = await erc721Request.getBalanceOf(account)
+  //     setBalance(_balance)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
-  const resetWalletState = () => {
-    setBalance(-1)
-  }
+  // const resetWalletState = () => {
+  //   setBalance(-1)
+  // }
 
   const reinstantiateContract = async () => {
     await erc721Request.reinstantiateContract({
@@ -108,13 +108,13 @@ export const ERC721Project: React.FunctionComponent<ERC721ProjectProps> = ({
     getTotalSupply()
   }, [project])
 
-  React.useEffect(() => {
-    if (account) {
-      getBalance(account)
-    } else {
-      resetWalletState()
-    }
-  }, [account])
+  // React.useEffect(() => {
+  //   if (account) {
+  //     getBalance(account)
+  //   } else {
+  //     resetWalletState()
+  //   }
+  // }, [account])
 
   return (
     <div

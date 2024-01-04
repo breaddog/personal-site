@@ -14,7 +14,7 @@ import {
   PortfolioHighlights,
   PortfolioLanding,
   PortfolioManagerNew,
-  PortfolioWeb3
+  // PortfolioWeb3
 } from './Sections/index'
 
 import { GenericForwardRefInterface } from '../../shared/interfaces'
@@ -34,6 +34,16 @@ interface PortfolioProps {
   className?: string
 }
 
+/**
+ * SECTIONS: main seciton file where you can add/remove sections depending
+ *
+ * each section has a
+ * - ref
+ * - component
+ * - listener
+ *
+ * refer to other sections for implementation
+ */
 export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const dispatch = useDispatch()
   const currentSection = useSelector(getPortfolioSectionSelector)
@@ -57,7 +67,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const developerRef = React.useRef<GenericForwardRefInterface>(null)
   const managerRef = React.useRef<GenericForwardRefInterface>(null)
   const journeyRef = React.useRef<GenericForwardRefInterface>(null)
-  const web3Ref = React.useRef<GenericForwardRefInterface>(null)
+  // const web3Ref = React.useRef<GenericForwardRefInterface>(null)
   const highlightsRef = React.useRef<GenericForwardRefInterface>(null)
   const contactsRef = React.useRef<GenericForwardRefInterface>(null)
 
@@ -78,10 +88,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
       usePinParent: true,
       heightOffsetPercentage: 0.95,
     },
-    web3: {
-      ref: web3Ref,
-      key: PORTFOLIO_SECTIONS.web3.key,
-    },
+    // web3: {
+    //   ref: web3Ref,
+    //   key: PORTFOLIO_SECTIONS.web3.key,
+    // },
     journey: {
       ref: journeyRef,
       key: PORTFOLIO_SECTIONS.journey.key,
@@ -157,7 +167,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     developerRef,
     managerRef,
     journeyRef,
-    web3Ref,
+    // web3Ref,
     highlightsRef,
     contactsRef,
     currentSection,
@@ -200,7 +210,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
         <PortfolioLanding ref={landingRef} />
         <PortfolioDeveloper ref={developerRef} />
         <PortfolioManagerNew ref={managerRef} />
-        <PortfolioWeb3 ref={web3Ref} />
+        {/* <PortfolioWeb3 ref={web3Ref} /> */}
         <PortfolioJourney ref={journeyRef} />
         <PortfolioHighlights ref={highlightsRef} />
         <PortfolioContacts ref={contactsRef} />

@@ -1,17 +1,19 @@
 import {
   ActionReducerMapBuilder,
   PayloadAction,
-  createReducer
+  createReducer,
 } from '@reduxjs/toolkit'
 
 import {
   setPortfolioCurrentSection,
-  leavePortfolioCurrentSection
+  leavePortfolioCurrentSection,
 } from './action'
 
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
 
-const { landing, developer, manager, web3, journey, highlights, contacts } =
+// SECTIONS: handle updating, removing by declaring the key/valu ehre
+// then adding the reducer
+const { landing, developer, manager, journey, highlights, contacts } =
   PORTFOLIO_SECTIONS
 
 interface PortfolioSectionState {
@@ -49,9 +51,9 @@ export default createReducer(
             case journey.key:
               state.section = journey.key
               break
-            case web3.key:
-              state.section = web3.key
-              break
+            // case web3.key:
+            //   state.section = web3.key
+            //   break
             case highlights.key:
               state.section = highlights.key
               break

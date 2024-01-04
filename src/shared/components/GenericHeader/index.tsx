@@ -11,7 +11,7 @@ import crossSVG from '../../../assets/icons/cross.svg'
 import { AppContext } from '../../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../../routes'
-import { WalletConnectButton } from '../../../ethereum'
+// import { WalletConnectButton } from '../../../ethereum'
 import { toggleScroll } from '../../functions'
 
 interface GenericHeaderProps {
@@ -45,8 +45,12 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   closeOnChange = true,
 }) => {
   const { flexActive = true, flexSize = 1080 } = mobile
-  const { web3ModalActive, setWeb3ModalActive, scrollDirection } =
-    React.useContext(AppContext)
+  const {
+    // recomment for web3
+    // web3ModalActive,
+    // setWeb3ModalActive,
+    scrollDirection,
+  } = React.useContext(AppContext)
 
   const mobileHeaderMatcher = window.matchMedia(`(max-width: ${flexSize}px)`)
 
@@ -195,12 +199,12 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                 </span>
               )
             })}
-            <div className={styles.wallet}>
+            {/* <div className={styles.wallet}>
               <WalletConnectButton
                 className={styles.button}
                 onClick={() => setWeb3ModalActive(!web3ModalActive)}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
@@ -264,12 +268,12 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                   </span>
                 )
               })}
-              <div className={classNames(styles.section, styles.wallet)}>
+              {/* <div className={classNames(styles.section, styles.wallet)}>
                 <WalletConnectButton
                   className={styles.button}
                   onClick={() => setWeb3ModalActive(!web3ModalActive)}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
