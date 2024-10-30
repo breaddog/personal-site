@@ -22,7 +22,6 @@ export const ImageProjectSection: React.FunctionComponent<
     imageclassname,
     src,
     alt,
-    effect = 'blur',
     width = '100%',
     height = '90%',
     caption = '',
@@ -53,7 +52,6 @@ export const ImageProjectSection: React.FunctionComponent<
         className={imageClasses}
         src={src}
         alt={alt}
-        effect={effect}
         width={width}
         height={height}
       />

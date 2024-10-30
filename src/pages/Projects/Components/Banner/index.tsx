@@ -27,7 +27,6 @@ export const BannerProjectSection: React.FunctionComponent<
         className={projectStyles.img}
         alt={alt}
         src={src}
-        effect='blur'
         width={'100%'}
         height={'inherit'}
       />

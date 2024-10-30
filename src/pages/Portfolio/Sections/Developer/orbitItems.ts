@@ -8,9 +8,9 @@ import npmSVG from '../../../../assets/logos/npm.svg'
 import s3SVG from '../../../../assets/logos/s3.svg'
 import codebuildSVG from '../../../../assets/logos/codebuild.svg'
 import codepipelineSVG from '../../../../assets/logos/codepipeline.svg'
-import ethSVG from '../../../../assets/logos/eth.svg'
 import githubSVG from '../../../../assets/logos/github-white.svg'
 import userSVG from '../../../../assets/icons/user.svg'
+import angularSVG from '../../../../assets/icons/angular.svg'
 
 export interface OrbitItemProps {
   src: string
@@ -69,9 +69,9 @@ export const ORBIT_ITEMS: OrbitItemProps[] = [
     type: 'ci/cd',
   },
   {
-    src: ethSVG,
-    alt: 'solidity (eth)',
-    type: 'web3',
+    src: angularSVG,
+    alt: 'angularjs',
+    type: 'web dev',
   },
   {
     src: githubSVG,
