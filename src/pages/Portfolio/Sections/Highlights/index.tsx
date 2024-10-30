@@ -18,6 +18,7 @@ import {
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
 import { PROJECTS, ProjectObject } from '../../../../data/projects'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import { AppContext } from '../../../../App'
 import { HighlightsHeaderWrapper } from './Components'
 import {
@@ -130,7 +131,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
               >
                 {map(PROJECTS, (project: ProjectObject, idx: number) => {
                   return (
-                    <>
+                    <LazyLoadComponent key={idx + 100}>
                       <SwiperSlide
                         className={styles.slide}
                         key={idx}
@@ -198,7 +199,7 @@ export const PortfolioHighlights: React.FC<PortfolioHighlightsProps> =
                           </>
                         )}
                       </SwiperSlide>
-                    </>
+                    </LazyLoadComponent>
                   )
                 })}
               </Swiper>

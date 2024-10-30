@@ -1,11 +1,14 @@
 import styles from './Image.module.scss'
-import React, { ImgHTMLAttributes } from 'react'
+import React from 'react'
+import {
+  LazyLoadImage,
+  LazyLoadImageProps,
+} from 'react-lazy-load-image-component'
 import classNames from 'classnames'
 // import { delay, isNull, isUndefined } from 'lodash'
 // import { AppContext } from '../../../App'
 
-interface ImageProps
-  extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'placeholder' | 'onLoad'> {}
+interface ImageProps extends LazyLoadImageProps {}
 
 /*
   initially wanted to do a loading bar but lazyload would be better
@@ -42,19 +45,12 @@ export const Image: React.FunctionComponent<ImageProps> = (props) => {
   const classes = classNames(styles.image, props.className)
 
   return (
-    <img
+    <LazyLoadImage
       {...props}
+      // beforeLoad={() => handleBeforeLoad()}
+      // onLoad={(e: any) => handleOnLoad(e)}
       className={classes}
-      loading='lazy'
+      effect={props.effect ?? 'blur'}
     />
   )
-  // return (
-  //   <LazyLoadImage
-  //     {...props}
-  //     // beforeLoad={() => handleBeforeLoad()}
-  //     // onLoad={(e: any) => handleOnLoad(e)}
-  //     className={classes}
-  //     effect={props.effect ?? 'blur'}
-  //   />
-  // )
 }
