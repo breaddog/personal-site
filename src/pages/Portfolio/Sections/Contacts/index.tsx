@@ -14,7 +14,6 @@ import {
 } from '../../../../shared/interfaces'
 
 import mailSVG from '../../../../assets/icons/mail.svg'
-import resumeSVG from '../../../../assets/icons/resume.svg'
 import githubSVG from '../../../../assets/logos/github.svg'
 import linkedinSVG from '../../../../assets/logos/linkedin.svg'
 import { AppContext } from '../../../../App'
@@ -70,21 +69,6 @@ export const PortfolioContacts: React.FC<PortfolioContactsProps> =
             direction: 'clockwise',
           },
           hoverText: <>Get in contact with me</>,
-        },
-        {
-          type: 'resume',
-          link: EXTERNAL_LINKS.resume,
-          icon: {
-            src: resumeSVG,
-            alt: 'resuume',
-          },
-          circularText: {
-            text: 'Resume',
-            spacing: 7,
-            repetitions: 3,
-            direction: 'clockwise',
-          },
-          hoverText: 'Download my Resume',
         },
       ]
 
