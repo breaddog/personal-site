@@ -5,6 +5,7 @@ export * from './CircularText'
 export * from './WaveText'
 
 export * from './GenericHeader'
+export * from './GenericFooter'
 export * from './Window'
 export * from './ModalBox'
 

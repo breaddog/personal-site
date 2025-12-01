@@ -9,7 +9,7 @@ import { PROJECTS, ProjectObject } from '../../data/projects'
 import { fetchProject, fetchProjectContent } from '../../shared'
 import { ErrorProjectTemplate } from './ProjectContent'
 import { BannerProjectSection, TopProjectSection } from './Components'
-import { GenericHeader } from '../../shared/components'
+import { GenericFooter, GenericHeader } from '../../shared/components'
 import { isNull, isUndefined } from 'lodash'
 
 import onigiriSVG from '../../assets/icons/onigiri.svg'
@@ -198,6 +198,7 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
         sections={generateProjectSections()}
       />
       {renderProjectPageBody()}
+      <GenericFooter className={styles.projectFooter} />
     </div>
   )
 }

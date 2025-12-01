@@ -8,6 +8,7 @@ import {
   SectionContainer,
   SectionSubHeader,
   Button,
+  // GenericFooter,
 } from '../../shared/components'
 
 import { Link } from 'react-router-dom'

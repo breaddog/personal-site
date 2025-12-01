@@ -6,6 +6,7 @@ import AOS from 'aos'
 
 import queryString from 'query-string'
 import { PortfolioHeader } from './Header'
+import { PortfolioFooter } from './Footer'
 
 import {
   PortfolioContacts,
@@ -215,6 +216,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
         <PortfolioHighlights ref={highlightsRef} />
         <PortfolioContacts ref={contactsRef} />
       </div>
+      <PortfolioFooter />
     </PortfolioContext.Provider>
   )
 }
