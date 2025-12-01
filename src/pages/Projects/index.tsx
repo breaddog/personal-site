@@ -175,7 +175,8 @@ export const ProjectPage: React.FunctionComponent<ProjectPageProps> = ({
       title: 'Back To Highlights',
       key: PORTFOLIO_SECTIONS.highlights.key,
       customNavigate: () => {
-        navigate(`/?section=${PORTFOLIO_SECTIONS.highlights.key}`)
+        // Use traditional HREF here for now
+        window.location.href = `/?section=${PORTFOLIO_SECTIONS.highlights.key}`
       },
     }
 
