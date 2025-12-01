@@ -110,5 +110,8 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.2.2",
     "source-map-loader": "^4.0.1"
+  },
+  "resolutions": {
+    "@types/react": "^18.0.21"
   }
 }
