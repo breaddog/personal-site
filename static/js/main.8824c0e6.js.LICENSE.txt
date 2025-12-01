@@ -23,52 +23,47 @@
  */
 
 /*!
- * Draggable 3.12.5
+ * Draggable 3.13.0
  * https://gsap.com
  *
- * @license Copyright 2008-2024, GreenSock. All rights reserved.
- * Subject to the terms at https://gsap.com/standard-license or for
- * Club GSAP members, the agreement issued with that membership.
+ * @license Copyright 2008-2025, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license
  * @author: Jack Doyle, jack@greensock.com
  */
 
 /*!
- * GSAP 3.12.5
+ * GSAP 3.13.0
  * https://gsap.com
  *
- * @license Copyright 2008-2024, GreenSock. All rights reserved.
- * Subject to the terms at https://gsap.com/standard-license or for
- * Club GSAP members, the agreement issued with that membership.
+ * @license Copyright 2008-2025, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license
  * @author: Jack Doyle, jack@greensock.com
 */
 
 /*!
- * MotionPathPlugin 3.12.5
+ * MotionPathPlugin 3.13.0
  * https://gsap.com
  *
- * @license Copyright 2008-2024, GreenSock. All rights reserved.
- * Subject to the terms at https://gsap.com/standard-license or for
- * Club GSAP members, the agreement issued with that membership.
+ * @license Copyright 2008-2025, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license
  * @author: Jack Doyle, jack@greensock.com
 */
 
 /*!
- * Observer 3.12.5
+ * Observer 3.13.0
  * https://gsap.com
  *
- * @license Copyright 2008-2024, GreenSock. All rights reserved.
- * Subject to the terms at https://gsap.com/standard-license or for
- * Club GSAP members, the agreement issued with that membership.
+ * @license Copyright 2008-2025, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license
  * @author: Jack Doyle, jack@greensock.com
 */
 
 /*!
- * ScrollTrigger 3.12.5
+ * ScrollTrigger 3.13.0
  * https://gsap.com
  *
- * @license Copyright 2008-2024, GreenSock. All rights reserved.
- * Subject to the terms at https://gsap.com/standard-license or for
- * Club GSAP members, the agreement issued with that membership.
+ * @license Copyright 2008-2025, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license
  * @author: Jack Doyle, jack@greensock.com
 */
 
@@ -80,12 +75,11 @@
  */
 
 /*!
- * paths 3.12.5
+ * paths 3.13.0
  * https://gsap.com
  *
- * Copyright 2008-2024, GreenSock. All rights reserved.
- * Subject to the terms at https://gsap.com/standard-license or for
- * Club GSAP members, the agreement issued with that membership.
+ * Copyright 2008-2025, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license
  * @author: Jack Doyle, jack@greensock.com
 */
 
@@ -171,9 +165,29 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /**
  * @license React
+ * use-sync-external-store-shim.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
  * use-sync-external-store-shim.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -190,7 +204,7 @@ PERFORMANCE OF THIS SOFTWARE.
  */
 
 /**
- * @remix-run/router v1.20.0
+ * @remix-run/router v1.23.1
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -201,7 +215,7 @@ PERFORMANCE OF THIS SOFTWARE.
  */
 
 /**
- * React Router DOM v6.27.0
+ * React Router DOM v6.30.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -212,7 +226,7 @@ PERFORMANCE OF THIS SOFTWARE.
  */
 
 /**
- * React Router v6.27.0
+ * React Router v6.30.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -239,3 +253,5 @@ PERFORMANCE OF THIS SOFTWARE.
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+//! moment.js
