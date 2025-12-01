@@ -8,6 +8,7 @@ import {
   SectionContainer,
   SectionSubHeader,
   Button,
+  GenericFooter,
   // GenericFooter,
 } from '../../shared/components'
 
@@ -84,6 +85,7 @@ export const ErrorPage: React.FunctionComponent<ErrorPageProps> = ({
           </Button>
         </Link>
       </SectionContainer>
+      {!hidePageHeader && <GenericFooter className={styles.errorFooter} />}
     </section>
   )
 }
