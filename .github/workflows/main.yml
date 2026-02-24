@@ -33,10 +33,5 @@ jobs:
       - name: install dependencies
         run: yarn
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./dist
-
       - name: deploy gh-pages
         run: yarn deploy
