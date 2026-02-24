@@ -5,7 +5,12 @@ import styles from './Highlights.module.scss'
 import './HighlightsCarousel.scss'
 import frameStyles from './HighlightsFrame.module.scss'
 
-import { EffectCoverflow, Keyboard, Navigation, Pagination } from 'swiper'
+import {
+  EffectCoverflow,
+  Keyboard,
+  Navigation,
+  Pagination,
+} from 'swiper/modules'
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
 import { ScrollTrigger } from 'gsap/all'
