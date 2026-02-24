@@ -132,21 +132,6 @@ Linting and Deployment
   <li><a href="https://github.com/features/actions">Github Actions</a></li>
 </ul>
 
-Web3
-
-<ul>
-  <li><a href="https://ethers.org">Ethers</a></li>
-  <li><a href="https://github.com/Uniswap/web3-react#readme">web3-react</a></li>
-</ul>
-
-Supported Ethereum Wallets
-
-<ul>
-  <li><a href="https://metamask.io/">Metamask</a></li>
-  <li><a href="https://www.coinbase.com">Coinbase</a></li>
-  <li>Future support for other wallets coming soon</li>
-</ul>
-
 ## Setting Up
 
 ### Installation
