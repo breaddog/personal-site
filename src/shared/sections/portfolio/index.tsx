@@ -16,10 +16,7 @@ export const PORTFOLIO_SECTIONS: {
     title: 'management',
     key: 'manager',
   },
-  // web3: {
-  //   title: 'web3',
-  //   key: 'web3',
-  // },
+
   journey: {
     title: 'journey',
     key: 'journey',

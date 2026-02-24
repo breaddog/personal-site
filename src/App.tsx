@@ -1,8 +1,8 @@
-import 'aos/dist/aos.css'
-import styles from './App.module.scss'
-import React from 'react'
 import AOS from 'aos'
+import 'aos/dist/aos.css'
 import classNames from 'classnames'
+import React from 'react'
+import styles from './App.module.scss'
 
 import { PageOrientation, ScrollDirection } from './shared/types'
 
@@ -21,9 +21,9 @@ import {
   // useNavigate,
   // useLocation,
   HashRouter,
+  Navigate,
   Route,
   Routes,
-  Navigate,
 } from 'react-router-dom'
 
 import {
@@ -33,14 +33,6 @@ import {
   getScrollPositionForSection,
   handleDesktopListener,
 } from './shared'
-import { useWeb3React } from '@web3-react/core'
-import {
-  WalletConnectModal,
-  ConnectionType,
-  tryAutoReconnect,
-} from './ethereum'
-import { APP_ENV } from './config'
-import { getAccountEthBalance, getAccountMaticBalance } from './ethereum/utils'
 // import { delay } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
 import { ROUTES } from './routes'
@@ -59,14 +51,6 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const loadingRef = React.useRef<LoadingHandle>(null)
   const loadingRefCurrent = loadingRef?.current as LoadingHandle
 
-  // web3 stuff
-  const { account, isActive } = useWeb3React()
-  const [connectionType, setConnectionType] =
-    React.useState<ConnectionType | null>(null)
-  // balances
-  const [ethBalance, setEthBalance] = React.useState<number>(0)
-  const [maticBalance, setMaticBalance] = React.useState<number>(0)
-
   // listeners
   const [isMobile, setIsMobile] = React.useState<boolean>(false)
   const [isMedium, setIsMedium] = React.useState<boolean>(false)
@@ -82,9 +66,6 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
   const [orientation, setOrientation] =
     React.useState<PageOrientation>('landscape')
 
-  // web3 modal
-  const [web3ModalActive, setWeb3ModalActive] = React.useState<boolean>(false)
-
   // matchers
   const isMobileMatcher = window.matchMedia(mobileMediaQuery)
   const isMediumMatcher = window.matchMedia(mediumMediaQuery)
@@ -96,60 +77,11 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
     className
   )
 
-  // WEB 3
-  // ETH BALANCES
-  const resetBalances = () => {
-    setEthBalance(0)
-    setMaticBalance(0)
-  }
-
-  const handleGetEthBalance = async (_account: string) => {
-    try {
-      const balance = await getAccountEthBalance(_account)
-      setEthBalance(balance)
-    } catch (err) {
-      setEthBalance(0)
-    }
-  }
-
-  const handleGetMaticBalance = async (_account: string) => {
-    try {
-      const balance = await getAccountMaticBalance(_account)
-      setMaticBalance(balance)
-    } catch (err) {
-      setMaticBalance(0)
-    }
-  }
-
-  const handleUpdateBalances = (account: string) => {
-    handleGetEthBalance(account)
-    handleGetMaticBalance(account)
-  }
-
   // scroll
   const handleScrollToggle = (enabled: boolean) => {
     setScrollEnabled(enabled)
     enabled ? enableScroll() : disableScroll()
   }
-
-  // auto reconnect and account dependencies
-  React.useEffect(() => {
-    // no account? reset everything
-    if (!account) {
-      resetBalances()
-      return
-    }
-    localStorage[APP_ENV.CONNECTOR_TYPE_STORAGE] = String(connectionType)
-    handleUpdateBalances(account)
-  }, [account, connectionType])
-
-  // on load
-  React.useEffect(() => {
-    window.addEventListener('load', () => tryAutoReconnect(setConnectionType))
-    return () => {
-      window.addEventListener('load', () => tryAutoReconnect(setConnectionType))
-    }
-  }, [])
 
   // LISTENERS
   // listener for desktop or mobile
@@ -292,27 +224,11 @@ export const App: React.FunctionComponent<AppProps> = ({ className }) => {
           scrollDirection,
           setScrollEnabled: handleScrollToggle,
           loadingRef,
-          web3ModalActive,
-          setWeb3ModalActive,
-          connectionType,
-          ethBalance,
-          maticBalance,
-          resetBalances,
-          updateBalances: handleUpdateBalances,
         }}
       >
         <div className={classes}>
           <CSSHeader />
-          {/* <LoadingSection ref={loadingRef} /> */}
-          <WalletConnectModal
-            onRequestCloseActive={false}
-            isOpen={web3ModalActive}
-            onClose={() => setWeb3ModalActive(false)}
-            activeConnectionType={connectionType}
-            connectionActive={isActive}
-            onActivate={setConnectionType}
-            onDeactivate={setConnectionType}
-          />
+
           <Routes>
             {/* all the import components will go here */}
             <Route
@@ -376,19 +292,6 @@ interface AppContextProps {
   setScrollEnabled: Function
   // loading
   loadingRef: React.RefObject<LoadingHandle> | null
-
-  // web3 stuff
-  // modal
-  web3ModalActive: boolean
-  setWeb3ModalActive: React.Dispatch<React.SetStateAction<boolean>>
-
-  // connection
-  connectionType: ConnectionType | null
-  ethBalance: number
-  maticBalance: number
-  resetBalances: Function
-  // eslint-disable-next-line no-unused-vars
-  updateBalances: (account: string) => void
 }
 
 // export const AppLoadingContext = React.createContext<LoadingHandle>({
@@ -415,12 +318,4 @@ export const AppContext = React.createContext<AppContextProps>({
   scrollDirection: 'up',
   setScrollEnabled: () => {},
   loadingRef: null,
-  web3ModalActive: false,
-  setWeb3ModalActive: () => {},
-  connectionType: null,
-  ethBalance: 0,
-  maticBalance: 0,
-  resetBalances: () => {},
-  // eslint-disable-next-line
-  updateBalances: (account: string) => {},
 })
