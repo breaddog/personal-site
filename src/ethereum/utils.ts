@@ -1,16 +1,5 @@
-import { ethers } from 'ethers'
-
 export type NetworkType = 'ethereum' | 'polygon'
 export type ContractType = 'ERC20' | 'ERC721' | 'ERC1155' | 'multi' | 'other'
-
-export interface GenericContractInterface {
-  address: string
-  type?: ContractType
-  abi: ethers.InterfaceAbi
-  network: NetworkType
-  decimals?: number
-  symbol?: string
-}
 
 export const chainIdToName = (chainId: number) => {
   switch (chainId) {
