@@ -1,26 +1,22 @@
-import './index.scss'
-import React from 'react'
 import ReactDOM from 'react-dom/client'
+import './index.scss'
 import reportWebVitals from './reportWebVitals'
 
 import store from './store'
 
-import { App } from './App'
 import { Provider } from 'react-redux'
-import { Web3ContextProvider } from './ethereum'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { App } from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   // <React.StrictMode>
   <>
-    <Web3ContextProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </Web3ContextProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
 
     <ToastContainer
       position='bottom-left'

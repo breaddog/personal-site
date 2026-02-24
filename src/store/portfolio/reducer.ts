@@ -5,8 +5,8 @@ import {
 } from '@reduxjs/toolkit'
 
 import {
-  setPortfolioCurrentSection,
   leavePortfolioCurrentSection,
+  setPortfolioCurrentSection,
 } from './action'
 
 import { PORTFOLIO_SECTIONS } from '../../shared/sections'
@@ -51,9 +51,7 @@ export default createReducer(
             case journey.key:
               state.section = journey.key
               break
-            // case web3.key:
-            //   state.section = web3.key
-            //   break
+
             case highlights.key:
               state.section = highlights.key
               break

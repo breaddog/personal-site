@@ -1,15 +1,15 @@
-import styles from './GenericHeader.module.scss'
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
+import styles from './GenericHeader.module.scss'
 
 import { map } from 'lodash'
-import { SectionNavInterface } from '../../types/nav'
 import { OnClickAnimation } from '..'
+import { SectionNavInterface } from '../../types/nav'
 
-import menuSVG from '../../../assets/icons/menu-slanted.svg'
-import crossSVG from '../../../assets/icons/cross.svg'
-import { AppContext } from '../../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { AppContext } from '../../../App'
+import crossSVG from '../../../assets/icons/cross.svg'
+import menuSVG from '../../../assets/icons/menu-slanted.svg'
 import { ROUTES } from '../../../routes'
 // import { WalletConnectButton } from '../../../ethereum'
 import { toggleScroll } from '../../functions'
@@ -45,12 +45,7 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
   closeOnChange = true,
 }) => {
   const { flexActive = true, flexSize = 1080 } = mobile
-  const {
-    // recomment for web3
-    // web3ModalActive,
-    // setWeb3ModalActive,
-    scrollDirection,
-  } = React.useContext(AppContext)
+  const { scrollDirection } = React.useContext(AppContext)
 
   const mobileHeaderMatcher = window.matchMedia(`(max-width: ${flexSize}px)`)
 
@@ -199,12 +194,6 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                 </span>
               )
             })}
-            {/* <div className={styles.wallet}>
-              <WalletConnectButton
-                className={styles.button}
-                onClick={() => setWeb3ModalActive(!web3ModalActive)}
-              />
-            </div> */}
           </div>
         </div>
       </header>
@@ -268,12 +257,6 @@ export const GenericHeader: React.FunctionComponent<GenericHeaderProps> = ({
                   </span>
                 )
               })}
-              {/* <div className={classNames(styles.section, styles.wallet)}>
-                <WalletConnectButton
-                  className={styles.button}
-                  onClick={() => setWeb3ModalActive(!web3ModalActive)}
-                />
-              </div> */}
             </div>
           </div>
         </div>

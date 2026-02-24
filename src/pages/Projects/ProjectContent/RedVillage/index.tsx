@@ -4,7 +4,6 @@ import styles from '../../Project.module.scss'
 import redvillageStyles from './RedVillage.module.scss'
 
 import { PROJECTS, ProjectObject } from '../../../../data/projects'
-// import { useWeb3React } from '@web3-react/core'
 
 import { map } from 'lodash'
 import { generateProjectBodyElement } from '../../helpers'

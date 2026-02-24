@@ -1,7 +1,4 @@
 import React from 'react'
-import { CONSTANTS } from '../../shared'
-import { ContractType, NetworkType } from '../../ethereum/utils'
-import { BodyContentProps } from '../../pages/Projects/types'
 import {
   BINKINGZ_CONTRACT_ADDRESS,
   CROWN_TOKEN_CONTRACT_ADDRESS,
@@ -9,14 +6,17 @@ import {
   CROWN_TOKEN_SYMBOL,
   LAYERS_CONTRACT_ADDRESS,
 } from '../../contracts'
+import { ContractType, NetworkType } from '../../ethereum/utils'
+import { BodyContentProps } from '../../pages/Projects/types'
+import { CONSTANTS } from '../../shared'
 
-import {
-  BODY_CONTENT_BINKINGZ,
-  BODY_CONTENT_REDVILLAGE,
-  BODY_CONTENT_DRP,
-  BODY_CONTENT_ADOT,
-} from '../../pages/Projects/ProjectContent'
 import { REDVILLAGE_GENESIS_CONTRACT_ADDRESS } from '../../contracts/RedVillage'
+import {
+  BODY_CONTENT_ADOT,
+  BODY_CONTENT_BINKINGZ,
+  BODY_CONTENT_DRP,
+  BODY_CONTENT_REDVILLAGE,
+} from '../../pages/Projects/ProjectContent'
 
 const { projectImageRoot } = CONSTANTS
 

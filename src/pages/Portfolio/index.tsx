@@ -1,32 +1,31 @@
-import './index.scss'
-import sectionStyles from '../../styles/section.module.scss'
-import React from 'react'
-import classNames from 'classnames'
 import AOS from 'aos'
+import classNames from 'classnames'
+import React from 'react'
+import sectionStyles from '../../styles/section.module.scss'
+import './index.scss'
 
 import queryString from 'query-string'
-import { PortfolioHeader } from './Header'
 import { PortfolioFooter } from './Footer'
+import { PortfolioHeader } from './Header'
 
 import {
   PortfolioContacts,
-  PortfolioJourney,
   PortfolioDeveloper,
   PortfolioHighlights,
+  PortfolioJourney,
   PortfolioLanding,
   PortfolioManagerNew,
-  // PortfolioWeb3
 } from './Sections/index'
 
-import { GenericForwardRefInterface } from '../../shared/interfaces'
-import { PORTFOLIO_SECTIONS } from '../../shared/sections'
-import { isWithinRefBoundary, wrapForwardRefAsElementRef } from '../../shared'
-import { AppContext } from '../../App'
 import { delay } from 'lodash'
 import { useDispatch, useSelector } from 'react-redux'
+import { AppContext } from '../../App'
+import { isWithinRefBoundary, wrapForwardRefAsElementRef } from '../../shared'
+import { GenericForwardRefInterface } from '../../shared/interfaces'
+import { PORTFOLIO_SECTIONS } from '../../shared/sections'
+import { SectionNavRefInterface } from '../../shared/types'
 import { setPortfolioCurrentSection } from '../../store/portfolio/action'
 import { getPortfolioSectionSelector } from '../../store/portfolio/selectors'
-import { SectionNavRefInterface } from '../../shared/types'
 
 import { ScrollTrigger } from 'gsap/all'
 import { useLocation } from 'react-router-dom'
@@ -68,7 +67,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
   const developerRef = React.useRef<GenericForwardRefInterface>(null)
   const managerRef = React.useRef<GenericForwardRefInterface>(null)
   const journeyRef = React.useRef<GenericForwardRefInterface>(null)
-  // const web3Ref = React.useRef<GenericForwardRefInterface>(null)
   const highlightsRef = React.useRef<GenericForwardRefInterface>(null)
   const contactsRef = React.useRef<GenericForwardRefInterface>(null)
 
@@ -89,10 +87,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
       usePinParent: true,
       heightOffsetPercentage: 0.95,
     },
-    // web3: {
-    //   ref: web3Ref,
-    //   key: PORTFOLIO_SECTIONS.web3.key,
-    // },
+
     journey: {
       ref: journeyRef,
       key: PORTFOLIO_SECTIONS.journey.key,
@@ -168,7 +163,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
     developerRef,
     managerRef,
     journeyRef,
-    // web3Ref,
     highlightsRef,
     contactsRef,
     currentSection,
@@ -211,7 +205,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ className }) => {
         <PortfolioLanding ref={landingRef} />
         <PortfolioDeveloper ref={developerRef} />
         <PortfolioManagerNew ref={managerRef} />
-        {/* <PortfolioWeb3 ref={web3Ref} /> */}
         <PortfolioJourney ref={journeyRef} />
         <PortfolioHighlights ref={highlightsRef} />
         <PortfolioContacts ref={contactsRef} />

@@ -4,7 +4,6 @@ import styles from '../../Project.module.scss'
 import erc721Styles from './ERC721Project.module.scss'
 
 import { ProjectObject } from '../../../../data/projects'
-// import { useWeb3React } from '@web3-react/core'
 
 import { map } from 'lodash'
 import { generateProjectBodyElement } from '../../helpers'
