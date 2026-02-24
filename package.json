@@ -64,7 +64,7 @@
   "scripts": {
     "start": "vite",
     "predeploy": "yarn build",
-    "deploy": "echo tienfoong.com > ./build/CNAME && gh-pages -d build",
+    "deploy": "echo tienfoong.com > ./dist/CNAME && gh-pages -d build",
     "build": "tsc && vite build",
     "prepare": "husky install",
     "postinstall": "husky install",
