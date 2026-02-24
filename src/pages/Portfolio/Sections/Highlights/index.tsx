@@ -1,15 +1,20 @@
-import './HighlightsCarousel.scss'
-import styles from './Highlights.module.scss'
-import frameStyles from './HighlightsFrame.module.scss'
-import sectionStyles from '../../../../styles/section.module.scss'
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
+import sectionStyles from '../../../../styles/section.module.scss'
+import styles from './Highlights.module.scss'
+import './HighlightsCarousel.scss'
+import frameStyles from './HighlightsFrame.module.scss'
 
-import { Pagination, Navigation, EffectCoverflow, Keyboard } from 'swiper'
+import {
+  EffectCoverflow,
+  Keyboard,
+  Navigation,
+  Pagination,
+} from 'swiper/modules'
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 
-import { map } from 'lodash'
 import { ScrollTrigger } from 'gsap/all'
+import { map } from 'lodash'
 import {
   SectionContainer,
   SectionSubHeader,
@@ -17,16 +22,16 @@ import {
 
 import bulbSVG from '../../../../assets/icons/bulb.svg'
 
-import { PROJECTS, ProjectObject } from '../../../../data/projects'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
+import { Link } from 'react-router-dom'
 import { AppContext } from '../../../../App'
-import { HighlightsHeaderWrapper } from './Components'
+import { PROJECTS, ProjectObject } from '../../../../data/projects'
+import { ROUTES } from '../../../../routes'
 import {
   GenericForwardRefInterface,
   GenericSubSectionForwardInterface,
 } from '../../../../shared/interfaces'
-import { Link } from 'react-router-dom'
-import { ROUTES } from '../../../../routes'
+import { HighlightsHeaderWrapper } from './Components'
 
 interface PortfolioHighlightsProps extends GenericSubSectionForwardInterface {}
 

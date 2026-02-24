@@ -12376,7 +12376,7 @@ __metadata:
     sass: "npm:^1.56.2"
     sass-loader: "npm:^13.2.0"
     source-map-loader: "npm:^4.0.1"
-    swiper: "npm:^9.2.3"
+    swiper: "npm:^12.1.2"
     typescript: "npm:^4.9.4"
     web-vitals: "npm:^2.1.4"
   languageName: unknown
@@ -15072,13 +15072,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssr-window@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "ssr-window@npm:4.0.2"
-  checksum: e91f690f42ab2d4e36577a631a9d7b9bd20864ab99c1394481f64c5a0ae6922165ac0a06228560c2ccdd4f68338e795f2fd3cc16fbf9bfcc9c561bb89eb237cd
-  languageName: node
-  linkType: hard
-
 "ssri@npm:^13.0.0":
   version: 13.0.0
   resolution: "ssri@npm:13.0.0"
@@ -15551,12 +15544,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^9.2.3":
-  version: 9.4.1
-  resolution: "swiper@npm:9.4.1"
-  dependencies:
-    ssr-window: "npm:^4.0.2"
-  checksum: 29feb1e92c344c32d24d7c852577b8b167816ec65bb486418816abbc8e1d6f50b3fb339780392ffa8ba91582508f804bab1e1ab3bd80d9d9b66fc323b6055445
+"swiper@npm:^12.1.2":
+  version: 12.1.2
+  resolution: "swiper@npm:12.1.2"
+  checksum: f2597a67c4d647e367a236735bb7779e2833346b332e6d7b8caf48c6b82da52787959e86f06762983ab82b142958690a0d1b9f6fc5a59170a648949b35cfedd0
   languageName: node
   linkType: hard
 
